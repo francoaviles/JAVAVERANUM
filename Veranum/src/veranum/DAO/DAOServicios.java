@@ -29,14 +29,14 @@ public class DAOServicios {
     
     public static boolean sqlUpdate(ClServicios servicios)
     {
-        String sql="UPDATE \"servicios\" SET \"nombre\" = '"+servicios.getNombre()+"', \"precio\" = '"+servicios.getPrecio()+"' WHERE \"id_servicio\" = '"+servicios.getIdServicio()+"'";
+        String sql="UPDATE \"servicios\" SET \"nombre\" = '"+servicios.getNombre()+"', \"precio\" = '"+servicios.getPrecio()+"' WHERE \"nombre\" = '"+servicios.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
-    public ClServicios sqlLeer(int id){     
+    public static ClServicios sqlLeer(String name){     
         ClServicios servicio = new ClServicios();        
-        if(!bd.sqlSelect("SELECT * FROM \"servicios\" WHERE \"id_servicio\" = "+id+" ")){
+        if(!bd.sqlSelect("SELECT * FROM \"servicios\" WHERE \"nombre\" ="+name+"")){
             return null;
         }        
         if(!bd.sqlFetch()){
