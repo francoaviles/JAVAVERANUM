@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="hist_precios_hab_FK" directorySegmentName="seg_0" id="AD2AE273-0FA3-D3E7-6BD2-96B50AB47C10">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>3384C395-6B79-CF10-0B2B-C17FA20B5AEC</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>78A88346-A101-4B9F-A44B-C6F70E33310D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>3E818C56-C764-A8F1-B067-8E86292576D7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>8208B194-6171-FC23-D174-13A41D60BAD8</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

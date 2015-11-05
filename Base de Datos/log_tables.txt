@@ -1,0 +1,168 @@
+Table "cadenas" creado.
+
+
+Table "cadenas" alterado.
+
+
+Table "hoteles" creado.
+
+Table "hoteles" alterado.
+
+
+Table "servicios" creado.
+
+
+Table "servicios" alterado.
+
+Table "hoteles_servicios" creado.
+
+
+Table "hoteles_servicios" alterado.
+
+Table "tipo_caracteristicas" creado.
+
+
+Table "tipo_caracteristicas" alterado.
+
+
+Table "caracteristicas" creado.
+
+Table "caracteristicas" alterado.
+
+
+Table "hoteles_caracteristicas" creado.
+
+
+Table "hoteles_caracteristicas" alterado.
+
+Table "habitaciones_caracteristicas" creado.
+
+
+Table "habitaciones_caracteristicas" alterado.
+
+
+Table "habitaciones" creado.
+
+Table "habitaciones" alterado.
+
+
+Table "historial_precios" creado.
+
+
+Table "historial_precios" alterado.
+
+Table "habitacion_tipos" creado.
+
+
+Table "habitacion_tipos" alterado.
+
+
+Table "habitacion_estados" creado.
+
+Table "habitacion_estados" alterado.
+
+
+Table "habitacion_inspecciones" creado.
+
+
+Table "habitacion_inspecciones" alterado.
+
+Table "empresas" creado.
+
+
+Table "empresas" alterado.
+
+
+Table "convenios" creado.
+
+Table "convenios" alterado.
+
+
+Table "hoteles_convenios" creado.
+
+
+Table "hoteles_convenios" alterado.
+
+Table "pasajeros" creado.
+
+
+Table "pasajeros" alterado.
+
+
+Table "roles" creado.
+
+Table "roles" alterado.
+
+
+Table "reserva_reportes" creado.
+
+Table "reserva_reportes" alterado.
+
+
+Table "reservas" creado.
+
+Table "reservas" alterado.
+
+
+Table "estado_reservas" creado.
+
+
+Table "estado_reservas" alterado.
+
+Table "habitaciones_reservas" creado.
+
+
+Table "habitaciones_reservas" alterado.
+
+
+Table "servicios_reservas" creado.
+
+Table "servicios_reservas" alterado.
+
+
+Table "tipo_menu" creado.
+
+Table "tipo_menu" alterado.
+
+
+Table "hotel_tipo_menu" creado.
+
+
+Table "hotel_tipo_menu" alterado.
+
+Table "menu" creado.
+
+
+Table "menu" alterado.
+
+
+Table "insumos" creado.
+
+Table "insumos" alterado.
+
+Table "medidas" creado.
+
+
+Table "medidas" alterado.
+
+Table "menu_insumos" creado.
+
+
+Table "menu_insumos" alterado.
+
+
+Table "hotel_insumos" creado.
+
+Table "hotel_insumos" alterado.
+
+
+Table "tipo_reportes" creado.
+
+
+Table "tipo_reportes" alterado.
+
+Table "reportes" creado.
+
+
+Table "reportes" alterado.
+

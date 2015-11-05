@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="53E15F77-515C-1108-9364-F747894C5E08" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="hoteles_servicios">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>hoteles_servicios</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:19 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_hotel" id="C213753B-096D-B898-5775-6ABBF581212E">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>hoteles_servicios</sourceObjSchema>
+<sourceObjName>id_hotel</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="390A1FA1-13CB-2DED-10B0-C3808F0FDB22" referredColumn="E2891835-45CB-50F8-946E-A47414A3ABEE"/>
+</associations>
+</Column>
+<Column name="id_servicio" id="1C7BCBC3-2D40-CF0C-7860-F194B9FFD49E">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>hoteles_servicios</sourceObjSchema>
+<sourceObjName>id_servicio</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="87EFF8EF-D86F-F577-A544-533AD134D86A" referredColumn="A2482E73-0E5C-7209-8740-C00E6EA93918"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0824992B-D8CF-0578-E628-40AF25E4E104" name="hoteles_serviciosPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>hoteles_serviciosPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:24 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C213753B-096D-B898-5775-6ABBF581212E"/>
+<colUsage columnID="1C7BCBC3-2D40-CF0C-7860-F194B9FFD49E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B8984175-CBF0-8715-45EE-DD41BC7C7DAF" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="hoteles_serviciosPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>hoteles_serviciosPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:22 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C213753B-096D-B898-5775-6ABBF581212E"/>
+<colUsage columnID="1C7BCBC3-2D40-CF0C-7860-F194B9FFD49E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9703F160-2923-E95C-CF1F-F138B33F8CA6" name="hoteles_servicios_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C213753B-096D-B898-5775-6ABBF581212E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FB1267AB-C94C-7476-ADB0-A089A10A1ABD" name="servicios_hoteles_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1C7BCBC3-2D40-CF0C-7860-F194B9FFD49E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

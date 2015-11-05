@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="menu_tipo_menu_FK" directorySegmentName="seg_0" id="8DE65584-D4DC-D542-6229-B7F7A2A65E8E">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:15 UTC</createdTime>
+<generatorID>DEDDB7B9-478C-825A-8E3A-274B00AA8898</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>0B4C43C5-CC11-E886-76D5-CCE02DD8CA6A</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>76048138-2C38-0493-5232-9FA29552F63D</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>26C7CB89-82C7-3CEF-F890-6C92B032ACA3</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

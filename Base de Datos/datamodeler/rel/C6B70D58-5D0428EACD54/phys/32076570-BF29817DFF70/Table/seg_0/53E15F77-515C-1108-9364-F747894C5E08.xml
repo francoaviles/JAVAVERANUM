@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="hoteles_servicios" directorySegmentName="seg_0" id="53E15F77-515C-1108-9364-F747894C5E08">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:19 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<schemaObject>5D4BC863-7FEE-7275-6B1C-39034EE995C2</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>8F458A2E-EC42-8AEC-E144-F565DC2A6E72</segment>
+<tableSpace>C5E7FADC-885D-F671-A167-C43DFBDA8B65</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="id_servicio" id="1C7BCBC3-2D40-CF0C-7860-F194B9FFD49E">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="id_hotel" id="C213753B-096D-B898-5775-6ABBF581212E">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="hoteles_serviciosPrimary" id="B8984175-CBF0-8715-45EE-DD41BC7C7DAF">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:22 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<schemaObject>5D4BC863-7FEE-7275-6B1C-39034EE995C2</schemaObject>
+<segment>D2984C88-8EA7-8828-93D3-D1D89F1AC36D</segment>
+<tableSpace>C5E7FADC-885D-F671-A167-C43DFBDA8B65</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="hoteles_servicios_FK" id="9703F160-2923-E95C-CF1F-F138B33F8CA6">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="servicios_hoteles_FK" id="FB1267AB-C94C-7476-ADB0-A089A10A1ABD">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="hoteles_serviciosPrimary" id="0824992B-D8CF-0578-E628-40AF25E4E104">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:24 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<segment>D2984C88-8EA7-8828-93D3-D1D89F1AC36D</segment>
+<tableSpace>C5E7FADC-885D-F671-A167-C43DFBDA8B65</tableSpace>
+<existingIndex>B8984175-CBF0-8715-45EE-DD41BC7C7DAF</existingIndex>
+<indexSegment>D2984C88-8EA7-8828-93D3-D1D89F1AC36D</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

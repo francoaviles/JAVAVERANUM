@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="hoteles_provincia_FK" directorySegmentName="seg_0" id="D6226B77-C8E0-654C-7982-6D6F7B68B0F8">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>C91D7F9E-48BE-9E37-CD78-474654D4583A</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>B39F4C80-ACA1-AE76-EAA3-453415849B9B</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1EF40E10-772F-EEB1-62FB-E96C3C6EE7BC</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>9BE1359C-AA9C-4F61-64A6-58063A8FA793</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

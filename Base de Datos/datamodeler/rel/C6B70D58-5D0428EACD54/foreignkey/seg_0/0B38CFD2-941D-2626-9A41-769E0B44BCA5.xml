@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0B38CFD2-941D-2626-9A41-769E0B44BCA5" containerWithKeyObject="1DB74F36-8817-8C86-FB62-6837C991A5C0" localFKIndex="B6FDDAFB-9B8C-B817-722E-43261BDD9914" name="menu_insumos_menu_FK">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>menu_insumos_menu_FK</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>952F7914-0A66-3C7E-AB5F-548880208C59</referredTableID>
+<keyObject>95A32D0C-3131-06C0-0D5E-13B39FE10B77</keyObject>
+<referredKeyID>95A32D0C-3131-06C0-0D5E-13B39FE10B77</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

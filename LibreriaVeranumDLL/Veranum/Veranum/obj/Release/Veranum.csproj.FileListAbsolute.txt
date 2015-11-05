@@ -1,0 +1,12 @@
+F:\Portafolio\LibreriaVeranumDLL\Veranum\Veranum\bin\Release\Veranum.dll
+F:\Portafolio\LibreriaVeranumDLL\Veranum\Veranum\bin\Release\Veranum.pdb
+F:\Portafolio\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.dll
+F:\Portafolio\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.pdb
+F:\Portafolio\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.csprojResolveAssemblyReference.cache
+F:\Portafolio\LibreriaVeranumDLL\Veranum\Veranum\bin\Release\Oracle.DataAccess.dll
+D:\LibreriaVeranumDLL\Veranum\Veranum\bin\Release\Veranum.dll
+D:\LibreriaVeranumDLL\Veranum\Veranum\bin\Release\Veranum.pdb
+D:\LibreriaVeranumDLL\Veranum\Veranum\bin\Release\Oracle.DataAccess.dll
+D:\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.csprojResolveAssemblyReference.cache
+D:\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.dll
+D:\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.pdb

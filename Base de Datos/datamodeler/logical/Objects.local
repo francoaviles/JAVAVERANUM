@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="EDB12906-B52D-3223-3DC7-0434B135F09D" name="cadenas" seqName="seg_0"/>
+   <object objectType="Entity" objectID="30297BCD-7C26-4AC9-DCD0-FC45795C0D3F" name="caracteristicas" seqName="seg_0"/>
+   <object objectType="Entity" objectID="E2B28BD0-A4E5-F0F6-F9AE-BCFC996E59CC" name="comunas" seqName="seg_0"/>
+   <object objectType="Entity" objectID="BBCDA3E6-74AA-6458-BADB-4B8966DAA3E7" name="convenios" seqName="seg_0"/>
+   <object objectType="Entity" objectID="C2848F66-C1EA-7B98-BE09-EA782F9D50F4" name="empresas" seqName="seg_0"/>
+   <object objectType="Entity" objectID="B74D68EF-6455-1D34-C7EA-70A51DD00813" name="estado reservas" seqName="seg_0"/>
+   <object objectType="Entity" objectID="0B41C4B4-F151-2FE3-B197-E3D52E46C977" name="habitacion estados" seqName="seg_0"/>
+   <object objectType="Entity" objectID="5A03C356-24F7-6DAB-C591-D7393FA00F02" name="habitacion inspecciones" seqName="seg_0"/>
+   <object objectType="Entity" objectID="430DB03B-4DD5-9CB5-CC64-99428E0AD9DE" name="habitacion tipos" seqName="seg_0"/>
+   <object objectType="Entity" objectID="3E818C56-C764-A8F1-B067-8E86292576D7" name="habitaciones" seqName="seg_0"/>
+   <object objectType="Entity" objectID="8208B194-6171-FC23-D174-13A41D60BAD8" name="historial precios" seqName="seg_0"/>
+   <object objectType="Entity" objectID="BE947A67-EB42-6C1A-6D50-82AF061431B5" name="hotel insumos" seqName="seg_0"/>
+   <object objectType="Entity" objectID="9BE1359C-AA9C-4F61-64A6-58063A8FA793" name="hoteles" seqName="seg_0"/>
+   <object objectType="Entity" objectID="23156721-F913-2641-8960-B3377E957A85" name="insumos" seqName="seg_0"/>
+   <object objectType="Entity" objectID="FA1A56A3-B0A2-8415-2565-13E03E3BE332" name="medidas" seqName="seg_0"/>
+   <object objectType="Entity" objectID="26C7CB89-82C7-3CEF-F890-6C92B032ACA3" name="menu" seqName="seg_0"/>
+   <object objectType="Entity" objectID="4BA0316F-26EC-851E-71D9-DF4812925A90" name="menu insumos" seqName="seg_0"/>
+   <object objectType="Entity" objectID="7BFB22D8-45BF-6C64-536D-BB7CF831CA8F" name="pasajeros" seqName="seg_0"/>
+   <object objectType="Entity" objectID="1EF40E10-772F-EEB1-62FB-E96C3C6EE7BC" name="provincias" seqName="seg_0"/>
+   <object objectType="Entity" objectID="EEFBFC93-A155-6B9A-0E6E-676DCE61BE09" name="regiones" seqName="seg_0"/>
+   <object objectType="Entity" objectID="C2425F8E-DA12-EDDD-B042-B56BFE4B7461" name="reportes" seqName="seg_0"/>
+   <object objectType="Entity" objectID="09C425E0-0BAD-1C02-74BA-76D8631FEF24" name="reserva reportes" seqName="seg_0"/>
+   <object objectType="Entity" objectID="9B5F445A-97FF-C944-7802-D23D95F006F1" name="reservas" seqName="seg_0"/>
+   <object objectType="Entity" objectID="81DD3E34-6273-7591-24E4-96ADD8807995" name="roles" seqName="seg_0"/>
+   <object objectType="Entity" objectID="84515DEA-454E-F418-CD5C-D2CA9DF1C15D" name="servicios" seqName="seg_0"/>
+   <object objectType="Entity" objectID="48BBDFD5-C328-F17D-4492-67A1E5E9329D" name="tipo caracteristicas" seqName="seg_0"/>
+   <object objectType="Entity" objectID="76048138-2C38-0493-5232-9FA29552F63D" name="tipo menu" seqName="seg_0"/>
+   <object objectType="Entity" objectID="B31DB814-0EE7-F7E8-5250-D44CB08BCF6A" name="tipo reportes" seqName="seg_0"/>
+   <object objectType="Relation" objectID="72045922-38A4-6CC9-D560-D7390E9B0945" name="caracteristicas_tipo_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="D03D221A-0915-AA39-4312-4D6E7C139AD6" name="comunas_provincias_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="D1D9C6B2-2F73-D23B-A211-841BC38FE4C9" name="convenios_empresas_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="DED540B5-45C0-6A28-4D13-F742C1A5F867" name="habit_hab_estados_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="F8378D26-F1E5-FC64-227D-A11D6F73C34F" name="habit_hab_tipos_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="4D96F165-65DA-457D-2697-086C4D06E3A9" name="habitacion_inspecciones_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="C982E3DF-F009-1A67-C3B6-778CF899DDFE" name="habitaciones_caracteristicas" seqName="seg_0"/>
+   <object objectType="Relation" objectID="841F9C4E-27E3-A13B-BC97-66C3127CA903" name="habitaciones_hoteles_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="6768BF6E-C122-9892-7F57-767F6D35513A" name="habitaciones_reserva" seqName="seg_0"/>
+   <object objectType="Relation" objectID="AD2AE273-0FA3-D3E7-6BD2-96B50AB47C10" name="hist_precios_hab_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="F23361B3-19E3-86E6-FF05-3CDEC62000E9" name="hote_tipo_menu" seqName="seg_0"/>
+   <object objectType="Relation" objectID="D169CFA6-CD77-A39C-8552-2E5DF3DD1E60" name="hotel_insumos_hoteles_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="BEC2B675-A30F-0B1E-1BBB-3EF4D0AB4829" name="hotel_insumos_insumos_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="81628E9F-EB8A-27DC-C41E-77FCF74D47AA" name="hotel_insumos_medidas_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="7C3E4BB2-3CA2-1DD2-2497-C3BA51B6B1FF" name="hoteles_cadenas_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="CF0147A7-05A8-6431-96B2-C6566C1D6E01" name="hoteles_caracteristicas" seqName="seg_0"/>
+   <object objectType="Relation" objectID="BC8DCC6A-67CA-4B69-5660-14B92ABB3963" name="hoteles_comuna_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="147A1B8C-9998-5CDF-25CD-9ED995426E99" name="hoteles_convenios" seqName="seg_0"/>
+   <object objectType="Relation" objectID="D6226B77-C8E0-654C-7982-6D6F7B68B0F8" name="hoteles_provincia_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="6CF9C660-BABF-E40D-9FCA-509029231D92" name="hoteles_region_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="FAB54034-21A9-416C-27BA-02FC5EA4F0E0" name="hoteles_servicios" seqName="seg_0"/>
+   <object objectType="Relation" objectID="972F7C73-F0DD-5DCF-4848-5BE7836BE17A" name="menu_insumos_insumos_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="999EE99C-6BB3-43DB-E9C3-EE0B8F76FE59" name="menu_insumos_medidas_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="DF564B61-9CD4-7A49-5A12-7F96392F57A6" name="menu_insumos_menu_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="8DE65584-D4DC-D542-6229-B7F7A2A65E8E" name="menu_tipo_menu_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="D326E30C-BB1D-2343-3703-B449CE2EA40C" name="pasajeros_comuna_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="A2A52F5F-0A8A-9145-2549-078E8ED10DC0" name="pasajeros_provincia_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="CD2392DE-A671-3859-D64D-FBFAE84D5546" name="pasajeros_region_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="F56034C5-8AF4-6804-A3AA-9E5B29D830D5" name="pasajeros_roles_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="5147D2B2-41ED-ECD9-4942-15C53770B262" name="provincias_region_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="CC5C1B7C-88CF-9486-4DEA-45CE816BBB7C" name="reportes_tipo_reportes_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="29132629-AB68-8656-8CAE-9F1F04AB96CF" name="reserva_reportes_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="DBAE622E-DD65-3F35-2433-6B6FAEBC6FB6" name="reservas_estado_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="31C48BB8-4ED7-A8CB-2F48-42428976C233" name="reservas_pasajeros_FK" seqName="seg_0"/>
+   <object objectType="Relation" objectID="F8A04C4E-78BC-42CD-5F7B-945FF7C56ACF" name="servicios_reservas" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

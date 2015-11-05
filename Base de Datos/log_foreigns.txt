@@ -1,0 +1,221 @@
+Table "hoteles" alterado.
+
+
+Table "hoteles_servicios" alterado.
+
+Table "hoteles_servicios" alterado.
+
+Table "caracteristicas" alterado.
+
+
+Table "hoteles_caracteristicas" alterado.
+
+Table "hoteles_caracteristicas" alterado.
+
+Table "habitaciones_caracteristicas" alterado.
+
+
+Table "habitaciones_caracteristicas" alterado.
+
+Table "habitaciones" alterado.
+
+
+Table "habitaciones" alterado.
+
+
+Table "habitaciones" alterado.
+
+Table "historial_precios" alterado.
+
+
+Table "habitacion_inspecciones" alterado.
+
+
+Table "convenios" alterado.
+
+Table "pasajeros" alterado.
+
+
+Table "hoteles_convenios" alterado.
+
+
+Table "hoteles_convenios" alterado.
+
+Table "reservas" alterado.
+
+
+Error que empieza en la línea: 115 del comando :
+ALTER TABLE "reservas" 
+	ADD CONSTRAINT "reservas_estado_FK" 
+	FOREIGN KEY ("id_estado") 
+		REFERENCES "estado_reservas" ("id_reserva_estado")
+Informe de error -
+Error SQL: ORA-00904: "id_estado": invalid identifier
+00904. 00000 -  "%s: invalid identifier"
+*Cause:    
+*Action:
+
+Table "reserva_reportes" alterado.
+
+Table "habitaciones_reservas" alterado.
+
+Table "habitaciones_reservas" alterado.
+
+
+Table "servicios_reservas" alterado.
+
+
+Table "servicios_reservas" alterado.
+
+Table "hotel_tipo_menu" alterado.
+
+
+Table "hotel_tipo_menu" alterado.
+
+
+Table "menu" alterado.
+
+Table "menu_insumos" alterado.
+
+
+Table "menu_insumos" alterado.
+
+Table "menu_insumos" alterado.
+
+
+Table "hotel_insumos" alterado.
+
+
+Table "hotel_insumos" alterado.
+
+Table "hotel_insumos" alterado.
+
+Table "reportes" alterado.
+
+
+Table "comunas" alterado.
+
+Table "provincias" alterado.
+
+
+Table "hoteles" alterado.
+
+
+Table "hoteles" alterado.
+
+Table "hoteles" alterado.
+
+
+Table "pasajeros" alterado.
+
+
+Table "pasajeros" alterado.
+
+Table "pasajeros" alterado.
+
+Table "hoteles" alterado.
+
+
+Table "hoteles_servicios" alterado.
+
+Table "hoteles_servicios" alterado.
+
+
+Table "caracteristicas" alterado.
+
+Table "hoteles_caracteristicas" alterado.
+
+
+Table "hoteles_caracteristicas" alterado.
+
+
+Table "habitaciones_caracteristicas" alterado.
+
+Table "habitaciones_caracteristicas" alterado.
+
+
+Table "habitaciones" alterado.
+
+Table "habitaciones" alterado.
+
+Table "habitaciones" alterado.
+
+
+Table "historial_precios" alterado.
+
+
+Table "habitacion_inspecciones" alterado.
+
+Table "convenios" alterado.
+
+
+Table "pasajeros" alterado.
+
+
+Table "hoteles_convenios" alterado.
+
+Table "hoteles_convenios" alterado.
+
+
+Table "reservas" alterado.
+
+
+Table "reservas" alterado.
+
+Table "reserva_reportes" alterado.
+
+Table "habitaciones_reservas" alterado.
+
+
+Table "habitaciones_reservas" alterado.
+
+Table "servicios_reservas" alterado.
+
+
+Table "servicios_reservas" alterado.
+
+
+Table "hotel_tipo_menu" alterado.
+
+Table "hotel_tipo_menu" alterado.
+
+
+Table "menu" alterado.
+
+
+Table "menu_insumos" alterado.
+
+Table "menu_insumos" alterado.
+
+
+Table "menu_insumos" alterado.
+
+
+Table "hotel_insumos" alterado.
+
+Table "hotel_insumos" alterado.
+
+Table "hotel_insumos" alterado.
+
+Table "reportes" alterado.
+
+Table "comunas" alterado.
+
+
+Table "provincias" alterado.
+
+
+Table "hoteles" alterado.
+
+
+Table "hoteles" alterado.
+
+Table "hoteles" alterado.
+
+
+Table "pasajeros" alterado.
+
+Table "pasajeros" alterado.
+
+Table "pasajeros" alterado.
+

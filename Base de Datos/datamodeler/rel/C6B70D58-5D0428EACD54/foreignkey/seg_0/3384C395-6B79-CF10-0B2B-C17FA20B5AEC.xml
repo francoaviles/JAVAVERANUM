@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="3384C395-6B79-CF10-0B2B-C17FA20B5AEC" containerWithKeyObject="898AA127-D464-F155-849B-15D64D6CB0AB" localFKIndex="53911D4A-8752-9EC4-FB8F-289753074F99" name="hist_precios_hab_FK">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>hist_precios_hab_FK</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>26A54C99-CFC4-EA92-FFCF-35F49EECF151</referredTableID>
+<keyObject>698B57ED-40D5-F15C-CD47-8FE90606DF78</keyObject>
+<referredKeyID>698B57ED-40D5-F15C-CD47-8FE90606DF78</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

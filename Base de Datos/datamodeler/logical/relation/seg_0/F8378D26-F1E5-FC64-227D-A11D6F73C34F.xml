@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="habit_hab_tipos_FK" directorySegmentName="seg_0" id="F8378D26-F1E5-FC64-227D-A11D6F73C34F">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>876F2CAE-E7AC-59B6-5008-C61922BFD244</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>A4810203-438C-8A3C-5F3E-AC6C0747481B</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>430DB03B-4DD5-9CB5-CC64-99428E0AD9DE</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>3E818C56-C764-A8F1-B067-8E86292576D7</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

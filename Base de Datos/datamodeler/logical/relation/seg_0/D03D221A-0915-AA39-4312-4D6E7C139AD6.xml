@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="comunas_provincias_FK" directorySegmentName="seg_0" id="D03D221A-0915-AA39-4312-4D6E7C139AD6">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>9FE7C203-7C82-00F1-F6FC-F95BD522DF0B</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>B39F4C80-ACA1-AE76-EAA3-453415849B9B</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1EF40E10-772F-EEB1-62FB-E96C3C6EE7BC</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E2B28BD0-A4E5-F0F6-F9AE-BCFC996E59CC</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="hoteles_cadenas_FK" directorySegmentName="seg_0" id="7C3E4BB2-3CA2-1DD2-2497-C3BA51B6B1FF">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>FFDA33D3-9275-D486-C953-6A042B600325</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>F744560E-D50C-BB0B-4751-13DB24BDCC96</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>EDB12906-B52D-3223-3DC7-0434B135F09D</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>9BE1359C-AA9C-4F61-64A6-58063A8FA793</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

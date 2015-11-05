@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.storage.oracle.v11g.StorageDesignOraclev11g>
+   <object objectType="TSpace" objectID="C5E7FADC-885D-F671-A167-C43DFBDA8B65" name="SYSTEM" seqName="seg_0"/>
+   <object objectType="User" objectID="MDSYS" name="MDSYS" seqName="seg_0"/>
+   <object objectType="User" objectID="EC98EEC1-EA38-A961-87D3-3DFD4F86BA1F" name="PORTAFOLIO" seqName="seg_0"/>
+   <object objectType="User" objectID="PUBLIC" name="PUBLIC" seqName="seg_0"/>
+   <object objectType="SType" objectID="47E390DE-0671-C4B1-8428-0F45CBEE18F8" name="SDO_GEOMETRY" seqName="seg_0"/>
+   <object objectType="SType" objectID="F72C39E0-D1CA-8821-2AD7-A1E95A37D3D1" name="XMLTYPE" seqName="seg_0"/>
+   <object objectType="Table" objectID="0F464BB1-1DC2-C62E-151E-C441E54CB726" name="hotel_insumos" seqName="seg_0"/>
+   <object objectType="Table" objectID="13513FB8-1FC1-7B25-59B3-E2970CC9E118" name="medidas" seqName="seg_0"/>
+   <object objectType="Table" objectID="17178204-1BB9-EB56-023C-702A47B4AC30" name="tipo_reportes" seqName="seg_0"/>
+   <object objectType="Table" objectID="1A099835-5BE8-33D6-316B-E65F94D19C66" name="comunas" seqName="seg_0"/>
+   <object objectType="Table" objectID="1DB74F36-8817-8C86-FB62-6837C991A5C0" name="menu_insumos" seqName="seg_0"/>
+   <object objectType="Table" objectID="227D0371-C587-AC04-2561-F6379AA4B5BF" name="hotel_tipo_menu" seqName="seg_0"/>
+   <object objectType="Table" objectID="248E5EAE-9F0D-7D59-8C01-FE6AEB2BD598" name="estado_reservas" seqName="seg_0"/>
+   <object objectType="Table" objectID="26A54C99-CFC4-EA92-FFCF-35F49EECF151" name="habitaciones" seqName="seg_0"/>
+   <object objectType="Table" objectID="3444D0A0-EEDF-3422-D767-C4B7C9396D84" name="provincias" seqName="seg_0"/>
+   <object objectType="Table" objectID="43ADAD6A-0BAB-DF35-3017-7F43ABC968FE" name="reserva_reportes" seqName="seg_0"/>
+   <object objectType="Table" objectID="4B1472E3-5D3D-F988-3DCE-11E2C6FBC0C2" name="tipo_caracteristicas" seqName="seg_0"/>
+   <object objectType="Table" objectID="4F4A1EB2-45D4-E774-1298-4B561D93C60F" name="servicios_reservas" seqName="seg_0"/>
+   <object objectType="Table" objectID="534FEF75-EBA5-167D-1B15-871F16EF653C" name="regiones" seqName="seg_0"/>
+   <object objectType="Table" objectID="53E15F77-515C-1108-9364-F747894C5E08" name="hoteles_servicios" seqName="seg_0"/>
+   <object objectType="Table" objectID="57B9B2E1-6408-21A6-8C7F-244E1F70EEAF" name="habitacion_tipos" seqName="seg_0"/>
+   <object objectType="Table" objectID="58A360A3-33F5-FC18-249D-3B97C7872176" name="reservas" seqName="seg_0"/>
+   <object objectType="Table" objectID="63F5904F-D045-1FD8-5739-0D2462ABF9F6" name="hoteles" seqName="seg_0"/>
+   <object objectType="Table" objectID="76CCC35B-57B6-8D0D-4538-7D8BCE199628" name="servicios" seqName="seg_0"/>
+   <object objectType="Table" objectID="8593670F-F5CC-83E6-F3A5-435A228AD8BA" name="habitacion_inspecciones" seqName="seg_0"/>
+   <object objectType="Table" objectID="88200D2B-622B-FA64-0D31-1ADC50615D7D" name="cadenas" seqName="seg_0"/>
+   <object objectType="Table" objectID="88A5240C-FD7C-5D7B-6A8C-06232DD34C20" name="convenios" seqName="seg_0"/>
+   <object objectType="Table" objectID="898AA127-D464-F155-849B-15D64D6CB0AB" name="historial_precios" seqName="seg_0"/>
+   <object objectType="Table" objectID="8B497F5A-D8CD-FB97-ED07-298C09875F53" name="reportes" seqName="seg_0"/>
+   <object objectType="Table" objectID="8CB68933-4FAD-4D28-3905-3193657FC9A7" name="habitaciones_caracteristicas" seqName="seg_0"/>
+   <object objectType="Table" objectID="8CEF85E9-6BFA-D803-52EF-44F2231FAC4F" name="tipo_menu" seqName="seg_0"/>
+   <object objectType="Table" objectID="92E0DA33-B6BF-D8B8-976D-9941F89CD945" name="hoteles_caracteristicas" seqName="seg_0"/>
+   <object objectType="Table" objectID="952F7914-0A66-3C7E-AB5F-548880208C59" name="menu" seqName="seg_0"/>
+   <object objectType="Table" objectID="A144B15E-95D0-63E2-F5FB-91BE748D951E" name="empresas" seqName="seg_0"/>
+   <object objectType="Table" objectID="B5B71B73-EB8F-B270-A4DA-A22ED031BB7D" name="pasajeros" seqName="seg_0"/>
+   <object objectType="Table" objectID="C229751C-CF60-42FD-8C3E-6F96F8E7CF4D" name="hoteles_convenios" seqName="seg_0"/>
+   <object objectType="Table" objectID="CCEE6394-B608-0D56-98B7-E4FB7EAB60BE" name="insumos" seqName="seg_0"/>
+   <object objectType="Table" objectID="D312800E-1A49-9001-D625-AF3ED02EAAA8" name="roles" seqName="seg_0"/>
+   <object objectType="Table" objectID="E2A47C8D-A353-E12E-572A-3000B4D5EEE6" name="habitaciones_reservas" seqName="seg_0"/>
+   <object objectType="Table" objectID="E6296936-2929-5B37-3400-65FAFE2C790B" name="habitacion_estados" seqName="seg_0"/>
+   <object objectType="Table" objectID="F162CA6C-2F00-E16C-F412-B07EE0445105" name="caracteristicas" seqName="seg_0"/>
+   <object objectType="Segment" objectID="8F458A2E-EC42-8AEC-E144-F565DC2A6E72" name="Storage1" seqName="seg_0"/>
+   <object objectType="Segment" objectID="D2984C88-8EA7-8828-93D3-D1D89F1AC36D" name="Storage36" seqName="seg_0"/>
+</oracle.dbtools.crest.model.design.storage.oracle.v11g.StorageDesignOraclev11g>

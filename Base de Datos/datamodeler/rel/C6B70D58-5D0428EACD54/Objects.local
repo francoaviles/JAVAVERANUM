@@ -1,0 +1,81 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="SchemaObject" objectID="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="PORTAFOLIO" seqName="seg_0"/>
+   <object objectType="Table" objectID="88200D2B-622B-FA64-0D31-1ADC50615D7D" name="cadenas" seqName="seg_0"/>
+   <object objectType="Table" objectID="F162CA6C-2F00-E16C-F412-B07EE0445105" name="caracteristicas" seqName="seg_0"/>
+   <object objectType="Table" objectID="1A099835-5BE8-33D6-316B-E65F94D19C66" name="comunas" seqName="seg_0"/>
+   <object objectType="Table" objectID="88A5240C-FD7C-5D7B-6A8C-06232DD34C20" name="convenios" seqName="seg_0"/>
+   <object objectType="Table" objectID="A144B15E-95D0-63E2-F5FB-91BE748D951E" name="empresas" seqName="seg_0"/>
+   <object objectType="Table" objectID="248E5EAE-9F0D-7D59-8C01-FE6AEB2BD598" name="estado_reservas" seqName="seg_0"/>
+   <object objectType="Table" objectID="E6296936-2929-5B37-3400-65FAFE2C790B" name="habitacion_estados" seqName="seg_0"/>
+   <object objectType="Table" objectID="8593670F-F5CC-83E6-F3A5-435A228AD8BA" name="habitacion_inspecciones" seqName="seg_0"/>
+   <object objectType="Table" objectID="57B9B2E1-6408-21A6-8C7F-244E1F70EEAF" name="habitacion_tipos" seqName="seg_0"/>
+   <object objectType="Table" objectID="26A54C99-CFC4-EA92-FFCF-35F49EECF151" name="habitaciones" seqName="seg_0"/>
+   <object objectType="Table" objectID="8CB68933-4FAD-4D28-3905-3193657FC9A7" name="habitaciones_caracteristicas" seqName="seg_0"/>
+   <object objectType="Table" objectID="E2A47C8D-A353-E12E-572A-3000B4D5EEE6" name="habitaciones_reservas" seqName="seg_0"/>
+   <object objectType="Table" objectID="898AA127-D464-F155-849B-15D64D6CB0AB" name="historial_precios" seqName="seg_0"/>
+   <object objectType="Table" objectID="0F464BB1-1DC2-C62E-151E-C441E54CB726" name="hotel_insumos" seqName="seg_0"/>
+   <object objectType="Table" objectID="227D0371-C587-AC04-2561-F6379AA4B5BF" name="hotel_tipo_menu" seqName="seg_0"/>
+   <object objectType="Table" objectID="63F5904F-D045-1FD8-5739-0D2462ABF9F6" name="hoteles" seqName="seg_0"/>
+   <object objectType="Table" objectID="92E0DA33-B6BF-D8B8-976D-9941F89CD945" name="hoteles_caracteristicas" seqName="seg_0"/>
+   <object objectType="Table" objectID="C229751C-CF60-42FD-8C3E-6F96F8E7CF4D" name="hoteles_convenios" seqName="seg_0"/>
+   <object objectType="Table" objectID="53E15F77-515C-1108-9364-F747894C5E08" name="hoteles_servicios" seqName="seg_0"/>
+   <object objectType="Table" objectID="CCEE6394-B608-0D56-98B7-E4FB7EAB60BE" name="insumos" seqName="seg_0"/>
+   <object objectType="Table" objectID="13513FB8-1FC1-7B25-59B3-E2970CC9E118" name="medidas" seqName="seg_0"/>
+   <object objectType="Table" objectID="952F7914-0A66-3C7E-AB5F-548880208C59" name="menu" seqName="seg_0"/>
+   <object objectType="Table" objectID="1DB74F36-8817-8C86-FB62-6837C991A5C0" name="menu_insumos" seqName="seg_0"/>
+   <object objectType="Table" objectID="B5B71B73-EB8F-B270-A4DA-A22ED031BB7D" name="pasajeros" seqName="seg_0"/>
+   <object objectType="Table" objectID="3444D0A0-EEDF-3422-D767-C4B7C9396D84" name="provincias" seqName="seg_0"/>
+   <object objectType="Table" objectID="534FEF75-EBA5-167D-1B15-871F16EF653C" name="regiones" seqName="seg_0"/>
+   <object objectType="Table" objectID="8B497F5A-D8CD-FB97-ED07-298C09875F53" name="reportes" seqName="seg_0"/>
+   <object objectType="Table" objectID="43ADAD6A-0BAB-DF35-3017-7F43ABC968FE" name="reserva_reportes" seqName="seg_0"/>
+   <object objectType="Table" objectID="58A360A3-33F5-FC18-249D-3B97C7872176" name="reservas" seqName="seg_0"/>
+   <object objectType="Table" objectID="D312800E-1A49-9001-D625-AF3ED02EAAA8" name="roles" seqName="seg_0"/>
+   <object objectType="Table" objectID="76CCC35B-57B6-8D0D-4538-7D8BCE199628" name="servicios" seqName="seg_0"/>
+   <object objectType="Table" objectID="4F4A1EB2-45D4-E774-1298-4B561D93C60F" name="servicios_reservas" seqName="seg_0"/>
+   <object objectType="Table" objectID="4B1472E3-5D3D-F988-3DCE-11E2C6FBC0C2" name="tipo_caracteristicas" seqName="seg_0"/>
+   <object objectType="Table" objectID="8CEF85E9-6BFA-D803-52EF-44F2231FAC4F" name="tipo_menu" seqName="seg_0"/>
+   <object objectType="Table" objectID="17178204-1BB9-EB56-023C-702A47B4AC30" name="tipo_reportes" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="3CC50EEB-C7CA-00A6-E76F-4F5E6A9CB4A5" name="caracteristicas_tipo_FK" seqName="seg_0" containerID="F162CA6C-2F00-E16C-F412-B07EE0445105" refContainerID="4B1472E3-5D3D-F988-3DCE-11E2C6FBC0C2"/>
+   <object objectType="FKIndexAssociation" objectID="9FE7C203-7C82-00F1-F6FC-F95BD522DF0B" name="comunas_provincias_FK" seqName="seg_0" containerID="1A099835-5BE8-33D6-316B-E65F94D19C66" refContainerID="3444D0A0-EEDF-3422-D767-C4B7C9396D84"/>
+   <object objectType="FKIndexAssociation" objectID="C6714A41-A334-DCC0-6231-BC1A8D891DE7" name="convenios_empresas_FK" seqName="seg_0" containerID="88A5240C-FD7C-5D7B-6A8C-06232DD34C20" refContainerID="A144B15E-95D0-63E2-F5FB-91BE748D951E"/>
+   <object objectType="FKIndexAssociation" objectID="D5E2847B-1FF3-C56D-F4E2-301B9DF00AE8" name="habit_hab_estados_FK" seqName="seg_0" containerID="26A54C99-CFC4-EA92-FFCF-35F49EECF151" refContainerID="E6296936-2929-5B37-3400-65FAFE2C790B"/>
+   <object objectType="FKIndexAssociation" objectID="876F2CAE-E7AC-59B6-5008-C61922BFD244" name="habit_hab_tipos_FK" seqName="seg_0" containerID="26A54C99-CFC4-EA92-FFCF-35F49EECF151" refContainerID="57B9B2E1-6408-21A6-8C7F-244E1F70EEAF"/>
+   <object objectType="FKIndexAssociation" objectID="5D547A46-2A21-6AA7-523B-BBFA62ED9082" name="habitacion_inspecciones_FK" seqName="seg_0" containerID="8593670F-F5CC-83E6-F3A5-435A228AD8BA" refContainerID="26A54C99-CFC4-EA92-FFCF-35F49EECF151"/>
+   <object objectType="FKIndexAssociation" objectID="2C5C6E14-3477-48A6-A40E-DAFC39D234F1" name="habitaciones_caract_FK" seqName="seg_0" containerID="8CB68933-4FAD-4D28-3905-3193657FC9A7" refContainerID="26A54C99-CFC4-EA92-FFCF-35F49EECF151"/>
+   <object objectType="FKIndexAssociation" objectID="B63DE2DA-804D-4F38-FFE4-91DC8FC82115" name="habitaciones_caract_FK2" seqName="seg_0" containerID="8CB68933-4FAD-4D28-3905-3193657FC9A7" refContainerID="F162CA6C-2F00-E16C-F412-B07EE0445105"/>
+   <object objectType="FKIndexAssociation" objectID="88BC5DA7-376F-CD72-828A-55B4E542BBFC" name="habitaciones_hoteles_FK" seqName="seg_0" containerID="26A54C99-CFC4-EA92-FFCF-35F49EECF151" refContainerID="63F5904F-D045-1FD8-5739-0D2462ABF9F6"/>
+   <object objectType="FKIndexAssociation" objectID="E0B7336C-C2D6-FD93-DC3E-791DA42BF634" name="habitaciones_reservas_FK" seqName="seg_0" containerID="E2A47C8D-A353-E12E-572A-3000B4D5EEE6" refContainerID="26A54C99-CFC4-EA92-FFCF-35F49EECF151"/>
+   <object objectType="FKIndexAssociation" objectID="2D332976-6AB7-A12D-5FAA-CE60B3A4CE32" name="habitaciones_reservas_FK2" seqName="seg_0" containerID="E2A47C8D-A353-E12E-572A-3000B4D5EEE6" refContainerID="58A360A3-33F5-FC18-249D-3B97C7872176"/>
+   <object objectType="FKIndexAssociation" objectID="3384C395-6B79-CF10-0B2B-C17FA20B5AEC" name="hist_precios_hab_FK" seqName="seg_0" containerID="898AA127-D464-F155-849B-15D64D6CB0AB" refContainerID="26A54C99-CFC4-EA92-FFCF-35F49EECF151"/>
+   <object objectType="FKIndexAssociation" objectID="CDEC08BC-C545-2AB9-69C0-0DF1B2CBAE0C" name="hotel_insumos_hoteles_FK" seqName="seg_0" containerID="0F464BB1-1DC2-C62E-151E-C441E54CB726" refContainerID="63F5904F-D045-1FD8-5739-0D2462ABF9F6"/>
+   <object objectType="FKIndexAssociation" objectID="99C23535-F5E2-CDF9-0E66-81CA57D8181D" name="hotel_insumos_insumos_FK" seqName="seg_0" containerID="0F464BB1-1DC2-C62E-151E-C441E54CB726" refContainerID="CCEE6394-B608-0D56-98B7-E4FB7EAB60BE"/>
+   <object objectType="FKIndexAssociation" objectID="1A600F6C-881E-6E85-281F-071049805508" name="hotel_insumos_medidas_FK" seqName="seg_0" containerID="0F464BB1-1DC2-C62E-151E-C441E54CB726" refContainerID="13513FB8-1FC1-7B25-59B3-E2970CC9E118"/>
+   <object objectType="FKIndexAssociation" objectID="4DB3F994-4E31-488D-EE08-178A9F57FEF2" name="hotel_tipo_menu_hoteles_FK" seqName="seg_0" containerID="227D0371-C587-AC04-2561-F6379AA4B5BF" refContainerID="63F5904F-D045-1FD8-5739-0D2462ABF9F6"/>
+   <object objectType="FKIndexAssociation" objectID="27EBF8FB-12D9-1759-90B8-0DF849B24FE2" name="hotel_tipo_menu_tipo_menu_FK" seqName="seg_0" containerID="227D0371-C587-AC04-2561-F6379AA4B5BF" refContainerID="8CEF85E9-6BFA-D803-52EF-44F2231FAC4F"/>
+   <object objectType="FKIndexAssociation" objectID="FFDA33D3-9275-D486-C953-6A042B600325" name="hoteles_cadenas_FK" seqName="seg_0" containerID="63F5904F-D045-1FD8-5739-0D2462ABF9F6" refContainerID="88200D2B-622B-FA64-0D31-1ADC50615D7D"/>
+   <object objectType="FKIndexAssociation" objectID="A7371762-121D-02B0-410D-64E1283ED42C" name="hoteles_caracteristicas_FK" seqName="seg_0" containerID="92E0DA33-B6BF-D8B8-976D-9941F89CD945" refContainerID="F162CA6C-2F00-E16C-F412-B07EE0445105"/>
+   <object objectType="FKIndexAssociation" objectID="FB11A177-6426-B515-F59F-EDDC1FA0291B" name="hoteles_caracteristicas_FK2" seqName="seg_0" containerID="92E0DA33-B6BF-D8B8-976D-9941F89CD945" refContainerID="63F5904F-D045-1FD8-5739-0D2462ABF9F6"/>
+   <object objectType="FKIndexAssociation" objectID="15B2E5DF-CFFB-CF07-1967-2E92E4B526C3" name="hoteles_comuna_FK" seqName="seg_0" containerID="63F5904F-D045-1FD8-5739-0D2462ABF9F6" refContainerID="1A099835-5BE8-33D6-316B-E65F94D19C66"/>
+   <object objectType="FKIndexAssociation" objectID="28CBB144-577D-0671-3FF5-F15DF110E698" name="hoteles_convenios_convenios_FK" seqName="seg_0" containerID="C229751C-CF60-42FD-8C3E-6F96F8E7CF4D" refContainerID="88A5240C-FD7C-5D7B-6A8C-06232DD34C20"/>
+   <object objectType="FKIndexAssociation" objectID="8E71C046-37F3-FCEB-9184-8B4213DBC7A1" name="hoteles_convenios_hoteles_FK" seqName="seg_0" containerID="C229751C-CF60-42FD-8C3E-6F96F8E7CF4D" refContainerID="63F5904F-D045-1FD8-5739-0D2462ABF9F6"/>
+   <object objectType="FKIndexAssociation" objectID="C91D7F9E-48BE-9E37-CD78-474654D4583A" name="hoteles_provincia_FK" seqName="seg_0" containerID="63F5904F-D045-1FD8-5739-0D2462ABF9F6" refContainerID="3444D0A0-EEDF-3422-D767-C4B7C9396D84"/>
+   <object objectType="FKIndexAssociation" objectID="62D36C02-46D1-AA34-6F93-9742671E8506" name="hoteles_region_FK" seqName="seg_0" containerID="63F5904F-D045-1FD8-5739-0D2462ABF9F6" refContainerID="534FEF75-EBA5-167D-1B15-871F16EF653C"/>
+   <object objectType="FKIndexAssociation" objectID="390A1FA1-13CB-2DED-10B0-C3808F0FDB22" name="hoteles_servicios_FK" seqName="seg_0" containerID="53E15F77-515C-1108-9364-F747894C5E08" refContainerID="63F5904F-D045-1FD8-5739-0D2462ABF9F6"/>
+   <object objectType="FKIndexAssociation" objectID="85B52AFD-177E-D84E-8930-F1794879B2E1" name="menu_insumos_insumos_FK" seqName="seg_0" containerID="1DB74F36-8817-8C86-FB62-6837C991A5C0" refContainerID="CCEE6394-B608-0D56-98B7-E4FB7EAB60BE"/>
+   <object objectType="FKIndexAssociation" objectID="D55852AD-FC1B-C94C-7984-49D84B3C2554" name="menu_insumos_medidas_FK" seqName="seg_0" containerID="1DB74F36-8817-8C86-FB62-6837C991A5C0" refContainerID="13513FB8-1FC1-7B25-59B3-E2970CC9E118"/>
+   <object objectType="FKIndexAssociation" objectID="0B38CFD2-941D-2626-9A41-769E0B44BCA5" name="menu_insumos_menu_FK" seqName="seg_0" containerID="1DB74F36-8817-8C86-FB62-6837C991A5C0" refContainerID="952F7914-0A66-3C7E-AB5F-548880208C59"/>
+   <object objectType="FKIndexAssociation" objectID="DEDDB7B9-478C-825A-8E3A-274B00AA8898" name="menu_tipo_menu_FK" seqName="seg_0" containerID="952F7914-0A66-3C7E-AB5F-548880208C59" refContainerID="8CEF85E9-6BFA-D803-52EF-44F2231FAC4F"/>
+   <object objectType="FKIndexAssociation" objectID="3EEE038C-C90A-CD26-D989-26E3097EFEF7" name="pasajeros_comuna_FK" seqName="seg_0" containerID="B5B71B73-EB8F-B270-A4DA-A22ED031BB7D" refContainerID="1A099835-5BE8-33D6-316B-E65F94D19C66"/>
+   <object objectType="FKIndexAssociation" objectID="006501ED-BF26-0A74-9D82-62CF6F07B00B" name="pasajeros_provincia_FK" seqName="seg_0" containerID="B5B71B73-EB8F-B270-A4DA-A22ED031BB7D" refContainerID="3444D0A0-EEDF-3422-D767-C4B7C9396D84"/>
+   <object objectType="FKIndexAssociation" objectID="D3BFFA2F-63A5-9314-5E83-BE81933549A8" name="pasajeros_region_FK" seqName="seg_0" containerID="B5B71B73-EB8F-B270-A4DA-A22ED031BB7D" refContainerID="534FEF75-EBA5-167D-1B15-871F16EF653C"/>
+   <object objectType="FKIndexAssociation" objectID="30ECD592-5F6A-92FE-C9A7-58FA5DD0272F" name="pasajeros_roles_FK" seqName="seg_0" containerID="B5B71B73-EB8F-B270-A4DA-A22ED031BB7D" refContainerID="D312800E-1A49-9001-D625-AF3ED02EAAA8"/>
+   <object objectType="FKIndexAssociation" objectID="DB50AB4E-4865-D5F8-4CB7-8ADAF648077C" name="provincias_region_FK" seqName="seg_0" containerID="3444D0A0-EEDF-3422-D767-C4B7C9396D84" refContainerID="534FEF75-EBA5-167D-1B15-871F16EF653C"/>
+   <object objectType="FKIndexAssociation" objectID="BE31933C-F0AD-E8DF-846F-BA14CE88008E" name="reportes_tipo_reportes_FK" seqName="seg_0" containerID="8B497F5A-D8CD-FB97-ED07-298C09875F53" refContainerID="17178204-1BB9-EB56-023C-702A47B4AC30"/>
+   <object objectType="FKIndexAssociation" objectID="1EFA8143-427C-E810-2E8E-6CF6BDA0E6B4" name="reserva_reportes_FK" seqName="seg_0" containerID="43ADAD6A-0BAB-DF35-3017-7F43ABC968FE" refContainerID="58A360A3-33F5-FC18-249D-3B97C7872176"/>
+   <object objectType="FKIndexAssociation" objectID="D6D96C7B-B582-5C1F-DC44-B7F8FB827DE0" name="reservas_estado_FK" seqName="seg_0" containerID="58A360A3-33F5-FC18-249D-3B97C7872176" refContainerID="248E5EAE-9F0D-7D59-8C01-FE6AEB2BD598"/>
+   <object objectType="FKIndexAssociation" objectID="270D7A6E-7FD7-300D-E801-876C1FC048F3" name="reservas_pasajeros_FK" seqName="seg_0" containerID="58A360A3-33F5-FC18-249D-3B97C7872176" refContainerID="B5B71B73-EB8F-B270-A4DA-A22ED031BB7D"/>
+   <object objectType="FKIndexAssociation" objectID="87EFF8EF-D86F-F577-A544-533AD134D86A" name="servicios_hoteles_FK" seqName="seg_0" containerID="53E15F77-515C-1108-9364-F747894C5E08" refContainerID="76CCC35B-57B6-8D0D-4538-7D8BCE199628"/>
+   <object objectType="FKIndexAssociation" objectID="5CB53AB7-ADB6-46C9-DF4D-7F652FA5A7E3" name="servs_resas_re_FK" seqName="seg_0" containerID="4F4A1EB2-45D4-E774-1298-4B561D93C60F" refContainerID="58A360A3-33F5-FC18-249D-3B97C7872176"/>
+   <object objectType="FKIndexAssociation" objectID="54B466A1-36DF-AA5D-A909-68250493942B" name="servs_resas_se_FK" seqName="seg_0" containerID="4F4A1EB2-45D4-E774-1298-4B561D93C60F" refContainerID="76CCC35B-57B6-8D0D-4538-7D8BCE199628"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>
