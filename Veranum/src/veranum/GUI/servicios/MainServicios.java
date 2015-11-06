@@ -107,7 +107,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(grServicio);
 
-        btBuscarTodosSer.setText("BT");
+        btBuscarTodosSer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
         btBuscarTodosSer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btBuscarTodosSerActionPerformed(evt);
@@ -129,7 +129,6 @@ public class MainServicios extends javax.swing.JInternalFrame {
                 .addGap(43, 43, 43)
                 .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
-                    .addComponent(btBuscarTodosSer)
                     .addGroup(panelServiciosLayout.createSequentialGroup()
                         .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btGrabarServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -144,7 +143,8 @@ public class MainServicios extends javax.swing.JInternalFrame {
                         .addGap(34, 34, 34)
                         .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btBuscarServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btBuscarServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btBuscarTodosSer))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
         panelServiciosLayout.setVerticalGroup(
@@ -166,7 +166,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
                 .addComponent(btBuscarTodosSer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabContServicios.addTab("Servicios Extras", panelServicios);
@@ -228,7 +228,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
                     .addComponent(cbDisponibleCentroEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btGrabarCentroEvento)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
 
         tabContServicios.addTab("Centro de Eventos", panelCentroEventos);
