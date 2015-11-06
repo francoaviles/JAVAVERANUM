@@ -256,6 +256,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
                                                    , Integer.parseInt(txtPrecioServicio.getText()))
                                 );
             JOptionPane.showMessageDialog(this, "Agregado");
+            btEliminar.setEnabled(false);
             helper.Formularios.limpiar(panelServicios);
         }  
         }else{
@@ -263,6 +264,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
                                            , Integer.parseInt(txtPrecioServicio.getText()) )
                 );
             JOptionPane.showMessageDialog(this, "Modificado");
+            btEliminar.setEnabled(false);
             helper.Formularios.limpiar(panelServicios);
         }      
     }//GEN-LAST:event_btGrabarServicioActionPerformed
@@ -277,9 +279,10 @@ public class MainServicios extends javax.swing.JInternalFrame {
             txtNombreServicio.setText(servicio.getNombre());
             txtPrecioServicio.setText(String.valueOf(servicio.getPrecio()));
             btEliminar.setEnabled(true);
-            paraGrabar = true;            
+            paraGrabar = true;
         }else {
             JOptionPane.showMessageDialog(this, "no existe!");
+            btEliminar.setEnabled(false);
             paraGrabar = false;
         }
     }//GEN-LAST:event_btBuscarServicioActionPerformed
@@ -292,6 +295,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(panelServicios);
             btEliminar.setEnabled(false);
+            //paraGrabar = true;
         }
     }//GEN-LAST:event_btEliminarActionPerformed
 
