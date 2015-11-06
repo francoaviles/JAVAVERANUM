@@ -94,7 +94,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
             }
         });
 
-        btBuscarServicio.setText("Buscar");
+        btBuscarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
         btBuscarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btBuscarServicioActionPerformed(evt);
@@ -134,7 +134,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
             }
         });
 
-        btEliminar.setText("Eliminar");
+        btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
         btEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEliminarActionPerformed(evt);
@@ -148,7 +148,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
             .addGroup(panelServiciosLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
                     .addGroup(panelServiciosLayout.createSequentialGroup()
                         .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btGrabarServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -161,11 +161,11 @@ public class MainServicios extends javax.swing.JInternalFrame {
                                     .addComponent(txtNombreServicio, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                                     .addComponent(txtPrecioServicio))))
                         .addGap(34, 34, 34)
-                        .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btBuscarServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(btBuscarTodosSer))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         panelServiciosLayout.setVerticalGroup(
             panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,11 +340,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_grServicioMouseClicked
 
     private void txtPrecioServicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioServicioKeyTyped
-        char c =evt.getKeyChar();
-        if (!((c >= '0') && (c <= '9') ||  (c == KeyEvent.VK_BACK_SPACE) ||   (c == KeyEvent.VK_DELETE))){
-            getToolkit().beep();
-            evt.consume();
-        } 
+        helper.Formularios.soloNumeros(evt);
     }//GEN-LAST:event_txtPrecioServicioKeyTyped
 
     

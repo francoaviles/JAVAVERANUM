@@ -5,6 +5,7 @@
  */
 package helper;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
@@ -31,21 +32,14 @@ public class Formularios {
         
     }
     
-    /*
-    public void txtRutKeyTyped(java.awt.event.KeyEvent evt) {                                
-        if(!((int)evt.getKeyChar() >= 48 && (int)evt.getKeyChar() <= 57))
-        {
+    public static void soloNumeros(java.awt.event.KeyEvent evt)
+    {
+        char c = evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9') ||  (c == KeyEvent.VK_BACK_SPACE) ||   (c == KeyEvent.VK_DELETE))) {
             evt.consume();
         } 
-    }                               
-
-    public void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {                                 
-        if(!((int)evt.getKeyChar() >= 48 && (int)evt.getKeyChar() <= 57))
-        {
-            evt.consume();
-        } 
-    } 
-    */
+    }
+    
     
     public static void habilita(JComponent obj, boolean sw)
     {
@@ -63,28 +57,5 @@ public class Formularios {
                 }
         }
         
-    }
-    
-    /*
-    public void leerTodos(){       
-        ArrayList cli = DAOCliente.sqlLeerTodos();
-        dt =  (DefaultTableModel) grDatos.getModel();        
-        for (int i = dt.getRowCount() -1; i >= 0; i--){  
-            dt.removeRow(i);
-        }        
-        for(int x=0; x < cli.size(); x++){
-            ClCliente xx = (ClCliente)cli.get(x);
-            Object[] fila = new Object[7];
-            fila[0]= xx.getRut();
-            fila[1] = xx.getDv();
-            fila[2] = xx.getNombre();
-            fila[3] = xx.getApePaterno();
-            fila[4] = xx.getApeMaterno();
-            fila[5] = xx.getDireccion();
-            fila[6] = xx.getEdad();                            
-            dt.addRow(fila);             
-         } 
-        habilita( grDatos, false);
-    }
-    * */
+    } 
 }
