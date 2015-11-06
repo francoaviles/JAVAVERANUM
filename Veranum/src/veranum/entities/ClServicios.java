@@ -15,7 +15,10 @@ public class ClServicios {
 
     public ClServicios() {
     }
-    
+    public ClServicios(String nombre) {
+        setNombre(nombre);
+    }
+  
     public ClServicios(String nombre, int precio) {
         setNombre(nombre);
         setPrecio(precio);

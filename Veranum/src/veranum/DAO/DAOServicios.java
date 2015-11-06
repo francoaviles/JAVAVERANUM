@@ -22,7 +22,7 @@ public class DAOServicios {
     }
     
     public static boolean sqlDelete(ClServicios servicios){
-        String sql="DELETE FROM \"servicios\" WHERE \"id_servicio\" = '"+servicios.getIdServicio()+"'";
+        String sql="DELETE FROM \"servicios\" WHERE \"nombre\" = '"+servicios.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
@@ -36,7 +36,7 @@ public class DAOServicios {
     
     public static ClServicios sqlLeer(String name){     
         ClServicios servicio = new ClServicios();        
-        if(!bd.sqlSelect("SELECT * FROM \"servicios\" WHERE \"nombre\" ="+name+"")){
+        if(!bd.sqlSelect("SELECT * FROM \"servicios\" WHERE \"nombre\" ='"+name+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){
