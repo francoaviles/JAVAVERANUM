@@ -37,10 +37,8 @@ public class OracleConection {
             //String BD = "jdbc:oracle:thin:@localhost:1521:xe";
             //conexion = DriverManager.getConnection(BD,"portafolio","asd");
             //String BD = "jdbc:oracle:thin:@localhost:1521:ORCL";
-            //String BD = "jdbc:oracle:thin:@localhost:1521:xe";
-            //conexion = DriverManager.getConnection(BD,"portafolio","asd");
             String BD = "jdbc:oracle:thin:@localhost:1521:xe";
-            conexion = DriverManager.getConnection(BD,"zacarias","zaca");
+            conexion = DriverManager.getConnection(BD,"portafolio","asd");
             st = (Statement) conexion.createStatement();
             if(conexion!=null){
                 System.out.println("Conexion exitosa system");
