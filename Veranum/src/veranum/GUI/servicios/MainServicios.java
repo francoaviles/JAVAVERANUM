@@ -5,6 +5,7 @@
  */
 package veranum.GUI.servicios;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +25,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
      */
     public MainServicios() {
         initComponents();
-        grServicio.setEnabled(false);
+        grServicio.setEnabled(true);
         btEliminar.setEnabled(false);
     }
     
@@ -37,9 +38,9 @@ public class MainServicios extends javax.swing.JInternalFrame {
         for(int x=0; x < ser.size(); x++){
             ClServicios xx = (ClServicios)ser.get(x);
             Object[] fila = new Object[7];
-            fila[2] = xx.getIdServicio();
-            fila[0] = xx.getNombre();
-            fila[1] = xx.getPrecio(); 
+            fila[0] = xx.getIdServicio();
+            fila[1] = xx.getNombre();
+            fila[2] = xx.getPrecio(); 
             dt.addRow(fila);
         }
     }
@@ -80,6 +81,12 @@ public class MainServicios extends javax.swing.JInternalFrame {
 
         lbPrecioServicio.setText("Precio:");
 
+        txtPrecioServicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioServicioKeyTyped(evt);
+            }
+        });
+
         btGrabarServicio.setText("Grabar");
         btGrabarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,15 +103,28 @@ public class MainServicios extends javax.swing.JInternalFrame {
 
         grServicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nombre", "Precio"
+                "#", "Nombre", "Precio"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        grServicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grServicioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(grServicio);
 
         btBuscarTodosSer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
@@ -258,6 +278,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Agregado");
             btEliminar.setEnabled(false);
             helper.Formularios.limpiar(panelServicios);
+            this.leerTodos();
         }  
         }else{
             DAOServicios.sqlUpdate(new ClServicios(txtNombreServicio.getText()
@@ -266,6 +287,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Modificado");
             btEliminar.setEnabled(false);
             helper.Formularios.limpiar(panelServicios);
+            this.leerTodos();
         }      
     }//GEN-LAST:event_btGrabarServicioActionPerformed
         
@@ -295,10 +317,38 @@ public class MainServicios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(panelServicios);
             btEliminar.setEnabled(false);
-            //paraGrabar = true;
+            this.leerTodos();
         }
     }//GEN-LAST:event_btEliminarActionPerformed
 
+    private void grServicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grServicioMouseClicked
+        if(evt.getClickCount() == 2) {
+            if (grServicio.getRowCount() > 0) {
+                if (grServicio.getSelectedRowCount() > 0) {
+                    int selectedRow[] = grServicio.getSelectedRows();
+                    for (int i : selectedRow) {
+                        System.out.println(grServicio.getValueAt(i, 0));
+                        ClServicios servicio = DAOServicios.sqlLeer(Integer.parseInt(grServicio.getValueAt(i, 0).toString()));
+                        txtNombreServicio.setText(servicio.getNombre());
+                        txtPrecioServicio.setText(String.valueOf(servicio.getPrecio()));
+                        btEliminar.setEnabled(true);
+                        paraGrabar = true;
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_grServicioMouseClicked
+
+    private void txtPrecioServicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioServicioKeyTyped
+        char c =evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9') ||  (c == KeyEvent.VK_BACK_SPACE) ||   (c == KeyEvent.VK_DELETE))){
+            getToolkit().beep();
+            evt.consume();
+        } 
+    }//GEN-LAST:event_txtPrecioServicioKeyTyped
+
+    
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarServicio;

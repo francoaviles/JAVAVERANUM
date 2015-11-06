@@ -31,6 +31,22 @@ public class Formularios {
         
     }
     
+    /*
+    public void txtRutKeyTyped(java.awt.event.KeyEvent evt) {                                
+        if(!((int)evt.getKeyChar() >= 48 && (int)evt.getKeyChar() <= 57))
+        {
+            evt.consume();
+        } 
+    }                               
+
+    public void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {                                 
+        if(!((int)evt.getKeyChar() >= 48 && (int)evt.getKeyChar() <= 57))
+        {
+            evt.consume();
+        } 
+    } 
+    */
+    
     public static void habilita(JComponent obj, boolean sw)
     {
         Object[] arrObj = obj.getComponents();

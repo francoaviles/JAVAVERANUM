@@ -48,6 +48,20 @@ public class DAOServicios {
         return servicio;
     }
     
+    public static ClServicios sqlLeer(int id){     
+        ClServicios servicio = new ClServicios();        
+        if(!bd.sqlSelect("SELECT * FROM \"servicios\" WHERE \"id_servicio\" ='"+id+"'")){
+            return null;
+        }        
+        if(!bd.sqlFetch()){
+            return null;
+        }        
+        servicio.setIdServicio(bd.getInt("id_servicio"));
+        servicio.setNombre(bd.getString("nombre"));
+        servicio.setPrecio(bd.getInt("precio"));
+        return servicio;
+    }
+    
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClServicios> servicio = new ArrayList<>();        
         if(!bd.sqlSelect("SELECT * FROM \"servicios\"")){
