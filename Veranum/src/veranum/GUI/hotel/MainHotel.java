@@ -575,6 +575,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
             helper.Formularios.limpiar(panelHoteles);
             this.leerTodos(true);
             this.paraGrabar = false;
+            this.btnEditarMode();
         }      
     }//GEN-LAST:event_btGrabarHotelesActionPerformed
 
