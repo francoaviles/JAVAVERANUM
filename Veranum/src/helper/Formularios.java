@@ -40,7 +40,41 @@ public class Formularios {
         } 
     }
     
+    public static int getTablaSeleccionada(java.awt.event.MouseEvent evt,javax.swing.JTable tabla, int cantClicks){
+        int index = -1;
+        if(evt.getClickCount() == cantClicks ) {
+            if (tabla.getRowCount() > 0) {
+                if (tabla.getSelectedRowCount() > 0) {
+                    index = tabla.getSelectedRow();
+                }
+            }
+        }
+        return index;
+    }
     
+    public static int getSelectedRow(javax.swing.JTable tabla){
+        return Integer.parseInt(tabla.getValueAt(tabla.getSelectedRow(), 0).toString());
+    }
+    
+    public static void ActiveBotonesEliminarEditar(javax.swing.JButton edit, javax.swing.JButton delete){
+        edit.setEnabled(true);
+        delete.setEnabled(true);
+    } 
+    
+    public static void DesactiveBotonesEliminarEditar(javax.swing.JButton edit, javax.swing.JButton delete){
+        edit.setEnabled(false);
+        delete.setEnabled(false);
+    } 
+    
+    public static void triggerBotonesEliminarEditar(javax.swing.JButton edit, javax.swing.JButton delete){
+        if(edit.isEnabled() && delete.isEnabled()){
+            edit.setEnabled(false);
+            delete.setEnabled(false);
+        } else  {
+            edit.setEnabled(true);
+            delete.setEnabled(true);
+        }
+    } 
     public static void habilita(JComponent obj, boolean sw)
     {
         Object[] arrObj = obj.getComponents();

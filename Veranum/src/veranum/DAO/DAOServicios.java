@@ -76,4 +76,19 @@ public class DAOServicios {
         }     
         return servicio;
     }    
+    
+    public static ArrayList sqlBuscarByNombre(String nombre){
+        ArrayList<ClServicios> servicio = new ArrayList<>();        
+        if(!bd.sqlSelect("SELECT * FROM \"servicios\" WHERE \"nombre\" LIKE '%"+nombre+"%'")){
+            return null;
+        }
+        while(bd.sqlFetch()){
+            servicio.add(new ClServicios(bd.getInt("id_servicio")
+                                    , bd.getString("nombre")
+                                    , bd.getInt("precio")
+                                ));
+            
+        }     
+        return servicio;
+    }  
 }

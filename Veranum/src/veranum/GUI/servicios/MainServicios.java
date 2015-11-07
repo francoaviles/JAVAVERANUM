@@ -5,6 +5,7 @@
  */
 package veranum.GUI.servicios;
 
+import helper.Formularios;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -26,25 +27,10 @@ public class MainServicios extends javax.swing.JInternalFrame {
     public MainServicios() {
         initComponents();
         grServicio.setEnabled(true);
-        btEliminar.setEnabled(false);
+        Formularios.DesactiveBotonesEliminarEditar(btEditarServicio, btEliminar);
+        btDesactivarEditarServicio.setVisible(false);
+        this.leerTodos(true);
     }
-    
-    private void leerTodos(){
-        ArrayList ser = DAOServicios.sqlLeerTodos();
-        dt =  (DefaultTableModel) grServicio.getModel();        
-        for (int i = dt.getRowCount() -1; i >= 0; i--){  
-            dt.removeRow(i);
-        }        
-        for(int x=0; x < ser.size(); x++){
-            ClServicios xx = (ClServicios)ser.get(x);
-            Object[] fila = new Object[7];
-            fila[0] = xx.getIdServicio();
-            fila[1] = xx.getNombre();
-            fila[2] = xx.getPrecio(); 
-            dt.addRow(fila);
-        }
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +52,10 @@ public class MainServicios extends javax.swing.JInternalFrame {
         grServicio = new javax.swing.JTable();
         btBuscarTodosSer = new javax.swing.JButton();
         btEliminar = new javax.swing.JButton();
+        txtBuscarServicio = new javax.swing.JTextField();
+        btEditarServicio = new javax.swing.JButton();
+        btDesactivarEditarServicio = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         panelCentroEventos = new javax.swing.JPanel();
         lbHotelCentroEvento = new javax.swing.JLabel();
         txtHotelCentroEvento = new javax.swing.JTextField();
@@ -127,7 +117,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(grServicio);
 
-        btBuscarTodosSer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btBuscarTodosSer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
         btBuscarTodosSer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btBuscarTodosSerActionPerformed(evt);
@@ -141,15 +131,29 @@ public class MainServicios extends javax.swing.JInternalFrame {
             }
         });
 
+        btEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarServicioActionPerformed(evt);
+            }
+        });
+
+        btDesactivarEditarServicio.setBackground(new java.awt.Color(255, 0, 0));
+        btDesactivarEditarServicio.setText("Salir Modo Editar");
+        btDesactivarEditarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDesactivarEditarServicioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelServiciosLayout = new javax.swing.GroupLayout(panelServicios);
         panelServicios.setLayout(panelServiciosLayout);
         panelServiciosLayout.setHorizontalGroup(
             panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelServiciosLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                    .addGroup(panelServiciosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelServiciosLayout.createSequentialGroup()
                         .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btGrabarServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(panelServiciosLayout.createSequentialGroup()
@@ -158,35 +162,51 @@ public class MainServicios extends javax.swing.JInternalFrame {
                                     .addComponent(lbPrecioServicio))
                                 .addGap(18, 18, 18)
                                 .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNombreServicio, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                                    .addComponent(txtPrecioServicio))))
-                        .addGap(34, 34, 34)
-                        .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btBuscarServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(btBuscarTodosSer))
-                .addContainerGap(75, Short.MAX_VALUE))
+                                    .addComponent(txtNombreServicio)
+                                    .addComponent(txtPrecioServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btDesactivarEditarServicio)
+                        .addGap(9, 9, 9))
+                    .addGroup(panelServiciosLayout.createSequentialGroup()
+                        .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btEditarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(txtBuscarServicio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btBuscarServicio)
+                        .addGap(3, 3, 3)
+                        .addComponent(btBuscarTodosSer, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                    .addComponent(jSeparator1))
+                .addContainerGap())
         );
         panelServiciosLayout.setVerticalGroup(
             panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelServiciosLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
+                .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btBuscarServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btEditarServicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtBuscarServicio, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btBuscarTodosSer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombreServicio)
                     .addComponent(txtNombreServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarServicio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btDesactivarEditarServicio))
+                .addGap(9, 9, 9)
                 .addGroup(panelServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPrecioServicio)
-                    .addComponent(txtPrecioServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btEliminar))
+                    .addComponent(txtPrecioServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(btGrabarServicio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btBuscarTodosSer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         tabContServicios.addTab("Servicios Extras", panelServicios);
@@ -276,37 +296,22 @@ public class MainServicios extends javax.swing.JInternalFrame {
                                                    , Integer.parseInt(txtPrecioServicio.getText()))
                                 );
             JOptionPane.showMessageDialog(this, "Agregado");
-            btEliminar.setEnabled(false);
+            Formularios.DesactiveBotonesEliminarEditar(btEditarServicio, btEliminar);
             helper.Formularios.limpiar(panelServicios);
-            this.leerTodos();
+            this.leerTodos(true);
         }  
         }else{
-            DAOServicios.sqlUpdate(new ClServicios(txtNombreServicio.getText()
-                                           , Integer.parseInt(txtPrecioServicio.getText()) )
-                );
+            DAOServicios.sqlUpdate(     new ClServicios(txtNombreServicio.getText()
+                                        , Integer.parseInt(txtPrecioServicio.getText())));
             JOptionPane.showMessageDialog(this, "Modificado");
-            btEliminar.setEnabled(false);
+            Formularios.DesactiveBotonesEliminarEditar(btEditarServicio, btEliminar);
             helper.Formularios.limpiar(panelServicios);
-            this.leerTodos();
+            this.leerTodos(true);
         }      
     }//GEN-LAST:event_btGrabarServicioActionPerformed
         
-    private void btBuscarTodosSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosSerActionPerformed
-        this.leerTodos();
-    }//GEN-LAST:event_btBuscarTodosSerActionPerformed
-
     private void btBuscarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarServicioActionPerformed
-        ClServicios servicio = DAOServicios.sqlLeer(txtNombreServicio.getText());
-        if(servicio!=null){
-            txtNombreServicio.setText(servicio.getNombre());
-            txtPrecioServicio.setText(String.valueOf(servicio.getPrecio()));
-            btEliminar.setEnabled(true);
-            paraGrabar = true;
-        }else {
-            JOptionPane.showMessageDialog(this, "no existe!");
-            btEliminar.setEnabled(false);
-            paraGrabar = false;
-        }
+        this.leerTodos(false);
     }//GEN-LAST:event_btBuscarServicioActionPerformed
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
@@ -316,26 +321,21 @@ public class MainServicios extends javax.swing.JInternalFrame {
             DAOServicios.sqlDelete(new ClServicios(txtNombreServicio.getText()));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(panelServicios);
-            btEliminar.setEnabled(false);
-            this.leerTodos();
+            Formularios.DesactiveBotonesEliminarEditar(btEditarServicio, btEliminar);
+            this.leerTodos(true);
         }
     }//GEN-LAST:event_btEliminarActionPerformed
 
     private void grServicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grServicioMouseClicked
-        if(evt.getClickCount() == 2) {
-            if (grServicio.getRowCount() > 0) {
-                if (grServicio.getSelectedRowCount() > 0) {
-                    int selectedRow[] = grServicio.getSelectedRows();
-                    for (int i : selectedRow) {
-                        System.out.println(grServicio.getValueAt(i, 0));
-                        ClServicios servicio = DAOServicios.sqlLeer(Integer.parseInt(grServicio.getValueAt(i, 0).toString()));
-                        txtNombreServicio.setText(servicio.getNombre());
-                        txtPrecioServicio.setText(String.valueOf(servicio.getPrecio()));
-                        btEliminar.setEnabled(true);
-                        paraGrabar = true;
-                    }
-                }
-            }
+        int row_dos = Formularios.getTablaSeleccionada(evt, grServicio, 2);
+        
+        if(row_dos >= 0){
+            this.leerServicio(Integer.parseInt(grServicio.getValueAt(row_dos, 0).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditarServicio, btEliminar);
+            this.paraGrabar = true;
+            this.btnEditarMode();
+        } else {
+            Formularios.ActiveBotonesEliminarEditar(btEditarServicio, btEliminar);
         }
     }//GEN-LAST:event_grServicioMouseClicked
 
@@ -343,18 +343,71 @@ public class MainServicios extends javax.swing.JInternalFrame {
         helper.Formularios.soloNumeros(evt);
     }//GEN-LAST:event_txtPrecioServicioKeyTyped
 
-    
-        
+    private void btEditarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarServicioActionPerformed
+        this.leerServicio(Formularios.getSelectedRow(grServicio));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarServicioActionPerformed
 
+    private void btBuscarTodosSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosSerActionPerformed
+        this.leerTodos(true);
+    }//GEN-LAST:event_btBuscarTodosSerActionPerformed
+
+    private void btDesactivarEditarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarServicioActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarServicioActionPerformed
+
+    
+    // Method Custom
+    private void leerServicio(int id){
+        ClServicios servicio = DAOServicios.sqlLeer(id);
+        txtNombreServicio.setText(servicio.getNombre());
+        txtPrecioServicio.setText(String.valueOf(servicio.getPrecio()));
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList ser = new ArrayList<>();
+        if(todos)
+            ser = DAOServicios.sqlLeerTodos();
+        else 
+            ser = DAOServicios.sqlBuscarByNombre(txtBuscarServicio.getText());
+        
+        dt =  (DefaultTableModel) grServicio.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < ser.size(); x++){
+            ClServicios xx = (ClServicios)ser.get(x);
+            Object[] fila = new Object[7];
+            fila[0] = xx.getIdServicio();
+            fila[1] = xx.getNombre();
+            fila[2] = xx.getPrecio(); 
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditarServicio.setVisible(false);
+            helper.Formularios.limpiar(panelServicios);
+        } else {
+            btDesactivarEditarServicio.setVisible(true);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarServicio;
     private javax.swing.JButton btBuscarTodosSer;
+    private javax.swing.JButton btDesactivarEditarServicio;
+    private javax.swing.JButton btEditarServicio;
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btGrabarCentroEvento;
     private javax.swing.JButton btGrabarServicio;
     private javax.swing.JComboBox cbDisponibleCentroEvento;
     private javax.swing.JTable grServicio;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbCaracCentroEvento;
     private javax.swing.JLabel lbDisponibleCentroEvento;
     private javax.swing.JLabel lbHotelCentroEvento;
@@ -364,6 +417,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelCentroEventos;
     private javax.swing.JPanel panelServicios;
     private javax.swing.JTabbedPane tabContServicios;
+    private javax.swing.JTextField txtBuscarServicio;
     private javax.swing.JTextField txtCaracCentroEvento;
     private javax.swing.JTextField txtHotelCentroEvento;
     private javax.swing.JTextField txtNombreServicio;
