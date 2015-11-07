@@ -21,6 +21,10 @@ public class ClHoteles {
 
     }
     
+    public ClHoteles(int idHotel) {
+        setIdHotel(idHotel);
+    }
+    
     public ClHoteles(int idCadena, int idRegion, int idProvincia, int idComuna, String nombre, String direccion) {
         setIdCadena(idCadena);
         setIdRegion(idRegion);

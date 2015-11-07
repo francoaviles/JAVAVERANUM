@@ -35,7 +35,7 @@ public class DAORegiones {
         return true;
     }
     
-    public ClRegion sqlLeer(int id){     
+    public static ClRegion sqlLeer(int id){     
         ClRegion region = new ClRegion(); 
         if(!bd.sqlSelect("SELECT * FROM \"regiones\" WHERE \"id_region\" = "+id+" ")){
             return null;

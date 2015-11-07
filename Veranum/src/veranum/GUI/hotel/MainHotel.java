@@ -5,13 +5,17 @@
  */
 package veranum.GUI.hotel;
 
+import helper.Formularios;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOCadenas;
 import veranum.DAO.DAORegiones;
 import veranum.DAO.DAOProvincia;
 import veranum.DAO.DAOComuna;
 import veranum.DAO.DAOHoteles;
+import veranum.entities.ClCadenas;
+import veranum.entities.ClComuna;
 import veranum.entities.ClHoteles;
 import veranum.entities.ClProvincia;
 import veranum.entities.ClRegion;
@@ -22,6 +26,9 @@ import veranum.entities.ClRegion;
  */
 public class MainHotel extends javax.swing.JInternalFrame {
 
+    private boolean paraGrabar = false;
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int id_hotel = 0;
     /**
      * Creates new form MainHotel
      */
@@ -31,8 +38,16 @@ public class MainHotel extends javax.swing.JInternalFrame {
         for (Object item : DAORegiones.sqlLeerTodos()) {
             cbRegion.addItem(item);
         }
+        for (Object item : DAOCadenas.sqlLeerTodos()) {
+            cbCadena.addItem(item);
+        }
+        
+        grHotel.setEnabled(true);
+        Formularios.DesactiveBotonesEliminarEditar(btEditarHotel, btEliminarHotel);
+        btDesactivarEditarHotel.setVisible(false);
+        this.leerTodos(true);
     }
-    DefaultTableModel dt = new DefaultTableModel();
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,7 +72,15 @@ public class MainHotel extends javax.swing.JInternalFrame {
         cbComuna = new javax.swing.JComboBox();
         btGrabarHoteles = new javax.swing.JButton();
         lbCadena = new javax.swing.JLabel();
-        txtCadena = new javax.swing.JTextField();
+        cbCadena = new javax.swing.JComboBox();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        grHotel = new javax.swing.JTable();
+        btBuscarHotel = new javax.swing.JButton();
+        btBuscarTodosHotel = new javax.swing.JButton();
+        btEliminarHotel = new javax.swing.JButton();
+        btEditarHotel = new javax.swing.JButton();
+        txtBuscarHotel = new javax.swing.JTextField();
+        btDesactivarEditarHotel = new javax.swing.JButton();
         panelHabitaciones = new javax.swing.JPanel();
         lbUbicacion = new javax.swing.JLabel();
         txtUbicacion = new javax.swing.JTextField();
@@ -85,12 +108,6 @@ public class MainHotel extends javax.swing.JInternalFrame {
         lbTipoBuscar = new javax.swing.JLabel();
         cbTipoBuscar = new javax.swing.JComboBox();
         btBuscarHabitacion = new javax.swing.JButton();
-        panelBuscarHotel = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tablaBuscarHotel = new javax.swing.JTable();
-        lbNombreBuscarHotel = new javax.swing.JLabel();
-        txtNombreBuscarHotel = new javax.swing.JTextField();
-        btBuscarHotel = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Panel Hoteles"));
         setForeground(new java.awt.Color(204, 204, 204));
@@ -110,7 +127,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
 
         lbProvincia.setText("Provincia:");
 
-        lbComuna.setText("Comuna");
+        lbComuna.setText("Comuna:");
 
         cbProvincia.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -127,41 +144,128 @@ public class MainHotel extends javax.swing.JInternalFrame {
 
         lbCadena.setText("Cadena:");
 
+        grHotel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "#", "Cadena", "Nombre", "Region", "Direccion"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        grHotel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grHotelMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(grHotel);
+
+        btBuscarHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscarHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarHotelActionPerformed(evt);
+            }
+        });
+
+        btBuscarTodosHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodosHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarTodosHotelActionPerformed(evt);
+            }
+        });
+
+        btEliminarHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminarHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarHotelActionPerformed(evt);
+            }
+        });
+
+        btEditarHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditarHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarHotelActionPerformed(evt);
+            }
+        });
+
+        btDesactivarEditarHotel.setBackground(new java.awt.Color(255, 0, 0));
+        btDesactivarEditarHotel.setText("Salir Modo Editar");
+        btDesactivarEditarHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDesactivarEditarHotelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelHotelesLayout = new javax.swing.GroupLayout(panelHoteles);
         panelHoteles.setLayout(panelHotelesLayout);
         panelHotelesLayout.setHorizontalGroup(
             panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHotelesLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbProvincia)
+                    .addComponent(lbCadena)
+                    .addGroup(panelHotelesLayout.createSequentialGroup()
+                        .addComponent(lbDireccion)
+                        .addGap(32, 32, 32)
+                        .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbCadena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelHotelesLayout.createSequentialGroup()
                         .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbDireccion)
                             .addComponent(lbRegion)
-                            .addComponent(lbNombreHotel)
-                            .addComponent(lbProvincia)
-                            .addComponent(lbComuna))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreHotel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-                            .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(62, 62, 62))
-                    .addGroup(panelHotelesLayout.createSequentialGroup()
+                            .addComponent(lbNombreHotel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelHotelesLayout.createSequentialGroup()
-                                .addComponent(lbCadena)
-                                .addGap(61, 61, 61)
-                                .addComponent(txtCadena, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btGrabarHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 116, Short.MAX_VALUE))))
+                                .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbComuna)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombreHotel)))
+                    .addComponent(btGrabarHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(201, Short.MAX_VALUE))
+            .addGroup(panelHotelesLayout.createSequentialGroup()
+                .addComponent(btEliminarHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btEditarHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(txtBuscarHotel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btBuscarHotel)
+                .addGap(3, 3, 3)
+                .addComponent(btBuscarTodosHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHotelesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btDesactivarEditarHotel))
         );
         panelHotelesLayout.setVerticalGroup(
             panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHotelesLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHotelesLayout.createSequentialGroup()
+                .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btEliminarHotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btBuscarHotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btEditarHotel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtBuscarHotel, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btBuscarTodosHotel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btDesactivarEditarHotel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombreHotel)
                     .addComponent(txtNombreHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,25 +273,23 @@ public class MainHotel extends javax.swing.JInternalFrame {
                 .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbRegion)
                     .addComponent(cbRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbProvincia)
-                    .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbComuna)
-                    .addComponent(cbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbDireccion)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbProvincia)
+                    .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbComuna)
+                    .addComponent(cbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbDireccion)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbCadena)
-                    .addComponent(txtCadena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                    .addComponent(cbCadena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btGrabarHoteles)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Hoteles", panelHoteles);
@@ -264,7 +366,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btGrabarHabitaciones)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Habitaciones", panelHabitaciones);
@@ -310,7 +412,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                     .addComponent(lbEstadoMueble))
                 .addGap(35, 35, 35)
                 .addComponent(btGrabarMuebles)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Muebles", panelMuebles);
@@ -373,65 +475,10 @@ public class MainHotel extends javax.swing.JInternalFrame {
                     .addComponent(cbTipoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Buscar habitación", panelBuscarHab);
-
-        tablaBuscarHotel.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(tablaBuscarHotel);
-
-        lbNombreBuscarHotel.setText("Nombre Hotel:");
-
-        btBuscarHotel.setText("Buscar");
-        btBuscarHotel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btBuscarHotelActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelBuscarHotelLayout = new javax.swing.GroupLayout(panelBuscarHotel);
-        panelBuscarHotel.setLayout(panelBuscarHotelLayout);
-        panelBuscarHotelLayout.setHorizontalGroup(
-            panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBuscarHotelLayout.createSequentialGroup()
-                .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBuscarHotelLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelBuscarHotelLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(lbNombreBuscarHotel)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNombreBuscarHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btBuscarHotel)))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-        panelBuscarHotelLayout.setVerticalGroup(
-            panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBuscarHotelLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNombreBuscarHotel)
-                    .addComponent(txtNombreBuscarHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarHotel))
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
-        );
-
-        tabContenido.addTab("Buscar Hotel", panelBuscarHotel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -446,6 +493,103 @@ public class MainHotel extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btDesactivarEditarHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarHotelActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarHotelActionPerformed
+
+    private void btEditarHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarHotelActionPerformed
+        this.leerServicio(Formularios.getSelectedRow(grHotel));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarHotelActionPerformed
+
+    private void btEliminarHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarHotelActionPerformed
+        this.leerServicio(Formularios.getSelectedRow(grHotel));
+        if(this.id_hotel == 0){
+            JOptionPane.showMessageDialog(this, "NO existe para eliminar");
+        }else{
+            DAOHoteles.sqlDelete(new ClHoteles(this.id_hotel));
+            JOptionPane.showMessageDialog(this, "Eliminado");
+            helper.Formularios.limpiar(panelHoteles);
+            Formularios.DesactiveBotonesEliminarEditar(btEditarHotel, btEliminarHotel);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btEliminarHotelActionPerformed
+
+    private void btBuscarTodosHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosHotelActionPerformed
+        this.leerTodos(true);
+    }//GEN-LAST:event_btBuscarTodosHotelActionPerformed
+
+    private void btBuscarHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarHotelActionPerformed
+        this.leerTodos(false);
+    }//GEN-LAST:event_btBuscarHotelActionPerformed
+
+    private void grHotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grHotelMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grHotel, 2);
+
+        if(row_dos >= 0){
+            this.leerServicio(Integer.parseInt(grHotel.getValueAt(row_dos, 0).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditarHotel, btEliminarHotel);
+            this.paraGrabar = true;
+            this.btnEditarMode();
+        } else {
+            Formularios.ActiveBotonesEliminarEditar(btEditarHotel, btEliminarHotel);
+        }
+    }//GEN-LAST:event_grHotelMouseClicked
+
+    private void btGrabarHotelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarHotelesActionPerformed
+        int id_cadena = ((ClCadenas)cbCadena.getSelectedItem()).getIdCadena();
+        int id_region = ((ClRegion)cbRegion.getSelectedItem()).getIdRegion();
+        int id_provi = ((ClProvincia)cbProvincia.getSelectedItem()).getIdProvincia();
+        int id_comu = ((ClComuna)cbComuna.getSelectedItem()).getIdComuna();
+        System.out.println(id_region);
+        if(!paraGrabar){
+            if(false ){ // validacion
+            JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+            }else{
+                DAOHoteles.sqlInsert(new ClHoteles( id_cadena, 
+                                                    id_region, 
+                                                    id_provi, 
+                                                    id_comu, 
+                                                    txtNombreHotel.getText(), 
+                                                    txtDireccion.getText())
+                                    );
+                JOptionPane.showMessageDialog(this, "Agregado");
+                Formularios.DesactiveBotonesEliminarEditar(btEditarHotel, btEliminarHotel);
+                helper.Formularios.limpiar(panelHoteles);
+                this.leerTodos(true);
+            }  
+        }else{
+            DAOHoteles.sqlUpdate(new ClHoteles( this.id_hotel,
+                                                id_cadena, 
+                                                id_region, 
+                                                id_provi, 
+                                                id_comu, 
+                                                txtNombreHotel.getText(), 
+                                                txtDireccion.getText()));
+            
+            JOptionPane.showMessageDialog(this, "Modificado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditarHotel, btEliminarHotel);
+            helper.Formularios.limpiar(panelHoteles);
+            this.leerTodos(true);
+            this.paraGrabar = false;
+        }      
+    }//GEN-LAST:event_btGrabarHotelesActionPerformed
+
+    private void cbProvinciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbProvinciaItemStateChanged
+        // TODO add your handling code here:
+        cbComuna.removeAllItems();
+        this.cargarComunas();
+    }//GEN-LAST:event_cbProvinciaItemStateChanged
+
+    private void cbRegionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbRegionItemStateChanged
+        // TODO add your handling code here:
+        cbProvincia.removeAllItems();
+        this.cargarProvincias();
+        this.cargarComunas();
+    }//GEN-LAST:event_cbRegionItemStateChanged
 
     private void cargarProvincias(){
         int id_region = ((ClRegion)cbRegion.getSelectedItem()).getIdRegion();
@@ -462,68 +606,67 @@ public class MainHotel extends javax.swing.JInternalFrame {
             }
         }
     }
-    private void cbRegionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbRegionItemStateChanged
-        // TODO add your handling code here:
-        cbProvincia.removeAllItems();
-        this.cargarProvincias();
-        this.cargarComunas();
-    }//GEN-LAST:event_cbRegionItemStateChanged
-
-    private void cbProvinciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbProvinciaItemStateChanged
-        // TODO add your handling code here:
-        cbComuna.removeAllItems();
-        this.cargarComunas();
-    }//GEN-LAST:event_cbProvinciaItemStateChanged
-
-    private void btBuscarHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarHotelActionPerformed
-     
-        ArrayList cli = DAOHoteles.sqlLeerTodos();
-        dt =  (DefaultTableModel) tablaBuscarHotel.getModel();        
+    // Method Custom
+    private void leerServicio(int id){
+        this.id_hotel = id;
+        ClHoteles hotel = DAOHoteles.sqlLeer(id);
+        txtNombreHotel.setText(hotel.getNombre());
+        txtDireccion.setText(hotel.getDireccion());
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList ser = new ArrayList<>();
+        if(todos)
+            ser = DAOHoteles.sqlLeerTodos();
+        else 
+            ser = DAOHoteles.sqlBuscarByNombre(txtBuscarHotel.getText());
+        
+        dt =  (DefaultTableModel) grHotel.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  
             dt.removeRow(i);
         }        
-        for(int x=0; x < cli.size(); x++){
-            ClHoteles xx = (ClHoteles)cli.get(x);
+        for(int x=0; x < ser.size(); x++){
+            ClHoteles xx = (ClHoteles)ser.get(x);
             Object[] fila = new Object[7];
-            fila[0]= xx.getNombre();
-            fila[1] = xx.getIdCadena();
-            fila[2] = xx.getIdRegion();
-            fila[3] = xx.getIdProvincia();
-            fila[4] = xx.getIdComuna();
-            fila[5] = xx.getDireccion();
-            //fila[6] = xx.setIdHotel();                            
-            dt.addRow(fila);             
-         } 
-    }//GEN-LAST:event_btBuscarHotelActionPerformed
-
-    private void btGrabarHotelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarHotelesActionPerformed
-        /*DAOHoteles.sqlInsert(new ClHoteles(Integer.parseInt(txtCadena.getText())
-                                                            ,cbRegion.
-                                                            ,cbProvincia
-                                                            ,cbComuna
-                                                            ,txtNombreHotel.getText()
-                                                            ,txtDireccion.getText() )
-                                );
-        JOptionPane.showMessageDialog(this, "Agregado");
-        */
-    }//GEN-LAST:event_btGrabarHotelesActionPerformed
-
-
+            fila[0] = xx.getIdHotel();
+            fila[1] = ((ClCadenas)DAOCadenas.sqlLeer(xx.getIdCadena())).getNombre();
+            fila[2] = xx.getNombre(); 
+            fila[3] = ((ClRegion)DAORegiones.sqlLeer(xx.getIdRegion())).getNombre();
+            fila[4] = xx.getDireccion(); 
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditarHotel.setVisible(false);
+            helper.Formularios.limpiar(panelHoteles);
+        } else {
+            btDesactivarEditarHotel.setVisible(true);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarHabitacion;
     private javax.swing.JButton btBuscarHotel;
+    private javax.swing.JButton btBuscarTodosHotel;
+    private javax.swing.JButton btDesactivarEditarHotel;
+    private javax.swing.JButton btEditarHotel;
+    private javax.swing.JButton btEliminarHotel;
     private javax.swing.JButton btGrabarHabitaciones;
     private javax.swing.JButton btGrabarHoteles;
     private javax.swing.JButton btGrabarMuebles;
+    private javax.swing.JComboBox cbCadena;
     private javax.swing.JComboBox cbComuna;
     private javax.swing.JComboBox cbEstadoMueble;
     private javax.swing.JComboBox cbProvincia;
     private javax.swing.JComboBox cbRegion;
     private javax.swing.JComboBox cbTipo;
     private javax.swing.JComboBox cbTipoBuscar;
+    private javax.swing.JTable grHotel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lbBuscarHab;
     private javax.swing.JLabel lbCadena;
     private javax.swing.JLabel lbCantPersonas;
@@ -531,7 +674,6 @@ public class MainHotel extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbComuna;
     private javax.swing.JLabel lbDireccion;
     private javax.swing.JLabel lbEstadoMueble;
-    private javax.swing.JLabel lbNombreBuscarHotel;
     private javax.swing.JLabel lbNombreHotel;
     private javax.swing.JLabel lbNombreMueble;
     private javax.swing.JLabel lbPrecio;
@@ -541,19 +683,16 @@ public class MainHotel extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbTipoBuscar;
     private javax.swing.JLabel lbUbicacion;
     private javax.swing.JPanel panelBuscarHab;
-    private javax.swing.JPanel panelBuscarHotel;
     private javax.swing.JPanel panelHabitaciones;
     private javax.swing.JPanel panelHoteles;
     private javax.swing.JPanel panelMuebles;
     private javax.swing.JTabbedPane tabContenido;
-    private javax.swing.JTable tablaBuscarHotel;
     private javax.swing.JTable tableBuscarHabitacion;
     private javax.swing.JTextField txtBuscarHab;
-    private javax.swing.JTextField txtCadena;
+    private javax.swing.JTextField txtBuscarHotel;
     private javax.swing.JTextField txtCantPersonas;
     private javax.swing.JTextArea txtCaracteristicas;
     private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtNombreBuscarHotel;
     private javax.swing.JTextField txtNombreHotel;
     private javax.swing.JTextField txtNombreMueble;
     private javax.swing.JTextField txtPrecio;

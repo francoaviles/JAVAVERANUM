@@ -22,18 +22,19 @@ public class DAOHoteles {
     }
     
     public static boolean sqlDelete(ClHoteles hotel){
-        String sql="DELETE FROM \"hoteles\" WHERE \"id_hotel\" = '"+hotel.getIdHotel()+"'";
+        String sql="DELETE FROM \"hoteles\" WHERE \"id_hotel\" = "+hotel.getIdHotel()+"";
+        System.out.println(sql);
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClHoteles hotel){
-        String sql="UPDATE \"hoteles\" SET \"hotel_nombre\" = '"+hotel.getNombre()+"' AND \"id_provincia\" = '"+hotel.getIdProvincia()+"' AND \"id_comuna\" = '"+hotel.getIdComuna()+"'AND \"nombre\" = '"+hotel.getNombre()+"' AND \"direccion\" = '"+hotel.getDireccion()+"' WHERE \"id_hotel\" = '"+hotel.getIdComuna()+"'";
+        String sql="UPDATE \"hoteles\" SET \"id_cadena\" = '"+hotel.getIdCadena()+"', \"id_region\" = '"+hotel.getIdRegion()+"', \"id_provincia\" = '"+hotel.getIdProvincia()+"', \"id_comuna\" = '"+hotel.getIdComuna()+"', \"nombre\" = '"+hotel.getNombre()+"', \"direccion\" = '"+hotel.getDireccion()+"' WHERE \"id_hotel\" = '"+hotel.getIdHotel()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
-    public ClHoteles sqlLeer(int id){     
+    public static ClHoteles sqlLeer(int id){     
         ClHoteles hotel = new ClHoteles();        
         if(!bd.sqlSelect("SELECT * FROM \"hoteles\" WHERE \"id_hotel\" = "+id+" ")){
             return null;
@@ -69,4 +70,21 @@ public class DAOHoteles {
         }     
         return hotel;
     }  
+    
+    public static ArrayList sqlBuscarByNombre(String nombre){
+        ArrayList<ClHoteles> hotel = new ArrayList<>();        
+        if(!bd.sqlSelect("SELECT * FROM \"hoteles\" WHERE \"nombre\" LIKE '%"+nombre+"%'")){
+            return null;
+        }
+        while(bd.sqlFetch()){
+            hotel.add(new ClHoteles(bd.getInt("id_cadena"), 
+                                    bd.getInt("id_region"), 
+                                    bd.getInt("id_provincia"), 
+                                    bd.getInt("id_comuna"), 
+                                    bd.getString("nombre"), 
+                                    bd.getString("direccion")));
+            
+        }     
+        return hotel;
+    }
 }

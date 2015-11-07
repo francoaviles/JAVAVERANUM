@@ -38,5 +38,9 @@ public class ClCadenas {
         this.nombre = nombre;
     }
     
+    @Override
+    public String toString(){
+        return getNombre();
+    }
     
 }
