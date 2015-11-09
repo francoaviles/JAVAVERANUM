@@ -91,9 +91,17 @@ public class MainHotel extends javax.swing.JInternalFrame {
         lbTipo = new javax.swing.JLabel();
         cbTipo = new javax.swing.JComboBox();
         lbCaracteristicas = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtCaracteristicas = new javax.swing.JTextArea();
         btGrabarHabitaciones = new javax.swing.JButton();
+        btEliminarHab = new javax.swing.JButton();
+        btEditarHab = new javax.swing.JButton();
+        txtBuscarHab = new javax.swing.JTextField();
+        btBuscarHab = new javax.swing.JButton();
+        btBuscarTodosHab = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        grHabitacion = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        btDesactivarEditarHab = new javax.swing.JButton();
         panelTipoHab = new javax.swing.JPanel();
         panelEstadoHab = new javax.swing.JPanel();
         panelMuebles = new javax.swing.JPanel();
@@ -102,14 +110,6 @@ public class MainHotel extends javax.swing.JInternalFrame {
         cbEstadoMueble = new javax.swing.JComboBox();
         lbEstadoMueble = new javax.swing.JLabel();
         btGrabarMuebles = new javax.swing.JButton();
-        panelBuscarHab = new javax.swing.JPanel();
-        lbBuscarHab = new javax.swing.JLabel();
-        txtBuscarHab = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableBuscarHabitacion = new javax.swing.JTable();
-        lbTipoBuscar = new javax.swing.JLabel();
-        cbTipoBuscar = new javax.swing.JComboBox();
-        btBuscarHabitacion = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Panel Hoteles"));
         setForeground(new java.awt.Color(204, 204, 204));
@@ -242,7 +242,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                                 .addComponent(cbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtNombreHotel)))
                     .addComponent(btGrabarHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
             .addGroup(panelHotelesLayout.createSequentialGroup()
                 .addComponent(btEliminarHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -253,7 +253,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                 .addComponent(btBuscarHotel)
                 .addGap(3, 3, 3)
                 .addComponent(btBuscarTodosHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHotelesLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btDesactivarEditarHotel))
@@ -312,67 +312,126 @@ public class MainHotel extends javax.swing.JInternalFrame {
 
         lbCaracteristicas.setText("Caracteristicas:");
 
-        txtCaracteristicas.setColumns(20);
-        txtCaracteristicas.setRows(5);
-        jScrollPane1.setViewportView(txtCaracteristicas);
-
         btGrabarHabitaciones.setText("Grabar");
+
+        btEliminarHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+
+        btEditarHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+
+        btBuscarHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+
+        btBuscarTodosHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+
+        grHabitacion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "#", "Ubicación", "Cant. Personas", "Precio", "Tipo", "Caracteristicas"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(grHabitacion);
+        if (grHabitacion.getColumnModel().getColumnCount() > 0) {
+            grHabitacion.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        btDesactivarEditarHab.setText("Salir Modo Editar");
 
         javax.swing.GroupLayout panelHabitacionesLayout = new javax.swing.GroupLayout(panelHabitaciones);
         panelHabitaciones.setLayout(panelHabitacionesLayout);
         panelHabitacionesLayout.setHorizontalGroup(
             panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHabitacionesLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelHabitacionesLayout.createSequentialGroup()
-                        .addComponent(lbUbicacion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelHabitacionesLayout.createSequentialGroup()
                         .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbPrecio)
-                            .addComponent(lbTipo)
-                            .addComponent(lbCaracteristicas)
-                            .addComponent(lbCantPersonas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(63, 63, 63))
-            .addGroup(panelHabitacionesLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(btGrabarHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panelHabitacionesLayout.createSequentialGroup()
+                                .addComponent(btEliminarHab, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btEditarHab, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscarHab, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscarHab)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btBuscarTodosHab))
+                            .addComponent(btGrabarHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelHabitacionesLayout.createSequentialGroup()
+                                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbPrecio)
+                                    .addComponent(lbUbicacion)
+                                    .addComponent(lbCantPersonas)
+                                    .addComponent(lbTipo)
+                                    .addComponent(lbCaracteristicas))
+                                .addGap(26, 26, 26)
+                                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelHabitacionesLayout.createSequentialGroup()
+                                        .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(65, 65, 65)
+                                        .addComponent(btDesactivarEditarHab))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         panelHabitacionesLayout.setVerticalGroup(
             panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHabitacionesLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addContainerGap()
                 .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btEliminarHab)
+                    .addComponent(btEditarHab)
+                    .addComponent(txtBuscarHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarHab)
+                    .addComponent(btBuscarTodosHab))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbUbicacion)
                     .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbUbicacion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbCantPersonas))
+                    .addComponent(btDesactivarEditarHab))
                 .addGap(18, 18, 18)
-                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbCantPersonas)
+                    .addComponent(txtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbPrecio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbTipo))
+                .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTipo)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbCaracteristicas)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(panelHabitacionesLayout.createSequentialGroup()
+                        .addComponent(lbCaracteristicas)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btGrabarHabitaciones)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tabContenido.addTab("Habitaciones", panelHabitaciones);
@@ -381,11 +440,11 @@ public class MainHotel extends javax.swing.JInternalFrame {
         panelTipoHab.setLayout(panelTipoHabLayout);
         panelTipoHabLayout.setHorizontalGroup(
             panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGap(0, 502, Short.MAX_VALUE)
         );
         panelTipoHabLayout.setVerticalGroup(
             panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 415, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
 
         tabContenido.addTab("Tipo Habitación", panelTipoHab);
@@ -394,11 +453,11 @@ public class MainHotel extends javax.swing.JInternalFrame {
         panelEstadoHab.setLayout(panelEstadoHabLayout);
         panelEstadoHabLayout.setHorizontalGroup(
             panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGap(0, 502, Short.MAX_VALUE)
         );
         panelEstadoHabLayout.setVerticalGroup(
             panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 415, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
 
         tabContenido.addTab("Estado Habitación", panelEstadoHab);
@@ -429,7 +488,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                     .addGroup(panelMueblesLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(btGrabarMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         panelMueblesLayout.setVerticalGroup(
             panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,73 +503,10 @@ public class MainHotel extends javax.swing.JInternalFrame {
                     .addComponent(lbEstadoMueble))
                 .addGap(35, 35, 35)
                 .addComponent(btGrabarMuebles)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Muebles", panelMuebles);
-
-        lbBuscarHab.setText("Habitación:");
-
-        tableBuscarHabitacion.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tableBuscarHabitacion);
-
-        lbTipoBuscar.setText("Tipo:");
-
-        cbTipoBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btBuscarHabitacion.setText("Buscar");
-
-        javax.swing.GroupLayout panelBuscarHabLayout = new javax.swing.GroupLayout(panelBuscarHab);
-        panelBuscarHab.setLayout(panelBuscarHabLayout);
-        panelBuscarHabLayout.setHorizontalGroup(
-            panelBuscarHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBuscarHabLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(panelBuscarHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelBuscarHabLayout.createSequentialGroup()
-                        .addGroup(panelBuscarHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbBuscarHab)
-                            .addComponent(lbTipoBuscar))
-                        .addGap(49, 49, 49)
-                        .addGroup(panelBuscarHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbTipoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBuscarHab, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(60, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBuscarHabLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btBuscarHabitacion)
-                .addGap(126, 126, 126))
-        );
-        panelBuscarHabLayout.setVerticalGroup(
-            panelBuscarHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBuscarHabLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(panelBuscarHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbBuscarHab)
-                    .addComponent(txtBuscarHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(btBuscarHabitacion)
-                .addGap(1, 1, 1)
-                .addGroup(panelBuscarHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbTipoBuscar)
-                    .addComponent(cbTipoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(182, Short.MAX_VALUE))
-        );
-
-        tabContenido.addTab("Buscar habitación", panelBuscarHab);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -715,11 +711,15 @@ public class MainHotel extends javax.swing.JInternalFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscarHabitacion;
+    private javax.swing.JButton btBuscarHab;
     private javax.swing.JButton btBuscarHotel;
+    private javax.swing.JButton btBuscarTodosHab;
     private javax.swing.JButton btBuscarTodosHotel;
+    private javax.swing.JButton btDesactivarEditarHab;
     private javax.swing.JButton btDesactivarEditarHotel;
+    private javax.swing.JButton btEditarHab;
     private javax.swing.JButton btEditarHotel;
+    private javax.swing.JButton btEliminarHab;
     private javax.swing.JButton btEliminarHotel;
     private javax.swing.JButton btGrabarHabitaciones;
     private javax.swing.JButton btGrabarHoteles;
@@ -730,12 +730,12 @@ public class MainHotel extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cbProvincia;
     private javax.swing.JComboBox cbRegion;
     private javax.swing.JComboBox cbTipo;
-    private javax.swing.JComboBox cbTipoBuscar;
+    private javax.swing.JTable grHabitacion;
     private javax.swing.JTable grHotel;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JLabel lbBuscarHab;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbCadena;
     private javax.swing.JLabel lbCantPersonas;
     private javax.swing.JLabel lbCaracteristicas;
@@ -748,20 +748,16 @@ public class MainHotel extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbProvincia;
     private javax.swing.JLabel lbRegion;
     private javax.swing.JLabel lbTipo;
-    private javax.swing.JLabel lbTipoBuscar;
     private javax.swing.JLabel lbUbicacion;
-    private javax.swing.JPanel panelBuscarHab;
     private javax.swing.JPanel panelEstadoHab;
     private javax.swing.JPanel panelHabitaciones;
     private javax.swing.JPanel panelHoteles;
     private javax.swing.JPanel panelMuebles;
     private javax.swing.JPanel panelTipoHab;
     private javax.swing.JTabbedPane tabContenido;
-    private javax.swing.JTable tableBuscarHabitacion;
     private javax.swing.JTextField txtBuscarHab;
     private javax.swing.JTextField txtBuscarHotel;
     private javax.swing.JTextField txtCantPersonas;
-    private javax.swing.JTextArea txtCaracteristicas;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombreHotel;
     private javax.swing.JTextField txtNombreMueble;
