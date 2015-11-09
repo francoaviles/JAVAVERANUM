@@ -71,14 +71,14 @@
                               <Component id="btEliminar" min="-2" pref="89" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btEditarServicio" min="-2" pref="88" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txtBuscarServicio" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="btBuscarServicio" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                               <Component id="btBuscarTodosSer" min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" alignment="1" pref="501" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="1" pref="464" max="32767" attributes="0"/>
                           <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -113,7 +113,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="btGrabarServicio" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="148" max="32767" attributes="0"/>
+                      <EmptySpace pref="147" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -259,39 +259,77 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane2" pref="464" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lbHotelCentroEvento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbPrecioCentroEvento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbCaracCentroEvento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbDisponibleCentroEvento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btGrabarCentroEvento" min="-2" pref="292" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btEliminarCentroEve" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btEditarCentroEve" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtBuscarCentroEve" min="-2" pref="102" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btBuscarCentroEve" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btBuscarTodosCentroEve" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lbHotelCentroEvento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbPrecioCentroEvento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtPrecioCentroEvento" min="-2" pref="134" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="btDesactivarEditarCentroEve" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lbCaracCentroEvento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbDisponibleCentroEvento" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cbDisponibleCentroEvento" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtCaracCentroEvento" min="-2" pref="134" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="cbDisponibleCentroEvento" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtHotelCentroEvento" alignment="0" pref="134" max="32767" attributes="0"/>
-                                  <Component id="txtPrecioCentroEvento" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtCaracCentroEvento" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                              <Component id="btGrabarCentroEvento" min="-2" pref="292" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="108" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbHotelCentroEvento" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtHotelCentroEvento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btEliminarCentroEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btEditarCentroEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBuscarCentroEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btBuscarCentroEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btBuscarTodosCentroEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="104" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbHotelCentroEvento" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btDesactivarEditarCentroEve" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -303,14 +341,14 @@
                           <Component id="lbCaracCentroEvento" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCaracCentroEvento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lbDisponibleCentroEvento" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbDisponibleCentroEvento" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbDisponibleCentroEvento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbDisponibleCentroEvento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btGrabarCentroEvento" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="255" max="32767" attributes="0"/>
+                      <EmptySpace pref="151" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -320,8 +358,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Hotel:"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtHotelCentroEvento">
             </Component>
             <Component class="javax.swing.JLabel" name="lbPrecioCentroEvento">
               <Properties>
@@ -357,6 +393,110 @@
                     <StringItem index="3" value="Item 4"/>
                   </StringArray>
                 </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btEliminarCentroEve">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/veranum/imagenes/delete96.png"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btEditarCentroEve">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/veranum/imagenes/write13.png"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtBuscarCentroEve">
+            </Component>
+            <Component class="javax.swing.JButton" name="btBuscarCentroEve">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/veranum/imagenes/magnifier12.png"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btBuscarTodosCentroEve">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/veranum/imagenes/refresh_16.png"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="grCentroEve">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="5" rowCount="4">
+                        <Column editable="false" title="#" type="java.lang.Object"/>
+                        <Column editable="false" title="Hotel" type="java.lang.Object"/>
+                        <Column editable="false" title="Precio" type="java.lang.Object"/>
+                        <Column editable="false" title="Caracteristicas" type="java.lang.Object"/>
+                        <Column editable="false" title="Disponiblidad" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="30" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JComboBox" name="jComboBox1">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="btDesactivarEditarCentroEve">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salir Modo Editar"/>
               </Properties>
             </Component>
           </SubComponents>

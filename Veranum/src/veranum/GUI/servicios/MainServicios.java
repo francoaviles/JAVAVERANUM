@@ -57,7 +57,6 @@ public class MainServicios extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         panelCentroEventos = new javax.swing.JPanel();
         lbHotelCentroEvento = new javax.swing.JLabel();
-        txtHotelCentroEvento = new javax.swing.JTextField();
         lbPrecioCentroEvento = new javax.swing.JLabel();
         txtPrecioCentroEvento = new javax.swing.JTextField();
         lbCaracCentroEvento = new javax.swing.JLabel();
@@ -65,6 +64,15 @@ public class MainServicios extends javax.swing.JInternalFrame {
         btGrabarCentroEvento = new javax.swing.JButton();
         lbDisponibleCentroEvento = new javax.swing.JLabel();
         cbDisponibleCentroEvento = new javax.swing.JComboBox();
+        btEliminarCentroEve = new javax.swing.JButton();
+        btEditarCentroEve = new javax.swing.JButton();
+        txtBuscarCentroEve = new javax.swing.JTextField();
+        btBuscarCentroEve = new javax.swing.JButton();
+        btBuscarTodosCentroEve = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        grCentroEve = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        btDesactivarEditarCentroEve = new javax.swing.JButton();
 
         lbNombreServicio.setText("Nombre Servicio:");
 
@@ -170,13 +178,13 @@ public class MainServicios extends javax.swing.JInternalFrame {
                         .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btEditarServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtBuscarServicio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btBuscarServicio)
                         .addGap(3, 3, 3)
                         .addComponent(btBuscarTodosSer, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                     .addComponent(jSeparator1))
                 .addContainerGap())
         );
@@ -205,7 +213,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
                     .addComponent(txtPrecioServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(btGrabarServicio)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         tabContServicios.addTab("Servicios Extras", panelServicios);
@@ -222,37 +230,103 @@ public class MainServicios extends javax.swing.JInternalFrame {
 
         cbDisponibleCentroEvento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btEliminarCentroEve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+
+        btEditarCentroEve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+
+        btBuscarCentroEve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+
+        btBuscarTodosCentroEve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+
+        grCentroEve.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "#", "Hotel", "Precio", "Caracteristicas", "Disponiblidad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(grCentroEve);
+        if (grCentroEve.getColumnModel().getColumnCount() > 0) {
+            grCentroEve.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btDesactivarEditarCentroEve.setText("Salir Modo Editar");
+
         javax.swing.GroupLayout panelCentroEventosLayout = new javax.swing.GroupLayout(panelCentroEventos);
         panelCentroEventos.setLayout(panelCentroEventosLayout);
         panelCentroEventosLayout.setHorizontalGroup(
             panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCentroEventosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                     .addGroup(panelCentroEventosLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
                         .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbHotelCentroEvento)
-                            .addComponent(lbPrecioCentroEvento)
-                            .addComponent(lbCaracCentroEvento)
-                            .addComponent(lbDisponibleCentroEvento))
-                        .addGap(78, 78, 78)
-                        .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbDisponibleCentroEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHotelCentroEvento, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(txtPrecioCentroEvento)
-                            .addComponent(txtCaracCentroEvento)))
-                    .addGroup(panelCentroEventosLayout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(btGrabarCentroEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(108, Short.MAX_VALUE))
+                            .addComponent(btGrabarCentroEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCentroEventosLayout.createSequentialGroup()
+                                .addComponent(btEliminarCentroEve)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btEditarCentroEve)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtBuscarCentroEve, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscarCentroEve)
+                                .addGap(18, 18, 18)
+                                .addComponent(btBuscarTodosCentroEve))
+                            .addGroup(panelCentroEventosLayout.createSequentialGroup()
+                                .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbHotelCentroEvento)
+                                    .addComponent(lbPrecioCentroEvento))
+                                .addGap(61, 61, 61)
+                                .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPrecioCentroEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelCentroEventosLayout.createSequentialGroup()
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btDesactivarEditarCentroEve))))
+                            .addGroup(panelCentroEventosLayout.createSequentialGroup()
+                                .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbCaracCentroEvento)
+                                    .addComponent(lbDisponibleCentroEvento))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbDisponibleCentroEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCaracCentroEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(32, 32, 32)))
+                .addContainerGap())
         );
         panelCentroEventosLayout.setVerticalGroup(
             panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCentroEventosLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addContainerGap()
                 .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btEliminarCentroEve)
+                    .addComponent(btEditarCentroEve)
+                    .addComponent(txtBuscarCentroEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarCentroEve)
+                    .addComponent(btBuscarTodosCentroEve))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbHotelCentroEvento)
-                    .addComponent(txtHotelCentroEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btDesactivarEditarCentroEve)))
                 .addGap(18, 18, 18)
                 .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPrecioCentroEvento)
@@ -261,13 +335,13 @@ public class MainServicios extends javax.swing.JInternalFrame {
                 .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCaracCentroEvento)
                     .addComponent(txtCaracCentroEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(panelCentroEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbDisponibleCentroEvento)
                     .addComponent(cbDisponibleCentroEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btGrabarCentroEvento)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         tabContServicios.addTab("Centro de Eventos", panelCentroEventos);
@@ -396,16 +470,24 @@ public class MainServicios extends javax.swing.JInternalFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btBuscarCentroEve;
     private javax.swing.JButton btBuscarServicio;
+    private javax.swing.JButton btBuscarTodosCentroEve;
     private javax.swing.JButton btBuscarTodosSer;
+    private javax.swing.JButton btDesactivarEditarCentroEve;
     private javax.swing.JButton btDesactivarEditarServicio;
+    private javax.swing.JButton btEditarCentroEve;
     private javax.swing.JButton btEditarServicio;
     private javax.swing.JButton btEliminar;
+    private javax.swing.JButton btEliminarCentroEve;
     private javax.swing.JButton btGrabarCentroEvento;
     private javax.swing.JButton btGrabarServicio;
     private javax.swing.JComboBox cbDisponibleCentroEvento;
+    private javax.swing.JTable grCentroEve;
     private javax.swing.JTable grServicio;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbCaracCentroEvento;
     private javax.swing.JLabel lbDisponibleCentroEvento;
@@ -416,9 +498,9 @@ public class MainServicios extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelCentroEventos;
     private javax.swing.JPanel panelServicios;
     private javax.swing.JTabbedPane tabContServicios;
+    private javax.swing.JTextField txtBuscarCentroEve;
     private javax.swing.JTextField txtBuscarServicio;
     private javax.swing.JTextField txtCaracCentroEvento;
-    private javax.swing.JTextField txtHotelCentroEvento;
     private javax.swing.JTextField txtNombreServicio;
     private javax.swing.JTextField txtPrecioCentroEvento;
     private javax.swing.JTextField txtPrecioServicio;
