@@ -32,197 +32,348 @@ public class MainInsumos extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNombreInsumos = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
         btGrabarInsumos = new javax.swing.JButton();
-        lbCantidad = new javax.swing.JLabel();
-        txtCantidad = new javax.swing.JTextField();
+        btEliminarInsumos = new javax.swing.JButton();
+        btEditarInsumos = new javax.swing.JButton();
+        txtBuscarInsumos = new javax.swing.JTextField();
+        btBuscarInsumos = new javax.swing.JButton();
+        btBuscarTodosInsumos = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        grInsumos = new javax.swing.JTable();
+        btDesactivarEditarInsumos = new javax.swing.JButton();
         panelMenu = new javax.swing.JPanel();
-        lbNombre = new javax.swing.JLabel();
-        btGrabar = new javax.swing.JButton();
+        lbNombreMenu = new javax.swing.JLabel();
+        btGrabarMenu = new javax.swing.JButton();
         txtNombreMenu = new javax.swing.JTextField();
-        lbTipo = new javax.swing.JLabel();
+        lbTipoMenu = new javax.swing.JLabel();
         cbTipoMenu = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescripcionMenu = new javax.swing.JTextArea();
-        panelStock = new javax.swing.JPanel();
+        btEliminarMenu = new javax.swing.JButton();
+        btEditarMenu = new javax.swing.JButton();
+        txtBuscarMenu = new javax.swing.JTextField();
+        btBuscarMenu = new javax.swing.JButton();
+        btBuscarTodosMenu = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        lbNombreBuscarInsumo = new javax.swing.JLabel();
-        txtBuscarInsumo = new javax.swing.JTextField();
-        btBuscarInsumo = new javax.swing.JButton();
+        grMenu = new javax.swing.JTable();
+        btDesactivarEditarMenu = new javax.swing.JButton();
+        panelMedidas = new javax.swing.JPanel();
+        btEliminarMedida = new javax.swing.JButton();
+        btEditarMedida = new javax.swing.JButton();
+        txtBuscarMedida = new javax.swing.JTextField();
+        btBuscarMedida = new javax.swing.JButton();
+        btBuscarTodosMedida = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        grMedida = new javax.swing.JTable();
+        lbNombreMedida = new javax.swing.JLabel();
+        txtNombreMedida = new javax.swing.JTextField();
+        btGrabarMedida = new javax.swing.JButton();
+        btDesactivarEditarMedida = new javax.swing.JButton();
 
-        lbNombreInsumo.setText("Nombre:");
+        lbNombreInsumo.setText("Nombre Insumo:");
 
         jLabel2.setText("Descripción:");
 
-        jLabel3.setText("Menú:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btGrabarInsumos.setText("Grabar");
 
-        lbCantidad.setText("Cantidad:");
+        btEliminarInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+
+        btEditarInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+
+        btBuscarInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+
+        btBuscarTodosInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+
+        grInsumos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "#", "Nombre Insumo", "Descripción"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(grInsumos);
+        if (grInsumos.getColumnModel().getColumnCount() > 0) {
+            grInsumos.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
+
+        btDesactivarEditarInsumos.setText("Salir Modo Editar");
 
         javax.swing.GroupLayout panelInsumosLayout = new javax.swing.GroupLayout(panelInsumos);
         panelInsumos.setLayout(panelInsumosLayout);
         panelInsumosLayout.setHorizontalGroup(
             panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInsumosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelInsumosLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbNombreInsumo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelInsumosLayout.createSequentialGroup()
-                                .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(lbCantidad))
-                                .addGap(35, 35, 35)
-                                .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNombreInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCantidad)))))
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())
                     .addGroup(panelInsumosLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(btGrabarInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btGrabarInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelInsumosLayout.createSequentialGroup()
+                                .addComponent(btEliminarInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btEditarInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscarInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addComponent(btBuscarInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscarTodosInsumos))
+                            .addComponent(jLabel2))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelInsumosLayout.createSequentialGroup()
+                        .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelInsumosLayout.createSequentialGroup()
+                                .addComponent(lbNombreInsumo)
+                                .addGap(27, 27, 27)
+                                .addComponent(txtNombreInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btDesactivarEditarInsumos)
+                        .addGap(46, 46, 46))))
         );
         panelInsumosLayout.setVerticalGroup(
             panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInsumosLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap()
+                .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btEliminarInsumos)
+                    .addComponent(btEditarInsumos)
+                    .addComponent(txtBuscarInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarInsumos)
+                    .addComponent(btBuscarTodosInsumos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombreInsumo)
-                    .addComponent(txtNombreInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtNombreInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btDesactivarEditarInsumos))
+                .addGap(18, 18, 18)
                 .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbCantidad)
-                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
                 .addComponent(btGrabarInsumos)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(210, 210, 210))
         );
 
         tabContenidoInsumos.addTab("Insumos", panelInsumos);
 
-        lbNombre.setText("Nombre:");
+        lbNombreMenu.setText("Nombre menú:");
 
-        btGrabar.setText("Grabar");
+        btGrabarMenu.setText("Grabar");
 
-        lbTipo.setText("Tipo:");
+        lbTipoMenu.setText("Tipo Menú:");
 
         cbTipoMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel4.setText("Descripción:");
+        btEliminarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
 
-        txtDescripcionMenu.setColumns(20);
-        txtDescripcionMenu.setRows(5);
-        jScrollPane1.setViewportView(txtDescripcionMenu);
+        btEditarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+
+        btBuscarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+
+        btBuscarTodosMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+
+        grMenu.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "#", "Tipo Menú", "Nombre Menú"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(grMenu);
+        if (grMenu.getColumnModel().getColumnCount() > 0) {
+            grMenu.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
+
+        btDesactivarEditarMenu.setText("Salir Modo Editar");
 
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addComponent(btGrabar, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
             .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addContainerGap()
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbTipo)
-                    .addComponent(jLabel4)
-                    .addComponent(lbNombre))
-                .addGap(24, 24, 24)
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombreMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelMenuLayout.createSequentialGroup()
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbTipoMenu)
+                            .addComponent(lbNombreMenu))
+                        .addGap(27, 27, 27)
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelMenuLayout.createSequentialGroup()
+                                .addComponent(txtNombreMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(224, Short.MAX_VALUE))
+                            .addGroup(panelMenuLayout.createSequentialGroup()
+                                .addComponent(cbTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btDesactivarEditarMenu)
+                                .addGap(108, 108, 108))))
+                    .addGroup(panelMenuLayout.createSequentialGroup()
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(panelMenuLayout.createSequentialGroup()
+                                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelMenuLayout.createSequentialGroup()
+                                        .addComponent(btEliminarMenu)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btEditarMenu)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtBuscarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btBuscarMenu)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btBuscarTodosMenu))
+                                    .addComponent(btGrabarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNombre)
-                    .addComponent(txtNombreMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbTipo)
-                    .addComponent(cbTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(btEliminarMenu)
+                    .addComponent(btEditarMenu)
+                    .addComponent(txtBuscarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarMenu)
+                    .addComponent(btBuscarTodosMenu))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(btGrabar)
-                .addGap(76, 76, 76))
+                    .addComponent(lbTipoMenu)
+                    .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btDesactivarEditarMenu)))
+                .addGap(18, 18, 18)
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNombreMenu)
+                    .addComponent(txtNombreMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(btGrabarMenu)
+                .addGap(242, 242, 242))
         );
 
         tabContenidoInsumos.addTab("Menú", panelMenu);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        btEliminarMedida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+
+        btEditarMedida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+
+        btBuscarMedida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+
+        btBuscarTodosMedida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+
+        grMedida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "#", "Nombre Medida"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        lbNombreBuscarInsumo.setText("Nombre Insumo:");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(grMedida);
 
-        btBuscarInsumo.setText("Buscar");
+        lbNombreMedida.setText("Nombre Medida");
 
-        javax.swing.GroupLayout panelStockLayout = new javax.swing.GroupLayout(panelStock);
-        panelStock.setLayout(panelStockLayout);
-        panelStockLayout.setHorizontalGroup(
-            panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelStockLayout.createSequentialGroup()
-                .addGroup(panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelStockLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(lbNombreBuscarInsumo)
-                        .addGap(27, 27, 27)
-                        .addComponent(txtBuscarInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(btBuscarInsumo))
-                    .addGroup(panelStockLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+        btGrabarMedida.setText("Grabar");
+
+        btDesactivarEditarMedida.setText("Salir Modo Editar");
+
+        javax.swing.GroupLayout panelMedidasLayout = new javax.swing.GroupLayout(panelMedidas);
+        panelMedidas.setLayout(panelMedidasLayout);
+        panelMedidasLayout.setHorizontalGroup(
+            panelMedidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMedidasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMedidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMedidasLayout.createSequentialGroup()
+                        .addGroup(panelMedidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(panelMedidasLayout.createSequentialGroup()
+                                .addComponent(btEliminarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btEditarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscarMedida)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btBuscarTodosMedida)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(panelMedidasLayout.createSequentialGroup()
+                        .addGroup(panelMedidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btGrabarMedida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMedidasLayout.createSequentialGroup()
+                                .addComponent(lbNombreMedida)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNombreMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addComponent(btDesactivarEditarMedida)
+                        .addGap(111, 111, 111))))
         );
-        panelStockLayout.setVerticalGroup(
-            panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelStockLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNombreBuscarInsumo)
-                    .addComponent(txtBuscarInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarInsumo))
+        panelMedidasLayout.setVerticalGroup(
+            panelMedidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMedidasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMedidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btEliminarMedida)
+                    .addComponent(btEditarMedida)
+                    .addComponent(txtBuscarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarMedida)
+                    .addComponent(btBuscarTodosMedida))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addGroup(panelMedidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNombreMedida)
+                    .addComponent(txtNombreMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btDesactivarEditarMedida))
+                .addGap(18, 18, 18)
+                .addComponent(btGrabarMedida)
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
-        tabContenidoInsumos.addTab("Inventario", panelStock);
+        tabContenidoInsumos.addTab("Medidas", panelMedidas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -232,37 +383,52 @@ public class MainInsumos extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabContenidoInsumos)
+            .addComponent(tabContenidoInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscarInsumo;
-    private javax.swing.JButton btGrabar;
+    private javax.swing.JButton btBuscarInsumos;
+    private javax.swing.JButton btBuscarMedida;
+    private javax.swing.JButton btBuscarMenu;
+    private javax.swing.JButton btBuscarTodosInsumos;
+    private javax.swing.JButton btBuscarTodosMedida;
+    private javax.swing.JButton btBuscarTodosMenu;
+    private javax.swing.JButton btDesactivarEditarInsumos;
+    private javax.swing.JButton btDesactivarEditarMedida;
+    private javax.swing.JButton btDesactivarEditarMenu;
+    private javax.swing.JButton btEditarInsumos;
+    private javax.swing.JButton btEditarMedida;
+    private javax.swing.JButton btEditarMenu;
+    private javax.swing.JButton btEliminarInsumos;
+    private javax.swing.JButton btEliminarMedida;
+    private javax.swing.JButton btEliminarMenu;
     private javax.swing.JButton btGrabarInsumos;
+    private javax.swing.JButton btGrabarMedida;
+    private javax.swing.JButton btGrabarMenu;
     private javax.swing.JComboBox cbTipoMenu;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JTable grInsumos;
+    private javax.swing.JTable grMedida;
+    private javax.swing.JTable grMenu;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JLabel lbCantidad;
-    private javax.swing.JLabel lbNombre;
-    private javax.swing.JLabel lbNombreBuscarInsumo;
     private javax.swing.JLabel lbNombreInsumo;
-    private javax.swing.JLabel lbTipo;
+    private javax.swing.JLabel lbNombreMedida;
+    private javax.swing.JLabel lbNombreMenu;
+    private javax.swing.JLabel lbTipoMenu;
     private javax.swing.JPanel panelInsumos;
+    private javax.swing.JPanel panelMedidas;
     private javax.swing.JPanel panelMenu;
-    private javax.swing.JPanel panelStock;
     private javax.swing.JTabbedPane tabContenidoInsumos;
-    private javax.swing.JTextField txtBuscarInsumo;
-    private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextArea txtDescripcionMenu;
+    private javax.swing.JTextField txtBuscarInsumos;
+    private javax.swing.JTextField txtBuscarMedida;
+    private javax.swing.JTextField txtBuscarMenu;
     private javax.swing.JTextField txtNombreInsumos;
+    private javax.swing.JTextField txtNombreMedida;
     private javax.swing.JTextField txtNombreMenu;
     // End of variables declaration//GEN-END:variables
 }
