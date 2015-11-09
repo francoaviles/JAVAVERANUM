@@ -94,6 +94,8 @@ public class MainHotel extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtCaracteristicas = new javax.swing.JTextArea();
         btGrabarHabitaciones = new javax.swing.JButton();
+        panelTipoHab = new javax.swing.JPanel();
+        panelEstadoHab = new javax.swing.JPanel();
         panelMuebles = new javax.swing.JPanel();
         lbNombreMueble = new javax.swing.JLabel();
         txtNombreMueble = new javax.swing.JTextField();
@@ -236,7 +238,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                                 .addComponent(cbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtNombreHotel)))
                     .addComponent(btGrabarHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
             .addGroup(panelHotelesLayout.createSequentialGroup()
                 .addComponent(btEliminarHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -247,7 +249,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                 .addComponent(btBuscarHotel)
                 .addGap(3, 3, 3)
                 .addComponent(btBuscarTodosHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHotelesLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btDesactivarEditarHotel))
@@ -329,12 +331,12 @@ public class MainHotel extends javax.swing.JInternalFrame {
                             .addComponent(lbTipo)
                             .addComponent(lbCaracteristicas)
                             .addComponent(lbCantPersonas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addGroup(panelHabitacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(63, 63, 63))
             .addGroup(panelHabitacionesLayout.createSequentialGroup()
                 .addGap(77, 77, 77)
@@ -366,10 +368,36 @@ public class MainHotel extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btGrabarHabitaciones)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Habitaciones", panelHabitaciones);
+
+        javax.swing.GroupLayout panelTipoHabLayout = new javax.swing.GroupLayout(panelTipoHab);
+        panelTipoHab.setLayout(panelTipoHabLayout);
+        panelTipoHabLayout.setHorizontalGroup(
+            panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+        panelTipoHabLayout.setVerticalGroup(
+            panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 311, Short.MAX_VALUE)
+        );
+
+        tabContenido.addTab("Tipo Habitación", panelTipoHab);
+
+        javax.swing.GroupLayout panelEstadoHabLayout = new javax.swing.GroupLayout(panelEstadoHab);
+        panelEstadoHab.setLayout(panelEstadoHabLayout);
+        panelEstadoHabLayout.setHorizontalGroup(
+            panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+        panelEstadoHabLayout.setVerticalGroup(
+            panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 311, Short.MAX_VALUE)
+        );
+
+        tabContenido.addTab("Estado Habitación", panelEstadoHab);
 
         lbNombreMueble.setText("Nombre Mueble:");
 
@@ -397,7 +425,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                     .addGroup(panelMueblesLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(btGrabarMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         panelMueblesLayout.setVerticalGroup(
             panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,7 +440,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                     .addComponent(lbEstadoMueble))
                 .addGap(35, 35, 35)
                 .addComponent(btGrabarMuebles)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Muebles", panelMuebles);
@@ -454,7 +482,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                         .addGroup(panelBuscarHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbTipoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtBuscarHab, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBuscarHabLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btBuscarHabitacion)
@@ -475,7 +503,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                     .addComponent(cbTipoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Buscar habitación", panelBuscarHab);
@@ -484,11 +512,13 @@ public class MainHotel extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabContenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+            .addComponent(tabContenido, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tabContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         pack();
@@ -719,9 +749,11 @@ public class MainHotel extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbTipoBuscar;
     private javax.swing.JLabel lbUbicacion;
     private javax.swing.JPanel panelBuscarHab;
+    private javax.swing.JPanel panelEstadoHab;
     private javax.swing.JPanel panelHabitaciones;
     private javax.swing.JPanel panelHoteles;
     private javax.swing.JPanel panelMuebles;
+    private javax.swing.JPanel panelTipoHab;
     private javax.swing.JTabbedPane tabContenido;
     private javax.swing.JTable tableBuscarHabitacion;
     private javax.swing.JTextField txtBuscarHab;
