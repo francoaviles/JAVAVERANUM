@@ -33,9 +33,23 @@ public class DAOComuna {
         return true;
     }
     
-    public ClComuna sqlLeer(int id){     
+    public static ClComuna sqlLeer(int id){     
         ClComuna comuna = new ClComuna();        
         if(!bd.sqlSelect("SELECT * FROM \"comunas\" WHERE \"id_comuna\" = "+id+" ")){
+            return null;
+        }        
+        if(!bd.sqlFetch()){
+            return null;
+        }        
+        comuna.setIdComuna(bd.getInt("id_comuna"));
+        comuna.setNombre(bd.getString("comuna_nombre"));
+        comuna.setIdProvincia(bd.getInt("id_provincia"));
+        return comuna;
+    }
+    
+    public static ClComuna sqlLeer(String name){     
+        ClComuna comuna = new ClComuna();        
+        if(!bd.sqlSelect("SELECT * FROM \"comunas\" WHERE \"comuna_nombre\" = "+name+" ")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -75,5 +89,20 @@ public class DAOComuna {
             
         }     
         return comuna;
-    } 
+    }
+    
+    public static ArrayList sqlBuscarByNombre(String nombre){
+        ArrayList<ClComuna> com = new ArrayList<>();        
+        if(!bd.sqlSelect("SELECT * FROM \"comunas\" WHERE \"comuna_nombre\" LIKE '%"+nombre+"%'")){
+            return null;
+        }
+        while(bd.sqlFetch()){
+            com.add(new ClComuna(bd.getInt("id_comuna")
+                                    , bd.getString("comuna_nombre")
+                                    , bd.getInt("id_provincia")
+                                ));
+            
+        }     
+        return com;
+    }  
 }

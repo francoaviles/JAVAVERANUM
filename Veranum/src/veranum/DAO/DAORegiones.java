@@ -23,21 +23,35 @@ public class DAORegiones {
     }
     
     public static boolean sqlDelete(ClRegion region){
-        String sql="DELETE FROM \"regiones\" WHERE \"id_region\" = '"+region.getIdRegion()+"'";
+        String sql="DELETE FROM \"regiones\" WHERE \"region_nombre\" = '"+region.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     
     }
     
     public static boolean sqlUpdate(ClRegion region){
-        String sql="UPDATE \"regiones\" SET \"nombre\" = '"+region.getNombre()+"', \"region_ordinal\" = '"+region.getOrdinal()+"' WHERE \"id_region\" = '"+region.getIdRegion()+"'";
+        String sql="UPDATE \"regiones\" SET \"region_nombre\" = '"+region.getNombre()+"', \"region_ordinal\" = '"+region.getOrdinal()+"' WHERE \"region_nombre\" = '"+region.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static ClRegion sqlLeer(int id){     
         ClRegion region = new ClRegion(); 
-        if(!bd.sqlSelect("SELECT * FROM \"regiones\" WHERE \"id_region\" = "+id+" ")){
+        if(!bd.sqlSelect("SELECT * FROM \"regiones\" WHERE \"id_region\" ='"+id+"'")){
+            return null;
+        }        
+        if(!bd.sqlFetch()){
+            return null;
+        }
+        region.setIdRegion(bd.getInt("id_region"));
+        region.setNombre(bd.getString("region_nombre"));
+        region.setOrdinal(bd.getString("region_ordinal"));
+        return region;
+    }
+    
+    public static ClRegion sqlLeer(String name){     
+        ClRegion region = new ClRegion(); 
+        if(!bd.sqlSelect("SELECT * FROM \"regiones\" WHERE \"region_nombre\" ='"+name+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -63,4 +77,19 @@ public class DAORegiones {
         }     
         return region;
     }
+    
+    public static ArrayList sqlBuscarByNombre(String nombre){
+        ArrayList<ClRegion> region = new ArrayList<>();        
+        if(!bd.sqlSelect("SELECT * FROM \"regiones\" WHERE \"region_nombre\" LIKE '%"+nombre+"%'")){
+            return null;
+        }
+        while(bd.sqlFetch()){
+            region.add(new ClRegion(bd.getInt("id_region")
+                                    , bd.getString("region_nombre")
+                                    , bd.getString("region_ordinal")
+                                ));
+            
+        }     
+        return region;
+    }  
 }

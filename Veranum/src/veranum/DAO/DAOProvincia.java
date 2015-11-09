@@ -33,9 +33,23 @@ public class DAOProvincia {
         return true;
     }
     
-    public ClProvincia sqlLeer(int id){     
+    public static ClProvincia sqlLeer(int id){     
         ClProvincia provincia = new ClProvincia();        
         if(!bd.sqlSelect("SELECT * FROM \"provincias\" WHERE \"id_provincia\" = "+id+" ")){
+            return null;
+        }        
+        if(!bd.sqlFetch()){
+            return null;
+        }        
+        provincia.setIdProvincia(bd.getInt("id_provincia"));
+        provincia.setNombre(bd.getString("provincia_nombre"));
+        provincia.setIdRegion(bd.getInt("id_region"));
+        return provincia;
+    }
+    
+    public static ClProvincia sqlLeer(String name){     
+        ClProvincia provincia = new ClProvincia();        
+        if(!bd.sqlSelect("SELECT * FROM \"provincias\" WHERE \"provincia_nombre\" = "+name+" ")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -77,5 +91,19 @@ public class DAOProvincia {
         return provincia;
     }  
     
+    public static ArrayList sqlBuscarByNombre(String nombre){
+        ArrayList<ClProvincia> pro = new ArrayList<>();        
+        if(!bd.sqlSelect("SELECT * FROM \"provincias\" WHERE \"provincia_nombre\" LIKE '%"+nombre+"%'")){
+            return null;
+        }
+        while(bd.sqlFetch()){
+            pro.add(new ClProvincia(bd.getInt("id_provincia")
+                                    , bd.getString("provincia_nombre")
+                                    , bd.getInt("id_region")
+                                ));
+            
+        }     
+        return pro;
+    }  
     
 }

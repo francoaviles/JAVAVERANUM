@@ -22,6 +22,10 @@ public class ClComuna {
         setIdProvincia(idProvincia);
     }
     
+    public ClComuna(String nombre) {
+        setNombre(nombre);
+    }
+    
     public ClComuna(int idComuna, String nombre, int idProvincia) {
         setIdComuna(idComuna);
         setNombre(nombre);
