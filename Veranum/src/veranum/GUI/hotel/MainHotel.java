@@ -103,13 +103,43 @@ public class MainHotel extends javax.swing.JInternalFrame {
         jTextArea1 = new javax.swing.JTextArea();
         btDesactivarEditarHab = new javax.swing.JButton();
         panelTipoHab = new javax.swing.JPanel();
+        btEliminarTipoHab = new javax.swing.JButton();
+        btEditarTipoHab = new javax.swing.JButton();
+        btBuscarTipoHab = new javax.swing.JButton();
+        txtBuscarTipoHab = new javax.swing.JTextField();
+        btBuscarTodoTipoHab = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        grTipoHab = new javax.swing.JTable();
+        lbNombreTipoHab = new javax.swing.JLabel();
+        txtNombreTipoHab = new javax.swing.JTextField();
+        btGrabarTipoHab = new javax.swing.JButton();
+        btDesactivarEditarTipoHab = new javax.swing.JButton();
         panelEstadoHab = new javax.swing.JPanel();
+        btEliminarEstadoHab = new javax.swing.JButton();
+        btEditarEstadoHab = new javax.swing.JButton();
+        txtBuscarEstadoHab = new javax.swing.JTextField();
+        btBuscarEstadoHab = new javax.swing.JButton();
+        btBuscarTodosEstadoHab = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        grEstadoHab = new javax.swing.JTable();
+        lbNombreEstadoHab = new javax.swing.JLabel();
+        txtNombreEstadoHab = new javax.swing.JTextField();
+        btGrabarEstadoHab = new javax.swing.JButton();
+        btDesactivarEditarEstadoHab = new javax.swing.JButton();
         panelMuebles = new javax.swing.JPanel();
         lbNombreMueble = new javax.swing.JLabel();
         txtNombreMueble = new javax.swing.JTextField();
         cbEstadoMueble = new javax.swing.JComboBox();
         lbEstadoMueble = new javax.swing.JLabel();
         btGrabarMuebles = new javax.swing.JButton();
+        btEliminarMueble = new javax.swing.JButton();
+        btEditarMueble = new javax.swing.JButton();
+        txtBuscarMueble = new javax.swing.JTextField();
+        btBuscarMueble = new javax.swing.JButton();
+        btBuscarTodosMueble = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        grMueble = new javax.swing.JTable();
+        btDesactivarEditarMueble = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Panel Hoteles"));
         setForeground(new java.awt.Color(204, 204, 204));
@@ -242,7 +272,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                                 .addComponent(cbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtNombreHotel)))
                     .addComponent(btGrabarHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
             .addGroup(panelHotelesLayout.createSequentialGroup()
                 .addComponent(btEliminarHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -253,7 +283,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                 .addComponent(btBuscarHotel)
                 .addGap(3, 3, 3)
                 .addComponent(btBuscarTodosHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHotelesLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btDesactivarEditarHotel))
@@ -428,7 +458,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
                     .addGroup(panelHabitacionesLayout.createSequentialGroup()
                         .addComponent(lbCaracteristicas)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btGrabarHabitaciones)
                 .addContainerGap())
@@ -436,28 +466,186 @@ public class MainHotel extends javax.swing.JInternalFrame {
 
         tabContenido.addTab("Habitaciones", panelHabitaciones);
 
+        btEliminarTipoHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+
+        btEditarTipoHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+
+        btBuscarTipoHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+
+        btBuscarTodoTipoHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+
+        grTipoHab.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "#", "Nombre Tipo Habitación"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(grTipoHab);
+
+        lbNombreTipoHab.setText("Nombre Tipo Habitación:");
+
+        btGrabarTipoHab.setText("Grabar");
+
+        btDesactivarEditarTipoHab.setText("Salir Modo Editar");
+
         javax.swing.GroupLayout panelTipoHabLayout = new javax.swing.GroupLayout(panelTipoHab);
         panelTipoHab.setLayout(panelTipoHabLayout);
         panelTipoHabLayout.setHorizontalGroup(
             panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 502, Short.MAX_VALUE)
+            .addGroup(panelTipoHabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelTipoHabLayout.createSequentialGroup()
+                        .addGroup(panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(panelTipoHabLayout.createSequentialGroup()
+                                .addComponent(btEliminarTipoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btEditarTipoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscarTipoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscarTipoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscarTodoTipoHab)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(panelTipoHabLayout.createSequentialGroup()
+                        .addGroup(panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btGrabarTipoHab, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelTipoHabLayout.createSequentialGroup()
+                                .addComponent(lbNombreTipoHab)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNombreTipoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btDesactivarEditarTipoHab)
+                        .addGap(91, 91, 91))))
         );
         panelTipoHabLayout.setVerticalGroup(
             panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGroup(panelTipoHabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btEliminarTipoHab)
+                    .addComponent(btEditarTipoHab)
+                    .addComponent(btBuscarTipoHab)
+                    .addComponent(txtBuscarTipoHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarTodoTipoHab))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(panelTipoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNombreTipoHab)
+                    .addComponent(txtNombreTipoHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btDesactivarEditarTipoHab))
+                .addGap(18, 18, 18)
+                .addComponent(btGrabarTipoHab)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Tipo Habitación", panelTipoHab);
+
+        btEliminarEstadoHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+
+        btEditarEstadoHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+
+        btBuscarEstadoHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+
+        btBuscarTodosEstadoHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+
+        grEstadoHab.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "#", "Nombre Estado habitación"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(grEstadoHab);
+
+        lbNombreEstadoHab.setText("Nombre Estado Habitación:");
+
+        btGrabarEstadoHab.setText("Grabar");
+
+        btDesactivarEditarEstadoHab.setText("Salir Modo Editar");
 
         javax.swing.GroupLayout panelEstadoHabLayout = new javax.swing.GroupLayout(panelEstadoHab);
         panelEstadoHab.setLayout(panelEstadoHabLayout);
         panelEstadoHabLayout.setHorizontalGroup(
             panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 502, Short.MAX_VALUE)
+            .addGroup(panelEstadoHabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEstadoHabLayout.createSequentialGroup()
+                        .addGroup(panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5)
+                            .addGroup(panelEstadoHabLayout.createSequentialGroup()
+                                .addComponent(btEliminarEstadoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btEditarEstadoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscarEstadoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscarEstadoHab)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btBuscarTodosEstadoHab)
+                                .addGap(0, 66, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(panelEstadoHabLayout.createSequentialGroup()
+                        .addGroup(panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btGrabarEstadoHab, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelEstadoHabLayout.createSequentialGroup()
+                                .addComponent(lbNombreEstadoHab)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNombreEstadoHab, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btDesactivarEditarEstadoHab)
+                        .addGap(47, 47, 47))))
         );
         panelEstadoHabLayout.setVerticalGroup(
             panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGroup(panelEstadoHabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btEliminarEstadoHab)
+                    .addComponent(btEditarEstadoHab)
+                    .addComponent(txtBuscarEstadoHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarEstadoHab)
+                    .addComponent(btBuscarTodosEstadoHab))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(panelEstadoHabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNombreEstadoHab)
+                    .addComponent(txtNombreEstadoHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btDesactivarEditarEstadoHab))
+                .addGap(18, 18, 18)
+                .addComponent(btGrabarEstadoHab)
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Estado Habitación", panelEstadoHab);
@@ -470,40 +658,100 @@ public class MainHotel extends javax.swing.JInternalFrame {
 
         btGrabarMuebles.setText("Grabar");
 
+        btEliminarMueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+
+        btEditarMueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+
+        btBuscarMueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+
+        btBuscarTodosMueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+
+        grMueble.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "#", "Nombre Mueble", "Estado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(grMueble);
+        if (grMueble.getColumnModel().getColumnCount() > 0) {
+            grMueble.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
+
+        btDesactivarEditarMueble.setText("Salir Modo Editar");
+
         javax.swing.GroupLayout panelMueblesLayout = new javax.swing.GroupLayout(panelMuebles);
         panelMuebles.setLayout(panelMueblesLayout);
         panelMueblesLayout.setHorizontalGroup(
             panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMueblesLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6)
                     .addGroup(panelMueblesLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbNombreMueble)
-                            .addComponent(lbEstadoMueble))
-                        .addGap(62, 62, 62)
-                        .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbEstadoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelMueblesLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(btGrabarMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btGrabarMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelMueblesLayout.createSequentialGroup()
+                                .addComponent(btEliminarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btEditarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscarMueble)
+                                .addGap(18, 18, 18)
+                                .addComponent(btBuscarTodosMueble))
+                            .addGroup(panelMueblesLayout.createSequentialGroup()
+                                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbNombreMueble)
+                                    .addComponent(lbEstadoMueble))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbEstadoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelMueblesLayout.createSequentialGroup()
+                                        .addComponent(txtNombreMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btDesactivarEditarMueble)
+                                        .addGap(27, 27, 27)))))
+                        .addGap(0, 20, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panelMueblesLayout.setVerticalGroup(
             panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMueblesLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbNombreMueble)
-                    .addComponent(txtNombreMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbEstadoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbEstadoMueble))
-                .addGap(35, 35, 35)
+                    .addComponent(btEliminarMueble)
+                    .addComponent(btEditarMueble)
+                    .addComponent(txtBuscarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarMueble)
+                    .addComponent(btBuscarTodosMueble))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNombreMueble)
+                    .addComponent(txtNombreMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btDesactivarEditarMueble))
+                .addGap(18, 18, 18)
+                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbEstadoMueble)
+                    .addComponent(cbEstadoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btGrabarMuebles)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         tabContenido.addTab("Muebles", panelMuebles);
@@ -711,30 +959,53 @@ public class MainHotel extends javax.swing.JInternalFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btBuscarEstadoHab;
     private javax.swing.JButton btBuscarHab;
     private javax.swing.JButton btBuscarHotel;
+    private javax.swing.JButton btBuscarMueble;
+    private javax.swing.JButton btBuscarTipoHab;
+    private javax.swing.JButton btBuscarTodoTipoHab;
+    private javax.swing.JButton btBuscarTodosEstadoHab;
     private javax.swing.JButton btBuscarTodosHab;
     private javax.swing.JButton btBuscarTodosHotel;
+    private javax.swing.JButton btBuscarTodosMueble;
+    private javax.swing.JButton btDesactivarEditarEstadoHab;
     private javax.swing.JButton btDesactivarEditarHab;
     private javax.swing.JButton btDesactivarEditarHotel;
+    private javax.swing.JButton btDesactivarEditarMueble;
+    private javax.swing.JButton btDesactivarEditarTipoHab;
+    private javax.swing.JButton btEditarEstadoHab;
     private javax.swing.JButton btEditarHab;
     private javax.swing.JButton btEditarHotel;
+    private javax.swing.JButton btEditarMueble;
+    private javax.swing.JButton btEditarTipoHab;
+    private javax.swing.JButton btEliminarEstadoHab;
     private javax.swing.JButton btEliminarHab;
     private javax.swing.JButton btEliminarHotel;
+    private javax.swing.JButton btEliminarMueble;
+    private javax.swing.JButton btEliminarTipoHab;
+    private javax.swing.JButton btGrabarEstadoHab;
     private javax.swing.JButton btGrabarHabitaciones;
     private javax.swing.JButton btGrabarHoteles;
     private javax.swing.JButton btGrabarMuebles;
+    private javax.swing.JButton btGrabarTipoHab;
     private javax.swing.JComboBox cbCadena;
     private javax.swing.JComboBox cbComuna;
     private javax.swing.JComboBox cbEstadoMueble;
     private javax.swing.JComboBox cbProvincia;
     private javax.swing.JComboBox cbRegion;
     private javax.swing.JComboBox cbTipo;
+    private javax.swing.JTable grEstadoHab;
     private javax.swing.JTable grHabitacion;
     private javax.swing.JTable grHotel;
+    private javax.swing.JTable grMueble;
+    private javax.swing.JTable grTipoHab;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbCadena;
     private javax.swing.JLabel lbCantPersonas;
@@ -742,8 +1013,10 @@ public class MainHotel extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbComuna;
     private javax.swing.JLabel lbDireccion;
     private javax.swing.JLabel lbEstadoMueble;
+    private javax.swing.JLabel lbNombreEstadoHab;
     private javax.swing.JLabel lbNombreHotel;
     private javax.swing.JLabel lbNombreMueble;
+    private javax.swing.JLabel lbNombreTipoHab;
     private javax.swing.JLabel lbPrecio;
     private javax.swing.JLabel lbProvincia;
     private javax.swing.JLabel lbRegion;
@@ -755,12 +1028,17 @@ public class MainHotel extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelMuebles;
     private javax.swing.JPanel panelTipoHab;
     private javax.swing.JTabbedPane tabContenido;
+    private javax.swing.JTextField txtBuscarEstadoHab;
     private javax.swing.JTextField txtBuscarHab;
     private javax.swing.JTextField txtBuscarHotel;
+    private javax.swing.JTextField txtBuscarMueble;
+    private javax.swing.JTextField txtBuscarTipoHab;
     private javax.swing.JTextField txtCantPersonas;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNombreEstadoHab;
     private javax.swing.JTextField txtNombreHotel;
     private javax.swing.JTextField txtNombreMueble;
+    private javax.swing.JTextField txtNombreTipoHab;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtUbicacion;
     // End of variables declaration//GEN-END:variables
