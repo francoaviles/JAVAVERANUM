@@ -7,6 +7,7 @@ package helper;
 
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
@@ -75,6 +76,8 @@ public class Formularios {
             delete.setEnabled(true);
         }
     } 
+
+    
     public static void habilita(JComponent obj, boolean sw)
     {
         Object[] arrObj = obj.getComponents();

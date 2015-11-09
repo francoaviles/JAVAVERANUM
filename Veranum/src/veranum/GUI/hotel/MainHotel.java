@@ -500,13 +500,13 @@ public class MainHotel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btDesactivarEditarHotelActionPerformed
 
     private void btEditarHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarHotelActionPerformed
-        this.leerServicio(Formularios.getSelectedRow(grHotel));
+        this.leerHotel(Formularios.getSelectedRow(grHotel));
         this.paraGrabar = true;
         this.btnEditarMode();
     }//GEN-LAST:event_btEditarHotelActionPerformed
 
     private void btEliminarHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarHotelActionPerformed
-        this.leerServicio(Formularios.getSelectedRow(grHotel));
+        this.leerHotel(Formularios.getSelectedRow(grHotel));
         if(this.id_hotel == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
@@ -530,7 +530,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
         int row_dos = Formularios.getTablaSeleccionada(evt, grHotel, 2);
 
         if(row_dos >= 0){
-            this.leerServicio(Integer.parseInt(grHotel.getValueAt(row_dos, 0).toString()));
+            this.leerHotel(Integer.parseInt(grHotel.getValueAt(row_dos, 0).toString()));
             Formularios.ActiveBotonesEliminarEditar(btEditarHotel, btEliminarHotel);
             this.paraGrabar = true;
             this.btnEditarMode();
@@ -608,11 +608,46 @@ public class MainHotel extends javax.swing.JInternalFrame {
         }
     }
     // Method Custom
-    private void leerServicio(int id){
+    private void leerHotel(int id){
         this.id_hotel = id;
         ClHoteles hotel = DAOHoteles.sqlLeer(id);
         txtNombreHotel.setText(hotel.getNombre());
         txtDireccion.setText(hotel.getDireccion());
+        
+        ClRegion reg;
+        ClProvincia pro;
+        ClComuna com;
+        
+        for (int i = 0; i < cbRegion.getItemCount(); i++)
+        {
+            reg = (ClRegion)cbRegion.getItemAt(i);
+            if (reg.getIdRegion()== hotel.getIdRegion())
+            {
+                cbRegion.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+        for (int i = 0; i < cbProvincia.getItemCount(); i++)
+        {
+            pro = (ClProvincia)cbProvincia.getItemAt(i);
+            if (pro.getIdProvincia()== hotel.getIdProvincia())
+            {
+                cbProvincia.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+        for (int i = 0; i < cbComuna.getItemCount(); i++)
+        {
+            com = (ClComuna)cbComuna.getItemAt(i);
+            if (com.getIdComuna()== hotel.getIdComuna())
+            {
+                cbProvincia.setSelectedIndex(i);
+                break;
+            }
+        }
+        
     }
     
     private void leerTodos(boolean todos){

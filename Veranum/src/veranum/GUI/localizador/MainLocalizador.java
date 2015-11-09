@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -6,6 +6,7 @@ package veranum.GUI.localizador;
 
 import helper.Formularios;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOComuna;
@@ -28,9 +29,8 @@ public class MainLocalizador extends javax.swing.JInternalFrame {
      */
     public MainLocalizador() {
         initComponents();
-        /*for (Object item : DAORegiones.sqlLeerTodos()) {
-            cbRegion.addItem(item);
-        }*/
+        this.cargarRegiones();
+        this.cargarProvincias();
         grRegion.setEnabled(true);
         grProvincia.setEnabled(true);
         grComuna.setEnabled(true);
@@ -87,7 +87,7 @@ public class MainLocalizador extends javax.swing.JInternalFrame {
         btEditarProvincia = new javax.swing.JButton();
         btDesactivarEditarProvincia = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
-        cbRegion = new javax.swing.JComboBox<>();
+        cbRegion = new javax.swing.JComboBox();
         panelComuna = new javax.swing.JPanel();
         panelComuna1 = new javax.swing.JPanel();
         lbNombreComuna = new javax.swing.JLabel();
@@ -103,7 +103,7 @@ public class MainLocalizador extends javax.swing.JInternalFrame {
         btEditarComuna = new javax.swing.JButton();
         btDesactivarEditarComuna = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
-        cbProvincia = new javax.swing.JComboBox<>();
+        cbProvincia = new javax.swing.JComboBox();
 
         jButton1.setText("jButton1");
 
@@ -339,8 +339,6 @@ public class MainLocalizador extends javax.swing.JInternalFrame {
             }
         });
 
-        cbRegion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout panelProvincia1Layout = new javax.swing.GroupLayout(panelProvincia1);
         panelProvincia1.setLayout(panelProvincia1Layout);
         panelProvincia1Layout.setHorizontalGroup(
@@ -499,8 +497,6 @@ public class MainLocalizador extends javax.swing.JInternalFrame {
                 btDesactivarEditarComunaActionPerformed(evt);
             }
         });
-
-        cbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout panelComuna1Layout = new javax.swing.GroupLayout(panelComuna1);
         panelComuna1.setLayout(panelComuna1Layout);
@@ -809,22 +805,55 @@ public class MainLocalizador extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btDesactivarEditarComunaActionPerformed
 
     // Method Custom
+    private void cargarRegiones(){
+        for (Object region : DAORegiones.sqlLeerTodos()) {
+            cbRegion.addItem(region);
+        }
+    }
+    
+    private void cargarProvincias(){
+        for (Object item : DAOProvincia.sqlLeerTodos()) {
+            cbProvincia.addItem(item);
+        }
+    }
+    
     private void leerRegion(int id){
-        ClRegion servicio = DAORegiones.sqlLeer(id);
-        txtNombreRegion.setText(servicio.getNombre());
-        txtRegionOrdinal.setText(servicio.getOrdinal());
+        ClRegion regiones = DAORegiones.sqlLeer(id);
+        txtNombreRegion.setText(regiones.getNombre());
+        txtRegionOrdinal.setText(regiones.getOrdinal());
     }
     
     private void leerComuna(int id){
         ClComuna xx = DAOComuna.sqlLeer(id);
         txtNombreComuna.setText(xx.getNombre());
-        //
+        
+        ClProvincia item;
+        for (int i = 0; i < cbProvincia.getItemCount(); i++)
+        {
+            item = (ClProvincia)cbProvincia.getItemAt(i);
+            if (item.getIdProvincia()== xx.getIdProvincia())
+            {
+                cbProvincia.setSelectedIndex(i);
+                break;
+            }
+        }
     }
     
     private void leerProvincia(int id){
         ClProvincia xx = DAOProvincia.sqlLeer(id);
         txtNombreProvincia.setText(xx.getNombre());
-        
+
+        ClRegion item;
+        for (int i = 0; i < cbRegion.getItemCount(); i++)
+        {
+            item = (ClRegion)cbRegion.getItemAt(i);
+            if (item.getIdRegion()== xx.getIdRegion())
+            {
+                cbRegion.setSelectedIndex(i);
+                break;
+            }
+        }
+
     }
     
     private void leerTodosReg(boolean todos){
@@ -909,49 +938,38 @@ public class MainLocalizador extends javax.swing.JInternalFrame {
     private javax.swing.JButton btBuscarComuna;
     private javax.swing.JButton btBuscarProvincia;
     private javax.swing.JButton btBuscarRegion;
-    private javax.swing.JButton btBuscarRegion1;
     private javax.swing.JButton btBuscarTodosComuna;
     private javax.swing.JButton btBuscarTodosProvincia;
     private javax.swing.JButton btBuscarTodosRegion;
-    private javax.swing.JButton btBuscarTodosRegion1;
     private javax.swing.JButton btDesactivarEditarComuna;
     private javax.swing.JButton btDesactivarEditarProvincia;
     private javax.swing.JButton btDesactivarEditarRegion;
-    private javax.swing.JButton btDesactivarEditarRegion1;
     private javax.swing.JButton btEditarComuna;
     private javax.swing.JButton btEditarProvincia;
     private javax.swing.JButton btEditarRegion;
-    private javax.swing.JButton btEditarRegion1;
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btEliminarComuna;
     private javax.swing.JButton btEliminarProvincia;
-    private javax.swing.JButton btEliminarRegion1;
     private javax.swing.JButton btGrabarComuna;
     private javax.swing.JButton btGrabarProvincia;
     private javax.swing.JButton btGrabarRegion;
-    private javax.swing.JButton btGrabarRegion1;
-    private javax.swing.JComboBox<String> cbProvincia;
-    private javax.swing.JComboBox<String> cbRegion;
+    private javax.swing.JComboBox cbProvincia;
+    private javax.swing.JComboBox cbRegion;
     private javax.swing.JTable grComuna;
     private javax.swing.JTable grProvincia;
     private javax.swing.JTable grRegion;
-    private javax.swing.JTable grRegion1;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel lbNombreComuna;
     private javax.swing.JLabel lbNombreProvincia;
     private javax.swing.JLabel lbNombreRegion;
-    private javax.swing.JLabel lbNombreRegion1;
     private javax.swing.JLabel lbProvinciaComuna;
     private javax.swing.JLabel lbRegionOrdinal;
-    private javax.swing.JLabel lbRegionOrdinal1;
     private javax.swing.JLabel lbRegionProvincia;
     private javax.swing.JPanel panelComuna;
     private javax.swing.JPanel panelComuna1;
@@ -959,17 +977,13 @@ public class MainLocalizador extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelProvincia;
     private javax.swing.JPanel panelProvincia1;
     private javax.swing.JPanel panelRegion;
-    private javax.swing.JPanel panelServicios1;
     private javax.swing.JTabbedPane tabContLocalizador;
     private javax.swing.JTextField txtBuscarComuna;
     private javax.swing.JTextField txtBuscarProvincia;
     private javax.swing.JTextField txtBuscarRegion;
-    private javax.swing.JTextField txtBuscarRegion1;
     private javax.swing.JTextField txtNombreComuna;
     private javax.swing.JTextField txtNombreProvincia;
     private javax.swing.JTextField txtNombreRegion;
-    private javax.swing.JTextField txtNombreRegion1;
     private javax.swing.JTextField txtRegionOrdinal;
-    private javax.swing.JTextField txtRegionOrdinal1;
     // End of variables declaration//GEN-END:variables
 }
