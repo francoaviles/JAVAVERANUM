@@ -39,22 +39,32 @@ public class MainReportes extends javax.swing.JInternalFrame {
         cbTipoRepor = new javax.swing.JComboBox();
         txtFechaCreacion = new javax.swing.JTextField();
         txtArchivo = new javax.swing.JTextField();
+        btEliminarReporte = new javax.swing.JButton();
+        btEditarReporte = new javax.swing.JButton();
+        txtBuscarReporte = new javax.swing.JTextField();
+        btBuscarReporte = new javax.swing.JButton();
+        btBuscarTodosReporte = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        grReporte = new javax.swing.JTable();
+        btDesactivarEditarReporte = new javax.swing.JButton();
         panelInspecciones = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtFechaInspeccion = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtArchivoInspeccion = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtComentarioInspeccion = new javax.swing.JTextField();
-        cbTipoInspeccion = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
         btInspecciones = new javax.swing.JButton();
-        panelBuscarReportes = new javax.swing.JPanel();
+        btEliminarInspeccion = new javax.swing.JButton();
+        btEditarInspeccion = new javax.swing.JButton();
+        txtBuscarInspeccion = new javax.swing.JTextField();
+        btBuscarInspeccion = new javax.swing.JButton();
+        btBuscarTodosInspeccion = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        lbTipoBuscarReport = new javax.swing.JLabel();
-        btBuscarReportes = new javax.swing.JButton();
-        cbTipoBuscarReport = new javax.swing.JComboBox();
+        grInspeccion = new javax.swing.JTable();
+        lbIdHabInspeccion = new javax.swing.JLabel();
+        lbComentarioInspeccion = new javax.swing.JLabel();
+        lbNombreInspector = new javax.swing.JLabel();
+        txtComentarioInspeccion = new javax.swing.JTextField();
+        txtNombreInspector = new javax.swing.JTextField();
+        btDesactivarEditarInspeccion = new javax.swing.JButton();
+        cbHabInspeccion = new javax.swing.JComboBox<>();
 
         jButton1.setText("jButton1");
 
@@ -74,42 +84,107 @@ public class MainReportes extends javax.swing.JInternalFrame {
 
         cbTipoRepor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btEliminarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+
+        btEditarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+
+        btBuscarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+
+        btBuscarTodosReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+
+        grReporte.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "#", "Fecha Cración", "Archivo", "Tipo", "Comentario"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(grReporte);
+        if (grReporte.getColumnModel().getColumnCount() > 0) {
+            grReporte.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
+
+        btDesactivarEditarReporte.setText("Salir Modo Editar");
+
         javax.swing.GroupLayout panelReportesLayout = new javax.swing.GroupLayout(panelReportes);
         panelReportes.setLayout(panelReportesLayout);
         panelReportesLayout.setHorizontalGroup(
             panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelReportesLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addContainerGap()
                 .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbComentario)
-                    .addComponent(lbTipo)
-                    .addComponent(lbFechaCreacion)
-                    .addComponent(lbArchivo))
-                .addGap(25, 25, 25)
-                .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbTipoRepor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(txtFechaCreacion)
-                    .addComponent(txtArchivo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelReportesLayout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
-                .addComponent(btGrabarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+                    .addGroup(panelReportesLayout.createSequentialGroup()
+                        .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3)
+                            .addGroup(panelReportesLayout.createSequentialGroup()
+                                .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelReportesLayout.createSequentialGroup()
+                                        .addComponent(btEliminarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btEditarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtBuscarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btBuscarReporte)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btBuscarTodosReporte))
+                                    .addComponent(lbArchivo)
+                                    .addComponent(lbTipo)
+                                    .addComponent(lbComentario)
+                                    .addComponent(btGrabarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(panelReportesLayout.createSequentialGroup()
+                        .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelReportesLayout.createSequentialGroup()
+                                .addGap(123, 123, 123)
+                                .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbTipoRepor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelReportesLayout.createSequentialGroup()
+                                .addComponent(lbFechaCreacion)
+                                .addGap(31, 31, 31)
+                                .addComponent(txtFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btDesactivarEditarReporte)
+                        .addGap(41, 41, 41))))
         );
         panelReportesLayout.setVerticalGroup(
             panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelReportesLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
+                .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btEliminarReporte)
+                    .addComponent(btEditarReporte)
+                    .addComponent(txtBuscarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarReporte)
+                    .addComponent(btBuscarTodosReporte))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbFechaCreacion)
-                    .addComponent(txtFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btDesactivarEditarReporte))
                 .addGap(18, 18, 18)
                 .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbArchivo)
                     .addComponent(txtArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbTipo)
                     .addComponent(cbTipoRepor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -118,121 +193,135 @@ public class MainReportes extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btGrabarReporte)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         tabContenidoReportes.addTab("Reportes", panelReportes);
 
         jLabel1.setText("Fecha Inspección:");
 
-        jLabel2.setText("Archivo:");
-
-        jLabel3.setText("Tipo:");
-
-        cbTipoInspeccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel4.setText("Comentario:");
-
         btInspecciones.setText("Grabar");
+
+        btEliminarInspeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+
+        btEditarInspeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+
+        btBuscarInspeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+
+        btBuscarTodosInspeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+
+        grInspeccion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "#", "Habitación Inspección", "Fecha Inspección", "Comentario", "Nombre Inspector"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(grInspeccion);
+        if (grInspeccion.getColumnModel().getColumnCount() > 0) {
+            grInspeccion.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
+
+        lbIdHabInspeccion.setText("Habitación Inspección:");
+
+        lbComentarioInspeccion.setText("Comentario:");
+
+        lbNombreInspector.setText("Nombre Inspector:");
+
+        btDesactivarEditarInspeccion.setText("Salir Modo Editar");
+
+        cbHabInspeccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout panelInspeccionesLayout = new javax.swing.GroupLayout(panelInspecciones);
         panelInspecciones.setLayout(panelInspeccionesLayout);
         panelInspeccionesLayout.setHorizontalGroup(
             panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInspeccionesLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btInspecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelInspeccionesLayout.createSequentialGroup()
                         .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(72, 72, 72)
-                        .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbTipoInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFechaInspeccion, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .addComponent(txtArchivoInspeccion)
-                            .addComponent(txtComentarioInspeccion))))
-                .addContainerGap(142, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelInspeccionesLayout.createSequentialGroup()
+                                .addComponent(btEliminarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btEditarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscarInspeccion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btBuscarTodosInspeccion))
+                            .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btInspecciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelInspeccionesLayout.createSequentialGroup()
+                                    .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(lbComentarioInspeccion)
+                                        .addComponent(lbNombreInspector))
+                                    .addGap(35, 35, 35)
+                                    .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtFechaInspeccion, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                                        .addComponent(txtComentarioInspeccion)
+                                        .addComponent(txtNombreInspector)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelInspeccionesLayout.createSequentialGroup()
+                        .addComponent(lbIdHabInspeccion)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbHabInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btDesactivarEditarInspeccion)
+                        .addGap(49, 49, 49))))
         );
         panelInspeccionesLayout.setVerticalGroup(
             panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInspeccionesLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFechaInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addContainerGap()
+                .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btEliminarInspeccion)
+                    .addComponent(btEditarInspeccion)
+                    .addComponent(txtBuscarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarInspeccion)
+                    .addComponent(btBuscarTodosInspeccion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbIdHabInspeccion)
+                    .addComponent(btDesactivarEditarInspeccion)
+                    .addComponent(cbHabInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(txtArchivoInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelInspeccionesLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbComentarioInspeccion)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbNombreInspector)
+                            .addComponent(txtNombreInspector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelInspeccionesLayout.createSequentialGroup()
+                        .addComponent(txtFechaInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtComentarioInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(cbTipoInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelInspeccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtComentarioInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
                 .addComponent(btInspecciones)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         tabContenidoReportes.addTab("Inspecciones Sanitarias", panelInspecciones);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
-
-        lbTipoBuscarReport.setText("Tipo:");
-
-        btBuscarReportes.setText("Buscar");
-
-        cbTipoBuscarReport.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout panelBuscarReportesLayout = new javax.swing.GroupLayout(panelBuscarReportes);
-        panelBuscarReportes.setLayout(panelBuscarReportesLayout);
-        panelBuscarReportesLayout.setHorizontalGroup(
-            panelBuscarReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBuscarReportesLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(lbTipoBuscarReport)
-                .addGap(53, 53, 53)
-                .addComponent(cbTipoBuscarReport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btBuscarReportes)
-                .addGap(56, 56, 56))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBuscarReportesLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
-        );
-        panelBuscarReportesLayout.setVerticalGroup(
-            panelBuscarReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBuscarReportesLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(panelBuscarReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbTipoBuscarReport)
-                    .addComponent(btBuscarReportes)
-                    .addComponent(cbTipoBuscarReport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
-        );
-
-        tabContenidoReportes.addTab("Buscar", panelBuscarReportes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -248,34 +337,44 @@ public class MainReportes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscarReportes;
+    private javax.swing.JButton btBuscarInspeccion;
+    private javax.swing.JButton btBuscarReporte;
+    private javax.swing.JButton btBuscarTodosInspeccion;
+    private javax.swing.JButton btBuscarTodosReporte;
+    private javax.swing.JButton btDesactivarEditarInspeccion;
+    private javax.swing.JButton btDesactivarEditarReporte;
+    private javax.swing.JButton btEditarInspeccion;
+    private javax.swing.JButton btEditarReporte;
+    private javax.swing.JButton btEliminarInspeccion;
+    private javax.swing.JButton btEliminarReporte;
     private javax.swing.JButton btGrabarReporte;
     private javax.swing.JButton btInspecciones;
-    private javax.swing.JComboBox cbTipoBuscarReport;
-    private javax.swing.JComboBox cbTipoInspeccion;
+    private javax.swing.JComboBox<String> cbHabInspeccion;
     private javax.swing.JComboBox cbTipoRepor;
+    private javax.swing.JTable grInspeccion;
+    private javax.swing.JTable grReporte;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbArchivo;
     private javax.swing.JLabel lbComentario;
+    private javax.swing.JLabel lbComentarioInspeccion;
     private javax.swing.JLabel lbFechaCreacion;
+    private javax.swing.JLabel lbIdHabInspeccion;
+    private javax.swing.JLabel lbNombreInspector;
     private javax.swing.JLabel lbTipo;
-    private javax.swing.JLabel lbTipoBuscarReport;
-    private javax.swing.JPanel panelBuscarReportes;
     private javax.swing.JPanel panelInspecciones;
     private javax.swing.JPanel panelReportes;
     private javax.swing.JTabbedPane tabContenidoReportes;
     private javax.swing.JTextField txtArchivo;
-    private javax.swing.JTextField txtArchivoInspeccion;
+    private javax.swing.JTextField txtBuscarInspeccion;
+    private javax.swing.JTextField txtBuscarReporte;
     private javax.swing.JTextArea txtComentario;
     private javax.swing.JTextField txtComentarioInspeccion;
     private javax.swing.JTextField txtFechaCreacion;
     private javax.swing.JTextField txtFechaInspeccion;
+    private javax.swing.JTextField txtNombreInspector;
     // End of variables declaration//GEN-END:variables
 }
