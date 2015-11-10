@@ -30,6 +30,9 @@ public class ClServicios {
         setPrecio(precio);
     }
 
+    public ClServicios(int idServicio) {
+        setIdServicio(idServicio);
+    }
     public int getIdServicio() {
         return idServicio;
     }

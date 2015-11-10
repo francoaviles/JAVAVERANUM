@@ -22,14 +22,14 @@ public class DAOServicios {
     }
     
     public static boolean sqlDelete(ClServicios servicios){
-        String sql="DELETE FROM \"servicios\" WHERE \"id_servicio\" = '"+servicios.getIdServicio()+"'";
+        String sql="DELETE FROM \"servicios\" WHERE \"id_servicio\" = "+servicios.getIdServicio()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClServicios servicios)
     {
-        String sql="UPDATE \"servicios\" SET \"nombre\" = '"+servicios.getNombre()+"', \"precio\" = '"+servicios.getPrecio()+"' WHERE \"nombre\" = '"+servicios.getNombre()+"'";
+        String sql="UPDATE \"servicios\" SET \"nombre\" = '"+servicios.getNombre()+"', \"precio\" = '"+servicios.getPrecio()+"' WHERE \"id_servicio\" = "+servicios.getIdServicio()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }

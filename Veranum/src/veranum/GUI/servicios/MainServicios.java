@@ -20,6 +20,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
 
     private boolean paraGrabar = false;
     private DefaultTableModel dt = new DefaultTableModel();
+    private int id = 0;
     /**
      * Creates new form MainServicios
      */
@@ -374,7 +375,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
             this.leerTodos(true);
         }  
         }else{
-            DAOServicios.sqlUpdate(     new ClServicios(txtNombreServicio.getText()
+            DAOServicios.sqlUpdate(     new ClServicios(this.id, txtNombreServicio.getText()
                                         , Integer.parseInt(txtPrecioServicio.getText())));
             JOptionPane.showMessageDialog(this, "Modificado");
             Formularios.DesactiveBotonesEliminarEditar(btEditarServicio, btEliminar);
@@ -388,10 +389,11 @@ public class MainServicios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btBuscarServicioActionPerformed
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
-        if(!paraGrabar){
+       this.leerServicio(Formularios.getSelectedRow(grServicio));
+        if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOServicios.sqlDelete(new ClServicios(txtNombreServicio.getText()));
+            DAOServicios.sqlDelete(new ClServicios(this.id));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(panelServicios);
             Formularios.DesactiveBotonesEliminarEditar(btEditarServicio, btEliminar);
@@ -434,6 +436,7 @@ public class MainServicios extends javax.swing.JInternalFrame {
     
     // Method Custom
     private void leerServicio(int id){
+        this.id = id;
         ClServicios servicio = DAOServicios.sqlLeer(id);
         txtNombreServicio.setText(servicio.getNombre());
         txtPrecioServicio.setText(String.valueOf(servicio.getPrecio()));
