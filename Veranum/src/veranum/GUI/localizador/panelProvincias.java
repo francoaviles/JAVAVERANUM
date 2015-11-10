@@ -211,7 +211,7 @@ public class panelProvincias extends javax.swing.JPanel {
         }
         }else{
             DAOProvincia.sqlUpdate(new ClProvincia(this.id, txtNombreProvincia.getText()
-                , this.id));
+                                    , id_region));
             JOptionPane.showMessageDialog(this, "Modificado");
             Formularios.DesactiveBotonesEliminarEditar(btEditarProvincia, btEliminarProvincia);
             helper.Formularios.limpiar(this);
