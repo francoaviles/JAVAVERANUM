@@ -42,7 +42,6 @@ public class panelRoles extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRoles = new javax.swing.JPanel();
         lbNombreRol = new javax.swing.JLabel();
         txtNombreRol = new javax.swing.JTextField();
         btGrabarRol = new javax.swing.JButton();
@@ -136,17 +135,16 @@ public class panelRoles extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout panelRolesLayout = new javax.swing.GroupLayout(panelRoles);
-        panelRoles.setLayout(panelRolesLayout);
-        panelRolesLayout.setHorizontalGroup(
-            panelRolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRolesLayout.createSequentialGroup()
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelRolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
-                    .addGroup(panelRolesLayout.createSequentialGroup()
-                        .addGroup(panelRolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelRolesLayout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(btEliminarRoles)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btEditarRoles)
@@ -157,13 +155,13 @@ public class panelRoles extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btBuscarTodosRoles))
                             .addComponent(btGrabarRol, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelRolesLayout.createSequentialGroup()
-                                .addGroup(panelRolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRolesLayout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(lbNombreRol)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtNombreRol))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRolesLayout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(lbDescripcionRol)
                                         .addGap(18, 18, 18)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -172,12 +170,13 @@ public class panelRoles extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jSeparator1))
                 .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
-        panelRolesLayout.setVerticalGroup(
-            panelRolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRolesLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(panelRolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEliminarRoles)
                     .addComponent(btEditarRoles)
                     .addComponent(txtBuscarRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,38 +187,17 @@ public class panelRoles extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelRolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombreRol)
                     .addComponent(txtNombreRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btDesactivarEditarRoles))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelRolesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbDescripcionRol)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btGrabarRol)
-                .addContainerGap(172, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 554, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -233,7 +211,7 @@ public class panelRoles extends javax.swing.JPanel {
             );
             JOptionPane.showMessageDialog(this, "Agregado");
             Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
-            helper.Formularios.limpiar(panelRoles);
+            helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
@@ -241,7 +219,7 @@ public class panelRoles extends javax.swing.JPanel {
                 , txtDescripcionRol.getText()));
         JOptionPane.showMessageDialog(this, "Modificado");
         Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
-        helper.Formularios.limpiar(panelRoles);
+        helper.Formularios.limpiar(this);
         this.leerTodos(true);
         }
     }//GEN-LAST:event_btGrabarRolActionPerformed
@@ -253,7 +231,7 @@ public class panelRoles extends javax.swing.JPanel {
         }else{
             DAORol.sqlDelete(new ClRol(this.id));
             JOptionPane.showMessageDialog(this, "Eliminado");
-            helper.Formularios.limpiar(panelRoles);
+            helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
             this.leerTodos(true);
         }
@@ -323,12 +301,11 @@ public class panelRoles extends javax.swing.JPanel {
     private void btnEditarMode(){
         if(!this.paraGrabar){
             btDesactivarEditarRoles.setVisible(false);
-            helper.Formularios.limpiar(panelRoles);
+            helper.Formularios.limpiar(this);
         } else {
             btDesactivarEditarRoles.setVisible(true);
         }
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarRoles;
@@ -343,7 +320,6 @@ public class panelRoles extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbDescripcionRol;
     private javax.swing.JLabel lbNombreRol;
-    private javax.swing.JPanel panelRoles;
     private javax.swing.JTextField txtBuscarRoles;
     private javax.swing.JTextArea txtDescripcionRol;
     private javax.swing.JTextField txtNombreRol;

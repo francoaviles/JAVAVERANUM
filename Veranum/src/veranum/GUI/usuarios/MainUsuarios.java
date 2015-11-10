@@ -20,7 +20,7 @@ public class MainUsuarios extends javax.swing.JInternalFrame {
      */
     public MainUsuarios() {
         initComponents();
-        tabContenidoUsuarios.addTab("Usuario", new panelUsuario());
+        tabContenidoUsuarios.addTab("Usuario", new panelUsuarios());
         tabContenidoUsuarios.addTab("Roles", new panelRoles());
     }
 
@@ -40,13 +40,13 @@ public class MainUsuarios extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tabContenidoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabContenidoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tabContenidoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabContenidoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
