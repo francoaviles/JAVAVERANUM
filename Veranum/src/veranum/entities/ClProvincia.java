@@ -18,6 +18,10 @@ public class ClProvincia {
 
     }
     
+    public ClProvincia(int idRegion) {
+        setIdRegion(idRegion);
+    }
+    
     public ClProvincia(String nombre, int idRegion) {
         setNombre(nombre);
         setIdRegion(idRegion);

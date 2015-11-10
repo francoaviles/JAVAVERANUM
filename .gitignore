@@ -44,3 +44,7 @@ hs_err_pid*
 
 *.sln
 *.suo
+*.class
+*.class
+*.class
+*.class
