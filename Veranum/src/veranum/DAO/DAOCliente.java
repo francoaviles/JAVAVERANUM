@@ -41,19 +41,18 @@ public class DAOCliente {
         }        
         if(!bd.sqlFetch()){
             return null;
-        }        
+        }
         clientes.setIdPasajero(bd.getInt("id_pasajero"));
         clientes.setRut(bd.getString("rut"));
         clientes.setNombre(bd.getString("nombre"));
+        clientes.setContrasena(bd.getString("contrasena"));
         clientes.setApellido_pa(bd.getString("apellido_pa"));
         clientes.setApellido_ma(bd.getString("apellido_ma"));
         clientes.setTelefono(bd.getString("telefono"));
         clientes.setEmail(bd.getString("email"));
-        clientes.setIdRegion(bd.getInt("id_region"));
-        clientes.setIdProvincia(bd.getInt("id_provincia"));
-        clientes.setIdComuna(bd.getInt("id_comuna"));
         clientes.setDireccion(bd.getString("direccion"));
         clientes.setFechaNacimiento(bd.getDate("fecha_nac"));
+        clientes.setIdPasajero(bd.getInt("id_rol"));        
         return clientes;
     }
     
@@ -68,12 +67,14 @@ public class DAOCliente {
         clientes.setIdPasajero(bd.getInt("id_pasajero"));
         clientes.setRut(bd.getString("rut"));
         clientes.setNombre(bd.getString("nombre"));
+        clientes.setContrasena(bd.getString("contrasena"));
         clientes.setApellido_pa(bd.getString("apellido_pa"));
         clientes.setApellido_ma(bd.getString("apellido_ma"));
         clientes.setTelefono(bd.getString("telefono"));
         clientes.setEmail(bd.getString("email"));
         clientes.setDireccion(bd.getString("direccion"));
         clientes.setFechaNacimiento(bd.getDate("fecha_nac"));
+        clientes.setIdPasajero(bd.getInt("id_rol"));        
         return clientes;
     }
     
@@ -86,12 +87,14 @@ public class DAOCliente {
             clientes.add(new ClPasajeros(bd.getInt("id_pasajero")
                                     , bd.getString("rut")
                                     , bd.getString("nombre")
+                                    , bd.getString("contrasena")
                                     , bd.getString("apellido_pa")
                                     , bd.getString("apellido_ma")
                                     , bd.getString("telefono")
                                     , bd.getString("email")
                                     , bd.getString("direccion")
                                     , bd.getDate("fecha_nac")
+                                    , bd.getInt("id_rol")
                                 ));
             
         }     
@@ -107,12 +110,14 @@ public class DAOCliente {
             clientes.add(new ClPasajeros(bd.getInt("id_pasajero")
                                     , bd.getString("rut")
                                     , bd.getString("nombre")
+                                    , bd.getString("contrasena")
                                     , bd.getString("apellido_pa")
                                     , bd.getString("apellido_ma")
                                     , bd.getString("telefono")
                                     , bd.getString("email")
                                     , bd.getString("direccion")
                                     , bd.getDate("fecha_nac")
+                                    , bd.getInt("id_rol")
                                 ));
             
         }     

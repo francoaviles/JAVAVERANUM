@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOCliente;
+import veranum.DAO.DAORol;
 import veranum.entities.ClPasajeros;
 import veranum.entities.ClRol;
 
@@ -30,6 +31,7 @@ public class panelCliente extends javax.swing.JPanel {
      */
     public panelCliente() {
         initComponents();
+        this.cargarRol();
         grCliente.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
         btDesactivarEditarCliente.setVisible(false);
@@ -73,7 +75,7 @@ public class panelCliente extends javax.swing.JPanel {
         btDesactivarEditarCliente = new javax.swing.JButton();
         btBuscarTodosCliente = new javax.swing.JButton();
         lbRol = new javax.swing.JLabel();
-        cbRol = new javax.swing.JComboBox<>();
+        cbRol = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
 
         lbRut.setText("Rut:");
@@ -103,17 +105,17 @@ public class panelCliente extends javax.swing.JPanel {
 
         grCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "#", "Rut", "Nombre", "Apellido Paterno", "Apellido materno", "Teleéono", "E-mail", "Direccion", "Fecha Nacimiento", "Rol"
+                "#", "Rut", "Nombre", "Contrasena", "Apellido Paterno", "Apellido materno", "Teleéono", "E-mail", "Direccion", "Fecha Nacimiento", "Rol"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -126,6 +128,9 @@ public class panelCliente extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(grCliente);
+        if (grCliente.getColumnModel().getColumnCount() > 0) {
+            grCliente.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
 
         btEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
         btEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -164,8 +169,6 @@ public class panelCliente extends javax.swing.JPanel {
         });
 
         lbRol.setText("Rol:");
-
-        cbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -388,11 +391,25 @@ public class panelCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_grClienteMouseClicked
 
     // Method Custom
+    private void cargarRol(){
+        for (Object rol : DAORol.sqlLeerTodos()) {
+            cbRol.addItem(rol);
+        }
+    }
+    
     private void leerCliente(int id){
         this.id = id;
         ClPasajeros cli = DAOCliente.sqlLeer(id);
         txtRutUsuario.setText(cli.getRut());
-        
+        txtNombreUsuario.setText(cli.getNombre());
+        txtConstrasenaUsuario.setText(cli.getContrasena());
+        txtApePaterno.setText(cli.getApellido_pa());
+        txtApeMaterno.setText(cli.getApellido_ma());
+        txtTelefono.setText(cli.getTelefono());
+        txtMailUsuario.setText(cli.getEmail());
+        txtDireccionUsuario.setText(cli.getDireccion());
+        txtTelefono.setText(cli.getTelefono());
+        txtFechaNacUsu.setText(cli.getFechaNacimiento().toString());
     }
     
     private void leerTodos(boolean todos){
@@ -411,7 +428,7 @@ public class panelCliente extends javax.swing.JPanel {
             Object[] fila = new Object[11];
             fila[0] = xx.getIdPasajero();
             fila[1] = xx.getRut();
-            fila[2] = xx.getNombre(); 
+            fila[2] = xx.getNombre();
             fila[3] = xx.getContrasena();
             fila[4] = xx.getApellido_pa();
             fila[5] = xx.getApellido_ma();
@@ -419,7 +436,7 @@ public class panelCliente extends javax.swing.JPanel {
             fila[7] = xx.getEmail();
             fila[8] = xx.getDireccion();
             fila[9] = xx.getFechaNacimiento();
-            fila[10] = xx.getIdRol();
+            fila[10] = ((ClRol)DAORol.sqlLeer(xx.getIdRol())).getNombre();
             dt.addRow(fila);
         }
     }
@@ -440,7 +457,7 @@ public class panelCliente extends javax.swing.JPanel {
     private javax.swing.JButton btEditarCliente;
     private javax.swing.JButton btEliminarCliente;
     private javax.swing.JButton btGrabarUsuarios;
-    private javax.swing.JComboBox<String> cbRol;
+    private javax.swing.JComboBox cbRol;
     private javax.swing.JTable grCliente;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;

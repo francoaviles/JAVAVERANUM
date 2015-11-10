@@ -35,7 +35,7 @@ public class DAOUsuarios {
     
     public static ClPasajeros sqlLeer(int id){     
         ClPasajeros usuarios = new ClPasajeros();        
-        if(!bd.sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"id_pasajero\" ='"+id+"'")){
+        if(!bd.sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"id_pasajero\" ="+id+"")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -83,7 +83,8 @@ public class DAOUsuarios {
             return null;
         }
         while(bd.sqlFetch()){
-            usuarios.add(new ClPasajeros( bd.getString("rut")
+            usuarios.add(new ClPasajeros( bd.getInt("id_pasajero")
+                                    , bd.getString("rut")
                                     , bd.getString("nombre")
                                     , bd.getString("contrasena")
                                     , bd.getString("apellido_pa")
