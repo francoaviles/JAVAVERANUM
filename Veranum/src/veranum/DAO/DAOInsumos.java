@@ -22,7 +22,7 @@ public class DAOInsumos {
     }
     
     public static boolean sqlDelete(ClInsumos insumo){
-        String sql="DELETE FROM \"insumos\" WHERE \"nombre\" = '"+insumo.getNombre()+"'";
+        String sql="DELETE FROM \"insumos\" WHERE \"id_insumo\" = '"+insumo.getIdInsumo()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }

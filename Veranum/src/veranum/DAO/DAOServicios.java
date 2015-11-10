@@ -22,7 +22,7 @@ public class DAOServicios {
     }
     
     public static boolean sqlDelete(ClServicios servicios){
-        String sql="DELETE FROM \"servicios\" WHERE \"nombre\" = '"+servicios.getNombre()+"'";
+        String sql="DELETE FROM \"servicios\" WHERE \"id_servicio\" = '"+servicios.getIdServicio()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }

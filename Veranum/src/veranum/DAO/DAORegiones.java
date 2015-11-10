@@ -23,7 +23,7 @@ public class DAORegiones {
     }
     
     public static boolean sqlDelete(ClRegion region){
-        String sql="DELETE FROM \"regiones\" WHERE \"region_nombre\" = '"+region.getNombre()+"'";
+        String sql="DELETE FROM \"regiones\" WHERE \"id_region\" = '"+region.getIdRegion()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     

@@ -23,7 +23,7 @@ public class DAOCliente {
     }
     
     public static boolean sqlDelete(ClPasajeros clientes){
-        String sql="DELETE FROM \"pasajeros\" WHERE \"rut\" = '"+clientes.getRut()+"'";
+        String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = '"+clientes.getIdPasajero()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }

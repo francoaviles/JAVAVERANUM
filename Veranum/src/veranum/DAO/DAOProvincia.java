@@ -22,7 +22,7 @@ public class DAOProvincia {
     }
     
     public static boolean sqlDelete(ClProvincia provincia){
-        String sql="DELETE FROM \"provincias\" WHERE \"provincia_nombre\" = '"+provincia.getIdProvincia()+"'";
+        String sql="DELETE FROM \"provincias\" WHERE \"id_provincia\" = '"+provincia.getIdProvincia()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }

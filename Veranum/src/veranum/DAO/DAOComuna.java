@@ -22,7 +22,7 @@ public class DAOComuna {
     }
     
     public static boolean sqlDelete(ClComuna comuna){
-        String sql="DELETE FROM \"comunas\" WHERE \"comuna_nombre\" = '"+comuna.getNombre()+"'";
+        String sql="DELETE FROM \"comunas\" WHERE \"id_comuna\" = '"+comuna.getIdComuna()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }

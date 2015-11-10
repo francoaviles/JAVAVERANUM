@@ -23,7 +23,7 @@ public class DAORol {
     }
     
     public static boolean sqlDelete(ClRol rol){
-        String sql="DELETE FROM \"roles\" WHERE \"nombre\" = '"+rol.getNombre()+"'";
+        String sql="DELETE FROM \"roles\" WHERE \"id_rol\" = '"+rol.getIdRol()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     

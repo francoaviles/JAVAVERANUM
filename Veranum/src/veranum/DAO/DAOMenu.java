@@ -22,7 +22,7 @@ public class DAOMenu {
     }
     
     public static boolean sqlDelete(ClMenu menu){
-        String sql="DELETE FROM \"menu\" WHERE \"nombre\" = '"+menu.getNombre()+"'";
+        String sql="DELETE FROM \"menu\" WHERE \"id_menu\" = '"+menu.getIdMenu()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
