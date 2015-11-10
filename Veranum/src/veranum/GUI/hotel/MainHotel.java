@@ -126,20 +126,6 @@ public class MainHotel extends javax.swing.JInternalFrame {
         txtNombreEstadoHab = new javax.swing.JTextField();
         btGrabarEstadoHab = new javax.swing.JButton();
         btDesactivarEditarEstadoHab = new javax.swing.JButton();
-        panelMuebles = new javax.swing.JPanel();
-        lbNombreMueble = new javax.swing.JLabel();
-        txtNombreMueble = new javax.swing.JTextField();
-        cbEstadoMueble = new javax.swing.JComboBox();
-        lbEstadoMueble = new javax.swing.JLabel();
-        btGrabarMuebles = new javax.swing.JButton();
-        btEliminarMueble = new javax.swing.JButton();
-        btEditarMueble = new javax.swing.JButton();
-        txtBuscarMueble = new javax.swing.JTextField();
-        btBuscarMueble = new javax.swing.JButton();
-        btBuscarTodosMueble = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        grMueble = new javax.swing.JTable();
-        btDesactivarEditarMueble = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Panel Hoteles"));
         setForeground(new java.awt.Color(204, 204, 204));
@@ -650,112 +636,6 @@ public class MainHotel extends javax.swing.JInternalFrame {
 
         tabContenido.addTab("Estado Habitación", panelEstadoHab);
 
-        lbNombreMueble.setText("Nombre Mueble:");
-
-        cbEstadoMueble.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lbEstadoMueble.setText("Estado Mueble:");
-
-        btGrabarMuebles.setText("Grabar");
-
-        btEliminarMueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
-
-        btEditarMueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
-
-        btBuscarMueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
-
-        btBuscarTodosMueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
-
-        grMueble.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "#", "Nombre Mueble", "Estado"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane6.setViewportView(grMueble);
-        if (grMueble.getColumnModel().getColumnCount() > 0) {
-            grMueble.getColumnModel().getColumn(0).setMaxWidth(30);
-        }
-
-        btDesactivarEditarMueble.setText("Salir Modo Editar");
-
-        javax.swing.GroupLayout panelMueblesLayout = new javax.swing.GroupLayout(panelMuebles);
-        panelMuebles.setLayout(panelMueblesLayout);
-        panelMueblesLayout.setHorizontalGroup(
-            panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMueblesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6)
-                    .addGroup(panelMueblesLayout.createSequentialGroup()
-                        .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btGrabarMuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelMueblesLayout.createSequentialGroup()
-                                .addComponent(btEliminarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btEditarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBuscarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btBuscarMueble)
-                                .addGap(18, 18, 18)
-                                .addComponent(btBuscarTodosMueble))
-                            .addGroup(panelMueblesLayout.createSequentialGroup()
-                                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbNombreMueble)
-                                    .addComponent(lbEstadoMueble))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbEstadoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(panelMueblesLayout.createSequentialGroup()
-                                        .addComponent(txtNombreMueble, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btDesactivarEditarMueble)
-                                        .addGap(27, 27, 27)))))
-                        .addGap(0, 20, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panelMueblesLayout.setVerticalGroup(
-            panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMueblesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEliminarMueble)
-                    .addComponent(btEditarMueble)
-                    .addComponent(txtBuscarMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarMueble)
-                    .addComponent(btBuscarTodosMueble))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNombreMueble)
-                    .addComponent(txtNombreMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDesactivarEditarMueble))
-                .addGap(18, 18, 18)
-                .addGroup(panelMueblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbEstadoMueble)
-                    .addComponent(cbEstadoMueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btGrabarMuebles)
-                .addContainerGap(150, Short.MAX_VALUE))
-        );
-
-        tabContenido.addTab("Muebles", panelMuebles);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -962,60 +842,49 @@ public class MainHotel extends javax.swing.JInternalFrame {
     private javax.swing.JButton btBuscarEstadoHab;
     private javax.swing.JButton btBuscarHab;
     private javax.swing.JButton btBuscarHotel;
-    private javax.swing.JButton btBuscarMueble;
     private javax.swing.JButton btBuscarTipoHab;
     private javax.swing.JButton btBuscarTodoTipoHab;
     private javax.swing.JButton btBuscarTodosEstadoHab;
     private javax.swing.JButton btBuscarTodosHab;
     private javax.swing.JButton btBuscarTodosHotel;
-    private javax.swing.JButton btBuscarTodosMueble;
     private javax.swing.JButton btDesactivarEditarEstadoHab;
     private javax.swing.JButton btDesactivarEditarHab;
     private javax.swing.JButton btDesactivarEditarHotel;
-    private javax.swing.JButton btDesactivarEditarMueble;
     private javax.swing.JButton btDesactivarEditarTipoHab;
     private javax.swing.JButton btEditarEstadoHab;
     private javax.swing.JButton btEditarHab;
     private javax.swing.JButton btEditarHotel;
-    private javax.swing.JButton btEditarMueble;
     private javax.swing.JButton btEditarTipoHab;
     private javax.swing.JButton btEliminarEstadoHab;
     private javax.swing.JButton btEliminarHab;
     private javax.swing.JButton btEliminarHotel;
-    private javax.swing.JButton btEliminarMueble;
     private javax.swing.JButton btEliminarTipoHab;
     private javax.swing.JButton btGrabarEstadoHab;
     private javax.swing.JButton btGrabarHabitaciones;
     private javax.swing.JButton btGrabarHoteles;
-    private javax.swing.JButton btGrabarMuebles;
     private javax.swing.JButton btGrabarTipoHab;
     private javax.swing.JComboBox cbCadena;
     private javax.swing.JComboBox cbComuna;
-    private javax.swing.JComboBox cbEstadoMueble;
     private javax.swing.JComboBox cbProvincia;
     private javax.swing.JComboBox cbRegion;
     private javax.swing.JComboBox cbTipo;
     private javax.swing.JTable grEstadoHab;
     private javax.swing.JTable grHabitacion;
     private javax.swing.JTable grHotel;
-    private javax.swing.JTable grMueble;
     private javax.swing.JTable grTipoHab;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbCadena;
     private javax.swing.JLabel lbCantPersonas;
     private javax.swing.JLabel lbCaracteristicas;
     private javax.swing.JLabel lbComuna;
     private javax.swing.JLabel lbDireccion;
-    private javax.swing.JLabel lbEstadoMueble;
     private javax.swing.JLabel lbNombreEstadoHab;
     private javax.swing.JLabel lbNombreHotel;
-    private javax.swing.JLabel lbNombreMueble;
     private javax.swing.JLabel lbNombreTipoHab;
     private javax.swing.JLabel lbPrecio;
     private javax.swing.JLabel lbProvincia;
@@ -1025,19 +894,16 @@ public class MainHotel extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelEstadoHab;
     private javax.swing.JPanel panelHabitaciones;
     private javax.swing.JPanel panelHoteles;
-    private javax.swing.JPanel panelMuebles;
     private javax.swing.JPanel panelTipoHab;
     private javax.swing.JTabbedPane tabContenido;
     private javax.swing.JTextField txtBuscarEstadoHab;
     private javax.swing.JTextField txtBuscarHab;
     private javax.swing.JTextField txtBuscarHotel;
-    private javax.swing.JTextField txtBuscarMueble;
     private javax.swing.JTextField txtBuscarTipoHab;
     private javax.swing.JTextField txtCantPersonas;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombreEstadoHab;
     private javax.swing.JTextField txtNombreHotel;
-    private javax.swing.JTextField txtNombreMueble;
     private javax.swing.JTextField txtNombreTipoHab;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtUbicacion;
