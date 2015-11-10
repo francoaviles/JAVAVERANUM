@@ -23,8 +23,7 @@ import javax.swing.JTextField;
 public class Formularios {
     public static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     
-    public static void limpiar(JComponent obj)
-    {
+    public static void limpiar(JComponent obj){
         Object[] arrObj = obj.getComponents();
         for(int x = 0; x< arrObj.length ; x++){
             if(arrObj[x] instanceof JTextField)

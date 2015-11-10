@@ -211,7 +211,7 @@ public class panelTipoHab extends javax.swing.JPanel {
         int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
 
         if(row_dos >= 0){
-            this.leerServicio(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
             this.paraGrabar = true;
             this.btnEditarMode();
@@ -225,7 +225,7 @@ public class panelTipoHab extends javax.swing.JPanel {
     }//GEN-LAST:event_btBuscarTodosActionPerformed
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
-        this.leerServicio(Formularios.getSelectedRow(grDatos));
+        this.leer(Formularios.getSelectedRow(grDatos));
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
@@ -238,7 +238,7 @@ public class panelTipoHab extends javax.swing.JPanel {
     }//GEN-LAST:event_btEliminarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        this.leerServicio(Formularios.getSelectedRow(grDatos));
+        this.leer(Formularios.getSelectedRow(grDatos));
         this.paraGrabar = true;
         this.btnEditarMode();
     }//GEN-LAST:event_btEditarActionPerformed
@@ -249,7 +249,7 @@ public class panelTipoHab extends javax.swing.JPanel {
     }//GEN-LAST:event_btDesactivarEditarActionPerformed
 
     // Method Custom
-    private void leerServicio(int id){
+    private void leer(int id){
         this.id = id;
         ClTipoHabitacion servicio = DAOTipoHab.sqlLeer(id);
         txtNombre.setText(servicio.getNombre());

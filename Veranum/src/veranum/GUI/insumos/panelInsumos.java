@@ -93,6 +93,7 @@ public class panelInsumos extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         grInsumos = new javax.swing.JTable();
         btDesactivarEditarInsumos = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         btEditarInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
         btEditarInsumos.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +201,10 @@ public class panelInsumos extends javax.swing.JPanel {
                                 .addComponent(txtNombreInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btDesactivarEditarInsumos)
-                        .addGap(46, 46, 46))))
+                        .addGap(46, 46, 46))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jSeparator1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +219,9 @@ public class panelInsumos extends javax.swing.JPanel {
                         .addComponent(btBuscarTodosInsumos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombreInsumo)
                     .addComponent(txtNombreInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,6 +314,7 @@ public class panelInsumos extends javax.swing.JPanel {
     private javax.swing.JButton btGrabarInsumos;
     private javax.swing.JTable grInsumos;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbDescripcionInsumos;
     private javax.swing.JLabel lbNombreInsumo;
     private javax.swing.JTextField txtBuscarInsumos;

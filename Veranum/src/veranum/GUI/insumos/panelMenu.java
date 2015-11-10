@@ -40,6 +40,7 @@ public class panelMenu extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         grMenu = new javax.swing.JTable();
         btDesactivarEditarMenu = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         lbNombreMenu.setText("Nombre menú:");
 
@@ -118,7 +119,8 @@ public class panelMenu extends javax.swing.JPanel {
                                         .addComponent(btBuscarTodosMenu))
                                     .addComponent(btGrabarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addComponent(jSeparator1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +134,9 @@ public class panelMenu extends javax.swing.JPanel {
                     .addComponent(btBuscarTodosMenu))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbTipoMenu)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -159,6 +163,7 @@ public class panelMenu extends javax.swing.JPanel {
     private javax.swing.JComboBox cbTipoMenu;
     private javax.swing.JTable grMenu;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbNombreMenu;
     private javax.swing.JLabel lbTipoMenu;
     private javax.swing.JTextField txtBuscarMenu;

@@ -38,6 +38,7 @@ public class panelMedidas extends javax.swing.JPanel {
         txtNombreMedida = new javax.swing.JTextField();
         btGrabarMedida = new javax.swing.JButton();
         btDesactivarEditarMedida = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         btEditarMedida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
 
@@ -105,7 +106,8 @@ public class panelMedidas extends javax.swing.JPanel {
                                 .addComponent(txtNombreMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btDesactivarEditarMedida)
-                        .addGap(111, 111, 111))))
+                        .addGap(111, 111, 111))
+                    .addComponent(jSeparator1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,14 +121,16 @@ public class panelMedidas extends javax.swing.JPanel {
                     .addComponent(btBuscarTodosMedida))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombreMedida)
                     .addComponent(txtNombreMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btDesactivarEditarMedida))
                 .addGap(18, 18, 18)
                 .addComponent(btGrabarMedida)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,6 +144,7 @@ public class panelMedidas extends javax.swing.JPanel {
     private javax.swing.JButton btGrabarMedida;
     private javax.swing.JTable grMedida;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbNombreMedida;
     private javax.swing.JTextField txtBuscarMedida;
     private javax.swing.JTextField txtNombreMedida;
