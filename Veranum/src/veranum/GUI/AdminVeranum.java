@@ -37,6 +37,7 @@ public class AdminVeranum extends javax.swing.JFrame {
     
      public AdminVeranum() {
         initComponents();
+        this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
     }
 
     /**
