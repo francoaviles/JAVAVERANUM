@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAORol;
 import veranum.DAO.DAOUsuarios;
 import veranum.entities.ClPasajeros;
 import veranum.entities.ClRol;
@@ -30,6 +31,7 @@ public class panelUsuarios extends javax.swing.JPanel {
      */
     public panelUsuarios() {
         initComponents();
+        this.cargarRol();
         grUsuario.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
         btDesactivarEditarUsuarios.setVisible(false);
@@ -96,8 +98,6 @@ public class panelUsuarios extends javax.swing.JPanel {
 
         lbRol.setText("Rol:");
 
-        cbRol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btGrabarUsuarios.setText("Grabar");
         btGrabarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +113,11 @@ public class panelUsuarios extends javax.swing.JPanel {
         });
 
         btEditarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarUsuarioActionPerformed(evt);
+            }
+        });
 
         btBuscarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
         btBuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +145,7 @@ public class panelUsuarios extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -154,6 +159,7 @@ public class panelUsuarios extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(grUsuario);
 
+        btDesactivarEditarUsuarios.setBackground(new java.awt.Color(255, 0, 0));
         btDesactivarEditarUsuarios.setText("Salir Modo Editar");
         btDesactivarEditarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,7 +355,6 @@ public class panelUsuarios extends javax.swing.JPanel {
 
     private void grUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grUsuarioMouseClicked
         int row_dos = Formularios.getTablaSeleccionada(evt, grUsuario, 2);
-
         if(row_dos >= 0){
             this.leerUsuarios(Integer.parseInt(grUsuario.getValueAt(row_dos, 0).toString()));
             Formularios.ActiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
@@ -365,7 +370,19 @@ public class panelUsuarios extends javax.swing.JPanel {
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarUsuariosActionPerformed
 
+    private void btEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarUsuarioActionPerformed
+        this.leerUsuarios(Formularios.getSelectedRow(grUsuario));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarUsuarioActionPerformed
+
     // Method Custom
+    private void cargarRol(){
+        for (Object rol : DAORol.sqlLeerTodos()) {
+            cbRol.addItem(rol);
+        }
+    }
+    
     private void leerUsuarios(int id){
         this.id = id;
         ClPasajeros usu = DAOUsuarios.sqlLeer(id);

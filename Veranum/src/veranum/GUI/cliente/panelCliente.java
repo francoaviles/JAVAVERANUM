@@ -5,17 +5,35 @@
  */
 package veranum.GUI.cliente;
 
+import helper.Formularios;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOCliente;
+import veranum.entities.ClPasajeros;
+import veranum.entities.ClRol;
+
 /**
  *
  * @author Zacarias
  */
 public class panelCliente extends javax.swing.JPanel {
 
+    private boolean paraGrabar = false;
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int id = 0;
+    Date f_nac ;
+    
     /**
      * Creates new form panelCliente
      */
     public panelCliente() {
         initComponents();
+        grCliente.setEnabled(true);
+        Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
+        btDesactivarEditarCliente.setVisible(false);
+        this.leerTodos(true);
     }
 
     /**
@@ -54,6 +72,9 @@ public class panelCliente extends javax.swing.JPanel {
         btBuscarCliente = new javax.swing.JButton();
         btDesactivarEditarCliente = new javax.swing.JButton();
         btBuscarTodosCliente = new javax.swing.JButton();
+        lbRol = new javax.swing.JLabel();
+        cbRol = new javax.swing.JComboBox<>();
+        jSeparator1 = new javax.swing.JSeparator();
 
         lbRut.setText("Rut:");
 
@@ -73,44 +94,78 @@ public class panelCliente extends javax.swing.JPanel {
 
         lbFechaNacimiento.setText("Fecha de Nacimiento:");
 
-        txtRutUsuario.addActionListener(new java.awt.event.ActionListener() {
+        btGrabarUsuarios.setText("Grabar");
+        btGrabarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRutUsuarioActionPerformed(evt);
+                btGrabarUsuariosActionPerformed(evt);
             }
         });
 
-        btGrabarUsuarios.setText("Grabar");
-
         grCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "#", "Rut", "Nombre", "Apellido Paterno", "Apellido materno", "Teleéono", "E-mail", "Direccion", "Fecha Nacimiento"
+                "#", "Rut", "Nombre", "Apellido Paterno", "Apellido materno", "Teleéono", "E-mail", "Direccion", "Fecha Nacimiento", "Rol"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        grCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grClienteMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(grCliente);
 
         btEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarClienteActionPerformed(evt);
+            }
+        });
 
         btEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarClienteActionPerformed(evt);
+            }
+        });
 
         btBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarClienteActionPerformed(evt);
+            }
+        });
 
+        btDesactivarEditarCliente.setBackground(new java.awt.Color(255, 0, 0));
         btDesactivarEditarCliente.setText("Salir del Modo editar");
+        btDesactivarEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDesactivarEditarClienteActionPerformed(evt);
+            }
+        });
 
         btBuscarTodosCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodosCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarTodosClienteActionPerformed(evt);
+            }
+        });
+
+        lbRol.setText("Rol:");
+
+        cbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -118,6 +173,20 @@ public class panelCliente extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btBuscarTodosCliente))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,43 +204,39 @@ public class panelCliente extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btDesactivarEditarCliente))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbFechaNacimiento)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFechaNacUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbDireccion)
-                                .addGap(74, 74, 74)
-                                .addComponent(txtDireccionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbMail)
-                                .addGap(89, 89, 89)
-                                .addComponent(txtMailUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbTelefono)
-                                    .addComponent(lbApeMaterno)
-                                    .addComponent(lbApePaterno))
-                                .addGap(37, 37, 37)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtApePaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btGrabarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbDireccion)
+                                        .addGap(74, 74, 74)
+                                        .addComponent(txtDireccionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbMail)
+                                        .addGap(89, 89, 89)
+                                        .addComponent(txtMailUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lbTelefono)
+                                            .addComponent(lbApeMaterno)
+                                            .addComponent(lbApePaterno))
+                                        .addGap(37, 37, 37)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtApePaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btGrabarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lbFechaNacimiento)
+                                            .addComponent(lbRol))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFechaNacUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(28, 28, 28))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btBuscarTodosCliente)))))
+                        .addComponent(jSeparator1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -187,7 +252,9 @@ public class panelCliente extends javax.swing.JPanel {
                         .addComponent(txtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbRut)
                     .addComponent(txtRutUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,16 +291,147 @@ public class panelCliente extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbFechaNacimiento)
                     .addComponent(txtFechaNacUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbRol)
+                    .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addComponent(btGrabarUsuarios)
-                .addGap(270, 270, 270))
+                .addGap(251, 251, 251))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtRutUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRutUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRutUsuarioActionPerformed
+    private void btEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarClienteActionPerformed
+        this.leerCliente(Formularios.getSelectedRow(grCliente));
+        if(this.id == 0){
+            JOptionPane.showMessageDialog(this, "NO existe para eliminar");
+        }else{
+            DAOCliente.sqlDelete(new ClPasajeros(this.id));
+            JOptionPane.showMessageDialog(this, "Eliminado");
+            helper.Formularios.limpiar(this);
+            Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btEliminarClienteActionPerformed
 
+    private void btEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarClienteActionPerformed
+        this.leerCliente(Formularios.getSelectedRow(grCliente));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarClienteActionPerformed
+
+    private void btBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarClienteActionPerformed
+        this.leerTodos(false);
+    }//GEN-LAST:event_btBuscarClienteActionPerformed
+
+    private void btBuscarTodosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosClienteActionPerformed
+        this.leerTodos(true);
+    }//GEN-LAST:event_btBuscarTodosClienteActionPerformed
+
+    private void btDesactivarEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarClienteActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarClienteActionPerformed
+
+    private void btGrabarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarUsuariosActionPerformed
+        int id_rol = ((ClRol)cbRol.getSelectedItem()).getIdRol();
+        if(!paraGrabar){
+            if(txtRutUsuario.getText().equals("") || txtNombreUsuario.getText().equals("") ){
+                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+            }else{
+                DAOCliente.sqlInsert(new ClPasajeros(txtRutUsuario.getText()
+                                                        , txtNombreUsuario.getText()
+                                                        , txtConstrasenaUsuario.getText()
+                                                        , txtApePaterno.getText()
+                                                        , txtApeMaterno.getText()
+                                                        , txtTelefono.getText()
+                                                        , txtMailUsuario.getText()
+                                                        , txtDireccionUsuario.getText()
+                                                        , Formularios.deStringAFecha(txtFechaNacUsu.getText())
+                                                        , id_rol)
+                                         );
+            JOptionPane.showMessageDialog(this, "Agregado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+        }
+        }else{
+            DAOCliente.sqlUpdate(new ClPasajeros(  this.id
+                                                    , txtRutUsuario.getText()
+                                                    , txtNombreUsuario.getText()
+                                                    , txtConstrasenaUsuario.getText()
+                                                    , txtApePaterno.getText()
+                                                    , txtApeMaterno.getText()
+                                                    , txtTelefono.getText()
+                                                    , txtMailUsuario.getText()
+                                                    , txtDireccionUsuario.getText()
+                                                    , Formularios.deStringAFecha(txtFechaNacUsu.getText())
+                                                    , id_rol
+                                ));
+        JOptionPane.showMessageDialog(this, "Modificado");
+        Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
+        helper.Formularios.limpiar(this);
+        this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btGrabarUsuariosActionPerformed
+
+    private void grClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grClienteMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grCliente, 2);
+        if(row_dos >= 0){
+            this.leerCliente(Integer.parseInt(grCliente.getValueAt(row_dos, 0).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
+            this.paraGrabar = true;
+            this.btnEditarMode();
+        } else {
+            Formularios.ActiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
+        }
+    }//GEN-LAST:event_grClienteMouseClicked
+
+    // Method Custom
+    private void leerCliente(int id){
+        this.id = id;
+        ClPasajeros cli = DAOCliente.sqlLeer(id);
+        txtRutUsuario.setText(cli.getRut());
+        
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList cli = new ArrayList<>();
+        if(todos)
+            cli = DAOCliente.sqlLeerTodos();
+        else 
+            cli = DAOCliente.sqlBuscarByNombre(txtRutUsuario.getText());
+        
+        dt =  (DefaultTableModel) grCliente.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < cli.size(); x++){
+            ClPasajeros xx = (ClPasajeros)cli.get(x);
+            Object[] fila = new Object[11];
+            fila[0] = xx.getIdPasajero();
+            fila[1] = xx.getRut();
+            fila[2] = xx.getNombre(); 
+            fila[3] = xx.getContrasena();
+            fila[4] = xx.getApellido_pa();
+            fila[5] = xx.getApellido_ma();
+            fila[6] = xx.getTelefono();
+            fila[7] = xx.getEmail();
+            fila[8] = xx.getDireccion();
+            fila[9] = xx.getFechaNacimiento();
+            fila[10] = xx.getIdRol();
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditarCliente.setVisible(false);
+            helper.Formularios.limpiar(this);
+        } else {
+            btDesactivarEditarCliente.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarCliente;
@@ -242,8 +440,10 @@ public class panelCliente extends javax.swing.JPanel {
     private javax.swing.JButton btEditarCliente;
     private javax.swing.JButton btEliminarCliente;
     private javax.swing.JButton btGrabarUsuarios;
+    private javax.swing.JComboBox<String> cbRol;
     private javax.swing.JTable grCliente;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbApeMaterno;
     private javax.swing.JLabel lbApePaterno;
     private javax.swing.JLabel lbContrasena;
@@ -251,6 +451,7 @@ public class panelCliente extends javax.swing.JPanel {
     private javax.swing.JLabel lbFechaNacimiento;
     private javax.swing.JLabel lbMail;
     private javax.swing.JLabel lbNombreUsuario;
+    private javax.swing.JLabel lbRol;
     private javax.swing.JLabel lbRut;
     private javax.swing.JLabel lbTelefono;
     private javax.swing.JTextField txtApeMaterno;

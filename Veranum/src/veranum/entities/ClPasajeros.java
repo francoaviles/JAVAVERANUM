@@ -192,4 +192,9 @@ public class ClPasajeros {
     public void setIdRol(int idRol) {
         this.idRol = idRol;
     }
+    
+    @Override
+    public String toString(){
+        return getNombre();
+    }
 }

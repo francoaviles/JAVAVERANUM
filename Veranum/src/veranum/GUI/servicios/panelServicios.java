@@ -33,44 +33,6 @@ public class panelServicios extends javax.swing.JPanel {
         this.leerTodos(true);
     }
     
-    // Method Custom
-    private void leerServicio(int id){
-        this.id = id;
-        ClServicios servicio = DAOServicios.sqlLeer(id);
-        txtNombreServicio.setText(servicio.getNombre());
-        txtPrecioServicio.setText(String.valueOf(servicio.getPrecio()));
-    }
-    
-    private void leerTodos(boolean todos){
-        ArrayList ser = new ArrayList<>();
-        if(todos)
-            ser = DAOServicios.sqlLeerTodos();
-        else 
-            ser = DAOServicios.sqlBuscarByNombre(txtBuscarServicio.getText());
-        
-        dt =  (DefaultTableModel) grServicio.getModel();        
-        for (int i = dt.getRowCount() -1; i >= 0; i--){  
-            dt.removeRow(i);
-        }        
-        for(int x=0; x < ser.size(); x++){
-            ClServicios xx = (ClServicios)ser.get(x);
-            Object[] fila = new Object[7];
-            fila[0] = xx.getIdServicio();
-            fila[1] = xx.getNombre();
-            fila[2] = xx.getPrecio(); 
-            dt.addRow(fila);
-        }
-    }
-    
-    private void btnEditarMode(){
-        if(!this.paraGrabar){
-            btDesactivarEditarServicio.setVisible(false);
-            helper.Formularios.limpiar(this);
-        } else {
-            btDesactivarEditarServicio.setVisible(true);
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -310,6 +272,43 @@ public class panelServicios extends javax.swing.JPanel {
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarServicioActionPerformed
 
+    // Method Custom
+    private void leerServicio(int id){
+        this.id = id;
+        ClServicios servicio = DAOServicios.sqlLeer(id);
+        txtNombreServicio.setText(servicio.getNombre());
+        txtPrecioServicio.setText(String.valueOf(servicio.getPrecio()));
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList ser = new ArrayList<>();
+        if(todos)
+            ser = DAOServicios.sqlLeerTodos();
+        else 
+            ser = DAOServicios.sqlBuscarByNombre(txtBuscarServicio.getText());
+        
+        dt =  (DefaultTableModel) grServicio.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < ser.size(); x++){
+            ClServicios xx = (ClServicios)ser.get(x);
+            Object[] fila = new Object[7];
+            fila[0] = xx.getIdServicio();
+            fila[1] = xx.getNombre();
+            fila[2] = xx.getPrecio(); 
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditarServicio.setVisible(false);
+            helper.Formularios.limpiar(this);
+        } else {
+            btDesactivarEditarServicio.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarServicio;
