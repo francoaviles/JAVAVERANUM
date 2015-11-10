@@ -212,7 +212,7 @@ public class panelComunas extends javax.swing.JPanel {
             this.leerTodosCom(true);
         }
         }else{
-            DAOComuna.sqlUpdate(new ClComuna(txtNombreComuna.getText()
+            DAOComuna.sqlUpdate(new ClComuna(this.id, txtNombreComuna.getText()
                 , id_provi));
         JOptionPane.showMessageDialog(this, "Modificado");
         Formularios.DesactiveBotonesEliminarEditar(btEditarComuna, btEliminarComuna);
@@ -243,10 +243,11 @@ public class panelComunas extends javax.swing.JPanel {
     }//GEN-LAST:event_btBuscarTodosComunaActionPerformed
 
     private void btEliminarComunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarComunaActionPerformed
+        this.leerComuna(Formularios.getSelectedRow(grComuna));        
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOComuna.sqlDelete(new ClComuna(txtNombreComuna.getText()));
+            DAOComuna.sqlDelete(new ClComuna(this.id));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditarComuna, btEliminarComuna);

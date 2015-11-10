@@ -22,13 +22,13 @@ public class DAOComuna {
     }
     
     public static boolean sqlDelete(ClComuna comuna){
-        String sql="DELETE FROM \"comunas\" WHERE \"id_comuna\" = '"+comuna.getIdComuna()+"'";
+        String sql="DELETE FROM \"comunas\" WHERE \"id_comuna\" = "+comuna.getIdComuna()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClComuna comuna){
-        String sql="UPDATE \"comunas\" SET \"comuna_nombre\" = '"+comuna.getNombre()+"', \"id_provincia\" = '"+comuna.getIdProvincia()+"' WHERE \"comuna_nombre\" = '"+comuna.getNombre()+"'";
+        String sql="UPDATE \"comunas\" SET \"comuna_nombre\" = '"+comuna.getNombre()+"', \"id_provincia\" = '"+comuna.getIdProvincia()+"' WHERE \"id_comuna\" = "+comuna.getIdComuna()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }

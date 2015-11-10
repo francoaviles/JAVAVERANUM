@@ -210,7 +210,7 @@ public class panelProvincias extends javax.swing.JPanel {
             this.leerTodosPro(true);
         }
         }else{
-            DAOProvincia.sqlUpdate(new ClProvincia(txtNombreProvincia.getText()
+            DAOProvincia.sqlUpdate(new ClProvincia(this.id, txtNombreProvincia.getText()
                 , this.id));
             JOptionPane.showMessageDialog(this, "Modificado");
             Formularios.DesactiveBotonesEliminarEditar(btEditarProvincia, btEliminarProvincia);
@@ -245,7 +245,7 @@ public class panelProvincias extends javax.swing.JPanel {
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOProvincia.sqlDelete(new ClProvincia(txtNombreProvincia.getText()));
+            DAOProvincia.sqlDelete(new ClProvincia(this.id));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditarProvincia, btEliminarProvincia);

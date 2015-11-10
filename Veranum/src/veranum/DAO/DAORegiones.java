@@ -23,14 +23,14 @@ public class DAORegiones {
     }
     
     public static boolean sqlDelete(ClRegion region){
-        String sql="DELETE FROM \"regiones\" WHERE \"id_region\" = '"+region.getIdRegion()+"'";
+        String sql="DELETE FROM \"regiones\" WHERE \"id_region\" = "+region.getIdRegion()+"";
         bd.sqlEjecutar(sql);   
         return true;
     
     }
     
     public static boolean sqlUpdate(ClRegion region){
-        String sql="UPDATE \"regiones\" SET \"region_nombre\" = '"+region.getNombre()+"', \"region_ordinal\" = '"+region.getOrdinal()+"' WHERE \"region_nombre\" = '"+region.getNombre()+"'";
+        String sql="UPDATE \"regiones\" SET \"region_nombre\" = '"+region.getNombre()+"', \"region_ordinal\" = '"+region.getOrdinal()+"' WHERE \"id_region\" = "+region.getIdRegion()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }

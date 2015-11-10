@@ -193,10 +193,11 @@ public class panelRegion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        this.leerRegion(Formularios.getSelectedRow(grRegion));
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAORegiones.sqlDelete(new ClRegion(txtNombreRegion.getText()));
+            DAORegiones.sqlDelete(new ClRegion(this.id));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditarRegion, btEliminar);
@@ -260,7 +261,7 @@ public class panelRegion extends javax.swing.JPanel {
     }//GEN-LAST:event_grRegionMouseClicked
     
     private void leerRegion(int id){
-        this.id = 0;
+        this.id = id;
         ClRegion regiones = DAORegiones.sqlLeer(id);
         txtNombreRegion.setText(regiones.getNombre());
         txtRegionOrdinal.setText(regiones.getOrdinal());

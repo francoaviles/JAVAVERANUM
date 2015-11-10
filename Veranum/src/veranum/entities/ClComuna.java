@@ -31,6 +31,11 @@ public class ClComuna {
         setNombre(nombre);
         setIdProvincia(idProvincia);
     }
+    
+     public ClComuna(int idComuna) {
+        setIdComuna(idComuna);
+
+    }
 
     public int getIdComuna() {
         return idComuna;

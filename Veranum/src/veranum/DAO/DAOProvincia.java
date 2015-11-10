@@ -22,13 +22,13 @@ public class DAOProvincia {
     }
     
     public static boolean sqlDelete(ClProvincia provincia){
-        String sql="DELETE FROM \"provincias\" WHERE \"id_provincia\" = '"+provincia.getIdProvincia()+"'";
+        String sql="DELETE FROM \"provincias\" WHERE \"id_provincia\" = "+provincia.getIdProvincia()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClProvincia provincia){
-        String sql="UPDATE \"provincias\" SET \"provincia_nombre\" = '"+provincia.getNombre()+"', \"id_region\" = '"+provincia.getIdRegion()+"' WHERE \"provincia_nombre\" = '"+provincia.getNombre()+"'";
+        String sql="UPDATE \"provincias\" SET \"provincia_nombre\" = '"+provincia.getNombre()+"', \"id_region\" = '"+provincia.getIdRegion()+"' WHERE \"id_region\" = '"+provincia.getIdProvincia()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
