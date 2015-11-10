@@ -22,20 +22,20 @@ public class DAOComuna {
     }
     
     public static boolean sqlDelete(ClComuna comuna){
-        String sql="DELETE FROM \"comunas\" WHERE \"id_comuna\" = '"+comuna.getIdComuna()+"'";
+        String sql="DELETE FROM \"comunas\" WHERE \"comuna_nombre\" = '"+comuna.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClComuna comuna){
-        String sql="UPDATE \"comunas\" SET \"comuna_nombre\" = '"+comuna.getNombre()+"' AND \"id_provincia\" = '"+comuna.getIdProvincia()+"'  WHERE \"id_comuna\" = '"+comuna.getIdComuna()+"'";
+        String sql="UPDATE \"comunas\" SET \"comuna_nombre\" = '"+comuna.getNombre()+"' AND \"id_provincia\" = '"+comuna.getIdProvincia()+"'  WHERE \"comuna_nombre\" = '"+comuna.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static ClComuna sqlLeer(int id){     
         ClComuna comuna = new ClComuna();        
-        if(!bd.sqlSelect("SELECT * FROM \"comunas\" WHERE \"id_comuna\" = "+id+" ")){
+        if(!bd.sqlSelect("SELECT * FROM \"comunas\" WHERE \"id_comuna\" ='"+id+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -49,7 +49,7 @@ public class DAOComuna {
     
     public static ClComuna sqlLeer(String name){     
         ClComuna comuna = new ClComuna();        
-        if(!bd.sqlSelect("SELECT * FROM \"comunas\" WHERE \"comuna_nombre\" = "+name+" ")){
+        if(!bd.sqlSelect("SELECT * FROM \"comunas\" WHERE \"nombre_comuna\" ='"+name+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){

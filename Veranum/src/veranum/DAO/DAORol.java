@@ -23,49 +23,52 @@ public class DAORol {
     }
     
     public static boolean sqlDelete(ClRol rol){
-        String sql="DELETE FROM \"roles\" WHERE \"id_rol\" = '"+rol.getIdRol()+"'";
+        String sql="DELETE FROM \"roles\" WHERE \"nombre\" = '"+rol.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     
     }
     
-    public static boolean sqlUpdate(ClRol rol)
-    {
-        String sql="UPDATE \"roles\" SET \"nombre\" = '"+rol.getNombre()+"', \"descripcion\" = '"+rol.getDescripcion()+"' WHERE \"id_rol\" = '"+rol.getIdRol()+"'";
+    public static boolean sqlUpdate(ClRol rol){
+        String sql="UPDATE \"roles\" SET \"nombre\" = '"+rol.getNombre()+"', \"descripcion\" = '"+rol.getDescripcion()+"' WHERE \"nombre\" = '"+rol.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
-    public ClRol sqlLeer(int id)
-    {     
+    public static ClRol sqlLeer(int id){     
         ClRol rol = new ClRol();
-        
-        if(!bd.sqlSelect("SELECT * FROM \"roles\" WHERE \"id_rol\" = "+id+" "))
-        {
+        if(!bd.sqlSelect("SELECT * FROM \"roles\" WHERE \"id_rol\" ='"+id+"'")){
             return null;
         }        
-        if(!bd.sqlFetch())
-        {
+        if(!bd.sqlFetch()){
             return null;
         }
-        
         rol.setIdRol(bd.getInt("id_rol"));
         rol.setNombre(bd.getString("nombre"));
         rol.setDescripcion(bd.getString("descripcion"));
         return rol;
     }
     
-    public static ArrayList sqlLeerTodos()
-    {
-        ArrayList<ClRol> rol = new ArrayList<>();
-        
-        if(!bd.sqlSelect("SELECT * FROM \"roles\""))
-        {
+    public static ClRol sqlLeer(String name){     
+        ClRol rol = new ClRol();
+        if(!bd.sqlSelect("SELECT * FROM \"roles\" WHERE \"nombre\" ='"+name+"'")){
+            return null;
+        }        
+        if(!bd.sqlFetch()){
             return null;
         }
-        
-        while(bd.sqlFetch())
-        {
+        rol.setIdRol(bd.getInt("id_rol"));
+        rol.setNombre(bd.getString("nombre"));
+        rol.setDescripcion(bd.getString("descripcion"));
+        return rol;
+    }
+    
+    public static ArrayList sqlLeerTodos(){
+        ArrayList<ClRol> rol = new ArrayList<>();
+        if(!bd.sqlSelect("SELECT * FROM \"roles\"")){
+            return null;
+        }
+        while(bd.sqlFetch()){
             rol.add(new ClRol(bd.getInt("id_rol")
                                     , bd.getString("nombre")
                                     , bd.getString("descripcion")
@@ -74,4 +77,19 @@ public class DAORol {
         }     
         return rol;
     }
+    
+    public static ArrayList sqlBuscarByNombre(String nombre){
+        ArrayList<ClRol> rol = new ArrayList<>();        
+        if(!bd.sqlSelect("SELECT * FROM \"roles\" WHERE \"nombre\" LIKE '%"+nombre+"%'")){
+            return null;
+        }
+        while(bd.sqlFetch()){
+            rol.add(new ClRol(bd.getInt("id_rol")
+                                    , bd.getString("nombre")
+                                    , bd.getString("descripcion")
+                                ));
+            
+        }     
+        return rol;
+    }  
 }

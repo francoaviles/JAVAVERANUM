@@ -4,6 +4,7 @@
  */
 package veranum.DAO;
 
+import java.util.ArrayList;
 import veranum.entities.ClHabitacionInspecciones;
 import veranum.utilidades.OracleConection;
 
@@ -34,7 +35,7 @@ public class DAOInspecciones {
     
     public ClHabitacionInspecciones sqlLeer(int id){     
         ClHabitacionInspecciones inspecciones = new ClHabitacionInspecciones();        
-        if(!bd.sqlSelect("SELECT * FROM \"habitacion_inspecciones\" WHERE \"id_habitacion_inspeccion\" = "+id+" ")){
+        if(!bd.sqlSelect("SELECT * FROM \"habitacion_inspecciones\" WHERE \"id_habitacion\" ='"+id+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -42,27 +43,26 @@ public class DAOInspecciones {
         }        
         inspecciones.setIdHabitacionInspeccion(bd.getInt("id_habitacion_inspeccion"));
         inspecciones.setIdHabitacion(bd.getInt("id_habitacion"));
-        //inspecciones.setFechaInicio(bd.getString("fecha_inicio"));
+        inspecciones.setFechaInicio(bd.getDate("fecha_inicio"));
         inspecciones.setComentario(bd.getString("comentario"));
         inspecciones.setNombreInspector(bd.getString("nombre_inspector"));
         return inspecciones;
     }
-    /*
+    
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClHabitacionInspecciones> inspecciones = new ArrayList<>();        
         if(!bd.sqlSelect("SELECT * FROM \"habitacion_inspecciones\"")){
             return null;
         }
         while(bd.sqlFetch()){
-            inspecciones.add(new ClHabitacionInspecciones(bd.getInt("id_reporte")
-                                    , bd.getString("id_tipo_reporte")
-                                    //, bd.getString("fecha_creacion")
-                                    , bd.getString("archivo")
+            inspecciones.add(new ClHabitacionInspecciones(bd.getInt("id_habitacion_inspeccion")
+                                    , bd.getInt("id_habitacion")
+                                    , bd.getDate("fecha_inicio")
                                     , bd.getString("comentario")
+                                    , bd.getString("nombre_inspector")
                                 ));
-            
         }     
         return inspecciones;
     }  
-    * */
+    
 }

@@ -22,20 +22,34 @@ public class DAOMenu {
     }
     
     public static boolean sqlDelete(ClMenu menu){
-        String sql="DELETE FROM \"menu\" WHERE \"id_menu\" = '"+menu.getIdMenu()+"'";
+        String sql="DELETE FROM \"menu\" WHERE \"nombre\" = '"+menu.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClMenu menu){
-        String sql="UPDATE \"menu\" SET \"nombre\" = '"+menu.getNombre()+"' AND \"id_tipo_menu\" = '"+menu.getTipoMenu()+"'  WHERE \"id_menu\" = '"+menu.getIdMenu()+"'";
+        String sql="UPDATE \"menu\" SET \"nombre\" = '"+menu.getNombre()+"' AND \"id_tipo_menu\" = '"+menu.getTipoMenu()+"'  WHERE \"nombre\" = '"+menu.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
-    public ClMenu sqlLeer(int id){     
+    public static ClMenu sqlLeer(int id){     
         ClMenu menu = new ClMenu();        
-        if(!bd.sqlSelect("SELECT * FROM \"menu\" WHERE \"id_menu\" = "+id+" ")){
+        if(!bd.sqlSelect("SELECT * FROM \"menu\" WHERE \"id_menu\" ='"+id+"'")){
+            return null;
+        }        
+        if(!bd.sqlFetch()){
+            return null;
+        }        
+        menu.setIdMenu(bd.getInt("id_menu"));
+        menu.setTipoMenu(bd.getInt("id_tipo_menu"));
+        menu.setNombre(bd.getString("nombre"));
+        return menu;
+    }
+    
+    public static ClMenu sqlLeer(String name){     
+        ClMenu menu = new ClMenu();        
+        if(!bd.sqlSelect("SELECT * FROM \"menu\" WHERE \"nombre\" ='"+name+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -60,5 +74,20 @@ public class DAOMenu {
             
         }     
         return menu;
-    }  
+    }
+    
+    public static ArrayList sqlBuscarByNombre(String nombre){
+        ArrayList<ClMenu> menu = new ArrayList<>();        
+        if(!bd.sqlSelect("SELECT * FROM \"menu\" WHERE \"nombre\" LIKE '%"+nombre+"%'")){
+            return null;
+        }
+        while(bd.sqlFetch()){
+            menu.add(new ClMenu(bd.getInt("id_menu")
+                                    , bd.getInt("id_tipo_menu")
+                                    , bd.getString("nombre")
+                                ));
+            
+        }     
+        return menu;
+    }
 }

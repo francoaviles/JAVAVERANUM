@@ -33,9 +33,9 @@ public class DAOReportes {
         return true;
     }
     
-    public ClReportes sqlLeer(int id){     
+    public static ClReportes sqlLeer(int id){     
         ClReportes reportes = new ClReportes();        
-        if(!bd.sqlSelect("SELECT * FROM \"reportes\" WHERE \"id_reporte\" = "+id+" ")){
+        if(!bd.sqlSelect("SELECT * FROM \"reportes\" WHERE \"id_reporte\" ='"+id+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -43,12 +43,12 @@ public class DAOReportes {
         }        
         reportes.setIdReporte(bd.getInt("id_reporte"));
         reportes.setIdTipoReporte(bd.getInt("id_tipo_reporte"));
-        //reportes.setFechaCreacion(bd.getString("fecha_creacion"));
+        reportes.setFechaCreacion(bd.getDate("fecha_creacion"));
         reportes.setArchivo(bd.getString("archivo"));
         reportes.setComentario(bd.getString("comentario"));
         return reportes;
     }
-    /*
+    
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClReportes> reportes = new ArrayList<>();        
         if(!bd.sqlSelect("SELECT * FROM \"reportes\"")){
@@ -56,8 +56,8 @@ public class DAOReportes {
         }
         while(bd.sqlFetch()){
             reportes.add(new ClReportes(bd.getInt("id_reporte")
-                                    , bd.getString("id_tipo_reporte")
-                                    //, bd.getString("fecha_creacion")
+                                    , bd.getInt("id_tipo_reporte")
+                                    , bd.getDate("fecha_creacion")
                                     , bd.getString("archivo")
                                     , bd.getString("comentario")
                                 ));
@@ -65,5 +65,4 @@ public class DAOReportes {
         }     
         return reportes;
     }  
-    * */
 }

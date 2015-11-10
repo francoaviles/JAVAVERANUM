@@ -22,20 +22,20 @@ public class DAOProvincia {
     }
     
     public static boolean sqlDelete(ClProvincia provincia){
-        String sql="DELETE FROM \"provincias\" WHERE \"id_provincia\" = '"+provincia.getIdProvincia()+"'";
+        String sql="DELETE FROM \"provincias\" WHERE \"provincia_nombre\" = '"+provincia.getIdProvincia()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClProvincia provincia){
-        String sql="UPDATE \"provincias\" SET \"provincia_nombre\" = '"+provincia.getNombre()+"' AND \"id_region\" = '"+provincia.getIdRegion()+"'  WHERE \"id_provincia\" = '"+provincia.getIdProvincia()+"'";
+        String sql="UPDATE \"provincias\" SET \"provincia_nombre\" = '"+provincia.getNombre()+"' AND \"id_region\" = '"+provincia.getIdRegion()+"'  WHERE \"provincia_nombre\" = '"+provincia.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static ClProvincia sqlLeer(int id){     
         ClProvincia provincia = new ClProvincia();        
-        if(!bd.sqlSelect("SELECT * FROM \"provincias\" WHERE \"id_provincia\" = "+id+" ")){
+        if(!bd.sqlSelect("SELECT * FROM \"provincias\" WHERE \"id_provincia\" ='"+id+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -49,7 +49,7 @@ public class DAOProvincia {
     
     public static ClProvincia sqlLeer(String name){     
         ClProvincia provincia = new ClProvincia();        
-        if(!bd.sqlSelect("SELECT * FROM \"provincias\" WHERE \"provincia_nombre\" = "+name+" ")){
+        if(!bd.sqlSelect("SELECT * FROM \"provincias\" WHERE \"id_provincia\" ='"+name+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){

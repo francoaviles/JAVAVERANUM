@@ -33,9 +33,9 @@ public class DAOHabitaciones {
         return true;
     }
     
-    public ClHabitaciones sqlLeer(int id){     
+    public static ClHabitaciones sqlLeer(int id){     
         ClHabitaciones habitacion = new ClHabitaciones();        
-        if(!bd.sqlSelect("SELECT * FROM \"habitaciones\" WHERE \"id_habitacion\" = "+id+" ")){
+        if(!bd.sqlSelect("SELECT * FROM \"habitaciones\" WHERE \"id_habitacion\" ='"+id+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){

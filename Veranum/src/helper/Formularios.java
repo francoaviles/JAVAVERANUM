@@ -41,6 +41,14 @@ public class Formularios {
         } 
     }
     
+    public static void validarRut(java.awt.event.KeyEvent evt)
+    {
+        char c = evt.getKeyChar();
+        if (!((c >= '0') && (c <= '9') ||  (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE) || (c <= 'k') )) {
+            evt.consume();
+        } 
+    }
+    
     public static int getTablaSeleccionada(java.awt.event.MouseEvent evt,javax.swing.JTable tabla, int cantClicks){
         int index = -1;
         if(evt.getClickCount() == cantClicks ) {

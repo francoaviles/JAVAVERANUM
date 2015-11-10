@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -98,6 +99,15 @@ public class OracleConection {
             System.out.println("Error conexion " + ex.getMessage());
         }
         return 0;
+    }
+    
+    public Date getDate(String name){
+        try {
+            return rs.getDate(name);
+        } catch (Exception ex) {
+            System.out.println("Error conexion " + ex.getMessage());
+        }
+        return null;
     }
     
     public void close(){
