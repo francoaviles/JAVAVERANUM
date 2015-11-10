@@ -214,10 +214,10 @@ public class panelComunas extends javax.swing.JPanel {
         }else{
             DAOComuna.sqlUpdate(new ClComuna(this.id, txtNombreComuna.getText()
                 , id_provi));
-        JOptionPane.showMessageDialog(this, "Modificado");
-        Formularios.DesactiveBotonesEliminarEditar(btEditarComuna, btEliminarComuna);
-        helper.Formularios.limpiar(this);
-        this.leerTodosCom(true);
+            JOptionPane.showMessageDialog(this, "Modificado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditarComuna, btEliminarComuna);
+            helper.Formularios.limpiar(this);
+            this.leerTodosCom(true);
         }
     }//GEN-LAST:event_btGrabarComunaActionPerformed
 
@@ -274,7 +274,7 @@ public class panelComunas extends javax.swing.JPanel {
     }
     
     private void leerComuna(int id){
-        this.id = 0;
+        this.id = id;
         ClComuna xx = DAOComuna.sqlLeer(id);
         txtNombreComuna.setText(xx.getNombre());
         
