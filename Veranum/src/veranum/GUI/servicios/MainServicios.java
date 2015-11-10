@@ -24,8 +24,8 @@ public class MainServicios extends javax.swing.JInternalFrame {
     public MainServicios() {
         initComponents();
         tabContServicios.addTab("Servicios", new panelServicios());
-        tabContServicios.addTab("TipoCaract", new panelTipoCaract());
-        tabContServicios.addTab("Caracteristicas", new panelCaracteristicas());
+        tabContServicios.addTab("Tipo Características", new panelTipoCaract());
+        tabContServicios.addTab("Características", new panelCaracteristicas());
     }
     /**
      * This method is called from within the constructor to initialize the form.

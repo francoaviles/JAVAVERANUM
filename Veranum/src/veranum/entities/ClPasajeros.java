@@ -35,8 +35,21 @@ public class ClPasajeros {
         setIdPasajero(idPasajero);
     }
     
-    // usuarios
-    public ClPasajeros(int idPasajero, String rut, String nombre, String contrasena, String apellido_pa, String apellido_ma, String telefono, String email, int idRegion, int idProvincia, int idComuna, String direccion, Date fechaNacimiento, int idRol) {
+    // usuarios insert
+    public ClPasajeros(String rut, String nombre, String contrasena, String apellido_pa, String apellido_ma, String telefono, String email, String direccion, Date fechaNacimiento, int idRol) {
+        setRut(rut);
+        setNombre(nombre);
+        setContrasena(contrasena);
+        setApellido_pa(apellido_pa);
+        setApellido_ma(apellido_ma);
+        setTelefono(telefono);
+        setEmail(email);
+        setDireccion(direccion);
+        setFechaNacimiento(fechaNacimiento);
+        setIdRol(idRol);
+    }
+    
+    public ClPasajeros(int idPasajero, String rut, String nombre, String contrasena, String apellido_pa, String apellido_ma, String telefono, String email, String direccion, Date fechaNacimiento, int idRol) {
         setIdPasajero(idPasajero);
         setRut(rut);
         setNombre(nombre);
@@ -45,9 +58,6 @@ public class ClPasajeros {
         setApellido_ma(apellido_ma);
         setTelefono(telefono);
         setEmail(email);
-        setIdRegion(idRegion);
-        setIdProvincia(idProvincia);
-        setIdComuna(idComuna);
         setDireccion(direccion);
         setFechaNacimiento(fechaNacimiento);
         setIdRol(idRol);

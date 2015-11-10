@@ -7,10 +7,12 @@ package veranum.GUI.usuarios;
 
 import helper.Formularios;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOUsuarios;
 import veranum.entities.ClPasajeros;
+import veranum.entities.ClRol;
 
 /**
  *
@@ -21,6 +23,7 @@ public class panelUsuarios extends javax.swing.JPanel {
     private boolean paraGrabar = false;
     private DefaultTableModel dt = new DefaultTableModel();
     private int id = 0;
+    Date f_nac ;
     
     /**
      * Creates new form panelUsuarios
@@ -282,43 +285,45 @@ public class panelUsuarios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btGrabarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarUsuariosActionPerformed
-        /*if(!paraGrabar){
+        int id_rol = ((ClRol)cbRol.getSelectedItem()).getIdRol();
+        if(!paraGrabar){
             if(txtRutUsuario.getText().equals("") || txtNombreUsuario.getText().equals("") ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
                 DAOUsuarios.sqlInsert(new ClPasajeros(txtRutUsuario.getText()
-                    , txtNombreUsuario.getText())
-                , txtConstrasenaUsuario.getText()
-                , txtApePaterno.getText()
-                , txtApeMaterno.getText()
-                , txtTelefono.getText()
-                , txtMailUsuario.getText()
-                , txtDireccionUsuario.getText()
-                , txtFechaNacUsu.getText()
-                , cbRol.getText()
-            );
+                                                        , txtNombreUsuario.getText()
+                                                        , txtConstrasenaUsuario.getText()
+                                                        , txtApePaterno.getText()
+                                                        , txtApeMaterno.getText()
+                                                        , txtTelefono.getText()
+                                                        , txtMailUsuario.getText()
+                                                        , txtDireccionUsuario.getText()
+                                                        , Formularios.deStringAFecha(txtFechaNacUsu.getText())
+                                                        , id_rol)
+                                         );
             JOptionPane.showMessageDialog(this, "Agregado");
             Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
-            helper.Formularios.limpiar(PanelUsuarios);
+            helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
-            DAOUsuarios.sqlUpdate(new ClPasajeros(this.id
-                , txtNombreUsuario.getText())
-            , txtConstrasenaUsuario.getText()
-            , txtApePaterno.getText()
-            , txtApeMaterno.getText()
-            , txtTelefono.getText()
-            , txtMailUsuario.getText()
-            , txtDireccionUsuario.getText()
-            , txtFechaNacUsu.getText()
-            , cbRol.getText()
-        );
+            DAOUsuarios.sqlUpdate(new ClPasajeros(  this.id
+                                                    , txtRutUsuario.getText()
+                                                    , txtNombreUsuario.getText()
+                                                    , txtConstrasenaUsuario.getText()
+                                                    , txtApePaterno.getText()
+                                                    , txtApeMaterno.getText()
+                                                    , txtTelefono.getText()
+                                                    , txtMailUsuario.getText()
+                                                    , txtDireccionUsuario.getText()
+                                                    , Formularios.deStringAFecha(txtFechaNacUsu.getText())
+                                                    , id_rol
+                                ));
         JOptionPane.showMessageDialog(this, "Modificado");
         Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
-        helper.Formularios.limpiar(PanelUsuarios);
+        helper.Formularios.limpiar(this);
         this.leerTodos(true);
-        } */
+        }
     }//GEN-LAST:event_btGrabarUsuariosActionPerformed
 
     private void btEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarUsuarioActionPerformed
