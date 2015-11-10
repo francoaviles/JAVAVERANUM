@@ -28,7 +28,7 @@ public class DAOProvincia {
     }
     
     public static boolean sqlUpdate(ClProvincia provincia){
-        String sql="UPDATE \"provincias\" SET \"provincia_nombre\" = '"+provincia.getNombre()+"' AND \"id_region\" = '"+provincia.getIdRegion()+"'  WHERE \"provincia_nombre\" = '"+provincia.getNombre()+"'";
+        String sql="UPDATE \"provincias\" SET \"provincia_nombre\" = '"+provincia.getNombre()+"', \"id_region\" = '"+provincia.getIdRegion()+"' WHERE \"provincia_nombre\" = '"+provincia.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }

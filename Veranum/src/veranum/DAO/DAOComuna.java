@@ -28,7 +28,7 @@ public class DAOComuna {
     }
     
     public static boolean sqlUpdate(ClComuna comuna){
-        String sql="UPDATE \"comunas\" SET \"comuna_nombre\" = '"+comuna.getNombre()+"' AND \"id_provincia\" = '"+comuna.getIdProvincia()+"'  WHERE \"comuna_nombre\" = '"+comuna.getNombre()+"'";
+        String sql="UPDATE \"comunas\" SET \"comuna_nombre\" = '"+comuna.getNombre()+"', \"id_provincia\" = '"+comuna.getIdProvincia()+"' WHERE \"comuna_nombre\" = '"+comuna.getNombre()+"'";
         bd.sqlEjecutar(sql);   
         return true;
     }
