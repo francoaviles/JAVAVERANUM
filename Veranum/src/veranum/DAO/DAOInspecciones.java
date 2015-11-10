@@ -22,13 +22,13 @@ public class DAOInspecciones {
     }
     
     public static boolean sqlDelete(ClHabitacionInspecciones inspecciones){
-        String sql="DELETE FROM \"habitacion_inspecciones\" WHERE \"id_habitacion_inspeccion\" = '"+inspecciones.getIdHabitacionInspeccion()+"'";
+        String sql="DELETE FROM \"habitacion_inspecciones\" WHERE \"id_habitacion_inspeccion\" = "+inspecciones.getIdHabitacionInspeccion()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClHabitacionInspecciones inspecciones){
-        String sql="UPDATE \"habitacion_inspecciones\" SET \"id_habitacion\" = '"+inspecciones.getIdHabitacion()+"' AND \"fecha_inicio\" = '"+inspecciones.getFechaInicio()+"' AND \"comentario\" = '"+inspecciones.getComentario()+"' AND \"nombre_inspector\" = '"+inspecciones.getNombreInspector()+"' WHERE \"id_habitacion_inspeccion\" = '"+inspecciones.getIdHabitacionInspeccion()+"'";
+        String sql="UPDATE \"habitacion_inspecciones\" SET \"id_habitacion\" = '"+inspecciones.getIdHabitacion()+"', \"fecha_inicio\" = '"+inspecciones.getFechaInicio()+"', \"comentario\" = '"+inspecciones.getComentario()+"', \"nombre_inspector\" = '"+inspecciones.getNombreInspector()+"' WHERE \"id_habitacion_inspeccion\" = "+inspecciones.getIdHabitacionInspeccion()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
@@ -64,5 +64,4 @@ public class DAOInspecciones {
         }     
         return inspecciones;
     }  
-    
 }

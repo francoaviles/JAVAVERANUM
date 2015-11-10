@@ -21,6 +21,10 @@ public class ClHabitaciones {
 
     }
     
+    public ClHabitaciones(int idHabitacion) {
+        setIdHabitacion(idHabitacion);
+    }
+    
     public ClHabitaciones(int idHotel, int idHabitacionTipo, int idHabitacionEstado, String ubicacion, int cantPersonas, int precio) {
         setIdHotel(idHotel);
         setIdHabitacionTipo(idHabitacionTipo);

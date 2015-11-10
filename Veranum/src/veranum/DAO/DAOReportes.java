@@ -22,13 +22,13 @@ public class DAOReportes {
     }
     
     public static boolean sqlDelete(ClReportes reportes){
-        String sql="DELETE FROM \"reportes\" WHERE \"id_reporte\" = '"+reportes.getIdReporte()+"'";
+        String sql="DELETE FROM \"reportes\" WHERE \"id_reporte\" = "+reportes.getIdReporte()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClReportes reportes){
-        String sql="UPDATE \"reportes\" SET \"id_tipo_reporte\" = '"+reportes.getIdTipoReporte()+"' AND \"fecha_creacion\" = '"+reportes.getFechaCreacion()+"' AND \"archivo\" = '"+reportes.getArchivo()+"' AND \"comentario\" = '"+reportes.getComentario()+"' WHERE \"id_reporte\" = '"+reportes.getIdReporte()+"'";
+        String sql="UPDATE \"reportes\" SET \"id_tipo_reporte\" = '"+reportes.getIdTipoReporte()+"', \"fecha_creacion\" = '"+reportes.getFechaCreacion()+"', \"archivo\" = '"+reportes.getArchivo()+"', \"comentario\" = '"+reportes.getComentario()+"' WHERE \"id_reporte\" = "+reportes.getIdReporte()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }

@@ -16,6 +16,10 @@ public class ClTipoMenu {
 
     }
     
+    public ClTipoMenu(int idTipoMenu) {
+        setIdTipoMenu(idTipoMenu);
+    }
+    
     public ClTipoMenu(String nombre) {
         setNombre(nombre);
     }

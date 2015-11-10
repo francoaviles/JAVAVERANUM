@@ -22,13 +22,13 @@ public class DAOMenu {
     }
     
     public static boolean sqlDelete(ClMenu menu){
-        String sql="DELETE FROM \"menu\" WHERE \"id_menu\" = '"+menu.getIdMenu()+"'";
+        String sql="DELETE FROM \"menu\" WHERE \"id_menu\" = "+menu.getIdMenu()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClMenu menu){
-        String sql="UPDATE \"menu\" SET \"nombre\" = '"+menu.getNombre()+"' AND \"id_tipo_menu\" = '"+menu.getTipoMenu()+"'  WHERE \"nombre\" = '"+menu.getNombre()+"'";
+        String sql="UPDATE \"menu\" SET \"nombre\" = '"+menu.getNombre()+"', \"id_tipo_menu\" = '"+menu.getTipoMenu()+"'  WHERE \"id_menu\" = "+menu.getIdMenu()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }

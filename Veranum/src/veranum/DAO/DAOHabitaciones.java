@@ -13,7 +13,7 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOHabitaciones {
-     private static final OracleConection bd = new OracleConection().Conectar();
+    private static final OracleConection bd = new OracleConection().Conectar();
     
     public static boolean sqlInsert(ClHabitaciones habitacion){
         String sql="INSERT INTO \"habitaciones\" (\"id_hotel\", \"id_habitacion_tipo\", \"id_habitacion_estado\", \"ubicacion\", \"cant_personas\", \"precio\") VALUES ('"+habitacion.getIdHotel()+"','"+habitacion.getIdHabitacionTipo()+"','"+habitacion.getIdHabitacionEstado()+"','"+habitacion.getUbicacion()+"','"+habitacion.getCantPersonas()+"','"+habitacion.getPrecio()+"')";
@@ -22,13 +22,13 @@ public class DAOHabitaciones {
     }
     
     public static boolean sqlDelete(ClHabitaciones habitacion){
-        String sql="DELETE FROM \"habitaciones\" WHERE \"id_habitacion\" = '"+habitacion.getIdHabitacion()+"'";
+        String sql="DELETE FROM \"habitaciones\" WHERE \"id_habitacion\" = "+habitacion.getIdHabitacion()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClHabitaciones habitacion){
-        String sql="UPDATE \"habitaciones\" SET \"id_hotel\" = '"+habitacion.getIdHotel()+"' AND \"id_habitacion_tipo\" = '"+habitacion.getIdHabitacionTipo()+"' AND \"id_habitacion_estado\" = '"+habitacion.getIdHabitacionEstado()+"' AND \"ubicacion\" = '"+habitacion.getUbicacion()+"' AND \"cant_personas\" = '"+habitacion.getCantPersonas()+"' AND \"precio\" = '"+habitacion.getPrecio()+"' WHERE \"id_habitacion\" = '"+habitacion.getIdHabitacion()+"'";
+        String sql="UPDATE \"habitaciones\" SET \"id_hotel\" = '"+habitacion.getIdHotel()+"', \"id_habitacion_tipo\" = '"+habitacion.getIdHabitacionTipo()+"', \"id_habitacion_estado\" = '"+habitacion.getIdHabitacionEstado()+"', \"ubicacion\" = '"+habitacion.getUbicacion()+"', \"cant_personas\" = '"+habitacion.getCantPersonas()+"', \"precio\" = '"+habitacion.getPrecio()+"' WHERE \"id_habitacion\" = "+habitacion.getIdHabitacion()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
@@ -68,6 +68,5 @@ public class DAOHabitaciones {
             
         }     
         return habitacion;
-    }  
-     
+    }   
 }

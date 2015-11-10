@@ -25,6 +25,10 @@ public class ClReportes {
 
     }
     
+    public ClReportes(int idReporte) {
+        setIdReporte(idReporte);
+    }
+    
     public ClReportes(int idTipoReporte, Date fechaCreacion, String archivo, String comentario) {
         setIdTipoReporte(idTipoReporte);
         setFechaCreacion(fechaCreacion);

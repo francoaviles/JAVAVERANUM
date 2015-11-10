@@ -17,6 +17,10 @@ public class ClHabitacionInspecciones {
     private String comentario;
     private String nombreInspector;
 
+    public ClHabitacionInspecciones(int idHabitacionInspeccion) {
+        setIdHabitacionInspeccion(idHabitacionInspeccion);
+    }
+    
     public ClHabitacionInspecciones(int idHabitacionInspeccion, int idHabitacion, Date fechaInicio, String comentario, String nombreInspector) {
         setIdHabitacionInspeccion(idHabitacionInspeccion);
         setIdHabitacion(idHabitacion);

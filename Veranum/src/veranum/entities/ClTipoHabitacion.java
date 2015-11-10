@@ -16,6 +16,10 @@ public class ClTipoHabitacion {
 
     }
     
+    public ClTipoHabitacion(int idTipoHabit) {
+        setIdTipoHabit(idTipoHabit);
+    }
+    
     public ClTipoHabitacion(String nombre) {
         setNombre(nombre);
     }

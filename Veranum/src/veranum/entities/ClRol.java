@@ -13,6 +13,10 @@ public class ClRol {
     private String nombre;
     private String descripcion;
 
+    public ClRol(int idRol) {
+        setIdRol(idRol);
+    }
+    
     public ClRol(int idRol, String nombre, String descripcion) {
         setIdRol(idRol);
         setNombre(nombre);

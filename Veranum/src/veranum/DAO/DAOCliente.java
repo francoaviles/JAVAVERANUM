@@ -23,13 +23,13 @@ public class DAOCliente {
     }
     
     public static boolean sqlDelete(ClPasajeros clientes){
-        String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = '"+clientes.getIdPasajero()+"'";
+        String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = "+clientes.getIdPasajero()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClPasajeros clientes){
-        String sql="UPDATE \"pasajeros\" SET \"rut\" = '"+clientes.getRut()+"' AND \"nombre\" = '"+clientes.getNombre()+"' AND \"apellido_pa\" = '"+clientes.getApellido_pa()+"' AND \"apellido_ma\" = '"+clientes.getApellido_ma()+"' AND \"telefono\" = '"+clientes.getTelefono()+"' AND \"email\" = '"+clientes.getEmail()+"' AND \"id_region\" = '"+clientes.getIdRegion()+"' AND \"id_provincia\" = '"+clientes.getIdProvincia()+"' AND \"id_comuna\" = '"+clientes.getIdComuna()+"' AND \"direccion\" = '"+clientes.getDireccion()+"' AND \"fecha_nac\" = '"+clientes.getFechaNacimiento()+"' WHERE \"rut\" = '"+clientes.getRut()+"'";
+        String sql="UPDATE \"pasajeros\" SET \"rut\" = '"+clientes.getRut()+"', \"nombre\" = '"+clientes.getNombre()+"' AND \"apellido_pa\" = '"+clientes.getApellido_pa()+"', \"apellido_ma\" = '"+clientes.getApellido_ma()+"', \"telefono\" = '"+clientes.getTelefono()+"', \"email\" = '"+clientes.getEmail()+"', \"id_region\" = '"+clientes.getIdRegion()+"', \"id_provincia\" = '"+clientes.getIdProvincia()+"', \"id_comuna\" = '"+clientes.getIdComuna()+"', \"direccion\" = '"+clientes.getDireccion()+"', \"fecha_nac\" = '"+clientes.getFechaNacimiento()+"' WHERE \"rut\" = "+clientes.getRut()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
@@ -72,9 +72,6 @@ public class DAOCliente {
         clientes.setApellido_ma(bd.getString("apellido_ma"));
         clientes.setTelefono(bd.getString("telefono"));
         clientes.setEmail(bd.getString("email"));
-        clientes.setIdRegion(bd.getInt("id_region"));
-        clientes.setIdProvincia(bd.getInt("id_provincia"));
-        clientes.setIdComuna(bd.getInt("id_comuna"));
         clientes.setDireccion(bd.getString("direccion"));
         clientes.setFechaNacimiento(bd.getDate("fecha_nac"));
         return clientes;
@@ -93,9 +90,6 @@ public class DAOCliente {
                                     , bd.getString("apellido_ma")
                                     , bd.getString("telefono")
                                     , bd.getString("email")
-                                    , bd.getInt("id_region")
-                                    , bd.getInt("id_provincia")
-                                    , bd.getInt("id_comuna")
                                     , bd.getString("direccion")
                                     , bd.getDate("fecha_nac")
                                 ));
@@ -117,9 +111,6 @@ public class DAOCliente {
                                     , bd.getString("apellido_ma")
                                     , bd.getString("telefono")
                                     , bd.getString("email")
-                                    , bd.getInt("id_region")
-                                    , bd.getInt("id_provincia")
-                                    , bd.getInt("id_comuna")
                                     , bd.getString("direccion")
                                     , bd.getDate("fecha_nac")
                                 ));

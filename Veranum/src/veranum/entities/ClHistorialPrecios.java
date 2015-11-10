@@ -24,6 +24,10 @@ public class ClHistorialPrecios {
     public ClHistorialPrecios() {
     }
     
+    public ClHistorialPrecios(int idHistorialPrecios) {
+        setIdHistorialPrecios(idHistorialPrecios);
+    }
+    
     public ClHistorialPrecios(int idHistorialPrecios, int idHabitacion, int precio, Date fecha) {
         setIdHistorialPrecios(idHistorialPrecios);
         setIdHbitacion(idHabitacion);

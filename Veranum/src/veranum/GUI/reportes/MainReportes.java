@@ -15,6 +15,7 @@ public class MainReportes extends javax.swing.JInternalFrame {
      */
     public MainReportes() {
         initComponents();
+        tabContenidoReportes.addTab("TipoReportes", new panelTipoReportes());
     }
 
     /**

@@ -12,6 +12,10 @@ public class ClHabitacionEstados {
     private int idHabitacionEstado;
     private String estado;
 
+    public ClHabitacionEstados(int idHabitacionEstado) {
+        setIdHabitacionEstado(idHabitacionEstado);
+    }
+    
     public ClHabitacionEstados(int idHabitacionEstado, String estado) {
         setIdHabitacionEstado(idHabitacionEstado);
         setEstado(estado);

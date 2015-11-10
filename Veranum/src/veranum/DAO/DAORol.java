@@ -23,14 +23,14 @@ public class DAORol {
     }
     
     public static boolean sqlDelete(ClRol rol){
-        String sql="DELETE FROM \"roles\" WHERE \"id_rol\" = '"+rol.getIdRol()+"'";
+        String sql="DELETE FROM \"roles\" WHERE \"id_rol\" = "+rol.getIdRol()+"";
         bd.sqlEjecutar(sql);   
         return true;
     
     }
     
     public static boolean sqlUpdate(ClRol rol){
-        String sql="UPDATE \"roles\" SET \"nombre\" = '"+rol.getNombre()+"', \"descripcion\" = '"+rol.getDescripcion()+"' WHERE \"nombre\" = '"+rol.getNombre()+"'";
+        String sql="UPDATE \"roles\" SET \"nombre\" = '"+rol.getNombre()+"', \"descripcion\" = '"+rol.getDescripcion()+"' WHERE \"id_rol\" = "+rol.getIdRol()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
@@ -91,5 +91,5 @@ public class DAORol {
             
         }     
         return rol;
-    }  
+    }
 }

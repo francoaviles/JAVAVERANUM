@@ -4,17 +4,71 @@
  */
 package veranum.GUI.insumos;
 
+import helper.Formularios;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOInsumos;
+import veranum.entities.ClInsumos;
+
 /**
  *
  * @author Zacarias
  */
 public class MainInsumos extends javax.swing.JInternalFrame {
 
+    private boolean paraGrabar = false;
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int id = 0;
+    
     /**
      * Creates new form MainInsumos
      */
     public MainInsumos() {
         initComponents();
+        grInsumos.setEnabled(true);
+        Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEditarInsumos);
+        btDesactivarEditarInsumos.setVisible(false);
+        this.leerTodos(true);
+        tabContenidoInsumos.addTab("TipoMenu", new panelTipoMenu());
+    }
+    
+     // Method Custom
+    private void leerInsumos(int id){
+        this.id = id;
+        ClInsumos ins = DAOInsumos.sqlLeer(id);
+        txtNombreInsumos.setText(ins.getNombre());
+        txtDescripcionInsumos.setText(ins.getDescripcion());
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList ins = new ArrayList<>();
+        if(todos)
+            ins = DAOInsumos.sqlLeerTodos();
+        else 
+            ins = DAOInsumos.sqlBuscarByNombre(txtBuscarInsumos.getText());
+        
+        dt =  (DefaultTableModel) grInsumos.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < ins.size(); x++){
+            ClInsumos xx = (ClInsumos)ins.get(x);
+            Object[] fila = new Object[7];
+            fila[0] = xx.getIdInsumo();
+            fila[1] = xx.getNombre();
+            fila[2] = xx.getDescripcion(); 
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditarInsumos.setVisible(false);
+            helper.Formularios.limpiar(panelInsumos);
+        } else {
+            btDesactivarEditarInsumos.setVisible(true);
+        }
     }
 
     /**
@@ -31,7 +85,7 @@ public class MainInsumos extends javax.swing.JInternalFrame {
         lbNombreInsumo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombreInsumos = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtDescripcionInsumos = new javax.swing.JTextField();
         btGrabarInsumos = new javax.swing.JButton();
         btEliminarInsumos = new javax.swing.JButton();
         btEditarInsumos = new javax.swing.JButton();
@@ -73,14 +127,39 @@ public class MainInsumos extends javax.swing.JInternalFrame {
         jLabel2.setText("Descripción:");
 
         btGrabarInsumos.setText("Grabar");
+        btGrabarInsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGrabarInsumosActionPerformed(evt);
+            }
+        });
 
         btEliminarInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminarInsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarInsumosActionPerformed(evt);
+            }
+        });
 
         btEditarInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditarInsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarInsumosActionPerformed(evt);
+            }
+        });
 
         btBuscarInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscarInsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarInsumosActionPerformed(evt);
+            }
+        });
 
         btBuscarTodosInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodosInsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarTodosInsumosActionPerformed(evt);
+            }
+        });
 
         grInsumos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,12 +180,22 @@ public class MainInsumos extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        grInsumos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grInsumosMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(grInsumos);
         if (grInsumos.getColumnModel().getColumnCount() > 0) {
             grInsumos.getColumnModel().getColumn(0).setMaxWidth(30);
         }
 
         btDesactivarEditarInsumos.setText("Salir Modo Editar");
+        btDesactivarEditarInsumos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDesactivarEditarInsumosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelInsumosLayout = new javax.swing.GroupLayout(panelInsumos);
         panelInsumos.setLayout(panelInsumosLayout);
@@ -135,7 +224,7 @@ public class MainInsumos extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelInsumosLayout.createSequentialGroup()
                         .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDescripcionInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelInsumosLayout.createSequentialGroup()
                                 .addComponent(lbNombreInsumo)
                                 .addGap(27, 27, 27)
@@ -148,12 +237,13 @@ public class MainInsumos extends javax.swing.JInternalFrame {
             panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInsumosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEliminarInsumos)
-                    .addComponent(btEditarInsumos)
-                    .addComponent(txtBuscarInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btBuscarInsumos)
-                    .addComponent(btBuscarTodosInsumos))
+                    .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btEliminarInsumos)
+                        .addComponent(btEditarInsumos)
+                        .addComponent(txtBuscarInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btBuscarTodosInsumos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
@@ -164,7 +254,7 @@ public class MainInsumos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescripcionInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btGrabarInsumos)
                 .addGap(210, 210, 210))
@@ -388,6 +478,75 @@ public class MainInsumos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btEliminarInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarInsumosActionPerformed
+        this.leerInsumos(Formularios.getSelectedRow(grInsumos));
+        if(this.id == 0){
+            JOptionPane.showMessageDialog(this, "NO existe para eliminar");
+        }else{
+            DAOInsumos.sqlDelete(new ClInsumos(this.id));
+            JOptionPane.showMessageDialog(this, "Eliminado");
+            helper.Formularios.limpiar(panelInsumos);
+            Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btEliminarInsumosActionPerformed
+
+    private void btEditarInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarInsumosActionPerformed
+        this.leerInsumos(Formularios.getSelectedRow(grInsumos));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarInsumosActionPerformed
+
+    private void btBuscarInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarInsumosActionPerformed
+        this.leerTodos(false);
+    }//GEN-LAST:event_btBuscarInsumosActionPerformed
+
+    private void btBuscarTodosInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosInsumosActionPerformed
+        this.leerTodos(true);
+    }//GEN-LAST:event_btBuscarTodosInsumosActionPerformed
+
+    private void btDesactivarEditarInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarInsumosActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarInsumosActionPerformed
+
+    private void btGrabarInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarInsumosActionPerformed
+        if(!paraGrabar){
+            if(txtNombreInsumos.getText().equals("") || txtDescripcionInsumos.getText().equals("") ){
+            JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+            }else{
+            DAOInsumos.sqlInsert(new ClInsumos(txtNombreInsumos.getText()
+                                                   , txtDescripcionInsumos.getText())
+                                );
+            JOptionPane.showMessageDialog(this, "Agregado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
+            helper.Formularios.limpiar(panelInsumos);
+            this.leerTodos(true);
+        }  
+        }else{
+            DAOInsumos.sqlUpdate(     new ClInsumos(this.id, txtNombreInsumos.getText()
+                                        , txtDescripcionInsumos.getText()));
+            JOptionPane.showMessageDialog(this, "Modificado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
+            helper.Formularios.limpiar(panelInsumos);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btGrabarInsumosActionPerformed
+
+    private void grInsumosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grInsumosMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grInsumos, 2);
+        
+        if(row_dos >= 0){
+            this.leerInsumos(Integer.parseInt(grInsumos.getValueAt(row_dos, 0).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
+            this.paraGrabar = true;
+            this.btnEditarMode();
+        } else {
+            Formularios.ActiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
+        }
+    }//GEN-LAST:event_grInsumosMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarInsumos;
     private javax.swing.JButton btBuscarMedida;
@@ -415,7 +574,6 @@ public class MainInsumos extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbNombreInsumo;
     private javax.swing.JLabel lbNombreMedida;
     private javax.swing.JLabel lbNombreMenu;
@@ -427,6 +585,7 @@ public class MainInsumos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtBuscarInsumos;
     private javax.swing.JTextField txtBuscarMedida;
     private javax.swing.JTextField txtBuscarMenu;
+    private javax.swing.JTextField txtDescripcionInsumos;
     private javax.swing.JTextField txtNombreInsumos;
     private javax.swing.JTextField txtNombreMedida;
     private javax.swing.JTextField txtNombreMenu;

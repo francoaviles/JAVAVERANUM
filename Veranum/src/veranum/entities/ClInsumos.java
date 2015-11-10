@@ -17,6 +17,10 @@ public class ClInsumos {
 
     }
     
+    public ClInsumos(int idInsumo) {
+        setIdInsumo(idInsumo);
+    }
+    
     public ClInsumos(String nombre, String descripcion) {
         setNombre(nombre);
         setDescripcion(descripcion);

@@ -17,6 +17,14 @@ public class ClTipoReportes {
 
     }
     
+    public ClTipoReportes(int idTipoReporte) {
+        setIdTipoReporte(idTipoReporte);
+    }
+    
+    public ClTipoReportes(String nombre) {
+        setNombre(nombre);
+    }
+    
     public ClTipoReportes(String nombre, String descripcion) {
         setNombre(nombre);
         setDescripcion(descripcion);

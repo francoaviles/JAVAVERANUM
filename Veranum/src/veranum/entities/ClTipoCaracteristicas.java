@@ -16,6 +16,14 @@ public class ClTipoCaracteristicas {
     public ClTipoCaracteristicas() {
     }
     
+     public ClTipoCaracteristicas(int idTipoCaract) {
+        setIdTipoCaract(idTipoCaract);
+    }
+     
+     public ClTipoCaracteristicas(String nombre) {
+        setNombre(nombre);
+    }
+     
     public ClTipoCaracteristicas(String nombre, String descripcion) {
         setNombre(nombre);
         setDescripcion(descripcion);

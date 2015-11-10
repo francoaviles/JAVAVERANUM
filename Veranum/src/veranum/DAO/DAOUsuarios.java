@@ -13,7 +13,7 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOUsuarios {
-    private static final OracleConection bd = new OracleConection().Conectar();
+   private static final OracleConection bd = new OracleConection().Conectar();
     
     public static boolean sqlInsert(ClPasajeros usuarios){
         String sql="INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"contrasena\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"id_region\", \"id_provincia\", \"id_comuna\", \"direccion\", \"fecha_nac\", \"id_rol\" ) VALUES ('"+usuarios.getRut()+"','"+usuarios.getNombre()+"','"+usuarios.getContrasena()+"','"+usuarios.getApellido_pa()+"','"+usuarios.getApellido_ma()+"','"+usuarios.getTelefono()+"','"+usuarios.getEmail()+"','"+usuarios.getIdRegion()+"','"+usuarios.getIdProvincia()+"','"+usuarios.getIdComuna()+"','"+usuarios.getDireccion()+"','"+usuarios.getFechaNacimiento()+"','"+usuarios.getIdRol()+"' )";
@@ -22,18 +22,18 @@ public class DAOUsuarios {
     }
     
     public static boolean sqlDelete(ClPasajeros usuarios){
-        String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = '"+usuarios.getIdPasajero()+"'";
+        String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = "+usuarios.getIdPasajero()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClPasajeros usuarios){
-        String sql="UPDATE \"pasajeros\" SET \"rut\" = '"+usuarios.getRut()+"' AND \"nombre\" = '"+usuarios.getNombre()+"' AND \"contrasena\" = '"+usuarios.getContrasena()+"' AND \"apellido_pa\" = '"+usuarios.getApellido_pa()+"' AND \"apellido_ma\" = '"+usuarios.getApellido_ma()+"' AND \"telefono\" = '"+usuarios.getTelefono()+"' AND \"email\" = '"+usuarios.getEmail()+"' AND \"id_region\" = '"+usuarios.getIdRegion()+"' AND \"id_provincia\" = '"+usuarios.getIdProvincia()+"' AND \"id_comuna\" = '"+usuarios.getIdComuna()+"' AND \"direccion\" = '"+usuarios.getDireccion()+"' AND \"fecha_nac\" = '"+usuarios.getFechaNacimiento()+"' WHERE \"rut\" = '"+usuarios.getRut()+"'";
+        String sql="UPDATE \"pasajeros\" SET \"rut\" = '"+usuarios.getRut()+"', \"nombre\" = '"+usuarios.getNombre()+"', \"contrasena\" = '"+usuarios.getContrasena()+"', \"apellido_pa\" = '"+usuarios.getApellido_pa()+"', \"apellido_ma\" = '"+usuarios.getApellido_ma()+"', \"telefono\" = '"+usuarios.getTelefono()+"', \"email\" = '"+usuarios.getEmail()+"', \"id_region\" = '"+usuarios.getIdRegion()+"', \"id_provincia\" = '"+usuarios.getIdProvincia()+"', \"id_comuna\" = '"+usuarios.getIdComuna()+"', \"direccion\" = '"+usuarios.getDireccion()+"', \"fecha_nac\" = '"+usuarios.getFechaNacimiento()+"' WHERE \"id_pasajero\" = "+usuarios.getIdPasajero()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
-    public ClPasajeros sqlLeer(int id){     
+    public static ClPasajeros sqlLeer(int id){     
         ClPasajeros usuarios = new ClPasajeros();        
         if(!bd.sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"id_pasajero\" ='"+id+"'")){
             return null;
@@ -58,7 +58,7 @@ public class DAOUsuarios {
         return usuarios;
     }
     
-    public ClPasajeros sqlLeer(String name){     
+    public static ClPasajeros sqlLeer(String name){     
         ClPasajeros usuarios = new ClPasajeros();        
         if(!bd.sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" ='"+name+"'")){
             return null;
@@ -133,6 +133,5 @@ public class DAOUsuarios {
             
         }     
         return usuarios;
-    } 
-    
+    }     
 }

@@ -22,13 +22,13 @@ public class DAOInsumos {
     }
     
     public static boolean sqlDelete(ClInsumos insumo){
-        String sql="DELETE FROM \"insumos\" WHERE \"id_insumo\" = '"+insumo.getIdInsumo()+"'";
+        String sql="DELETE FROM \"insumos\" WHERE \"id_insumo\" = "+insumo.getIdInsumo()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClInsumos insumo){
-        String sql="UPDATE \"insumos\" SET \"nombre\" = '"+insumo.getNombre()+"' AND \"descripcion\" = '"+insumo.getDescripcion()+"'  WHERE \"nombre\" = '"+insumo.getNombre()+"'";
+        String sql="UPDATE \"insumos\" SET \"nombre\" = '"+insumo.getNombre()+"', \"descripcion\" = '"+insumo.getDescripcion()+"'  WHERE \"id_insumo\" = "+insumo.getIdInsumo()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }

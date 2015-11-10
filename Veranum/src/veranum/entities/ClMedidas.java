@@ -16,6 +16,10 @@ public class ClMedidas {
 
     }
     
+    public ClMedidas(int idMedida) {
+        setIdMedida(idMedida);
+    }
+    
     public ClMedidas(String medida) {
         setMedida(medida);
     }
