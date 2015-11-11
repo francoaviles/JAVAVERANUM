@@ -17,26 +17,26 @@ public class DAOCaracteristicas {
     private static final OracleConection bd = new OracleConection().Conectar();
     
     public static boolean sqlInsert(ClCaracteristicas carac){
-        String sql="INSERT INTO \"caracteristica\" (\"id_tipo_carac\", \"cantidad\", \"tipo\") VALUES ('"+carac.getIdTipoCaract()+"', '"+carac.getCantidad()+"', '"+carac.getTipo()+"')";
+        String sql="INSERT INTO \"caracteristicas\" (\"id_tipo_carac\", \"cantidad\", \"tipo\") VALUES ('"+carac.getIdTipoCaract()+"', '"+carac.getCantidad()+"', '"+carac.getTipo()+"')";
         bd.sqlEjecutar(sql);
         return true;
     }
     
     public static boolean sqlDelete(ClCaracteristicas carac){
-        String sql="DELETE FROM \"caracteristica\" WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";
+        String sql="DELETE FROM \"caracteristicas\" WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClCaracteristicas carac){
-        String sql="UPDATE \"caracteristica\" SET \"id_tipo_carac\" = '"+carac.getIdTipoCaract()+"', \"cantidad\" = '"+carac.getCantidad()+"' , \"tipo\" = '"+carac.getTipo()+"' WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";
+        String sql="UPDATE \"caracteristicas\" SET \"id_tipo_carac\" = '"+carac.getIdTipoCaract()+"', \"cantidad\" = '"+carac.getCantidad()+"' , \"tipo\" = '"+carac.getTipo()+"' WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";
         bd.sqlEjecutar(sql);   
         return true;
     }
       
     public static ClCaracteristicas sqlLeer(int id){     
         ClCaracteristicas carac = new ClCaracteristicas();        
-        if(!bd.sqlSelect("SELECT * FROM \"caracteristica\" WHERE \"id_caracteristica\" ='"+id+"'")){
+        if(!bd.sqlSelect("SELECT * FROM \"caracteristicas\" WHERE \"id_caracteristica\" ='"+id+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -51,7 +51,7 @@ public class DAOCaracteristicas {
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClCaracteristicas> carac = new ArrayList<>();        
-        if(!bd.sqlSelect("SELECT * FROM \"caracteristica\"")){
+        if(!bd.sqlSelect("SELECT * FROM \"caracteristicas\"")){
             return null;
         }
         while(bd.sqlFetch()){
