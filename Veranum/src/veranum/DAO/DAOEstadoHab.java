@@ -49,7 +49,7 @@ public class DAOEstadoHab {
     
     public static ClHabitacionEstados sqlLeer(int id){     
         ClHabitacionEstados estado = new ClHabitacionEstados();        
-        if(!bd.sqlSelect("SELECT * FROM \"habitacion_estados\" WHERE \"ud_habitacion_estado\" ='"+id+"'")){
+        if(!bd.sqlSelect("SELECT * FROM \"habitacion_estados\" WHERE \"id_habitacion_estado\" ="+id+"")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -66,7 +66,7 @@ public class DAOEstadoHab {
             return null;
         }
         while(bd.sqlFetch()){
-            estado.add(new ClHabitacionEstados(bd.getInt("id_habitacion_estadoo")
+            estado.add(new ClHabitacionEstados(bd.getInt("id_habitacion_estado")
                                     , bd.getString("estado")
                                 ));
             
@@ -80,7 +80,7 @@ public class DAOEstadoHab {
             return null;
         }
         while(bd.sqlFetch()){
-            estado.add(new ClHabitacionEstados(bd.getInt("id_habitacion_estadoo")
+            estado.add(new ClHabitacionEstados(bd.getInt("id_habitacion_estado")
                                     , bd.getString("estado")
                                 ));
             

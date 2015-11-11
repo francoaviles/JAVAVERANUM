@@ -45,4 +45,9 @@ public class ClTipoHabitacion {
         this.nombre = nombre;
     }
     
+    @Override
+    public String toString(){
+        return getNombre();
+    }
+    
 }

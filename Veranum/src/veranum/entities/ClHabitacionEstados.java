@@ -43,4 +43,9 @@ public class ClHabitacionEstados {
         this.estado = estado;
     }
     
+    @Override
+    public String toString(){
+        return getEstado();
+    }
+    
 }

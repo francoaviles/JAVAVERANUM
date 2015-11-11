@@ -5,19 +5,43 @@
  */
 package veranum.GUI.hotel;
 
+import helper.Formularios;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOEstadoHab;
+import veranum.DAO.DAOHabitaciones;
+import veranum.DAO.DAOHoteles;
+import veranum.DAO.DAOTipoHab;
+import veranum.entities.ClHabitacionEstados;
+import veranum.entities.ClHabitaciones;
+import veranum.entities.ClHoteles;
+import veranum.entities.ClTipoHabitacion;
+
 /**
  *
  * @author Zacarias
  */
 public class panelHabitaciones extends javax.swing.JPanel {
 
+    private boolean paraGrabar = false;
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int id = 0;
+    
     /**
      * Creates new form panelHabitaciones
      */
     public panelHabitaciones() {
         initComponents();
+        this.cargarHotel();
+        this.cargarTipoHab();
+        this.cargarEstadoHab();
+        grDatos.setEnabled(true);
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        btDesactivarEditar.setVisible(false);
+        this.leerTodos(true);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,19 +59,19 @@ public class panelHabitaciones extends javax.swing.JPanel {
         txtPrecio = new javax.swing.JTextField();
         lbTipo = new javax.swing.JLabel();
         cbTipo = new javax.swing.JComboBox();
-        btGrabarHabitaciones = new javax.swing.JButton();
-        btEliminarHab = new javax.swing.JButton();
-        btEditarHab = new javax.swing.JButton();
-        txtBuscarHab = new javax.swing.JTextField();
-        btBuscarHab = new javax.swing.JButton();
-        btBuscarTodosHab = new javax.swing.JButton();
+        btGrabar = new javax.swing.JButton();
+        btEliminar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btBuscar = new javax.swing.JButton();
+        btBuscarTodos = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         grDatos = new javax.swing.JTable();
-        btDesactivarEditarHab = new javax.swing.JButton();
+        btDesactivarEditar = new javax.swing.JButton();
         lbHotel = new javax.swing.JLabel();
-        cbHotel = new javax.swing.JComboBox<>();
+        cbHotel = new javax.swing.JComboBox();
         lbEstado = new javax.swing.JLabel();
-        cbEstado = new javax.swing.JComboBox<>();
+        cbEstado = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
 
         lbUbicacion.setText("Ubicación:");
@@ -58,49 +82,81 @@ public class panelHabitaciones extends javax.swing.JPanel {
 
         lbTipo.setText("Tipo:");
 
-        cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        btGrabar.setText("Grabar");
+        btGrabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGrabarActionPerformed(evt);
+            }
+        });
 
-        btGrabarHabitaciones.setText("Grabar");
+        btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
 
-        btEliminarHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
-        btEditarHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
-        btBuscarHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
-
-        btBuscarTodosHab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarTodosActionPerformed(evt);
+            }
+        });
 
         grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "#", "Ubicación", "Cant. Personas", "Precio", "Tipo", "Caracteristicas"
+                "#", "Hotel", "Tipo", "Estado", "Ubicación", "Cant. Personas", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        grDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grDatosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(grDatos);
+        if (grDatos.getColumnModel().getColumnCount() > 0) {
+            grDatos.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
 
-        btDesactivarEditarHab.setBackground(new java.awt.Color(255, 0, 0));
-        btDesactivarEditarHab.setText("Salir Modo Editar");
+        btDesactivarEditar.setBackground(new java.awt.Color(255, 0, 0));
+        btDesactivarEditar.setText("Salir Modo Editar");
+        btDesactivarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDesactivarEditarActionPerformed(evt);
+            }
+        });
 
         lbHotel.setText("Hotel:");
 
-        cbHotel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         lbEstado.setText("Estado:");
-
-        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -110,40 +166,40 @@ public class panelHabitaciones extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btEliminarHab, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btEditarHab, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBuscarHab, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btBuscarHab)
+                                .addComponent(btBuscar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btBuscarTodosHab))
-                            .addComponent(btGrabarHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btBuscarTodos))
+                            .addComponent(btGrabar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbTipo)
                                     .addComponent(lbHotel)
                                     .addComponent(lbPrecio)
-                                    .addComponent(lbCantPersonas)
                                     .addComponent(lbUbicacion)
-                                    .addComponent(lbEstado))
+                                    .addComponent(lbEstado)
+                                    .addComponent(lbCantPersonas))
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(178, 178, 178)
-                                        .addComponent(btDesactivarEditarHab)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jSeparator1))
+                                        .addComponent(btDesactivarEditar)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -151,11 +207,11 @@ public class panelHabitaciones extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEliminarHab)
-                    .addComponent(btEditarHab)
-                    .addComponent(txtBuscarHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarHab)
-                    .addComponent(btBuscarTodosHab))
+                    .addComponent(btEliminar)
+                    .addComponent(btEditar)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscar)
+                    .addComponent(btBuscarTodos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -166,41 +222,216 @@ public class panelHabitaciones extends javax.swing.JPanel {
                     .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btDesactivarEditarHab)
+                    .addComponent(btDesactivarEditar)
                     .addComponent(lbTipo)
                     .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbEstado)
                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbUbicacion))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbUbicacion)
+                    .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCantPersonas)
                     .addComponent(txtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPrecio)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btGrabarHabitaciones)
-                .addContainerGap())
+                .addComponent(btGrabar)
+                .addGap(41, 41, 41))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        if(this.id == 0){
+            JOptionPane.showMessageDialog(this, "NO existe para eliminar");
+        }else{
+            DAOHabitaciones.sqlDelete(new ClHabitaciones(this.id));
+            JOptionPane.showMessageDialog(this, "Eliminado");
+            helper.Formularios.limpiar(this);
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btEliminarActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        this.leerTodos(false);
+    }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosActionPerformed
+        this.leerTodos(true);
+    }//GEN-LAST:event_btBuscarTodosActionPerformed
+
+    private void btDesactivarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarActionPerformed
+
+    private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
+        int id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
+        int id_tipo = ((ClTipoHabitacion)cbTipo.getSelectedItem()).getIdTipoHabit();
+        int id_estado = ((ClHabitacionEstados)cbEstado.getSelectedItem()).getIdHabitacionEstado();
+        if(!paraGrabar){
+            if(txtUbicacion.getText().equals("") || txtCantPersonas.getText().equals("") ){
+                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+            }else{
+                DAOHabitaciones.sqlInsert(new ClHabitaciones(id_hotel
+                                                            , id_tipo
+                                                            , id_estado
+                                                            , txtUbicacion.getText()
+                                                            , Integer.parseInt(txtCantPersonas.getText())
+                                                            , Integer.parseInt(txtPrecio.getText())           
+                                            ));
+            JOptionPane.showMessageDialog(this, "Agregado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+        }
+        }else{
+            DAOHabitaciones.sqlUpdate(new ClHabitaciones( this.id
+                                                            , id_hotel
+                                                            , id_tipo
+                                                            , id_estado
+                                                            , txtUbicacion.getText()
+                                                            , Integer.parseInt(txtCantPersonas.getText())
+                                                            , Integer.parseInt(txtPrecio.getText())           
+                                            ));
+        JOptionPane.showMessageDialog(this, "Modificado");
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        helper.Formularios.limpiar(this);
+        this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btGrabarActionPerformed
+
+    private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
+        if(row_dos >= 0){
+            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.paraGrabar = true;
+            this.btnEditarMode();
+        } else {
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+        }
+    }//GEN-LAST:event_grDatosMouseClicked
+
+    // Method Custom
+    
+    private void cargarHotel(){
+        for (Object dato : DAOHoteles.sqlLeerTodos()) {
+            cbHotel.addItem(dato);
+        }
+    }
+    
+    private void cargarTipoHab(){
+        for (Object dato : DAOTipoHab.sqlLeerTodos()) {
+            cbTipo.addItem(dato);
+        }
+    }
+    
+    private void cargarEstadoHab(){
+        for (Object dato : DAOEstadoHab.sqlLeerTodos()) {
+            cbEstado.addItem(dato);
+        }
+    }
+    
+    private void leer(int id){
+        this.id = id;
+        ClHabitaciones dato = DAOHabitaciones.sqlLeer(id);
+        txtUbicacion.setText(dato.getUbicacion());
+        txtCantPersonas.setText(String.valueOf(dato.getCantPersonas()));
+        txtPrecio.setText(String.valueOf(dato.getPrecio()));
+        
+        ClHoteles item;
+        for (int i = 0; i < cbHotel.getItemCount(); i++)
+        {
+            item = (ClHoteles)cbHotel.getItemAt(i);
+            if (item.getIdHotel()== dato.getIdHotel())
+            {
+                cbHotel.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+        ClTipoHabitacion item2;
+        for (int i = 0; i < cbTipo.getItemCount(); i++)
+        {
+            item2 = (ClTipoHabitacion)cbTipo.getItemAt(i);
+            if (item2.getIdTipoHabit()== dato.getIdHabitacionTipo())
+            {
+                cbTipo.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+        ClHabitacionEstados item3;
+        for (int i = 0; i < cbEstado.getItemCount(); i++)
+        {
+            item3 = (ClHabitacionEstados)cbEstado.getItemAt(i);
+            if (item3.getIdHabitacionEstado()== dato.getIdHabitacionEstado())
+            {
+                cbEstado.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList dato;
+        if(todos)
+            dato = DAOHabitaciones.sqlLeerTodos();
+        else 
+            //dato = DAOHabitaciones.sqlBuscarByNombre(txtBuscar.getText());
+            dato = DAOHabitaciones.sqlLeerTodos();
+        
+        dt =  (DefaultTableModel) grDatos.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < dato.size(); x++){
+            ClHabitaciones xx = (ClHabitaciones)dato.get(x);
+            Object[] fila = new Object[7];
+            fila[0] = xx.getIdHabitacion();
+            fila[1] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getIdHotel())).getNombre();
+            fila[2] = ((ClTipoHabitacion)DAOTipoHab.sqlLeer(xx.getIdHabitacionTipo())).getNombre();
+            fila[3] = ((ClHabitacionEstados)DAOEstadoHab.sqlLeer(xx.getIdHabitacionEstado())).getEstado();
+            fila[4] = xx.getUbicacion();
+            fila[5] = xx.getCantPersonas();
+            fila[6] = xx.getPrecio();
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditar.setVisible(false);
+            helper.Formularios.limpiar(this);
+        } else {
+            btDesactivarEditar.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscarHab;
-    private javax.swing.JButton btBuscarTodosHab;
-    private javax.swing.JButton btDesactivarEditarHab;
-    private javax.swing.JButton btEditarHab;
-    private javax.swing.JButton btEliminarHab;
-    private javax.swing.JButton btGrabarHabitaciones;
-    private javax.swing.JComboBox<String> cbEstado;
-    private javax.swing.JComboBox<String> cbHotel;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btBuscarTodos;
+    private javax.swing.JButton btDesactivarEditar;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btEliminar;
+    private javax.swing.JButton btGrabar;
+    private javax.swing.JComboBox cbEstado;
+    private javax.swing.JComboBox cbHotel;
     private javax.swing.JComboBox cbTipo;
     private javax.swing.JTable grDatos;
     private javax.swing.JScrollPane jScrollPane2;
@@ -211,7 +442,7 @@ public class panelHabitaciones extends javax.swing.JPanel {
     private javax.swing.JLabel lbPrecio;
     private javax.swing.JLabel lbTipo;
     private javax.swing.JLabel lbUbicacion;
-    private javax.swing.JTextField txtBuscarHab;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCantPersonas;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtUbicacion;

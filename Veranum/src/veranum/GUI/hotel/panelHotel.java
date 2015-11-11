@@ -135,6 +135,9 @@ public class panelHotel extends javax.swing.JPanel {
             }
         });
         jScrollPane4.setViewportView(grHotel);
+        if (grHotel.getColumnModel().getColumnCount() > 0) {
+            grHotel.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
 
         btBuscarHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
         btBuscarHotel.addActionListener(new java.awt.event.ActionListener() {

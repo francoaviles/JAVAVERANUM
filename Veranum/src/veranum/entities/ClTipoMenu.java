@@ -45,4 +45,8 @@ public class ClTipoMenu {
         this.nombre = nombre;
     }
     
+    @Override
+    public String toString(){
+        return getNombre();
+    }
 }

@@ -405,6 +405,16 @@ public class panelUsuarios extends javax.swing.JPanel {
         txtTelefono.setText(usu.getTelefono());
         txtFechaNacUsu.setText(usu.getFechaNacimiento().toString());
         
+        ClRol item;
+        for (int i = 0; i < cbRol.getItemCount(); i++)
+        {
+            item = (ClRol)cbRol.getItemAt(i);
+            if (item.getIdRol()== usu.getIdRol())
+            {
+                cbRol.setSelectedIndex(i);
+                break;
+            }
+        }
     }
     
     private void leerTodos(boolean todos){
