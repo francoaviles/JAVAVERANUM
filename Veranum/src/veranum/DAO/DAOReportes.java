@@ -56,8 +56,8 @@ public class DAOReportes {
         }
         while(bd.sqlFetch()){
             reportes.add(new ClReportes(bd.getInt("id_reporte")
-                                    , bd.getInt("id_tipo_reporte")
                                     , bd.getDate("fecha_creacion")
+                                    , bd.getInt("id_tipo_reporte")
                                     , bd.getString("archivo")
                                     , bd.getString("comentario")
                                 ));

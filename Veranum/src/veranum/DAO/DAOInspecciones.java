@@ -33,7 +33,7 @@ public class DAOInspecciones {
         return true;
     }
     
-    public ClHabitacionInspecciones sqlLeer(int id){     
+    public static ClHabitacionInspecciones sqlLeer(int id){     
         ClHabitacionInspecciones inspecciones = new ClHabitacionInspecciones();        
         if(!bd.sqlSelect("SELECT * FROM \"habitacion_inspecciones\" WHERE \"id_habitacion\" ='"+id+"'")){
             return null;

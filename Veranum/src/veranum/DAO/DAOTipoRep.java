@@ -50,7 +50,7 @@ public class DAOTipoRep {
     
     public static ClTipoReportes sqlLeer(int id){     
         ClTipoReportes rep = new ClTipoReportes();        
-        if(!bd.sqlSelect("SELECT * FROM \"tipo_reportes\" WHERE \"ud_tipo_reporte\" ='"+id+"'")){
+        if(!bd.sqlSelect("SELECT * FROM \"tipo_reportes\" WHERE \"id_tipo_reporte\" ='"+id+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){

@@ -5,19 +5,39 @@
  */
 package veranum.GUI.reportes;
 
+import helper.Formularios;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOReportes;
+import veranum.DAO.DAOTipoRep;
+import veranum.entities.ClReportes;
+import veranum.entities.ClTipoReportes;
+
 /**
  *
  * @author Zacarias
  */
 public class panelReportes extends javax.swing.JPanel {
 
+    private boolean paraGrabar = false;
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int id = 0;
+    
     /**
      * Creates new form panelReportes
      */
     public panelReportes() {
         initComponents();
+        this.cargarTipoRep();
+        grDatos.setEnabled(true);
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        btDesactivarEditar.setVisible(false);
+        this.leerTodos(true);
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,20 +51,20 @@ public class panelReportes extends javax.swing.JPanel {
         lbArchivo = new javax.swing.JLabel();
         lbTipo = new javax.swing.JLabel();
         lbComentario = new javax.swing.JLabel();
-        btGrabarReporte = new javax.swing.JButton();
+        btGrabar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtComentario = new javax.swing.JTextArea();
         cbTipoRepor = new javax.swing.JComboBox();
         txtFechaCreacion = new javax.swing.JTextField();
         txtArchivo = new javax.swing.JTextField();
-        btEliminarReporte = new javax.swing.JButton();
-        btEditarReporte = new javax.swing.JButton();
-        txtBuscarReporte = new javax.swing.JTextField();
-        btBuscarReporte = new javax.swing.JButton();
-        btBuscarTodosReporte = new javax.swing.JButton();
+        btEliminar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btBuscar = new javax.swing.JButton();
+        btBuscarTodos = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        grReporte = new javax.swing.JTable();
-        btDesactivarEditarReporte = new javax.swing.JButton();
+        grDatos = new javax.swing.JTable();
+        btDesactivarEditar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         lbFechaCreacion.setText("Fecha Creación:");
@@ -55,23 +75,46 @@ public class panelReportes extends javax.swing.JPanel {
 
         lbComentario.setText("Comentario:");
 
-        btGrabarReporte.setText("Grabar");
+        btGrabar.setText("Grabar");
+        btGrabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGrabarActionPerformed(evt);
+            }
+        });
 
         txtComentario.setColumns(20);
         txtComentario.setRows(5);
         jScrollPane1.setViewportView(txtComentario);
 
-        cbTipoRepor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
 
-        btEliminarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
-        btEditarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
-        btBuscarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarTodosActionPerformed(evt);
+            }
+        });
 
-        btBuscarTodosReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
-
-        grReporte.setModel(new javax.swing.table.DefaultTableModel(
+        grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -90,9 +133,20 @@ public class panelReportes extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(grReporte);
+        grDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grDatosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(grDatos);
 
-        btDesactivarEditarReporte.setText("Salir Modo Editar");
+        btDesactivarEditar.setBackground(new java.awt.Color(255, 0, 0));
+        btDesactivarEditar.setText("Salir Modo Editar");
+        btDesactivarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDesactivarEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -107,19 +161,19 @@ public class panelReportes extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btEliminarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btEditarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtBuscarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btBuscarReporte)
+                                        .addComponent(btBuscar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btBuscarTodosReporte))
+                                        .addComponent(btBuscarTodos))
                                     .addComponent(lbArchivo)
                                     .addComponent(lbTipo)
                                     .addComponent(lbComentario)
-                                    .addComponent(btGrabarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btGrabar, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -135,7 +189,7 @@ public class panelReportes extends javax.swing.JPanel {
                                 .addGap(31, 31, 31)
                                 .addComponent(txtFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btDesactivarEditarReporte)
+                        .addComponent(btDesactivarEditar)
                         .addGap(41, 41, 41))
                     .addComponent(jSeparator1)))
         );
@@ -144,11 +198,11 @@ public class panelReportes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEliminarReporte)
-                    .addComponent(btEditarReporte)
-                    .addComponent(txtBuscarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarReporte)
-                    .addComponent(btBuscarTodosReporte))
+                    .addComponent(btEliminar)
+                    .addComponent(btEditar)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscar)
+                    .addComponent(btBuscarTodos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -157,7 +211,7 @@ public class panelReportes extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbFechaCreacion)
                     .addComponent(txtFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDesactivarEditarReporte))
+                    .addComponent(btDesactivarEditar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbArchivo)
@@ -171,21 +225,153 @@ public class panelReportes extends javax.swing.JPanel {
                     .addComponent(lbComentario)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btGrabarReporte)
+                .addComponent(btGrabar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        if(this.id == 0){
+            JOptionPane.showMessageDialog(this, "NO existe para eliminar");
+        }else{
+            DAOReportes.sqlDelete(new ClReportes(this.id));
+            JOptionPane.showMessageDialog(this, "Eliminado");
+            helper.Formularios.limpiar(this);
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btEliminarActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        this.leerTodos(false);
+    }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosActionPerformed
+        this.leerTodos(true);
+    }//GEN-LAST:event_btBuscarTodosActionPerformed
+
+    private void btDesactivarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarActionPerformed
+
+    private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
+        int id_tipo = ((ClTipoReportes)cbTipoRepor.getSelectedItem()).getIdTipoReporte();
+        if(!paraGrabar){
+            if(txtFechaCreacion.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+            }else{
+                DAOReportes.sqlInsert(new ClReportes( Formularios.deStringAFecha(txtFechaCreacion.getText())
+                                                    , id_tipo
+                                                    , txtArchivo.getText()
+                                                    , txtComentario.getText()
+                                            ));
+            JOptionPane.showMessageDialog(this, "Agregado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+        }
+        }else{
+                DAOReportes.sqlUpdate(new ClReportes( this.id
+                                                    , Formularios.deStringAFecha(txtFechaCreacion.getText())
+                                                    , id_tipo
+                                                    , txtArchivo.getText()
+                                                    , txtComentario.getText()
+                                            ));
+        JOptionPane.showMessageDialog(this, "Modificado");
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        helper.Formularios.limpiar(this);
+        this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btGrabarActionPerformed
+
+    private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
+        if(row_dos >= 0){
+            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.paraGrabar = true;
+            this.btnEditarMode();
+        } else {
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+        }
+    }//GEN-LAST:event_grDatosMouseClicked
+
+    // Method Custom    
+    private void cargarTipoRep(){
+        for (Object dato : DAOTipoRep.sqlLeerTodos()) {
+            cbTipoRepor.addItem(dato);
+        }
+    }
+    
+    private void leer(int id){
+        this.id = id;
+        ClReportes dato = DAOReportes.sqlLeer(id);
+        txtFechaCreacion.setText(dato.getFechaCreacion().toString());
+        txtArchivo.setText(dato.getArchivo());
+        txtComentario.setText(dato.getComentario());
+        
+        ClTipoReportes item;
+        for (int i = 0; i < cbTipoRepor.getItemCount(); i++)
+        {
+            item = (ClTipoReportes)cbTipoRepor.getItemAt(i);
+            if (item.getIdTipoReporte()== dato.getIdTipoReporte())
+            {
+                cbTipoRepor.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList dato;
+        if(todos)
+            dato = DAOReportes.sqlLeerTodos();
+        else 
+            //dato = DAOReportes.sqlBuscarByNombre(txtArchivo.getText());
+            dato = DAOReportes.sqlLeerTodos();
+        
+        dt =  (DefaultTableModel) grDatos.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < dato.size(); x++){
+            ClReportes xx = (ClReportes)dato.get(x);
+            Object[] fila = new Object[7];
+            fila[0] = xx.getIdReporte();
+            fila[1] = xx.getFechaCreacion();
+            fila[2] = xx.getArchivo();
+            fila[3] = ((ClTipoReportes)DAOTipoRep.sqlLeer(xx.getIdTipoReporte())).getNombre();
+            fila[4] = xx.getComentario();
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditar.setVisible(false);
+            helper.Formularios.limpiar(this);
+        } else {
+            btDesactivarEditar.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscarReporte;
-    private javax.swing.JButton btBuscarTodosReporte;
-    private javax.swing.JButton btDesactivarEditarReporte;
-    private javax.swing.JButton btEditarReporte;
-    private javax.swing.JButton btEliminarReporte;
-    private javax.swing.JButton btGrabarReporte;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btBuscarTodos;
+    private javax.swing.JButton btDesactivarEditar;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btEliminar;
+    private javax.swing.JButton btGrabar;
     private javax.swing.JComboBox cbTipoRepor;
-    private javax.swing.JTable grReporte;
+    private javax.swing.JTable grDatos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
@@ -194,7 +380,7 @@ public class panelReportes extends javax.swing.JPanel {
     private javax.swing.JLabel lbFechaCreacion;
     private javax.swing.JLabel lbTipo;
     private javax.swing.JTextField txtArchivo;
-    private javax.swing.JTextField txtBuscarReporte;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextArea txtComentario;
     private javax.swing.JTextField txtFechaCreacion;
     // End of variables declaration//GEN-END:variables

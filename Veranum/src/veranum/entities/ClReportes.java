@@ -29,17 +29,19 @@ public class ClReportes {
         setIdReporte(idReporte);
     }
     
-    public ClReportes(int idTipoReporte, Date fechaCreacion, String archivo, String comentario) {
-        setIdTipoReporte(idTipoReporte);
+    public ClReportes( Date fechaCreacion, int idTipoReporte, String archivo, String comentario) {
         setFechaCreacion(fechaCreacion);
+        setIdTipoReporte(idTipoReporte);
         setArchivo(archivo);
         setComentario(comentario);
     }
     
-    public ClReportes(int idReporte, int idTipoReporte, Date fechaCreacion, String archivo, String comentario) {
+    
+    
+    public ClReportes(int idReporte, Date fechaCreacion, int idTipoReporte, String archivo, String comentario) {
         setIdReporte(idReporte);
-        setIdTipoReporte(idTipoReporte);
         setFechaCreacion(fechaCreacion);
+        setIdTipoReporte(idTipoReporte);
         setArchivo(archivo);
         setComentario(comentario);
     }

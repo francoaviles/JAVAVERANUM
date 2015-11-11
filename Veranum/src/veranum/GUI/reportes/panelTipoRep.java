@@ -5,19 +5,34 @@
  */
 package veranum.GUI.reportes;
 
+import helper.Formularios;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOTipoRep;
+import veranum.entities.ClTipoReportes;
+
 /**
  *
  * @author Zacarias
  */
 public class panelTipoRep extends javax.swing.JPanel {
 
+    private boolean paraGrabar = false;
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int id = 0;
+    
     /**
      * Creates new form panelTipoRep
      */
     public panelTipoRep() {
         initComponents();
+        grDatos.setEnabled(true);
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        btDesactivarEditar.setVisible(false);
+        this.leerTodos(true);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,30 +42,50 @@ public class panelTipoRep extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btEliminarTipoRep = new javax.swing.JButton();
-        btEditarTipoRep = new javax.swing.JButton();
-        txtBuscarTipoRep = new javax.swing.JTextField();
-        btBuscarTipoRep = new javax.swing.JButton();
-        btBuscarTodosTipoRep = new javax.swing.JButton();
+        btEliminar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btBuscar = new javax.swing.JButton();
+        btBuscarTodos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        grTipoRep = new javax.swing.JTable();
+        grDatos = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         lbNombreTipoRep = new javax.swing.JLabel();
         lbDescripcionTipoRep = new javax.swing.JLabel();
-        txtNombreTipoRep = new javax.swing.JTextField();
-        txtDescrpciónTipoRep = new javax.swing.JTextField();
-        btGrabarTipoRep = new javax.swing.JButton();
-        btDesactivarEditarTipoRep = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        txtDescrpción = new javax.swing.JTextField();
+        btGrabar = new javax.swing.JButton();
+        btDesactivarEditar = new javax.swing.JButton();
 
-        btEliminarTipoRep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
 
-        btEditarTipoRep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
-        btBuscarTipoRep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
-        btBuscarTodosTipoRep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarTodosActionPerformed(evt);
+            }
+        });
 
-        grTipoRep.setModel(new javax.swing.table.DefaultTableModel(
+        grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -69,15 +104,34 @@ public class panelTipoRep extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(grTipoRep);
+        grDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grDatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(grDatos);
+        if (grDatos.getColumnModel().getColumnCount() > 0) {
+            grDatos.getColumnModel().getColumn(0).setMaxWidth(40);
+        }
 
         lbNombreTipoRep.setText("Nombre Tipo Reporte:");
 
         lbDescripcionTipoRep.setText("Descripción:");
 
-        btGrabarTipoRep.setText("Grabar");
+        btGrabar.setText("Grabar");
+        btGrabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGrabarActionPerformed(evt);
+            }
+        });
 
-        btDesactivarEditarTipoRep.setText("Salir Modo Editar");
+        btDesactivarEditar.setBackground(new java.awt.Color(255, 0, 0));
+        btDesactivarEditar.setText("Salir Modo Editar");
+        btDesactivarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDesactivarEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,29 +143,29 @@ public class panelTipoRep extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btEliminarTipoRep)
+                        .addComponent(btEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btEditarTipoRep)
+                        .addComponent(btEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBuscarTipoRep, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btBuscarTipoRep)
+                        .addComponent(btBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btBuscarTodosTipoRep)
+                        .addComponent(btBuscarTodos)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btGrabarTipoRep, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btGrabar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbNombreTipoRep)
                                     .addComponent(lbDescripcionTipoRep))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDescrpciónTipoRep)
-                                    .addComponent(txtNombreTipoRep))))
+                                    .addComponent(txtDescrpción)
+                                    .addComponent(txtNombre))))
                         .addGap(61, 61, 61)
-                        .addComponent(btDesactivarEditarTipoRep)
+                        .addComponent(btDesactivarEditar)
                         .addGap(35, 35, 35)))
                 .addContainerGap())
         );
@@ -120,11 +174,11 @@ public class panelTipoRep extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEliminarTipoRep)
-                    .addComponent(btEditarTipoRep)
-                    .addComponent(txtBuscarTipoRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarTipoRep)
-                    .addComponent(btBuscarTodosTipoRep))
+                    .addComponent(btEliminar)
+                    .addComponent(btEditar)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscar)
+                    .addComponent(btBuscarTodos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -132,33 +186,139 @@ public class panelTipoRep extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombreTipoRep)
-                    .addComponent(txtNombreTipoRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDesactivarEditarTipoRep))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btDesactivarEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbDescripcionTipoRep)
-                    .addComponent(txtDescrpciónTipoRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescrpción, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addComponent(btGrabarTipoRep)
+                .addComponent(btGrabar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        if(this.id == 0){
+            JOptionPane.showMessageDialog(this, "NO existe para eliminar");
+        }else{
+            DAOTipoRep.sqlDelete(new ClTipoReportes(this.id));
+            JOptionPane.showMessageDialog(this, "Eliminado");
+            helper.Formularios.limpiar(this);
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btEliminarActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        this.leerTodos(false);
+    }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosActionPerformed
+        this.leerTodos(true);
+    }//GEN-LAST:event_btBuscarTodosActionPerformed
+
+    private void btDesactivarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarActionPerformed
+
+    private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
+        if(!paraGrabar){
+            if(txtNombre.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+            }else{
+                DAOTipoRep.sqlInsert(new ClTipoReportes(txtNombre.getText()
+                                                        , txtDescrpción.getText()
+                                            ));
+            JOptionPane.showMessageDialog(this, "Agregado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+        }
+        }else{
+                DAOTipoRep.sqlUpdate(new ClTipoReportes( this.id
+                                                        , txtNombre.getText()
+                                                        , txtDescrpción.getText()
+                                            ));
+        JOptionPane.showMessageDialog(this, "Modificado");
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        helper.Formularios.limpiar(this);
+        this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btGrabarActionPerformed
+
+    private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
+        if(row_dos >= 0){
+            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.paraGrabar = true;
+            this.btnEditarMode();
+        } else {
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+        }
+    }//GEN-LAST:event_grDatosMouseClicked
+
+    // Method Custom    
+    private void leer(int id){
+        this.id = id;
+        ClTipoReportes dato = DAOTipoRep.sqlLeer(id);
+        txtNombre.setText(dato.getNombre());
+        txtDescrpción.setText(dato.getDescripcion());
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList dato;
+        if(todos)
+            dato = DAOTipoRep.sqlLeerTodos();
+        else 
+            dato = DAOTipoRep.sqlBuscarByNombre(txtNombre.getText());
+        
+        dt =  (DefaultTableModel) grDatos.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < dato.size(); x++){
+            ClTipoReportes xx = (ClTipoReportes)dato.get(x);
+            Object[] fila = new Object[7];
+            fila[0] = xx.getIdTipoReporte();
+            fila[1] = xx.getNombre();
+            fila[2] = xx.getDescripcion();
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditar.setVisible(false);
+            helper.Formularios.limpiar(this);
+        } else {
+            btDesactivarEditar.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscarTipoRep;
-    private javax.swing.JButton btBuscarTodosTipoRep;
-    private javax.swing.JButton btDesactivarEditarTipoRep;
-    private javax.swing.JButton btEditarTipoRep;
-    private javax.swing.JButton btEliminarTipoRep;
-    private javax.swing.JButton btGrabarTipoRep;
-    private javax.swing.JTable grTipoRep;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btBuscarTodos;
+    private javax.swing.JButton btDesactivarEditar;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btEliminar;
+    private javax.swing.JButton btGrabar;
+    private javax.swing.JTable grDatos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbDescripcionTipoRep;
     private javax.swing.JLabel lbNombreTipoRep;
-    private javax.swing.JTextField txtBuscarTipoRep;
-    private javax.swing.JTextField txtDescrpciónTipoRep;
-    private javax.swing.JTextField txtNombreTipoRep;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtDescrpción;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

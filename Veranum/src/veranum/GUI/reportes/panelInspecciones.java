@@ -5,19 +5,38 @@
  */
 package veranum.GUI.reportes;
 
+import helper.Formularios;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOHabitaciones;
+import veranum.DAO.DAOInspecciones;
+import veranum.entities.ClHabitacionInspecciones;
+import veranum.entities.ClHabitaciones;
+
 /**
  *
  * @author Zacarias
  */
 public class panelInspecciones extends javax.swing.JPanel {
 
+    private boolean paraGrabar = false;
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int id = 0;
+    
     /**
      * Creates new form panelInspercciones
      */
     public panelInspecciones() {
         initComponents();
+        this.cargarHab();
+        grDatos.setEnabled(true);
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        btDesactivarEditar.setVisible(false);
+        this.leerTodos(true);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,36 +48,61 @@ public class panelInspecciones extends javax.swing.JPanel {
 
         lbFechaInsp = new javax.swing.JLabel();
         txtFechaInspeccion = new javax.swing.JTextField();
-        btInspecciones = new javax.swing.JButton();
-        btEliminarInspeccion = new javax.swing.JButton();
-        btEditarInspeccion = new javax.swing.JButton();
-        txtBuscarInspeccion = new javax.swing.JTextField();
-        btBuscarInspeccion = new javax.swing.JButton();
-        btBuscarTodosInspeccion = new javax.swing.JButton();
+        btGrabar = new javax.swing.JButton();
+        btEliminar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btBuscar = new javax.swing.JButton();
+        btBuscarTodos = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        grInspeccion = new javax.swing.JTable();
+        grDatos = new javax.swing.JTable();
         lbIdHabInspeccion = new javax.swing.JLabel();
         lbComentarioInspeccion = new javax.swing.JLabel();
         lbNombreInspector = new javax.swing.JLabel();
-        txtComentarioInspeccion = new javax.swing.JTextField();
-        txtNombreInspector = new javax.swing.JTextField();
-        btDesactivarEditarInspeccion = new javax.swing.JButton();
-        cbHabInspeccion = new javax.swing.JComboBox<>();
+        txtComentario = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        btDesactivarEditar = new javax.swing.JButton();
+        cbHabInspeccion = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
 
         lbFechaInsp.setText("Fecha Inspección:");
 
-        btInspecciones.setText("Grabar");
+        btGrabar.setText("Grabar");
+        btGrabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGrabarActionPerformed(evt);
+            }
+        });
 
-        btEliminarInspeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
 
-        btEditarInspeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
-        btBuscarInspeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
-        btBuscarTodosInspeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarTodosActionPerformed(evt);
+            }
+        });
 
-        grInspeccion.setModel(new javax.swing.table.DefaultTableModel(
+        grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -77,7 +121,15 @@ public class panelInspecciones extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(grInspeccion);
+        grDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grDatosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(grDatos);
+        if (grDatos.getColumnModel().getColumnCount() > 0) {
+            grDatos.getColumnModel().getColumn(0).setMaxWidth(40);
+        }
 
         lbIdHabInspeccion.setText("Habitación Inspección:");
 
@@ -85,9 +137,13 @@ public class panelInspecciones extends javax.swing.JPanel {
 
         lbNombreInspector.setText("Nombre Inspector:");
 
-        btDesactivarEditarInspeccion.setText("Salir Modo Editar");
-
-        cbHabInspeccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        btDesactivarEditar.setBackground(new java.awt.Color(255, 0, 0));
+        btDesactivarEditar.setText("Salir Modo Editar");
+        btDesactivarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDesactivarEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -99,17 +155,17 @@ public class panelInspecciones extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btEliminarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btEditarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBuscarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btBuscarInspeccion)
+                                .addComponent(btBuscar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btBuscarTodosInspeccion))
+                                .addComponent(btBuscarTodos))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btInspecciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btGrabar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(lbFechaInsp)
@@ -118,15 +174,15 @@ public class panelInspecciones extends javax.swing.JPanel {
                                     .addGap(35, 35, 35)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtFechaInspeccion)
-                                        .addComponent(txtComentarioInspeccion)
-                                        .addComponent(txtNombreInspector, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(txtComentario)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(16, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbIdHabInspeccion)
                         .addGap(18, 18, 18)
                         .addComponent(cbHabInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btDesactivarEditarInspeccion)
+                        .addComponent(btDesactivarEditar)
                         .addGap(49, 49, 49))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator1)
@@ -137,12 +193,13 @@ public class panelInspecciones extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEliminarInspeccion)
-                    .addComponent(btEditarInspeccion)
-                    .addComponent(txtBuscarInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarInspeccion)
-                    .addComponent(btBuscarTodosInspeccion))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btEliminar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btEditar)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btBuscar)
+                        .addComponent(btBuscarTodos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
@@ -150,7 +207,7 @@ public class panelInspecciones extends javax.swing.JPanel {
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbIdHabInspeccion)
-                    .addComponent(btDesactivarEditarInspeccion)
+                    .addComponent(btDesactivarEditar)
                     .addComponent(cbHabInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,36 +218,168 @@ public class panelInspecciones extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbNombreInspector)
-                            .addComponent(txtNombreInspector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtFechaInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtComentarioInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(btInspecciones)
+                .addComponent(btGrabar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        if(this.id == 0){
+            JOptionPane.showMessageDialog(this, "NO existe para eliminar");
+        }else{
+            DAOInspecciones.sqlDelete(new ClHabitacionInspecciones(this.id));
+            JOptionPane.showMessageDialog(this, "Eliminado");
+            helper.Formularios.limpiar(this);
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btEliminarActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        this.leerTodos(false);
+    }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosActionPerformed
+        this.leerTodos(true);
+    }//GEN-LAST:event_btBuscarTodosActionPerformed
+
+    private void btDesactivarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarActionPerformed
+
+    private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
+        int id_tipo_hab = ((ClHabitaciones)cbHabInspeccion.getSelectedItem()).getIdHabitacion();
+        if(!paraGrabar){
+            if(txtNombre.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+            }else{
+                DAOInspecciones.sqlInsert(new ClHabitacionInspecciones( id_tipo_hab
+                                                                        , Formularios.deStringAFecha(txtFechaInspeccion.getText())
+                                                                        , txtComentario.getText()
+                                                                        , txtNombre.getText()
+                                            ));
+            JOptionPane.showMessageDialog(this, "Agregado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+        }
+        }else{
+                DAOInspecciones.sqlUpdate(new ClHabitacionInspecciones( this.id
+                                                                        , id_tipo_hab
+                                                                        , Formularios.deStringAFecha(txtFechaInspeccion.getText())
+                                                                        , txtComentario.getText()
+                                                                        , txtNombre.getText()
+                                            ));
+        JOptionPane.showMessageDialog(this, "Modificado");
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        helper.Formularios.limpiar(this);
+        this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btGrabarActionPerformed
+
+    private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
+        if(row_dos >= 0){
+            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.paraGrabar = true;
+            this.btnEditarMode();
+        } else {
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+        }
+    }//GEN-LAST:event_grDatosMouseClicked
+
+    // Method Custom    
+    private void cargarHab(){
+        for (Object dato : DAOHabitaciones.sqlLeerTodos()) {
+            cbHabInspeccion.addItem(dato);
+        }
+    }
+    
+    private void leer(int id){
+        this.id = id;
+        ClHabitacionInspecciones dato = DAOInspecciones.sqlLeer(id);
+        txtFechaInspeccion.setText(dato.getFechaInicio().toString());
+        txtComentario.setText(dato.getComentario());
+        txtNombre.setText(dato.getNombreInspector());
+        
+        ClHabitaciones item;
+        for (int i = 0; i < cbHabInspeccion.getItemCount(); i++)
+        {
+            item = (ClHabitaciones)cbHabInspeccion.getItemAt(i);
+            if (item.getIdHabitacion()== dato.getIdHabitacion())
+            {
+                cbHabInspeccion.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList dato;
+        if(todos)
+            dato = DAOInspecciones.sqlLeerTodos();
+        else 
+            //dato = DAOInspecciones.sqlBuscarByNombre(txtNombre.getText());
+            dato = DAOInspecciones.sqlLeerTodos();
+        
+        dt =  (DefaultTableModel) grDatos.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < dato.size(); x++){
+            ClHabitacionInspecciones xx = (ClHabitacionInspecciones)dato.get(x);
+            Object[] fila = new Object[7];
+            fila[0] = xx.getIdHabitacionInspeccion();
+            fila[1] = ((ClHabitaciones)DAOHabitaciones.sqlLeer(xx.getIdHabitacion()));
+            fila[2] = xx.getFechaInicio();
+            fila[2] = xx.getComentario();
+            fila[2] = xx.getNombreInspector();
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditar.setVisible(false);
+            helper.Formularios.limpiar(this);
+        } else {
+            btDesactivarEditar.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscarInspeccion;
-    private javax.swing.JButton btBuscarTodosInspeccion;
-    private javax.swing.JButton btDesactivarEditarInspeccion;
-    private javax.swing.JButton btEditarInspeccion;
-    private javax.swing.JButton btEliminarInspeccion;
-    private javax.swing.JButton btInspecciones;
-    private javax.swing.JComboBox<String> cbHabInspeccion;
-    private javax.swing.JTable grInspeccion;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btBuscarTodos;
+    private javax.swing.JButton btDesactivarEditar;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btEliminar;
+    private javax.swing.JButton btGrabar;
+    private javax.swing.JComboBox cbHabInspeccion;
+    private javax.swing.JTable grDatos;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbComentarioInspeccion;
     private javax.swing.JLabel lbFechaInsp;
     private javax.swing.JLabel lbIdHabInspeccion;
     private javax.swing.JLabel lbNombreInspector;
-    private javax.swing.JTextField txtBuscarInspeccion;
-    private javax.swing.JTextField txtComentarioInspeccion;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtComentario;
     private javax.swing.JTextField txtFechaInspeccion;
-    private javax.swing.JTextField txtNombreInspector;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
