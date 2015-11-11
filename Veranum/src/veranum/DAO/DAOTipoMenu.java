@@ -49,7 +49,7 @@ public class DAOTipoMenu {
     
     public static ClTipoMenu sqlLeer(int id){     
         ClTipoMenu menu = new ClTipoMenu();        
-        if(!bd.sqlSelect("SELECT * FROM \"tipo_menu\" WHERE \"ud_tipo_menu\" ='"+id+"'")){
+        if(!bd.sqlSelect("SELECT * FROM \"tipo_menu\" WHERE \"id_tipo_menu\" ='"+id+"'")){
             return null;
         }        
         if(!bd.sqlFetch()){
@@ -66,7 +66,7 @@ public class DAOTipoMenu {
             return null;
         }
         while(bd.sqlFetch()){
-            menu.add(new ClTipoMenu(bd.getInt("id_tipo_menuo")
+            menu.add(new ClTipoMenu(bd.getInt("id_tipo_menu")
                                     , bd.getString("nombre")
                                 ));
             
@@ -80,7 +80,7 @@ public class DAOTipoMenu {
             return null;
         }
         while(bd.sqlFetch()){
-            menu.add(new ClTipoMenu(bd.getInt("id_tipo_menuo")
+            menu.add(new ClTipoMenu(bd.getInt("id_tipo_menu")
                                     , bd.getString("nombre")
                                 ));
             

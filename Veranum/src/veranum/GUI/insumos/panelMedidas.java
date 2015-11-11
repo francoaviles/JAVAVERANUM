@@ -5,17 +5,32 @@
  */
 package veranum.GUI.insumos;
 
+import helper.Formularios;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOMedidas;
+import veranum.entities.ClMedidas;
+
 /**
  *
  * @author Zacarias
  */
 public class panelMedidas extends javax.swing.JPanel {
 
+    private boolean paraGrabar = false;
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int id = 0;
+    
     /**
      * Creates new form panelMedidas
      */
     public panelMedidas() {
         initComponents();
+        grDatos.setEnabled(true);
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        btDesactivarEditar.setVisible(false);
+        this.leerTodos(true);
     }
 
     /**
@@ -27,28 +42,48 @@ public class panelMedidas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btEditarMedida = new javax.swing.JButton();
-        btEliminarMedida = new javax.swing.JButton();
-        btBuscarTodosMedida = new javax.swing.JButton();
-        btBuscarMedida = new javax.swing.JButton();
-        txtBuscarMedida = new javax.swing.JTextField();
+        btEditar = new javax.swing.JButton();
+        btEliminar = new javax.swing.JButton();
+        btBuscarTodos = new javax.swing.JButton();
+        btBuscar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        grMedida = new javax.swing.JTable();
+        grDatos = new javax.swing.JTable();
         lbNombreMedida = new javax.swing.JLabel();
         txtNombreMedida = new javax.swing.JTextField();
-        btGrabarMedida = new javax.swing.JButton();
-        btDesactivarEditarMedida = new javax.swing.JButton();
+        btGrabar = new javax.swing.JButton();
+        btDesactivarEditar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
-        btEditarMedida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
-        btEliminarMedida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
 
-        btBuscarTodosMedida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarTodosActionPerformed(evt);
+            }
+        });
 
-        btBuscarMedida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
-        grMedida.setModel(new javax.swing.table.DefaultTableModel(
+        grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -67,13 +102,29 @@ public class panelMedidas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(grMedida);
+        grDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grDatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(grDatos);
 
         lbNombreMedida.setText("Nombre Medida");
 
-        btGrabarMedida.setText("Grabar");
+        btGrabar.setText("Grabar");
+        btGrabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGrabarActionPerformed(evt);
+            }
+        });
 
-        btDesactivarEditarMedida.setText("Salir Modo Editar");
+        btDesactivarEditar.setBackground(new java.awt.Color(255, 0, 0));
+        btDesactivarEditar.setText("Salir Modo Editar");
+        btDesactivarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDesactivarEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -86,26 +137,26 @@ public class panelMedidas extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btEliminarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btEditarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBuscarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btBuscarMedida)
+                                .addComponent(btBuscar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btBuscarTodosMedida)
+                                .addComponent(btBuscarTodos)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btGrabarMedida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btGrabar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(lbNombreMedida)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtNombreMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btDesactivarEditarMedida)
+                        .addComponent(btDesactivarEditar)
                         .addGap(111, 111, 111))
                     .addComponent(jSeparator1)))
         );
@@ -114,11 +165,11 @@ public class panelMedidas extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEliminarMedida)
-                    .addComponent(btEditarMedida)
-                    .addComponent(txtBuscarMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarMedida)
-                    .addComponent(btBuscarTodosMedida))
+                    .addComponent(btEliminar)
+                    .addComponent(btEditar)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscar)
+                    .addComponent(btBuscarTodos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -127,26 +178,128 @@ public class panelMedidas extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombreMedida)
                     .addComponent(txtNombreMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDesactivarEditarMedida))
+                    .addComponent(btDesactivarEditar))
                 .addGap(18, 18, 18)
-                .addComponent(btGrabarMedida)
+                .addComponent(btGrabar)
                 .addContainerGap(68, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        if(this.id == 0){
+            JOptionPane.showMessageDialog(this, "NO existe para eliminar");
+        }else{
+            DAOMedidas.sqlDelete(new ClMedidas(this.id));
+            JOptionPane.showMessageDialog(this, "Eliminado");
+            helper.Formularios.limpiar(this);
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btEliminarActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        this.leerTodos(false);
+    }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosActionPerformed
+        this.leerTodos(true);
+    }//GEN-LAST:event_btBuscarTodosActionPerformed
+
+    private void btDesactivarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarActionPerformed
+
+    private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
+        if(!paraGrabar){
+            if(txtNombreMedida.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+            }else{
+                DAOMedidas.sqlInsert(new ClMedidas( txtNombreMedida.getText()
+                                            ));
+            JOptionPane.showMessageDialog(this, "Agregado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+        }
+        }else{
+            DAOMedidas.sqlUpdate(new ClMedidas( this.id
+                                                ,txtNombreMedida.getText()
+                                            ));
+        JOptionPane.showMessageDialog(this, "Modificado");
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        helper.Formularios.limpiar(this);
+        this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btGrabarActionPerformed
+
+    private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
+        if(row_dos >= 0){
+            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.paraGrabar = true;
+            this.btnEditarMode();
+        } else {
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+        }
+    }//GEN-LAST:event_grDatosMouseClicked
+
+    // Method Custom    
+    private void leer(int id){
+        this.id = id;
+        ClMedidas dato = DAOMedidas.sqlLeer(id);
+        txtNombreMedida.setText(dato.getMedida());
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList dato;
+        if(todos)
+            dato = DAOMedidas.sqlLeerTodos();
+        else 
+            dato = DAOMedidas.sqlBuscarByNombre(txtNombreMedida.getText());
+        
+        dt =  (DefaultTableModel) grDatos.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < dato.size(); x++){
+            ClMedidas xx = (ClMedidas)dato.get(x);
+            Object[] fila = new Object[7];
+            fila[0] = xx.getIdMedida();
+            fila[1] = xx.getMedida();
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditar.setVisible(false);
+            helper.Formularios.limpiar(this);
+        } else {
+            btDesactivarEditar.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscarMedida;
-    private javax.swing.JButton btBuscarTodosMedida;
-    private javax.swing.JButton btDesactivarEditarMedida;
-    private javax.swing.JButton btEditarMedida;
-    private javax.swing.JButton btEliminarMedida;
-    private javax.swing.JButton btGrabarMedida;
-    private javax.swing.JTable grMedida;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btBuscarTodos;
+    private javax.swing.JButton btDesactivarEditar;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btEliminar;
+    private javax.swing.JButton btGrabar;
+    private javax.swing.JTable grDatos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbNombreMedida;
-    private javax.swing.JTextField txtBuscarMedida;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtNombreMedida;
     // End of variables declaration//GEN-END:variables
 }

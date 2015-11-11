@@ -5,19 +5,35 @@
  */
 package veranum.GUI.insumos;
 
+import helper.Formularios;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOTipoMenu;
+import veranum.entities.ClTipoMenu;
+
 /**
  *
  * @author Zacarias
  */
 public class panelTipoMenu extends javax.swing.JPanel {
 
+    private boolean paraGrabar = false;
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int id = 0;
+    
     /**
      * Creates new form panelTipoMenu
      */
     public panelTipoMenu() {
         initComponents();
+        grDatos.setEnabled(true);
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        btDesactivarEditar.setVisible(false);
+        this.leerTodos(true);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,28 +44,48 @@ public class panelTipoMenu extends javax.swing.JPanel {
     private void initComponents() {
 
         panelTipoMenu = new javax.swing.JPanel();
-        btEliminarTipoMenu = new javax.swing.JButton();
-        btEditarTipoMenu = new javax.swing.JButton();
-        txtBuscarTipoMenu = new javax.swing.JTextField();
-        btBuscarTipoMenu = new javax.swing.JButton();
-        btBuscarTodosTipoMenu = new javax.swing.JButton();
+        btEliminar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btBuscar = new javax.swing.JButton();
+        btBuscarTodos = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        grTipoMenu = new javax.swing.JTable();
+        grDatos = new javax.swing.JTable();
         lbNombreTipoMenu = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         txtNombreTipoMenu = new javax.swing.JTextField();
-        btGrabarTipoMenu = new javax.swing.JButton();
-        btDesactivarEditarTipoMenu = new javax.swing.JButton();
+        btGrabar = new javax.swing.JButton();
+        btDesactivarEditar = new javax.swing.JButton();
 
-        btEliminarTipoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
 
-        btEditarTipoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
-        btBuscarTipoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
-        btBuscarTodosTipoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
+        btBuscarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarTodosActionPerformed(evt);
+            }
+        });
 
-        grTipoMenu.setModel(new javax.swing.table.DefaultTableModel(
+        grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -68,13 +104,29 @@ public class panelTipoMenu extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(grTipoMenu);
+        grDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grDatosMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(grDatos);
 
         lbNombreTipoMenu.setText("Nombre Tipo Menú:");
 
-        btGrabarTipoMenu.setText("Grabar");
+        btGrabar.setText("Grabar");
+        btGrabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGrabarActionPerformed(evt);
+            }
+        });
 
-        btDesactivarEditarTipoMenu.setText("Salir Modo Editar");
+        btDesactivarEditar.setBackground(new java.awt.Color(255, 0, 0));
+        btDesactivarEditar.setText("Salir Modo Editar");
+        btDesactivarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDesactivarEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelTipoMenuLayout = new javax.swing.GroupLayout(panelTipoMenu);
         panelTipoMenu.setLayout(panelTipoMenuLayout);
@@ -85,41 +137,42 @@ public class panelTipoMenu extends javax.swing.JPanel {
                 .addGroup(panelTipoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelTipoMenuLayout.createSequentialGroup()
                         .addGroup(panelTipoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
                             .addComponent(jSeparator7)
                             .addGroup(panelTipoMenuLayout.createSequentialGroup()
-                                .addComponent(btEliminarTipoMenu)
+                                .addComponent(btEliminar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btEditarTipoMenu)
+                                .addComponent(btEditar)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtBuscarTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btBuscarTipoMenu)
+                                .addComponent(btBuscar)
                                 .addGap(18, 18, 18)
-                                .addComponent(btBuscarTodosTipoMenu)
+                                .addComponent(btBuscarTodos)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(panelTipoMenuLayout.createSequentialGroup()
                         .addGroup(panelTipoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btGrabarTipoMenu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btGrabar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelTipoMenuLayout.createSequentialGroup()
                                 .addComponent(lbNombreTipoMenu)
                                 .addGap(26, 26, 26)
                                 .addComponent(txtNombreTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btDesactivarEditarTipoMenu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(btDesactivarEditar)
                         .addGap(80, 80, 80))))
+            .addComponent(jScrollPane4)
         );
         panelTipoMenuLayout.setVerticalGroup(
             panelTipoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTipoMenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelTipoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEliminarTipoMenu)
-                    .addComponent(btEditarTipoMenu)
-                    .addComponent(txtBuscarTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarTipoMenu)
-                    .addComponent(btBuscarTodosTipoMenu))
+                .addGroup(panelTipoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btEliminar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelTipoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btEditar)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btBuscar)
+                        .addComponent(btBuscarTodos)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
@@ -128,9 +181,9 @@ public class panelTipoMenu extends javax.swing.JPanel {
                 .addGroup(panelTipoMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombreTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbNombreTipoMenu)
-                    .addComponent(btDesactivarEditarTipoMenu))
+                    .addComponent(btDesactivarEditar))
                 .addGap(37, 37, 37)
-                .addComponent(btGrabarTipoMenu)
+                .addComponent(btGrabar)
                 .addContainerGap(111, Short.MAX_VALUE))
         );
 
@@ -156,20 +209,122 @@ public class panelTipoMenu extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        if(this.id == 0){
+            JOptionPane.showMessageDialog(this, "NO existe para eliminar");
+        }else{
+            DAOTipoMenu.sqlDelete(new ClTipoMenu(this.id));
+            JOptionPane.showMessageDialog(this, "Eliminado");
+            helper.Formularios.limpiar(this);
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btEliminarActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        this.leer(Formularios.getSelectedRow(grDatos));
+        this.paraGrabar = true;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        this.leerTodos(false);
+    }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosActionPerformed
+        this.leerTodos(true);
+    }//GEN-LAST:event_btBuscarTodosActionPerformed
+
+    private void btDesactivarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarActionPerformed
+
+    private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
+        if(!paraGrabar){
+            if(txtNombreTipoMenu.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+            }else{
+                DAOTipoMenu.sqlInsert(new ClTipoMenu( txtNombreTipoMenu.getText()
+                                            ));
+            JOptionPane.showMessageDialog(this, "Agregado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+        }
+        }else{
+                DAOTipoMenu.sqlUpdate(new ClTipoMenu( this.id
+                                                ,txtNombreTipoMenu.getText()
+                                            ));
+        JOptionPane.showMessageDialog(this, "Modificado");
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        helper.Formularios.limpiar(this);
+        this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btGrabarActionPerformed
+
+    private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
+        if(row_dos >= 0){
+            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            this.paraGrabar = true;
+            this.btnEditarMode();
+        } else {
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+        }
+    }//GEN-LAST:event_grDatosMouseClicked
+
+    // Method Custom    
+    private void leer(int id){
+        this.id = id;
+        ClTipoMenu dato = DAOTipoMenu.sqlLeer(id);
+        txtNombreTipoMenu.setText(dato.getNombre());
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList dato;
+        if(todos)
+            dato = DAOTipoMenu.sqlLeerTodos();
+        else 
+            dato = DAOTipoMenu.sqlBuscarByNombre(txtNombreTipoMenu.getText());
+        
+        dt =  (DefaultTableModel) grDatos.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < dato.size(); x++){
+            ClTipoMenu xx = (ClTipoMenu)dato.get(x);
+            Object[] fila = new Object[7];
+            fila[0] = xx.getIdTipoMenu();
+            fila[1] = xx.getNombre();
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditar.setVisible(false);
+            helper.Formularios.limpiar(this);
+        } else {
+            btDesactivarEditar.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btBuscarTipoMenu;
-    private javax.swing.JButton btBuscarTodosTipoMenu;
-    private javax.swing.JButton btDesactivarEditarTipoMenu;
-    private javax.swing.JButton btEditarTipoMenu;
-    private javax.swing.JButton btEliminarTipoMenu;
-    private javax.swing.JButton btGrabarTipoMenu;
-    private javax.swing.JTable grTipoMenu;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btBuscarTodos;
+    private javax.swing.JButton btDesactivarEditar;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btEliminar;
+    private javax.swing.JButton btGrabar;
+    private javax.swing.JTable grDatos;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel lbNombreTipoMenu;
     private javax.swing.JPanel panelTipoMenu;
-    private javax.swing.JTextField txtBuscarTipoMenu;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtNombreTipoMenu;
     // End of variables declaration//GEN-END:variables
 }

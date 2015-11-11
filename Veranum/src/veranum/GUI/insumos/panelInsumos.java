@@ -32,44 +32,6 @@ public class panelInsumos extends javax.swing.JPanel {
         btDesactivarEditarInsumos.setVisible(false);
         this.leerTodos(true);
     }
-
-    // Method Custom
-    private void leerInsumos(int id){
-        this.id = id;
-        ClInsumos ins = DAOInsumos.sqlLeer(id);
-        txtNombreInsumos.setText(ins.getNombre());
-        txtDescripcionInsumos.setText(ins.getDescripcion());
-    }
-    
-    private void leerTodos(boolean todos){
-        ArrayList ins = new ArrayList<>();
-        if(todos)
-            ins = DAOInsumos.sqlLeerTodos();
-        else 
-            ins = DAOInsumos.sqlBuscarByNombre(txtBuscarInsumos.getText());
-        
-        dt =  (DefaultTableModel) grInsumos.getModel();        
-        for (int i = dt.getRowCount() -1; i >= 0; i--){  
-            dt.removeRow(i);
-        }        
-        for(int x=0; x < ins.size(); x++){
-            ClInsumos xx = (ClInsumos)ins.get(x);
-            Object[] fila = new Object[7];
-            fila[0] = xx.getIdInsumo();
-            fila[1] = xx.getNombre();
-            fila[2] = xx.getDescripcion(); 
-            dt.addRow(fila);
-        }
-    }
-    
-    private void btnEditarMode(){
-        if(!this.paraGrabar){
-            btDesactivarEditarInsumos.setVisible(false);
-            helper.Formularios.limpiar(this);
-        } else {
-            btDesactivarEditarInsumos.setVisible(true);
-        }
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -304,6 +266,43 @@ public class panelInsumos extends javax.swing.JPanel {
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarInsumosActionPerformed
 
+    // Method Custom
+    private void leerInsumos(int id){
+        this.id = id;
+        ClInsumos ins = DAOInsumos.sqlLeer(id);
+        txtNombreInsumos.setText(ins.getNombre());
+        txtDescripcionInsumos.setText(ins.getDescripcion());
+    }
+    
+    private void leerTodos(boolean todos){
+        ArrayList ins = new ArrayList<>();
+        if(todos)
+            ins = DAOInsumos.sqlLeerTodos();
+        else 
+            ins = DAOInsumos.sqlBuscarByNombre(txtBuscarInsumos.getText());
+        
+        dt =  (DefaultTableModel) grInsumos.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < ins.size(); x++){
+            ClInsumos xx = (ClInsumos)ins.get(x);
+            Object[] fila = new Object[7];
+            fila[0] = xx.getIdInsumo();
+            fila[1] = xx.getNombre();
+            fila[2] = xx.getDescripcion(); 
+            dt.addRow(fila);
+        }
+    }
+    
+    private void btnEditarMode(){
+        if(!this.paraGrabar){
+            btDesactivarEditarInsumos.setVisible(false);
+            helper.Formularios.limpiar(this);
+        } else {
+            btDesactivarEditarInsumos.setVisible(true);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarInsumos;

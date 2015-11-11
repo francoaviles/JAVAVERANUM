@@ -4,27 +4,19 @@
  */
 package veranum.GUI.insumos;
 
-import helper.Formularios;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import veranum.DAO.DAOInsumos;
-import veranum.entities.ClInsumos;
-
 /**
  *
  * @author Zacarias
  */
 public class MainInsumos extends javax.swing.JInternalFrame {
 
-    
-    
     /**
      * Creates new form MainInsumos
      */
     public MainInsumos() {
         initComponents();
         tabContenidoInsumos.addTab("Insumos", new panelInsumos());
+        tabContenidoInsumos.addTab("Medida", new panelMedidas());
         tabContenidoInsumos.addTab("Menú", new panelMenu());
         tabContenidoInsumos.addTab("Tipo Menú", new panelTipoMenu());
     }
