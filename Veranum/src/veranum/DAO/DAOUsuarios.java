@@ -14,7 +14,7 @@ import veranum.utilidades.OracleConection;
  */
 public class DAOUsuarios {
     public static boolean sqlInsert(ClPasajeros usuarios){
-        String sql="INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"contrasena\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"direccion\", \"fecha_nac\", \"id_rol\" ) VALUES ('"+usuarios.getRut()+"','"+usuarios.getNombre()+"','"+usuarios.getContrasena()+"','"+usuarios.getApellido_pa()+"','"+usuarios.getApellido_ma()+"','"+usuarios.getTelefono()+"','"+usuarios.getEmail()+"','"+usuarios.getDireccion()+"','"+usuarios.getFechaNacimiento()+"','"+usuarios.getIdRol()+"')";
+        String sql="INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"contrasena\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"direccion\", \"fecha_nac\", \"id_rol\" ) VALUES ('"+usuarios.getRut()+"','"+usuarios.getNombre()+"','"+usuarios.getContrasena()+"','"+usuarios.getApellido_pa()+"','"+usuarios.getApellido_ma()+"','"+usuarios.getTelefono()+"','"+usuarios.getEmail()+"','"+usuarios.getDireccion()+"',TO_DATE('"+usuarios.getFechaNacimiento()+"', 'dd-MM-YYYY'),'"+usuarios.getIdRol()+"')";
         OracleConection.getInstance().sqlEjecutar(sql);
         return true;
     }
@@ -26,7 +26,8 @@ public class DAOUsuarios {
     }
     
     public static boolean sqlUpdate(ClPasajeros usuarios){
-        String sql="UPDATE \"pasajeros\" SET \"rut\" = '"+usuarios.getRut()+"', \"nombre\" = '"+usuarios.getNombre()+"', \"contrasena\" = '"+usuarios.getContrasena()+"', \"apellido_pa\" = '"+usuarios.getApellido_pa()+"', \"apellido_ma\" = '"+usuarios.getApellido_ma()+"', \"telefono\" = '"+usuarios.getTelefono()+"', \"email\" = '"+usuarios.getEmail()+"', \"id_region\" = '"+usuarios.getIdRegion()+"', \"id_provincia\" = '"+usuarios.getIdProvincia()+"', \"id_comuna\" = '"+usuarios.getIdComuna()+"', \"direccion\" = '"+usuarios.getDireccion()+"', \"fecha_nac\" = '"+usuarios.getFechaNacimiento()+"' WHERE \"id_pasajero\" = "+usuarios.getIdPasajero()+"";
+        System.out.println(usuarios.getFechaNacimiento());
+        String sql="UPDATE \"pasajeros\" SET \"rut\" = '"+usuarios.getRut()+"', \"nombre\" = '"+usuarios.getNombre()+"', \"contrasena\" = '"+usuarios.getContrasena()+"', \"apellido_pa\" = '"+usuarios.getApellido_pa()+"', \"apellido_ma\" = '"+usuarios.getApellido_ma()+"', \"telefono\" = '"+usuarios.getTelefono()+"', \"email\" = '"+usuarios.getEmail()+"', \"id_region\" = '"+usuarios.getIdRegion()+"', \"id_provincia\" = '"+usuarios.getIdProvincia()+"', \"id_comuna\" = '"+usuarios.getIdComuna()+"', \"direccion\" = '"+usuarios.getDireccion()+"', \"fecha_nac\" = TO_DATE('"+usuarios.getFechaNacimiento()+"', 'dd-MM-YYYY HH24:MI:SS') WHERE \"id_pasajero\" = "+usuarios.getIdPasajero()+"";
         OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     }

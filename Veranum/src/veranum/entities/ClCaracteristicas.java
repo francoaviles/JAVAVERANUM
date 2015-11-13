@@ -14,8 +14,8 @@ public class ClCaracteristicas {
     private int cantidad;
     private String tipo;
     
-    public ClCaracteristicas(int idTipoCaract) {
-        setIdTipoCaract(idTipoCaract);
+    public ClCaracteristicas(int idCaracteristica) {
+        setIdCaracteristica(idCaracteristica);
     }
     
     public ClCaracteristicas(int idCaracteristica, int idTipoCaract, int cantidad, String tipo) {

@@ -6,14 +6,16 @@
 package helper;
 
 import java.awt.event.KeyEvent;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -21,7 +23,7 @@ import javax.swing.JTextField;
  * @author Duoc
  */
 public class Formularios {
-    public static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    public static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     
     public static void limpiar(JComponent obj){
         Object[] arrObj = obj.getComponents();
@@ -30,11 +32,19 @@ public class Formularios {
             {
                 JTextField ii = (JTextField)arrObj[x];
                 ii.setText("");                
-            }else
-                if(arrObj[x] instanceof JTextField)
-                {
-                    ((JButton)arrObj[x]).setText("");
+            } 
+
+            if(arrObj[x] instanceof JScrollPane)
+            {
+                Object[] sad = ((JScrollPane)arrObj[x]).getComponents();
+                for(int i = 0; i< sad.length ; i++){
+                    if(sad[i] instanceof JTextArea)
+                    {
+                        JTextArea oo = (JTextArea)sad[i];
+                        oo.setText("");                
+                    }         
                 }
+            } 
         }
         
     }
@@ -92,9 +102,13 @@ public class Formularios {
     } 
 
     public static Date deStringAFecha(String fecha){
+        System.out.println("Fecha"+fecha);
         Date date = new Date();
+       //  DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH);
         try {
             date = formatter.parse(fecha);
+            System.out.println("pFecha"+date);
+            System.out.println(date.getTime());
         } catch (ParseException ex) {
             Logger.getLogger(Formularios.class.getName()).log(Level.SEVERE, null, ex);
         }

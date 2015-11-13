@@ -15,7 +15,7 @@ import veranum.utilidades.OracleConection;
  */
 public class DAOCaracteristicas {
     public static boolean sqlInsert(ClCaracteristicas carac){
-        String sql="INSERT INTO \"caracteristicas\" (\"id_tipo_carac\", \"cantidad\", \"tipo\") VALUES ('"+carac.getIdTipoCaract()+"', '"+carac.getCantidad()+"', '"+carac.getTipo()+"')";
+        String sql="INSERT INTO \"caracteristicas\" (\"id_tipo_caract\", \"cantidad\", \"tipo\") VALUES ('"+carac.getIdTipoCaract()+"', '"+carac.getCantidad()+"', '"+carac.getTipo()+"')";
         OracleConection.getInstance().sqlEjecutar(sql);
         return true;
     }
@@ -27,7 +27,7 @@ public class DAOCaracteristicas {
     }
     
     public static boolean sqlUpdate(ClCaracteristicas carac){
-        String sql="UPDATE \"caracteristicas\" SET \"id_tipo_carac\" = '"+carac.getIdTipoCaract()+"', \"cantidad\" = '"+carac.getCantidad()+"' , \"tipo\" = '"+carac.getTipo()+"' WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";
+        String sql="UPDATE \"caracteristicas\" SET \"id_tipo_caract\" = '"+carac.getIdTipoCaract()+"', \"cantidad\" = '"+carac.getCantidad()+"' , \"tipo\" = '"+carac.getTipo()+"' WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";
         OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     }
@@ -53,7 +53,7 @@ public class DAOCaracteristicas {
             return null;
         }
         while(OracleConection.getInstance().sqlFetch()){
-            carac.add(new ClCaracteristicas(OracleConection.getInstance().getInt("id_caracteristicao")
+            carac.add(new ClCaracteristicas(OracleConection.getInstance().getInt("id_caracteristica")
                                     , OracleConection.getInstance().getInt("id_tipo_caract")
                                     , OracleConection.getInstance().getInt("cantidad")
                                     , OracleConection.getInstance().getString("tipo")
