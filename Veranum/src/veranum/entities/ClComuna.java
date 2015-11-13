@@ -65,5 +65,5 @@ public class ClComuna {
     public String toString(){
         return getNombre();
     }
-    
+        
 }

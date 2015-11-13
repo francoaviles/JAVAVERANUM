@@ -78,4 +78,8 @@ public class ClHabitacionInspecciones {
         this.nombreInspector = nombreInspector;
     }
     
+    @Override
+    public String toString(){
+        return getNombreInspector();
+    }
 }

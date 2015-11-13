@@ -28,7 +28,7 @@ public class panelInsumos extends javax.swing.JPanel {
     public panelInsumos() {
         initComponents();
         grInsumos.setEnabled(true);
-        Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEditarInsumos);
+        Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
         btDesactivarEditarInsumos.setVisible(false);
         this.leerTodos(true);
     }
