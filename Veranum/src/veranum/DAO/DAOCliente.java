@@ -14,87 +14,85 @@ import veranum.utilidades.OracleConection;
  * @author Duoc
  */
 public class DAOCliente {
-    private static final OracleConection bd = new OracleConection().Conectar();
-    
     public static boolean sqlInsert(ClPasajeros clientes){
         String sql="INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"id_region\", \"id_provincia\", \"id_comuna\", \"direccion\", \"fecha_nac\") VALUES ('"+clientes.getRut()+"','"+clientes.getNombre()+"','"+clientes.getApellido_pa()+"','"+clientes.getApellido_ma()+"','"+clientes.getTelefono()+"','"+clientes.getEmail()+"','"+clientes.getIdRegion()+"','"+clientes.getIdProvincia()+"','"+clientes.getIdComuna()+"','"+clientes.getDireccion()+"','"+clientes.getFechaNacimiento()+"')";
-        bd.sqlEjecutar(sql);
+        OracleConection.getInstance().sqlEjecutar(sql);
         return true;
     }
     
     public static boolean sqlDelete(ClPasajeros clientes){
         String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = "+clientes.getIdPasajero()+"";
-        bd.sqlEjecutar(sql);   
+        OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClPasajeros clientes){
         String sql="UPDATE \"pasajeros\" SET \"rut\" = '"+clientes.getRut()+"', \"nombre\" = '"+clientes.getNombre()+"' AND \"apellido_pa\" = '"+clientes.getApellido_pa()+"', \"apellido_ma\" = '"+clientes.getApellido_ma()+"', \"telefono\" = '"+clientes.getTelefono()+"', \"email\" = '"+clientes.getEmail()+"', \"id_region\" = '"+clientes.getIdRegion()+"', \"id_provincia\" = '"+clientes.getIdProvincia()+"', \"id_comuna\" = '"+clientes.getIdComuna()+"', \"direccion\" = '"+clientes.getDireccion()+"', \"fecha_nac\" = '"+clientes.getFechaNacimiento()+"' WHERE \"rut\" = "+clientes.getRut()+"";
-        bd.sqlEjecutar(sql);   
+        OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     }
     
     public static ClPasajeros sqlLeer(int id){     
         ClPasajeros clientes = new ClPasajeros();        
-        if(!bd.sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"id_pasajero\" ='"+id+"'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"id_pasajero\" ='"+id+"'")){
             return null;
         }        
-        if(!bd.sqlFetch()){
+        if(!OracleConection.getInstance().sqlFetch()){
             return null;
         }
-        clientes.setIdPasajero(bd.getInt("id_pasajero"));
-        clientes.setRut(bd.getString("rut"));
-        clientes.setNombre(bd.getString("nombre"));
-        clientes.setContrasena(bd.getString("contrasena"));
-        clientes.setApellido_pa(bd.getString("apellido_pa"));
-        clientes.setApellido_ma(bd.getString("apellido_ma"));
-        clientes.setTelefono(bd.getString("telefono"));
-        clientes.setEmail(bd.getString("email"));
-        clientes.setDireccion(bd.getString("direccion"));
-        clientes.setFechaNacimiento(bd.getDate("fecha_nac"));
-        clientes.setIdPasajero(bd.getInt("id_rol"));        
+        clientes.setIdPasajero(OracleConection.getInstance().getInt("id_pasajero"));
+        clientes.setRut(OracleConection.getInstance().getString("rut"));
+        clientes.setNombre(OracleConection.getInstance().getString("nombre"));
+        clientes.setContrasena(OracleConection.getInstance().getString("contrasena"));
+        clientes.setApellido_pa(OracleConection.getInstance().getString("apellido_pa"));
+        clientes.setApellido_ma(OracleConection.getInstance().getString("apellido_ma"));
+        clientes.setTelefono(OracleConection.getInstance().getString("telefono"));
+        clientes.setEmail(OracleConection.getInstance().getString("email"));
+        clientes.setDireccion(OracleConection.getInstance().getString("direccion"));
+        clientes.setFechaNacimiento(OracleConection.getInstance().getDate("fecha_nac"));
+        clientes.setIdPasajero(OracleConection.getInstance().getInt("id_rol"));        
         return clientes;
     }
     
     public static ClPasajeros sqlLeer(String name){     
         ClPasajeros clientes = new ClPasajeros();        
-        if(!bd.sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" ='"+name+"'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" ='"+name+"'")){
             return null;
         }        
-        if(!bd.sqlFetch()){
+        if(!OracleConection.getInstance().sqlFetch()){
             return null;
         }        
-        clientes.setIdPasajero(bd.getInt("id_pasajero"));
-        clientes.setRut(bd.getString("rut"));
-        clientes.setNombre(bd.getString("nombre"));
-        clientes.setContrasena(bd.getString("contrasena"));
-        clientes.setApellido_pa(bd.getString("apellido_pa"));
-        clientes.setApellido_ma(bd.getString("apellido_ma"));
-        clientes.setTelefono(bd.getString("telefono"));
-        clientes.setEmail(bd.getString("email"));
-        clientes.setDireccion(bd.getString("direccion"));
-        clientes.setFechaNacimiento(bd.getDate("fecha_nac"));
-        clientes.setIdPasajero(bd.getInt("id_rol"));        
+        clientes.setIdPasajero(OracleConection.getInstance().getInt("id_pasajero"));
+        clientes.setRut(OracleConection.getInstance().getString("rut"));
+        clientes.setNombre(OracleConection.getInstance().getString("nombre"));
+        clientes.setContrasena(OracleConection.getInstance().getString("contrasena"));
+        clientes.setApellido_pa(OracleConection.getInstance().getString("apellido_pa"));
+        clientes.setApellido_ma(OracleConection.getInstance().getString("apellido_ma"));
+        clientes.setTelefono(OracleConection.getInstance().getString("telefono"));
+        clientes.setEmail(OracleConection.getInstance().getString("email"));
+        clientes.setDireccion(OracleConection.getInstance().getString("direccion"));
+        clientes.setFechaNacimiento(OracleConection.getInstance().getDate("fecha_nac"));
+        clientes.setIdPasajero(OracleConection.getInstance().getInt("id_rol"));        
         return clientes;
     }
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClPasajeros> clientes = new ArrayList<>();        
-        if(!bd.sqlSelect("SELECT * FROM \"pasajeros\"")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\"")){
             return null;
         }
-        while(bd.sqlFetch()){
-            clientes.add(new ClPasajeros(bd.getInt("id_pasajero")
-                                    , bd.getString("rut")
-                                    , bd.getString("nombre")
-                                    , bd.getString("contrasena")
-                                    , bd.getString("apellido_pa")
-                                    , bd.getString("apellido_ma")
-                                    , bd.getString("telefono")
-                                    , bd.getString("email")
-                                    , bd.getString("direccion")
-                                    , bd.getDate("fecha_nac")
-                                    , bd.getInt("id_rol")
+        while(OracleConection.getInstance().sqlFetch()){
+            clientes.add(new ClPasajeros(OracleConection.getInstance().getInt("id_pasajero")
+                                    , OracleConection.getInstance().getString("rut")
+                                    , OracleConection.getInstance().getString("nombre")
+                                    , OracleConection.getInstance().getString("contrasena")
+                                    , OracleConection.getInstance().getString("apellido_pa")
+                                    , OracleConection.getInstance().getString("apellido_ma")
+                                    , OracleConection.getInstance().getString("telefono")
+                                    , OracleConection.getInstance().getString("email")
+                                    , OracleConection.getInstance().getString("direccion")
+                                    , OracleConection.getInstance().getDate("fecha_nac")
+                                    , OracleConection.getInstance().getInt("id_rol")
                                 ));
             
         }     
@@ -103,21 +101,21 @@ public class DAOCliente {
     
     public static ArrayList sqlBuscarByNombre(String nombre){
         ArrayList<ClPasajeros> clientes = new ArrayList<>();        
-        if(!bd.sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" LIKE '%"+nombre+"%'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" LIKE '%"+nombre+"%'")){
             return null;
         }
-        while(bd.sqlFetch()){
-            clientes.add(new ClPasajeros(bd.getInt("id_pasajero")
-                                    , bd.getString("rut")
-                                    , bd.getString("nombre")
-                                    , bd.getString("contrasena")
-                                    , bd.getString("apellido_pa")
-                                    , bd.getString("apellido_ma")
-                                    , bd.getString("telefono")
-                                    , bd.getString("email")
-                                    , bd.getString("direccion")
-                                    , bd.getDate("fecha_nac")
-                                    , bd.getInt("id_rol")
+        while(OracleConection.getInstance().sqlFetch()){
+            clientes.add(new ClPasajeros(OracleConection.getInstance().getInt("id_pasajero")
+                                    , OracleConection.getInstance().getString("rut")
+                                    , OracleConection.getInstance().getString("nombre")
+                                    , OracleConection.getInstance().getString("contrasena")
+                                    , OracleConection.getInstance().getString("apellido_pa")
+                                    , OracleConection.getInstance().getString("apellido_ma")
+                                    , OracleConection.getInstance().getString("telefono")
+                                    , OracleConection.getInstance().getString("email")
+                                    , OracleConection.getInstance().getString("direccion")
+                                    , OracleConection.getInstance().getDate("fecha_nac")
+                                    , OracleConection.getInstance().getInt("id_rol")
                                 ));
             
         }     

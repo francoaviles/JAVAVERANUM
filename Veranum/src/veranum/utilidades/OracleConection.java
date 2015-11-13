@@ -20,15 +20,23 @@ import java.util.logging.Logger;
  */
 public class OracleConection {
     
+    public static OracleConection db = null;
     private Connection conexion;
     private Statement st;
     private ResultSet rs;
-    
+        
+    public static OracleConection getInstance() {
+        if (db == null) {
+            db = new OracleConection().Conectar();
+        }
+        return db;
+    }
+     
     public Connection getConexion(){
         return conexion;
     }
     
-    public void setConexcion(Connection conexion){
+    public void setConexion(Connection conexion){
         this.conexion = conexion;
     }
     

@@ -14,64 +14,62 @@ import veranum.utilidades.OracleConection;
  * @author carlosdlg
  */
 public class DAORegiones {
-    private static final OracleConection bd = new OracleConection().Conectar();
-    
     public static boolean sqlInsert(ClRegion region){
         String sql="INSERT INTO \"regiones\" (\"region_nombre\", \"region_ordinal\") VALUES ('"+region.getNombre()+"','"+region.getOrdinal()+"')";
-        bd.sqlEjecutar(sql);
+        OracleConection.getInstance().sqlEjecutar(sql);
         return true;
     }
     
     public static boolean sqlDelete(ClRegion region){
         String sql="DELETE FROM \"regiones\" WHERE \"id_region\" = "+region.getIdRegion()+"";
-        bd.sqlEjecutar(sql);   
+        OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     
     }
     
     public static boolean sqlUpdate(ClRegion region){
         String sql="UPDATE \"regiones\" SET \"region_nombre\" = '"+region.getNombre()+"', \"region_ordinal\" = '"+region.getOrdinal()+"' WHERE \"id_region\" = "+region.getIdRegion()+"";
-        bd.sqlEjecutar(sql);   
+        OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     }
     
     public static ClRegion sqlLeer(int id){     
         ClRegion region = new ClRegion(); 
-        if(!bd.sqlSelect("SELECT * FROM \"regiones\" WHERE \"id_region\" ='"+id+"'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"regiones\" WHERE \"id_region\" ='"+id+"'")){
             return null;
         }        
-        if(!bd.sqlFetch()){
+        if(!OracleConection.getInstance().sqlFetch()){
             return null;
         }
-        region.setIdRegion(bd.getInt("id_region"));
-        region.setNombre(bd.getString("region_nombre"));
-        region.setOrdinal(bd.getString("region_ordinal"));
+        region.setIdRegion(OracleConection.getInstance().getInt("id_region"));
+        region.setNombre(OracleConection.getInstance().getString("region_nombre"));
+        region.setOrdinal(OracleConection.getInstance().getString("region_ordinal"));
         return region;
     }
     
     public static ClRegion sqlLeer(String name){     
         ClRegion region = new ClRegion(); 
-        if(!bd.sqlSelect("SELECT * FROM \"regiones\" WHERE \"region_nombre\" ='"+name+"'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"regiones\" WHERE \"region_nombre\" ='"+name+"'")){
             return null;
         }        
-        if(!bd.sqlFetch()){
+        if(!OracleConection.getInstance().sqlFetch()){
             return null;
         }
-        region.setIdRegion(bd.getInt("id_region"));
-        region.setNombre(bd.getString("region_nombre"));
-        region.setOrdinal(bd.getString("region_ordinal"));
+        region.setIdRegion(OracleConection.getInstance().getInt("id_region"));
+        region.setNombre(OracleConection.getInstance().getString("region_nombre"));
+        region.setOrdinal(OracleConection.getInstance().getString("region_ordinal"));
         return region;
     }
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClRegion> region = new ArrayList<>();
-        if(!bd.sqlSelect("SELECT * FROM \"regiones\"")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"regiones\"")){
             return null;
         }
-        while(bd.sqlFetch()){
-            region.add(new ClRegion(bd.getInt("id_region")
-                                    , bd.getString("region_nombre")
-                                    , bd.getString("region_ordinal")
+        while(OracleConection.getInstance().sqlFetch()){
+            region.add(new ClRegion(OracleConection.getInstance().getInt("id_region")
+                                    , OracleConection.getInstance().getString("region_nombre")
+                                    , OracleConection.getInstance().getString("region_ordinal")
                                 ));
             
         }     
@@ -80,13 +78,13 @@ public class DAORegiones {
     
     public static ArrayList sqlBuscarByNombre(String nombre){
         ArrayList<ClRegion> region = new ArrayList<>();        
-        if(!bd.sqlSelect("SELECT * FROM \"regiones\" WHERE \"region_nombre\" LIKE '%"+nombre+"%'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"regiones\" WHERE \"region_nombre\" LIKE '%"+nombre+"%'")){
             return null;
         }
-        while(bd.sqlFetch()){
-            region.add(new ClRegion(bd.getInt("id_region")
-                                    , bd.getString("region_nombre")
-                                    , bd.getString("region_ordinal")
+        while(OracleConection.getInstance().sqlFetch()){
+            region.add(new ClRegion(OracleConection.getInstance().getInt("id_region")
+                                    , OracleConection.getInstance().getString("region_nombre")
+                                    , OracleConection.getInstance().getString("region_ordinal")
                                 ));
             
         }     

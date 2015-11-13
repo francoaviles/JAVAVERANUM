@@ -14,61 +14,59 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOMedidas {
-    private static final OracleConection bd = new OracleConection().Conectar();
-    
     public static boolean sqlInsert(ClMedidas medida){
         String sql="INSERT INTO \"medidas\" (\"medida\") VALUES ('"+medida.getMedida()+"')";
-        bd.sqlEjecutar(sql);
+        OracleConection.getInstance().sqlEjecutar(sql);
         return true;
     }
     
     public static boolean sqlDelete(ClMedidas medida){
         String sql="DELETE FROM \"medidas\" WHERE \"id_medida\" = "+medida.getIdMedida()+"";
-        bd.sqlEjecutar(sql);   
+        OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClMedidas medida){
         String sql="UPDATE \"medidas\" SET \"medida\" = '"+medida.getMedida()+"' WHERE \"id_medida\" = "+medida.getIdMedida()+"";
-        bd.sqlEjecutar(sql);   
+        OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     }
     
     public static ClMedidas sqlLeer(String name){     
         ClMedidas medida = new ClMedidas();        
-        if(!bd.sqlSelect("SELECT * FROM \"medidas\" WHERE \"medida\" ='"+name+"'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"medidas\" WHERE \"medida\" ='"+name+"'")){
             return null;
         }        
-        if(!bd.sqlFetch()){
+        if(!OracleConection.getInstance().sqlFetch()){
             return null;
         }        
-        medida.setIdMedida(bd.getInt("id_medida"));
-        medida.setMedida(bd.getString("medida"));
+        medida.setIdMedida(OracleConection.getInstance().getInt("id_medida"));
+        medida.setMedida(OracleConection.getInstance().getString("medida"));
         return medida;
     }
     
     public static ClMedidas sqlLeer(int id){     
         ClMedidas medida = new ClMedidas();        
-        if(!bd.sqlSelect("SELECT * FROM \"medidas\" WHERE \"id_medida\" ='"+id+"'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"medidas\" WHERE \"id_medida\" ='"+id+"'")){
             return null;
         }        
-        if(!bd.sqlFetch()){
+        if(!OracleConection.getInstance().sqlFetch()){
             return null;
         }        
-        medida.setIdMedida(bd.getInt("id_medida"));
-        medida.setMedida(bd.getString("medida"));
+        medida.setIdMedida(OracleConection.getInstance().getInt("id_medida"));
+        medida.setMedida(OracleConection.getInstance().getString("medida"));
         return medida;
     }
     
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClMedidas> medida = new ArrayList<>();        
-        if(!bd.sqlSelect("SELECT * FROM \"medidas\"")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"medidas\"")){
             return null;
         }
-        while(bd.sqlFetch()){
-            medida.add(new ClMedidas(bd.getInt("id_medida")
-                                    , bd.getString("medida")
+        while(OracleConection.getInstance().sqlFetch()){
+            medida.add(new ClMedidas(OracleConection.getInstance().getInt("id_medida")
+                                    , OracleConection.getInstance().getString("medida")
                                 ));
             
         }     
@@ -77,12 +75,12 @@ public class DAOMedidas {
     
     public static ArrayList sqlBuscarByNombre(String name){
         ArrayList<ClMedidas> medida = new ArrayList<>();        
-        if(!bd.sqlSelect("SELECT * FROM \"medidas\" WHERE \"medida\" LIKE '%"+name+"%'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"medidas\" WHERE \"medida\" LIKE '%"+name+"%'")){
             return null;
         }
-        while(bd.sqlFetch()){
-            medida.add(new ClMedidas(bd.getInt("id_medidao")
-                                    , bd.getString("medida")
+        while(OracleConection.getInstance().sqlFetch()){
+            medida.add(new ClMedidas(OracleConection.getInstance().getInt("id_medidao")
+                                    , OracleConection.getInstance().getString("medida")
                                 ));
             
         }     

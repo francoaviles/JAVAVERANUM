@@ -14,51 +14,49 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOCaracteristicas {
-    private static final OracleConection bd = new OracleConection().Conectar();
-    
     public static boolean sqlInsert(ClCaracteristicas carac){
         String sql="INSERT INTO \"caracteristicas\" (\"id_tipo_carac\", \"cantidad\", \"tipo\") VALUES ('"+carac.getIdTipoCaract()+"', '"+carac.getCantidad()+"', '"+carac.getTipo()+"')";
-        bd.sqlEjecutar(sql);
+        OracleConection.getInstance().sqlEjecutar(sql);
         return true;
     }
     
     public static boolean sqlDelete(ClCaracteristicas carac){
         String sql="DELETE FROM \"caracteristicas\" WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";
-        bd.sqlEjecutar(sql);   
+        OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     }
     
     public static boolean sqlUpdate(ClCaracteristicas carac){
         String sql="UPDATE \"caracteristicas\" SET \"id_tipo_carac\" = '"+carac.getIdTipoCaract()+"', \"cantidad\" = '"+carac.getCantidad()+"' , \"tipo\" = '"+carac.getTipo()+"' WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";
-        bd.sqlEjecutar(sql);   
+        OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     }
       
     public static ClCaracteristicas sqlLeer(int id){     
         ClCaracteristicas carac = new ClCaracteristicas();        
-        if(!bd.sqlSelect("SELECT * FROM \"caracteristicas\" WHERE \"id_caracteristica\" ='"+id+"'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"caracteristicas\" WHERE \"id_caracteristica\" ='"+id+"'")){
             return null;
         }        
-        if(!bd.sqlFetch()){
+        if(!OracleConection.getInstance().sqlFetch()){
             return null;
         }        
-        carac.setIdCaracteristica(bd.getInt("id_caracteristica"));
-        carac.setIdTipoCaract(bd.getInt("id_tipo_caract"));
-        carac.setCantidad(bd.getInt("cantidad"));
-        carac.setTipo(bd.getString("tipo"));
+        carac.setIdCaracteristica(OracleConection.getInstance().getInt("id_caracteristica"));
+        carac.setIdTipoCaract(OracleConection.getInstance().getInt("id_tipo_caract"));
+        carac.setCantidad(OracleConection.getInstance().getInt("cantidad"));
+        carac.setTipo(OracleConection.getInstance().getString("tipo"));
         return carac;
     }
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClCaracteristicas> carac = new ArrayList<>();        
-        if(!bd.sqlSelect("SELECT * FROM \"caracteristicas\"")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"caracteristicas\"")){
             return null;
         }
-        while(bd.sqlFetch()){
-            carac.add(new ClCaracteristicas(bd.getInt("id_caracteristicao")
-                                    , bd.getInt("id_tipo_caract")
-                                    , bd.getInt("cantidad")
-                                    , bd.getString("tipo")
+        while(OracleConection.getInstance().sqlFetch()){
+            carac.add(new ClCaracteristicas(OracleConection.getInstance().getInt("id_caracteristicao")
+                                    , OracleConection.getInstance().getInt("id_tipo_caract")
+                                    , OracleConection.getInstance().getInt("cantidad")
+                                    , OracleConection.getInstance().getString("tipo")
                                 ));
             
         }     
@@ -67,14 +65,14 @@ public class DAOCaracteristicas {
     /*
     public static ArrayList sqlBuscarByNombre(String nombre){
         ArrayList<ClCaracteristicas> carac = new ArrayList<>();        
-        if(!bd.sqlSelect("SELECT * FROM \"caracteristica\" WHERE \"carac\" LIKE '%"+nombre+"%'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"caracteristica\" WHERE \"carac\" LIKE '%"+nombre+"%'")){
             return null;
         }
-        while(bd.sqlFetch()){
-            carac.add(new ClCaracteristicas(bd.getInt("id_caracteristicao")
-                                    , bd.getInt("id_tipo_caract")
-                                    , bd.getInt("cantidad")
-                                    , bd.getString("tipo")
+        while(OracleConection.getInstance().sqlFetch()){
+            carac.add(new ClCaracteristicas(OracleConection.getInstance().getInt("id_caracteristicao")
+                                    , OracleConection.getInstance().getInt("id_tipo_caract")
+                                    , OracleConection.getInstance().getInt("cantidad")
+                                    , OracleConection.getInstance().getString("tipo")
                                 ));
             
         }     
