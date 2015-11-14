@@ -5,7 +5,7 @@ Model: Oracle 11g Release 1
 Database: Oracle 11g Release 1
 */
 
--- TABLAS
+-- TABLA
 -- -----------------------------------------------
 -- Comunas
 CREATE TABLE "comunas" (

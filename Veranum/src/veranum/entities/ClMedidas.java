@@ -45,4 +45,9 @@ public class ClMedidas {
         this.medida = medida;
     }
     
+    @Override
+    public String toString(){
+        return getMedida();
+    }
+    
 }

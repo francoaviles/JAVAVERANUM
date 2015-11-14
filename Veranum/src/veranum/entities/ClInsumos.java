@@ -56,5 +56,9 @@ public class ClInsumos {
         this.descripcion = descripcion;
     }
     
+    @Override
+    public String toString(){
+        return getNombre();
+    }
     
 }
