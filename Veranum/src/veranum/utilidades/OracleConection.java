@@ -7,12 +7,16 @@ package veranum.utilidades;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import static java.sql.Types.ROWID;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static oracle.jdbc.OracleTypes.ROWID;
+import oracle.sql.ROWID;
 
 /**
  *
@@ -24,6 +28,7 @@ public class OracleConection {
     private Connection conexion;
     private Statement st;
     private ResultSet rs;
+    private PreparedStatement ps;
         
     public static OracleConection getInstance() {
         if (db == null) {
@@ -56,20 +61,47 @@ public class OracleConection {
             }
         }
          catch(ClassNotFoundException | SQLException e){
-                 System.out.println("Error conexion " + e.getMessage());
+                 System.out.println("Error a conectar " + e.getMessage());
         }
         return this;
     }
         
     public boolean sqlEjecutar(String sql){
         try {
-            st.execute(sql);
+            st.executeUpdate(sql);
         } catch (Exception ex) {
-            System.out.println("Error conexion " + ex.getMessage());
+            System.out.println("Error EJECUTAR 1 " + ex.getMessage());
             return false;
         }
         return true;
-    }       
+    }     
+    
+    public boolean sqlEjecutar(String sql, String pk){
+        try {
+            System.out.println(sql);
+            ps = conexion.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            System.out.println("Error EJECUTAR 2 " + ex.getMessage());
+            ex.getStackTrace();
+            return false;
+        }
+        return true;
+    } 
+    
+    public int sqlLastID(String secuencia)
+    {
+        int id = 0;
+        try {
+            ResultSet generatedKeys = st.executeQuery("SELECT "+secuencia+".CURRVAL FROM DUAL");
+            if (generatedKeys.next()) {
+                id = generatedKeys.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OracleConection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
     
     public boolean sqlSelect(String sql){
         try {
