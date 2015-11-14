@@ -66,7 +66,6 @@ public class panelUsuarios extends javax.swing.JPanel {
         txtTelefono = new javax.swing.JTextField();
         txtMailUsuario = new javax.swing.JTextField();
         txtDireccionUsuario = new javax.swing.JTextField();
-        txtFechaNacUsu = new javax.swing.JTextField();
         btGrabarUsuarios = new javax.swing.JButton();
         btEliminarUsuario = new javax.swing.JButton();
         btEditarUsuario = new javax.swing.JButton();
@@ -77,6 +76,7 @@ public class panelUsuarios extends javax.swing.JPanel {
         grUsuario = new javax.swing.JTable();
         btDesactivarEditarUsuarios = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        txtFechaNacUsu = new javax.swing.JFormattedTextField();
 
         lbRut.setText("Rut:");
 
@@ -167,6 +167,26 @@ public class panelUsuarios extends javax.swing.JPanel {
             }
         });
 
+        txtFechaNacUsu.setFormatterFactory(new javax.swing.JFormattedTextField.AbstractFormatterFactory(){
+            public javax.swing.JFormattedTextField.AbstractFormatter
+            getFormatter(javax.swing.JFormattedTextField tf) {
+
+                try {
+                    javax.swing.text.MaskFormatter mf = new javax.swing.text.MaskFormatter("##/##/####");
+                    mf.setPlaceholder("_");
+                    return mf;
+                } catch(java.text.ParseException pe){
+                    pe.printStackTrace();
+                }
+                return null;
+            }
+        });
+        txtFechaNacUsu.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFechaNacUsuFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,24 +233,25 @@ public class panelUsuarios extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(btBuscarTodosUsuario))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(lbFechaNacimiento)
-                            .addGap(30, 30, 30)
-                            .addComponent(txtFechaNacUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
                             .addComponent(lbRol)
                             .addGap(70, 70, 70)
                             .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbTelefono)
-                                .addComponent(lbMail)
-                                .addComponent(lbDireccion))
-                            .addGap(47, 47, 47)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtDireccionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtMailUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(btGrabarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btGrabarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(lbFechaNacimiento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFechaNacUsu))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbTelefono)
+                                    .addComponent(lbMail)
+                                    .addComponent(lbDireccion))
+                                .addGap(47, 47, 47)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDireccionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMailUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGap(0, 0, Short.MAX_VALUE))
                 .addComponent(jSeparator1)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE))
@@ -268,11 +289,9 @@ public class panelUsuarios extends javax.swing.JPanel {
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbApeMaterno)
-                            .addComponent(txtApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtApePaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(txtApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtApePaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbTelefono)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -384,6 +403,10 @@ public class panelUsuarios extends javax.swing.JPanel {
         this.btnEditarMode();
     }//GEN-LAST:event_btEditarUsuarioActionPerformed
 
+    private void txtFechaNacUsuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFechaNacUsuFocusLost
+        Formularios.deStringAFecha(txtFechaNacUsu.getText());
+    }//GEN-LAST:event_txtFechaNacUsuFocusLost
+
     // Method Custom
     private void cargarRol(){
         for (Object rol : DAORol.sqlLeerTodos()) {
@@ -403,7 +426,7 @@ public class panelUsuarios extends javax.swing.JPanel {
         txtMailUsuario.setText(usu.getEmail());
         txtDireccionUsuario.setText(usu.getDireccion());
         txtTelefono.setText(usu.getTelefono());
-        txtFechaNacUsu.setText(usu.getFechaNacimiento().toString());
+        txtFechaNacUsu.setValue(usu.getStringFechaNac());
         
         ClRol item;
         for (int i = 0; i < cbRol.getItemCount(); i++)
@@ -418,7 +441,7 @@ public class panelUsuarios extends javax.swing.JPanel {
     }
     
     private void leerTodos(boolean todos){
-        ArrayList usu = new ArrayList<>();
+        ArrayList usu;
         if(todos)
             usu = DAOUsuarios.sqlLeerTodos();
         else 
@@ -440,7 +463,7 @@ public class panelUsuarios extends javax.swing.JPanel {
             fila[6] = xx.getTelefono();
             fila[7] = xx.getEmail();
             fila[8] = xx.getDireccion();
-            fila[9] = xx.getFechaNacimiento();
+            fila[9] = xx.getStringFechaNac();
             fila[10] = ((ClRol)DAORol.sqlLeer(xx.getIdRol())).getNombre();
             dt.addRow(fila);
         }
@@ -481,7 +504,7 @@ public class panelUsuarios extends javax.swing.JPanel {
     private javax.swing.JTextField txtBuscarUsuario;
     private javax.swing.JTextField txtConstrasenaUsuario;
     private javax.swing.JTextField txtDireccionUsuario;
-    private javax.swing.JTextField txtFechaNacUsu;
+    private javax.swing.JFormattedTextField txtFechaNacUsu;
     private javax.swing.JTextField txtMailUsuario;
     private javax.swing.JTextField txtNombreUsuario;
     private javax.swing.JTextField txtRutUsuario;

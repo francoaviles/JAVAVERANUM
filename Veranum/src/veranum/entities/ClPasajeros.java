@@ -4,6 +4,7 @@
  */
 package veranum.entities;
 
+import helper.Formularios;
 import java.util.Date;
 
 /**
@@ -191,6 +192,10 @@ public class ClPasajeros {
 
     public void setIdRol(int idRol) {
         this.idRol = idRol;
+    }
+    
+    public String getStringFechaNac(){
+        return Formularios.deFechaToString(getFechaNacimiento());
     }
     
     @Override

@@ -34,12 +34,12 @@ public class panelHotel extends javax.swing.JPanel {
      */
     public panelHotel() {
         initComponents();
-        DAORegiones.sqlLeerTodos().stream().forEach((item) -> {
-            cbRegion.addItem(item);
-        });
-        DAOCadenas.sqlLeerTodos().stream().forEach((item) -> {
-            cbCadena.addItem(item);
-        });
+        for (Object dato : DAORegiones.sqlLeerTodos()) {
+            cbRegion.addItem(dato);
+        }
+        for (Object dato : DAOCadenas.sqlLeerTodos()) {
+            cbCadena.addItem(dato);
+        }
         
         grHotel.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditarHotel, btEliminarHotel);
@@ -368,17 +368,17 @@ public class panelHotel extends javax.swing.JPanel {
 
     private void cargarProvincias(){
         int id_region = ((ClRegion)cbRegion.getSelectedItem()).getIdRegion();
-        DAOProvincia.sqlPorRegion(id_region).stream().forEach((item) -> {
-            cbProvincia.addItem(item);
-        });
+        for (Object dato : DAOProvincia.sqlPorRegion(id_region)) {
+            cbProvincia.addItem(dato);
+        }
     }
     
     private void cargarComunas(){
         if(cbProvincia.getSelectedItem() != null) {
             int id_provincia = ((ClProvincia)cbProvincia.getSelectedItem()).getIdProvincia();
-            DAOComuna.sqlPorProvincia(id_provincia).stream().forEach((item) -> {
-                cbComuna.addItem(item);
-            });
+            for (Object dato : DAOComuna.sqlPorProvincia(id_provincia)) {
+                cbComuna.addItem(dato);
+            }
         }
     }
     // Method Custom

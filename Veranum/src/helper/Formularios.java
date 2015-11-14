@@ -6,12 +6,10 @@
 package helper;
 
 import java.awt.event.KeyEvent;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
@@ -102,18 +100,23 @@ public class Formularios {
     } 
 
     public static Date deStringAFecha(String fecha){
-        System.out.println("Fecha"+fecha);
-        Date date = new Date();
-       //  DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH);
+        Date d = new Date();
         try {
-            date = formatter.parse(fecha);
-            System.out.println("pFecha"+date);
-            System.out.println(date.getTime());
-        } catch (ParseException ex) {
-            Logger.getLogger(Formularios.class.getName()).log(Level.SEVERE, null, ex);
+           d = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
         }
-        return date;
+        catch (ParseException pe) {
+            System.out.println("fecha invalida");
+        }
+        return d;
     }
+    
+    public static String deFechaToString(Date fecha){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(fecha);
+        String formatedDate = cal.get(Calendar.DATE) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.YEAR);
+        return formatedDate;    
+    }
+    
     public static void habilita(JComponent obj, boolean sw)
     {
         Object[] arrObj = obj.getComponents();
