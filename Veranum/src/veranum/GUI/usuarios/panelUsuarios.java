@@ -173,7 +173,7 @@ public class panelUsuarios extends javax.swing.JPanel {
 
                 try {
                     javax.swing.text.MaskFormatter mf = new javax.swing.text.MaskFormatter("##/##/####");
-                    mf.setPlaceholder("_");
+                    mf.setPlaceholderCharacter('_');
                     return mf;
                 } catch(java.text.ParseException pe){
                     pe.printStackTrace();
