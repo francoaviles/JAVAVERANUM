@@ -10,29 +10,29 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOCaracteristicas;
-import veranum.DAO.DAOHabCaract;
-import veranum.DAO.DAOHabitaciones;
+import veranum.DAO.DAOHotelCaract;
+import veranum.DAO.DAOHoteles;
 import veranum.entities.ClCaracteristicas;
-import veranum.entities.ClHabitacionCaract;
-import veranum.entities.ClHabitaciones;
+import veranum.entities.ClHotelCaract;
+import veranum.entities.ClHoteles;
 
 /**
  *
  * @author Zacarias
  */
-public class panelHabCaract extends javax.swing.JPanel {
+public class panelHotelCaract extends javax.swing.JPanel {
 
     private boolean paraGrabar = false;
     private DefaultTableModel dt = new DefaultTableModel();
     private int id = 0;
     
     /**
-     * Creates new form panelHabCaract
+     * Creates new form panelHotelcaract
      */
-    public panelHabCaract() {
+    public panelHotelCaract() {
         initComponents();
         this.cargarCaract();
-        this.cargarHab();
+        this.cargarHotel();
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);
@@ -56,9 +56,9 @@ public class panelHabCaract extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         grDatos = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
-        lbHab = new javax.swing.JLabel();
+        lbHotel = new javax.swing.JLabel();
         lbCaract = new javax.swing.JLabel();
-        cbHab = new javax.swing.JComboBox();
+        cbHotel = new javax.swing.JComboBox();
         cbCaract = new javax.swing.JComboBox();
         btGrabar = new javax.swing.JButton();
         btDesactivarEditar = new javax.swing.JButton();
@@ -99,7 +99,7 @@ public class panelHabCaract extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Habitación", "Característica"
+                "Hotel", "Característica"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -117,7 +117,7 @@ public class panelHabCaract extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(grDatos);
 
-        lbHab.setText("Habitación:");
+        lbHotel.setText("Hotel:");
 
         lbCaract.setText("Característica:");
 
@@ -155,18 +155,18 @@ public class panelHabCaract extends javax.swing.JPanel {
                         .addComponent(btBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btBuscarTodos)
-                        .addContainerGap(89, Short.MAX_VALUE))
+                        .addContainerGap(66, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btGrabar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbHab)
+                                    .addComponent(lbHotel)
                                     .addComponent(lbCaract))
                                 .addGap(48, 48, 48)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbCaract, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btDesactivarEditar)
                         .addGap(45, 45, 45))))
@@ -187,8 +187,8 @@ public class panelHabCaract extends javax.swing.JPanel {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbHab)
-                    .addComponent(cbHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbHotel)
+                    .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btDesactivarEditar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -196,7 +196,7 @@ public class panelHabCaract extends javax.swing.JPanel {
                     .addComponent(cbCaract, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addComponent(btGrabar)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -205,7 +205,7 @@ public class panelHabCaract extends javax.swing.JPanel {
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOHabCaract.sqlDelete(new ClHabitacionCaract(this.id));
+            DAOHotelCaract.sqlDelete(new ClHotelCaract(this.id));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
@@ -227,37 +227,6 @@ public class panelHabCaract extends javax.swing.JPanel {
         this.leerTodos(true);
     }//GEN-LAST:event_btBuscarTodosActionPerformed
 
-    private void btDesactivarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarActionPerformed
-        this.paraGrabar = false;
-        this.btnEditarMode();
-    }//GEN-LAST:event_btDesactivarEditarActionPerformed
-
-    private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
-        int id_hab = ((ClHabitaciones)cbHab.getSelectedItem()).getIdHabitacion();
-        int id_caract = ((ClCaracteristicas)cbCaract.getSelectedItem()).getIdCaracteristica();
-        if(!paraGrabar){
-            if(cbHab.getSelectedItem() == null || cbCaract.getSelectedItem()== null){
-                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
-            }else{
-                DAOHabCaract.sqlInsert(new ClHabitacionCaract(id_hab
-                                                            , id_caract      
-                                            ));
-            JOptionPane.showMessageDialog(this, "Agregado");
-            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
-            helper.Formularios.limpiar(this);
-            this.leerTodos(true);
-        }
-        }else{
-            DAOHabCaract.sqlUpdate(new ClHabitacionCaract(id_hab
-                                                            , id_caract        
-                                            ));
-        JOptionPane.showMessageDialog(this, "Modificado");
-        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
-        helper.Formularios.limpiar(this);
-        this.leerTodos(true);
-        }
-    }//GEN-LAST:event_btGrabarActionPerformed
-
     private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
         int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
         if(row_dos >= 0){
@@ -270,10 +239,41 @@ public class panelHabCaract extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_grDatosMouseClicked
 
+    private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
+        int id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
+        int id_caract = ((ClCaracteristicas)cbCaract.getSelectedItem()).getIdCaracteristica();
+        if(!paraGrabar){
+            if(cbHotel.getSelectedItem() == null || cbCaract.getSelectedItem()== null){
+                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+            }else{
+                DAOHotelCaract.sqlInsert(new ClHotelCaract(id_hotel
+                                                            , id_caract
+                ));
+                JOptionPane.showMessageDialog(this, "Agregado");
+                Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+                helper.Formularios.limpiar(this);
+                this.leerTodos(true);
+            }
+        }else{
+            DAOHotelCaract.sqlUpdate(new ClHotelCaract(id_hotel
+                                                    , id_caract
+            ));
+            JOptionPane.showMessageDialog(this, "Modificado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+        }
+    }//GEN-LAST:event_btGrabarActionPerformed
+
+    private void btDesactivarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarActionPerformed
+        this.paraGrabar = false;
+        this.btnEditarMode();
+    }//GEN-LAST:event_btDesactivarEditarActionPerformed
+
     // Method Custom
-    private void cargarHab(){
-        for (Object dato : DAOHabitaciones.sqlLeerTodos()) {
-            cbHab.addItem(dato);
+    private void cargarHotel(){
+        for (Object dato : DAOHoteles.sqlLeerTodos()) {
+            cbHotel.addItem(dato);
         }
     }
     
@@ -285,15 +285,15 @@ public class panelHabCaract extends javax.swing.JPanel {
     
     private void leer(int id){
         this.id = id;
-        ClHabitacionCaract dato = DAOHabCaract.sqlLeer(id);
+        ClHotelCaract dato = DAOHotelCaract.sqlLeer(id);
         
-        ClHabitaciones item;
-        for (int i = 0; i < cbHab.getItemCount(); i++)
+        ClHoteles item;
+        for (int i = 0; i < cbHotel.getItemCount(); i++)
         {
-            item = (ClHabitaciones)cbHab.getItemAt(i);
-            if (item.getIdHabitacion()== dato.getIdHabitacion())
+            item = (ClHoteles)cbHotel.getItemAt(i);
+            if (item.getIdHotel()== dato.getId_hotel())
             {
-                cbHab.setSelectedIndex(i);
+                cbHotel.setSelectedIndex(i);
                 break;
             }
         }
@@ -302,7 +302,7 @@ public class panelHabCaract extends javax.swing.JPanel {
         for (int i = 0; i < cbCaract.getItemCount(); i++)
         {
             item2 = (ClCaracteristicas)cbCaract.getItemAt(i);
-            if (item2.getIdCaracteristica()== dato.getIdCaract())
+            if (item2.getIdCaracteristica()== dato.getId_caract())
             {
                 cbCaract.setSelectedIndex(i);
                 break;
@@ -313,20 +313,20 @@ public class panelHabCaract extends javax.swing.JPanel {
     private void leerTodos(boolean todos){
         ArrayList dato;
         if(todos)
-            dato = DAOHabCaract.sqlLeerTodos();
+            dato = DAOHotelCaract.sqlLeerTodos();
         else 
             //dato = DAOHabitaciones.sqlBuscarByNombre(txtBuscar.getText());
-            dato = DAOHabCaract.sqlLeerTodos();
+            dato = DAOHotelCaract.sqlLeerTodos();
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  
             dt.removeRow(i);
         }        //id caract?
         for(int x=0; x < dato.size(); x++){
-            ClHabitacionCaract xx = (ClHabitacionCaract)dato.get(x);
+            ClHotelCaract xx = (ClHotelCaract)dato.get(x);
             Object[] fila = new Object[3];
-            fila[0] = ((ClHabitaciones)DAOHabitaciones.sqlLeer(xx.getIdHabitacion())).getIdHabitacion();
-            fila[1] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getIdCaract())).getIdCaracteristica();
+            fila[0] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getId_hotel())).getNombre();
+            fila[1] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getId_caract())).getIdCaracteristica();
             dt.addRow(fila);
         }
     }
@@ -348,12 +348,12 @@ public class panelHabCaract extends javax.swing.JPanel {
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btGrabar;
     private javax.swing.JComboBox cbCaract;
-    private javax.swing.JComboBox cbHab;
+    private javax.swing.JComboBox cbHotel;
     private javax.swing.JTable grDatos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbCaract;
-    private javax.swing.JLabel lbHab;
+    private javax.swing.JLabel lbHotel;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
