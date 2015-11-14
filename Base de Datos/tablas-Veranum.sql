@@ -245,9 +245,9 @@ CREATE TABLE "pasajeros" (
 	"apellido_ma" Varchar2(20) NOT NULL,
 	"telefono" Varchar2(15) NOT NULL,
 	"email" Varchar2(20) NOT NULL,
-	"id_region" Number NOT NULL,
-	"id_provincia" Number NOT NULL,
-	"id_comuna" Number NOT NULL,
+	"id_region" Number,
+	"id_provincia" Number,
+	"id_comuna" Number,
 	"direccion" Varchar2(100) NOT NULL,
 	"fecha_nac" Date,
 	"id_rol" Number NOT NULL
