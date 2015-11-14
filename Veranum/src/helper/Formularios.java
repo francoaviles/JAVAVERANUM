@@ -1,10 +1,11 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package helper;
 
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +16,7 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JViewport;
 
 /**
  *
@@ -31,16 +33,24 @@ public class Formularios {
                 JTextField ii = (JTextField)arrObj[x];
                 ii.setText("");                
             } 
+            
+            if(arrObj[x] instanceof JTextArea){
+                JTextArea xx = (JTextArea)arrObj[x];
+                xx.setText("");
+            }
+            
 
             if(arrObj[x] instanceof JScrollPane)
             {
                 Object[] sad = ((JScrollPane)arrObj[x]).getComponents();
                 for(int i = 0; i< sad.length ; i++){
-                    if(sad[i] instanceof JTextArea)
-                    {
-                        JTextArea oo = (JTextArea)sad[i];
-                        oo.setText("");                
-                    }         
+                    if(sad[i] instanceof JViewport) {
+                        Component o = ((JViewport)sad[i]).getView();
+                        if(o instanceof JTextArea){
+                            JTextArea xx = (JTextArea)o;
+                            xx.setText("");
+                        }
+                    }      
                 }
             } 
         }
