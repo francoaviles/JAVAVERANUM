@@ -16,22 +16,16 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jSeparator1" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btEliminarRoles" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btEditarRoles" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtBuscarRoles" min="-2" pref="111" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btBuscarRoles" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btBuscarTodosRoles" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="btGrabarRol" alignment="0" min="-2" pref="295" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -50,13 +44,21 @@
                               <Component id="btDesactivarEditarRoles" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="btEliminarRoles" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btEditarRoles" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtBuscarRoles" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btBuscarRoles" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btBuscarTodosRoles" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="jScrollPane2" alignment="1" pref="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -66,9 +68,9 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btEliminarRoles" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btEditarRoles" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBuscarRoles" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btBuscarRoles" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btBuscarTodosRoles" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btBuscarRoles" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btBuscarTodosRoles" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBuscarRoles" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="139" max="-2" attributes="0"/>

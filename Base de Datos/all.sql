@@ -1163,8 +1163,13 @@ INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (1, 'Reserv
 INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (2, 'Pagada');
 INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (3, 'Cancelada');
 
+
+INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (1, 'Admin', 'Super administrador');
+INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (2, 'Recepcionista', 'Puede realizar reservas y modificarlas.');
+INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (3, 'Cliente', 'Pasajero del hotel');
+
 /
-CREATE  SEQUENCE roles_seq;
+CREATE  SEQUENCE roles_seq START WITH 4 INCREMENT BY 1;
 /
 create or replace trigger trg_roles
     before insert on "roles"
@@ -1231,7 +1236,7 @@ create or replace trigger trg_empresas
   end;
 /
 /
-CREATE  SEQUENCE estado_reservas_seq  START WITH 3 INCREMENT BY 1; 
+CREATE  SEQUENCE estado_reservas_seq  START WITH 4 INCREMENT BY 1; 
 /
 create or replace trigger trg_estado_reservas
     before insert on "estado_reservas"

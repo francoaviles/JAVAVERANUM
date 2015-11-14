@@ -6,6 +6,9 @@
 package veranum.GUI.usuarios;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import veranum.DAO.DAORol;
 import veranum.entities.ClRol;
 
@@ -20,8 +23,11 @@ public class MainUsuarios extends javax.swing.JInternalFrame {
      */
     public MainUsuarios() {
         initComponents();
-        tabContenidoUsuarios.addTab("Usuario", new panelUsuarios());
-        tabContenidoUsuarios.addTab("Roles", new panelRoles());
+        final JPanel usuarios = new panelUsuarios();
+        final JPanel roles = new panelRoles();
+        
+        tabContenidoUsuarios.addTab("Usuario", usuarios);
+        tabContenidoUsuarios.addTab("Roles", roles);
     }
 
     /**
@@ -35,19 +41,17 @@ public class MainUsuarios extends javax.swing.JInternalFrame {
 
         tabContenidoUsuarios = new javax.swing.JTabbedPane();
 
+        tabContenidoUsuarios.setMinimumSize(new java.awt.Dimension(32767, 32767));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(tabContenidoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(tabContenidoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 590, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(tabContenidoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(tabContenidoUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 184, Short.MAX_VALUE)
         );
 
         pack();
