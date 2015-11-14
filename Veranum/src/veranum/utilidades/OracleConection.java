@@ -37,7 +37,7 @@ public class OracleConection {
             Class.forName("oracle.jdbc.OracleDriver");
             //String BD = "jdbc:oracle:thin:@localhost:1521:xe";
             //conexion = DriverManager.getConnection(BD,"portafolio","asd");
-            String BD = "jdbc:oracle:thin:@localhost:1521:xe";
+            String BD = "jdbc:oracle:thin:@10.20.66.49:1521:xe";
             //String BD = "jdbc:oracle:thin:@10.20.66.125:1521:xe";
             conexion = DriverManager.getConnection(BD,"portafolio","asd");
             st = (Statement) conexion.createStatement();
