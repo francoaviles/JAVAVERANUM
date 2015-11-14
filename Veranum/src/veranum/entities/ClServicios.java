@@ -57,5 +57,9 @@ public class ClServicios {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+    @Override
+    public String toString(){
+        return getNombre();
+    }
     
 }
