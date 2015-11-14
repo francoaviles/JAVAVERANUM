@@ -1158,6 +1158,11 @@ INSERT INTO "comunas" ("id_comuna","comuna_nombre","id_provincia") VALUES (342,'
 INSERT INTO "comunas" ("id_comuna","comuna_nombre","id_provincia") VALUES (343,'Timaukel',52);
 INSERT INTO "comunas" ("id_comuna","comuna_nombre","id_provincia") VALUES (344,'Natales',53);
 INSERT INTO "comunas" ("id_comuna","comuna_nombre","id_provincia") VALUES (345,'Torres del Paine',53);
+
+INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (1, 'Reservada');
+INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (2, 'Pagada');
+INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (3, 'Cancelada');
+
 /
 CREATE  SEQUENCE roles_seq;
 /
@@ -1226,7 +1231,7 @@ create or replace trigger trg_empresas
   end;
 /
 /
-CREATE  SEQUENCE estado_reservas_seq;
+CREATE  SEQUENCE estado_reservas_seq  START WITH 3 INCREMENT BY 1; 
 /
 create or replace trigger trg_estado_reservas
     before insert on "estado_reservas"
