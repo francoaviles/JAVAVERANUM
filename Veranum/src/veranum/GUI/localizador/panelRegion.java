@@ -100,7 +100,7 @@ public class panelRegion extends javax.swing.JPanel {
 
         lbRegionOrdinal.setText("Región Ordinal:");
 
-        lbNombreRegion.setText("Nombre Region:");
+        lbNombreRegion.setText("Nombre Región:");
 
         grRegion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

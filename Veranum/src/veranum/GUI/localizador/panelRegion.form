@@ -162,7 +162,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbNombreRegion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre Region:"/>
+        <Property name="text" type="java.lang.String" value="Nombre Regi&#xf3;n:"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">

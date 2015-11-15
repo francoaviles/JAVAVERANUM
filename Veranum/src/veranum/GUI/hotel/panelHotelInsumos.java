@@ -273,7 +273,7 @@ public class panelHotelInsumos extends javax.swing.JPanel {
         int id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
         int id_medida = ((ClMedidas)cbMedida.getSelectedItem()).getIdMedida();
         if(!paraGrabar){
-            if(cbInsumo.getSelectedItem() == null || cbHotel.getSelectedItem()== null){
+            if(txtStock.getText().equals("")){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
                 DAOHotelInsumos.sqlInsert(new ClHotelInsumos(id_insumo

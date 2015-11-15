@@ -99,7 +99,7 @@ public class panelMenuHotel extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Id Hotel", "Id Tipo menú"
+                "Hotel", "Tipo menú"
             }
         ) {
             boolean[] canEdit = new boolean [] {

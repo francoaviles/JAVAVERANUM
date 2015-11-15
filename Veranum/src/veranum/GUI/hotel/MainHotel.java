@@ -18,11 +18,11 @@ public class MainHotel extends javax.swing.JInternalFrame {
     public MainHotel() {
         initComponents();
         tabContenido.addTab("Hoteles", new panelHotel());
-        tabContenido.addTab("Tipo Habitaciones", new panelTipoHab());
-        tabContenido.addTab("Estado Habitaciones", new panelEstadoHab());
+        tabContenido.addTab("Tipo Habitación", new panelTipoHab());
+        tabContenido.addTab("Estado Habitación", new panelEstadoHab());
         tabContenido.addTab("Habitaciones", new panelHabitaciones());
         tabContenido.addTab("Características Habitación", new panelHabCaract());
-        tabContenido.addTab("Menu Hotel", new panelMenuHotel());
+        tabContenido.addTab("Hotel Tipo Menú", new panelMenuHotel());
         tabContenido.addTab("Insumos Hotel", new panelHotelInsumos());
         tabContenido.addTab("Características Hotel", new panelHotelCaract());
         tabContenido.addTab("Servicios Hotel", new panelHotelServicio());

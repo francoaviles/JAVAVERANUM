@@ -84,7 +84,7 @@ public class panelProvincias extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "#", "Nombre", "Id Region"
+                "#", "Nombre", "Id Región"
             }
         ) {
             boolean[] canEdit = new boolean [] {

@@ -99,7 +99,7 @@ public class panelCaracteristicas extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "#", "Tipo Caracteristica", "Nombre", "Descripción"
+                "#", "Tipo Característica", "Nombre", "Descripción"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -139,7 +139,7 @@ public class panelCaracteristicas extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Tipo Caracteristica:");
+        jLabel1.setText("Tipo Característica:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

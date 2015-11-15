@@ -89,7 +89,7 @@ public class panelHotel extends javax.swing.JPanel {
             }
         });
 
-        lbRegion.setText("Region:");
+        lbRegion.setText("Región:");
 
         lbProvincia.setText("Provincia:");
 
@@ -118,7 +118,7 @@ public class panelHotel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "#", "Cadena", "Nombre", "Region", "Direccion"
+                "#", "Cadena", "Nombre", "Región", "Dirección"
             }
         ) {
             boolean[] canEdit = new boolean [] {

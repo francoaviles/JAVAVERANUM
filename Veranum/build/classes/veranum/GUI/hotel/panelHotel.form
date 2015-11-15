@@ -154,7 +154,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbRegion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Region:"/>
+        <Property name="text" type="java.lang.String" value="Regi&#xf3;n:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbProvincia">
@@ -218,8 +218,8 @@
                 <Column editable="false" title="#" type="java.lang.Object"/>
                 <Column editable="false" title="Cadena" type="java.lang.Object"/>
                 <Column editable="false" title="Nombre" type="java.lang.Object"/>
-                <Column editable="false" title="Region" type="java.lang.Object"/>
-                <Column editable="false" title="Direccion" type="java.lang.Object"/>
+                <Column editable="false" title="Regi&#xf3;n" type="java.lang.Object"/>
+                <Column editable="false" title="Direcci&#xf3;n" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
