@@ -95,7 +95,7 @@ public class ClPasajeros {
     }
 
     public void setRut(String rut) {
-        this.rut = rut;
+        this.rut = rut.toUpperCase();
     }
 
     public String getNombre() {

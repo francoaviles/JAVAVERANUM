@@ -19,6 +19,10 @@ public class DAOUsuarios {
         return true;
     }
     
+    public static int sqlLastID(){
+        return OracleConection.getInstance().sqlLastID("pasajeros_seq");
+    }
+    
     public static boolean sqlDelete(ClPasajeros usuarios){
         String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = "+usuarios.getIdPasajero()+"";
         OracleConection.getInstance().sqlEjecutar(sql);   
@@ -55,7 +59,7 @@ public class DAOUsuarios {
     }
     
     public static ClPasajeros sqlLeer(String name){     
-        ClPasajeros usuarios = new ClPasajeros();        
+        ClPasajeros usuarios = new ClPasajeros();       
         if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" ='"+name+"'")){
             return null;
         }        
