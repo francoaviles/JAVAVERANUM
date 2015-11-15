@@ -1,0 +1,137 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="VeranumMaster.master.cs" Inherits="VeranumMaster" %>
+
+<!DOCTYPE html>
+<html lang="es" class=" desktop  landscape">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Home</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="assets/css/grid.css">
+		<link rel="stylesheet" href="assets/css/bootstrap-custom.css">
+		<link rel="stylesheet" href="assets/css/animate.css">
+		<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.css">
+		<script src="assets/js/jquery.js"></script>
+		<script src="assets/js/wow.min.js"></script>
+		<script>
+		    $(document).ready(function () {
+		        //----------------WOW ini-----------------
+		        if ($('html').hasClass('desktop')) {
+		            new WOW().init();
+		        }
+		        else { $('.wow').css('visibility', 'visible'); }
+		    });
+		</script>
+		<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script>
+		    $(document).ready(function () {
+		        //----------------scrollbar ini-----------------
+		        $(".scrollbar").mCustomScrollbar({
+		            scrollButtons: { enable: false },
+		            alwaysShowScrollbar: 1,
+		            setHeight: "502"
+		        });
+		    });
+		</script>
+	</head>
+	<body>
+		<!--========================================================
+		HEADER
+		=========================================================-->
+		<header id="header">
+			<section class="header-top">
+				<div class="container">
+					<div class="row">
+						<div class="grid_12">
+							<!--=======================-->
+							<div class="header-top_s1">
+								<h1>
+                                    <a href="index.aspx">
+                                        Veranum<span>Hotel&Resort</span></a>
+                                    </a>
+                                </h1>
+								<div class="hblock-1 text-4 text__uppercase color-7">
+									<a href="Login.aspx" class="login">Entrar</a>
+									<a href="#" class="register">Registrarme</a>
+								</div>
+							</div>
+							<!--=======================-->
+						</div>
+					</div>
+				</div>
+				<div id="stuck_container"><div class="container">
+					<div class="row">
+						<div class="grid_12">
+							<!--=======================-->
+							<div class="header-top_s2">
+								<nav>
+									<ul class="sf-menu sf-js-enabled sf-arrows">
+										<li class="current"><a href="">Inicio</a></li>
+										<li class=""><a href="" class="sf-with-ul">Hoteles</a></li>
+										<li><a href="">Servicios</a></li>
+										<li><a href="">Habitaciones</a></li>
+										<li><a href="">Reservar</a></li>
+										<li><a href="">Contacto</a></li>
+									</ul>
+									<select class="select-menu sf-menu sf-js-enabled sf-arrows" style="display: inline-block;">
+										<option value="#">Menú</option>
+										<option value="" selected="selected">&nbsp;Inicio</option>
+										<option value="">&nbsp;Hoteles</option>
+										<option value="">&nbsp;Servicios</option>
+										<option value="">&nbsp;Habitaciones</option>
+										<option value="">&nbsp;Reservar</option>
+										<option value="">&nbsp;Contacto</option>
+									</select>
+								</nav>
+							</div>
+							<!--=======================-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</header>
+	<!--========================================================
+	CONTENIDO
+	=========================================================-->
+    <asp:ContentPlaceHolder ID="ContenidoFoto" runat="server">
+    </asp:ContentPlaceHolder>
+	<section id="content">
+		<article class="super-box-1">
+			<div class="container">
+				<div class="row">
+                    <form id="formGeneral" runat="server">
+	                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+				    </form>
+                </div>
+			</div>
+		</article>
+	</section>
+	<!--========================================================
+	FOOTER
+	=========================================================-->
+	<footer id="footer">
+		<section class="footer_s1 text-4 wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+			<div class="container">
+				<div class="row">
+					<div class="grid_4">
+						<!--=======================-->
+						Hotel Veranum - Todos los derechos reservados - 2015
+						<!--=======================-->
+					</div>
+					<div class="grid_4">
+						<!--=======================-->
+						Creado y Diseñado por estudiantes de DuocUC - Puente Alto 
+						<!--=======================-->
+					</div>
+					<div class="grid_4">
+						<!--=======================-->
+						 Av. Concha y Toro 1340 - +56 2 23540900
+						<!--=======================-->
+					</div>
+				</div>
+			</div>
+		</section>
+	</footer>
+	<script src="assets/js/script.js"></script>
+</body>
+</html>

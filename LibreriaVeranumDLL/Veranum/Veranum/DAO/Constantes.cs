@@ -7,6 +7,6 @@ namespace Veranum.DAO
 {
     class Constantes
     {
-        public const Boolean CONEXION_DUOC = true;
+        public const Boolean CONEXION_DUOC = false;
     }
 }

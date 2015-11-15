@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Duoc/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/GUI/usuarios/panelUsuarios.java</file>
-            <file>file:/C:/Users/Duoc/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/GUI/hotel/panelHabitaciones.java</file>
-            <file>file:/C:/Users/Duoc/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/entities/ClPasajeros.java</file>
-            <file>file:/C:/Users/Duoc/Documents/GitHub/JAVAVERANUM/Veranum/src/helper/Formularios.java</file>
-            <file>file:/C:/Users/Duoc/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/DAO/DAOUsuarios.java</file>
+            <file>file:/C:/Users/carlosdlg/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/GUI/reservas/MainReserva.java</file>
+            <file>file:/C:/Users/carlosdlg/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/GUI/reservas/PasoUno_Usuarios.java</file>
         </group>
     </open-files>
 </project-private>

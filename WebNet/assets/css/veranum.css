@@ -28,6 +28,7 @@ body {
   width: 100%;
   color: #fff;
   background-color: #000;
+  text-align: center;
 }
 .menu-header {
 	color: #fff;
@@ -48,4 +49,14 @@ body {
 }
 .frase {
 	padding: 40px;
+}
+/* */
+#foto-index 
+{
+    width: 100%;    
+}
+
+#foto-index img 
+{
+    width: 100%;    
 }

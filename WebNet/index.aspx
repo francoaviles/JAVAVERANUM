@@ -1,11 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/VeranumMaster.master" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index2" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="cpContenido" Runat="Server">
-    <div class="row fotito"></div>
-	<div class="row contenido">
-        <h1>Bienvenido a Hoteles Veranum</h1>
-        <p> La cadena de hoteles Veranum cuenta que 6 hoteles 5 estrellas a lo largo de todo el país. Nuestros hoteles han sido destacado por su calidad, prestigio, servicios y atención a cliente. ¿Qué esperas?, ¡has tu reserva!
-        </p>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContenidoFoto" Runat="Server">
+    <div id="foto-index">
+        <img src="assets/img/header.jpg" alt="Hotel Veranum" />
     </div>
 </asp:Content>
-
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+asdasdasd
+</asp:Content>

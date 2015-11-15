@@ -15,7 +15,7 @@ public partial class Login : System.Web.UI.Page
     }
     protected void btnIngresar_Click(object sender, EventArgs e)
     {
-        ClPasajero p = new ClPasajero(txtRut.Text, txtContraseña.Text);
+        ClPasajero p = new ClPasajero(txtRut.Text.ToUpper(), txtContraseña.Text);
         ClPasajero pp = DAOPasajero.LoginIn(p);
         if (pp == null)
         {

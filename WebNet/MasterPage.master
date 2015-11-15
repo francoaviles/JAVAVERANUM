@@ -12,19 +12,16 @@
 			<div class="row menu-header ">
 				<div class="col-xs-offset-0 col-xs-6 col-sm-offset-0 col-sm-6 col-md-offset-6 col-md-4">
 					<% if(Session["login"] != null) { %>
-                        Bienvenido <%=((Veranum.Clases.ClPasajero)Session["login"]).Nombre %>
+                        <strong>Bienvenido: </strong> <%=((Veranum.Clases.ClPasajero)Session["login"]).Nombre %>
                         <%=((Veranum.Clases.ClPasajero)Session["login"]).ApellidoPa %> 
                         <%=((Veranum.Clases.ClPasajero)Session["login"]).ApellidoMa %> 
                     <% } %>
 				</div>
 				<div class="col-xs-offset-0 col-xs-6 col-sm-offset-0 col-sm-6 col-md-2">
-                    <% if (Session["login"] == null)
-                       { %>
-					<a href="Login.aspx">Iniciar Sesión</a> | 
-					<a href="#">Registrarme</a>
-                    <% }
-                       else
-                       { %>
+                    <% if (Session["login"] == null){ %>
+					    <a href="Login.aspx">Iniciar Sesión</a> | 
+					    <a href="#">Registrarme</a>
+                    <% }  else { %>
                        <a href="logout.aspx">Salir</a>
                     <% } %>
 				</div>
