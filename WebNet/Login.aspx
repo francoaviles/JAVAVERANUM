@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/VeranumMaster.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="cpContenido" Runat="Server">
-    <div class="row contenido">
-        <h1>Ingresar</h1>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="grid_8">
+        <h2 class="heading text-2 color-4 wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">Ingresar</h2>
             <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
           <div class="form-group">
             <label for="lblRut">Rut:</label>
@@ -14,6 +14,7 @@
           </div>
         <asp:Button ID="btnIngresar" CssClass="btn btn-default" runat="server" 
             Text="Entrar" onclick="btnIngresar_Click" />
+        
     </div>
 </asp:Content>
 

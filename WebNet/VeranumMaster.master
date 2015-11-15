@@ -6,6 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Home</title>
 		<meta charset="utf-8">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/grid.css">
 		<link rel="stylesheet" href="assets/css/bootstrap-custom.css">
 		<link rel="stylesheet" href="assets/css/animate.css">
@@ -50,8 +51,16 @@
                                     </a>
                                 </h1>
 								<div class="hblock-1 text-4 text__uppercase color-7">
+                                <% if(Session["login"] != null) { %>
+                                        <strong>Bienvenido: </strong> <%=((Veranum.Clases.ClPasajero)Session["login"]).Nombre %>
+                                        <%=((Veranum.Clases.ClPasajero)Session["login"]).ApellidoPa %> 
+                                        <%=((Veranum.Clases.ClPasajero)Session["login"]).ApellidoMa %> 
+                                    <a href="logout.aspx" class="register">Mis reservas</a>
+                                    <a href="logout.aspx" class="register">Salir</a>
+                                <% } else { %>
 									<a href="Login.aspx" class="login">Entrar</a>
 									<a href="#" class="register">Registrarme</a>
+                                 <% } %>
 								</div>
 							</div>
 							<!--=======================-->
