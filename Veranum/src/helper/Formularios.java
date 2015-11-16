@@ -89,6 +89,10 @@ public class Formularios {
         return Integer.parseInt(tabla.getValueAt(tabla.getSelectedRow(), 0).toString());
     }
     
+    public static int getSelectedRow2(javax.swing.JTable tabla, int columna){
+        return Integer.parseInt(tabla.getValueAt(tabla.getSelectedRow(), columna).toString());
+    }
+    
     public static void ActiveBotonesEliminarEditar(javax.swing.JButton edit, javax.swing.JButton delete){
         edit.setEnabled(true);
         delete.setEnabled(true);
