@@ -317,7 +317,7 @@ public class panelMenu extends javax.swing.JPanel {
             ClMenu xx = (ClMenu)dato.get(x);
             Object[] fila = new Object[7];
             fila[0] = xx.getIdMenu();
-            fila[1] = xx.getTipoMenu();
+            fila[1] = ((ClTipoMenu)DAOTipoMenu.sqlLeer(xx.getTipoMenu())).getNombre();;
             fila[2] = xx.getNombre();
             dt.addRow(fila);
         }

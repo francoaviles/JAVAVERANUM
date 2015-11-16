@@ -99,7 +99,7 @@ public class panelCaracteristicas extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "#", "Tipo Característica", "Nombre", "Descripción"
+                "#", "Tipo Característica", "Cantidad", "Tipo"
             }
         ) {
             boolean[] canEdit = new boolean [] {

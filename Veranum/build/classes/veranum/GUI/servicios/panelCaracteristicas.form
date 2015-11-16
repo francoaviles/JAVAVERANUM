@@ -173,8 +173,8 @@
               <Table columnCount="4" rowCount="4">
                 <Column editable="false" title="#" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo Caracter&#xed;stica" type="java.lang.Object"/>
-                <Column editable="false" title="Nombre" type="java.lang.Object"/>
-                <Column editable="false" title="Descripci&#xf3;n" type="java.lang.Object"/>
+                <Column editable="false" title="Cantidad" type="java.lang.Object"/>
+                <Column editable="false" title="Tipo" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
