@@ -121,9 +121,26 @@ public class Formularios {
     }
     
     public static String deFechaToString(Date fecha){
+        String dia_ = "";
+        String mes_ = "";
         Calendar cal = Calendar.getInstance();
         cal.setTime(fecha);
-        String formatedDate = cal.get(Calendar.DATE) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.YEAR);
+        int dia = cal.get(Calendar.DATE);
+        int mes = (cal.get(Calendar.MONTH) + 1);
+        int ano = cal.get(Calendar.YEAR);
+        
+        if(dia <= 9)
+            dia_ = "0" + dia;
+        else 
+            dia_ = "" + dia;
+            
+        if(mes <= 9)
+            mes_ = "0" + mes;
+        else 
+            mes_ = "" + mes;
+        
+        String formatedDate = dia_ + "/" + mes_ + "/" + ano;
+        System.out.println(formatedDate);
         return formatedDate;    
     }
     
