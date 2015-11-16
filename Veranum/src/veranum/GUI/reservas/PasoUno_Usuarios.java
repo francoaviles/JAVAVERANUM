@@ -106,10 +106,10 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
         lblTitulo.setText("Registro de Cliente");
 
         lblDescripcion.setFont(new java.awt.Font("Verdana", 2, 10)); // NOI18N
-        lblDescripcion.setText("Introduzca el RUT del paciente, si existe automáticamente se cargará la información.");
+        lblDescripcion.setText("Introduzca el RUT del cliente, si existe automáticamente se cargará la información.");
 
         lblDescripcion1.setFont(new java.awt.Font("Verdana", 2, 10)); // NOI18N
-        lblDescripcion1.setText("En caso contrario, debe intruducir los datos del paciente. ");
+        lblDescripcion1.setText("En caso contrario, debe intruducir los datos del cliente. ");
 
         btnSiguiente.setBackground(new java.awt.Color(153, 255, 153));
         btnSiguiente.setText("Siguiente");

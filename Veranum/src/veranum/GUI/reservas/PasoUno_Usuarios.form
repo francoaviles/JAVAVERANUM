@@ -235,7 +235,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="10" style="2"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Introduzca el RUT del paciente, si existe autom&#xe1;ticamente se cargar&#xe1; la informaci&#xf3;n."/>
+        <Property name="text" type="java.lang.String" value="Introduzca el RUT del cliente, si existe autom&#xe1;ticamente se cargar&#xe1; la informaci&#xf3;n."/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDescripcion1">
@@ -243,7 +243,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="10" style="2"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="En caso contrario, debe intruducir los datos del paciente. "/>
+        <Property name="text" type="java.lang.String" value="En caso contrario, debe intruducir los datos del cliente. "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSiguiente">
