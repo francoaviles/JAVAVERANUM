@@ -1,0 +1,29 @@
+-- select TODOS
+SELECT "habitaciones"."id_habitacion",
+      "habitaciones_caracteristicas"."id_caracteristica",
+      "hoteles"."nombre"
+FROM "habitaciones_caracteristicas"
+INNER JOIN "habitaciones" ON "habitaciones"."id_habitacion" = "habitaciones_caracteristicas"."id_habitacion"
+INNER JOIN "hoteles" ON  "hoteles"."id_hotel" = "habitaciones"."id_hotel";
+
+-- LEER 
+SELECT "habitaciones"."id_habitacion",
+      "habitaciones_caracteristicas"."id_caracteristica",
+      "hoteles"."nombre"
+FROM "habitaciones_caracteristicas"
+INNER JOIN "habitaciones" ON "habitaciones"."id_habitacion" = "habitaciones_caracteristicas"."id_habitacion"
+INNER JOIN "hoteles" ON  "hoteles"."id_hotel" = "habitaciones"."id_hotel"
+WHERE "habitaciones_caracteristicas"."id_caracteristica" = 4
+AND "habitaciones_caracteristicas"."id_habitacion" = 1;
+
+-- DELETE
+DELETE FROM "habitaciones_caracteristicas"
+WHERE "id_caracteristica" = 4
+AND  "id_habitacion" = 1;
+
+-- UPDATE 
+UPDATE "habitaciones_caracteristicas" SET 
+"id_caracteristica" = 6,
+"id_habitacion" = 3
+WHERE "id_caracteristica" = 3 
+AND "id_habitacion" = 2;

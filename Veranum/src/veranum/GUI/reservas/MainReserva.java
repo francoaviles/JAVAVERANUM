@@ -16,7 +16,10 @@ public class MainReserva extends javax.swing.JInternalFrame {
      */
     public MainReserva() {
         initComponents();
-        this.add(new PasoUno_Usuarios());
+        tabReservas.addTab("Usuarios", new PasoUno_Usuarios(tabReservas));
+        tabReservas.addTab("Reservas", new PasoUno_Usuarios(tabReservas));
+        tabReservas.addTab("Servicios", new PasoUno_Usuarios(tabReservas));
+        tabReservas.addTab("Finalizar", new PasoUno_Usuarios(tabReservas));
     }
 
     /**
@@ -28,10 +31,16 @@ public class MainReserva extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tabReservas = new javax.swing.JTabbedPane();
+
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+        getContentPane().add(tabReservas);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane tabReservas;
     // End of variables declaration//GEN-END:variables
 }

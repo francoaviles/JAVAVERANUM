@@ -144,7 +144,6 @@ public class Formularios {
             mes_ = "" + mes;
         
         String formatedDate = dia_ + "/" + mes_ + "/" + ano;
-        System.out.println(formatedDate);
         return formatedDate;    
     }
     

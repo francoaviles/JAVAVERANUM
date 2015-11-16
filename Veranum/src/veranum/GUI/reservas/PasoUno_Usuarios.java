@@ -6,6 +6,7 @@
 package veranum.GUI.reservas;
 
 import helper.Formularios;
+import javax.swing.JTabbedPane;
 import veranum.DAO.DAOUsuarios;
 import veranum.entities.ClPasajeros;
 
@@ -15,10 +16,13 @@ import veranum.entities.ClPasajeros;
  */
 public class PasoUno_Usuarios extends javax.swing.JPanel {
     private ClPasajeros user = null;
+    private JTabbedPane myTab;
     /**
      * Creates new form PasoUno_Usuarios
+     * @param r
      */
-    public PasoUno_Usuarios() {
+    public PasoUno_Usuarios(JTabbedPane r) {
+        this.myTab = r;
         initComponents();
     }
 
@@ -249,7 +253,8 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_txtRutUsuarioFocusLost
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        if(user == null){
+
+        /* if(user == null){
             int id_rol = 3; //Cliente
             if(true){
                 user = new ClPasajeros(txtRutUsuario.getText()
@@ -265,7 +270,10 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
                  DAOUsuarios.sqlInsert(user);
                  user.setIdPasajero(DAOUsuarios.sqlLastID());
             }
-        }
+        } */
+        System.out.println("click");
+        myTab.setSelectedIndex(1);
+
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void txtRutUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutUsuarioKeyTyped
