@@ -9,6 +9,7 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import veranum.GUI.cliente.MainCliente;
+import veranum.GUI.habitaciones.MainHabitaciones;
 import veranum.GUI.hotel.MainHotel;
 import veranum.GUI.insumos.MainInsumos;
 import veranum.GUI.localizador.MainLocalizador;
@@ -63,6 +64,7 @@ public class AdminVeranum extends javax.swing.JFrame {
         lblBienvenido = new javax.swing.JLabel();
         lblUsuarioNombre = new javax.swing.JLabel();
         btnReservas = new javax.swing.JButton();
+        btnHabitaciones = new javax.swing.JButton();
         panelContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -155,6 +157,15 @@ public class AdminVeranum extends javax.swing.JFrame {
             }
         });
 
+        btnHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
+        btnHabitaciones.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        btnHabitaciones.setText("Habitaciones");
+        btnHabitaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHabitacionesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
@@ -178,6 +189,7 @@ public class AdminVeranum extends javax.swing.JFrame {
                 .addComponent(lblUsuarioNombre)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(btnReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnHabitaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,6 +202,8 @@ public class AdminVeranum extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(btnHoteles)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnHabitaciones)
+                .addGap(8, 8, 8)
                 .addComponent(btnServicios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUsuarios)
@@ -201,9 +215,9 @@ public class AdminVeranum extends javax.swing.JFrame {
                 .addComponent(btnLocalizador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReportes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnReservas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addComponent(btnSalir)
                 .addContainerGap())
         );
@@ -297,6 +311,14 @@ public class AdminVeranum extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnReservasActionPerformed
 
+    private void btnHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabitacionesActionPerformed
+        try {
+            new helper.IFrameHelper().openContenidoAdmin(new MainHabitaciones(), panelContenido);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnHabitacionesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -334,6 +356,7 @@ public class AdminVeranum extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnHabitaciones;
     private javax.swing.JButton btnHoteles;
     private javax.swing.JButton btnInsumos;
     private javax.swing.JButton btnLocalizador;

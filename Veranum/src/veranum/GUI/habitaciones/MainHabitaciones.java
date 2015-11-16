@@ -3,29 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package veranum.GUI.hotel;
-
-import java.awt.event.WindowAdapter;
+package veranum.GUI.habitaciones;
 
 /**
  *
- * @author Duoc
+ * @author Zacarias
  */
-public class MainHotel extends javax.swing.JInternalFrame {
-    /**
-     * Creates new form MainHotel
-     */
-    public MainHotel() {
-        initComponents();
-        tabContenido.addTab("Hoteles", new panelHotel());
-        tabContenido.addTab("Servicios Hotel", new panelHotelServicio());
-        tabContenido.addTab("Características Hotel", new panelHotelCaract());
-        tabContenido.addTab("Hotel Tipo Menú", new panelMenuHotel());
-        tabContenido.addTab("Insumos Hotel", new panelHotelInsumos());
-        
-        
-    }
+public class MainHabitaciones extends javax.swing.JInternalFrame {
 
+    /**
+     * Creates new form MainHabitaciones
+     */
+    public MainHabitaciones() {
+        initComponents();
+        tabContenido.addTab("Habitaciones", new panelHabitaciones());
+        tabContenido.addTab("Tipo Habitación", new panelTipoHab());
+        tabContenido.addTab("Estado Habitación", new panelEstadoHab());
+        tabContenido.addTab("Características Habitación", new panelHabCaract());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,30 +33,22 @@ public class MainHotel extends javax.swing.JInternalFrame {
 
         tabContenido = new javax.swing.JTabbedPane();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Panel Hoteles"));
-        setForeground(new java.awt.Color(204, 204, 204));
-        setPreferredSize(new java.awt.Dimension(557, 391));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabContenido, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(tabContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabContenido)
+            .addComponent(tabContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane tabContenido;
     // End of variables declaration//GEN-END:variables
-
-    public void addWindowListener(WindowAdapter windowAdapter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

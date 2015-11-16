@@ -3,36 +3,42 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package veranum.GUI.hotel;
+package veranum.GUI.habitaciones;
 
 import helper.Formularios;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import veranum.DAO.DAOEstadoHab;
-import veranum.entities.ClHabitacionEstados;
+import veranum.DAO.DAOCaracteristicas;
+import veranum.DAO.DAOHabCaract;
+import veranum.DAO.DAOHabitaciones;
+import veranum.entities.ClCaracteristicas;
+import veranum.entities.ClHabitacionCaract;
+import veranum.entities.ClHabitaciones;
 
 /**
  *
  * @author Zacarias
  */
-public class panelEstadoHab extends javax.swing.JPanel {
+public class panelHabCaract extends javax.swing.JPanel {
 
     private boolean paraGrabar = false;
     private DefaultTableModel dt = new DefaultTableModel();
     private int id = 0;
     
     /**
-     * Creates new form panelEstadoHab
+     * Creates new form panelHabCaract
      */
-    public panelEstadoHab() {
+    public panelHabCaract() {
         initComponents();
+        this.cargarCaract();
+        this.cargarHab();
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);
         this.leerTodos(true);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,13 +53,15 @@ public class panelEstadoHab extends javax.swing.JPanel {
         txtBuscar = new javax.swing.JTextField();
         btBuscar = new javax.swing.JButton();
         btBuscarTodos = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         grDatos = new javax.swing.JTable();
-        lbNombre = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        lbHab = new javax.swing.JLabel();
+        lbCaract = new javax.swing.JLabel();
+        cbHab = new javax.swing.JComboBox();
+        cbCaract = new javax.swing.JComboBox();
         btGrabar = new javax.swing.JButton();
         btDesactivarEditar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
 
         btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
         btEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +99,7 @@ public class panelEstadoHab extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "#", "Nombre Estado habitación"
+                "Habitación", "Característica"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -107,9 +115,11 @@ public class panelEstadoHab extends javax.swing.JPanel {
                 grDatosMouseClicked(evt);
             }
         });
-        jScrollPane5.setViewportView(grDatos);
+        jScrollPane1.setViewportView(grDatos);
 
-        lbNombre.setText("Nombre Estado Habitación:");
+        lbHab.setText("Habitación:");
+
+        lbCaract.setText("Característica:");
 
         btGrabar.setText("Grabar");
         btGrabar.addActionListener(new java.awt.event.ActionListener() {
@@ -130,39 +140,36 @@ public class panelEstadoHab extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btBuscarTodos)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                        .addComponent(btEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btBuscarTodos)
+                        .addContainerGap(89, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btGrabar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(lbNombre)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbHab)
+                                    .addComponent(lbCaract))
+                                .addGap(48, 48, 48)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbCaract, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btDesactivarEditar)
-                        .addGap(47, 47, 47))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jSeparator1)
-                    .addContainerGap()))
+                        .addGap(45, 45, 45))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,20 +182,21 @@ public class panelEstadoHab extends javax.swing.JPanel {
                     .addComponent(btBuscar)
                     .addComponent(btBuscarTodos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbHab)
+                    .addComponent(cbHab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btDesactivarEditar))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbCaract)
+                    .addComponent(cbCaract, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
                 .addComponent(btGrabar)
-                .addContainerGap(70, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(145, 145, 145)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(145, Short.MAX_VALUE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -197,7 +205,7 @@ public class panelEstadoHab extends javax.swing.JPanel {
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOEstadoHab.sqlDelete(new ClHabitacionEstados(this.id));
+            DAOHabCaract.sqlDelete(new ClHabitacionCaract(this.id));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
@@ -225,25 +233,28 @@ public class panelEstadoHab extends javax.swing.JPanel {
     }//GEN-LAST:event_btDesactivarEditarActionPerformed
 
     private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
+        int id_hab = ((ClHabitaciones)cbHab.getSelectedItem()).getIdHabitacion();
+        int id_caract = ((ClCaracteristicas)cbCaract.getSelectedItem()).getIdCaracteristica();
         if(!paraGrabar){
-            if(txtNombre.getText().equals("")){
+            if(cbHab.getSelectedItem() == null || cbCaract.getSelectedItem()== null){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOEstadoHab.sqlInsert(new ClHabitacionEstados(txtNombre.getText())
-            );
+                DAOHabCaract.sqlInsert(new ClHabitacionCaract(id_hab
+                                                            , id_caract      
+                                            ));
             JOptionPane.showMessageDialog(this, "Agregado");
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
-            DAOEstadoHab.sqlUpdate(new ClHabitacionEstados(this.id, txtNombre.getText()));
-            JOptionPane.showMessageDialog(this, "Modificado");
-            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
-            helper.Formularios.limpiar(this);
-            this.leerTodos(true);
-            this.paraGrabar = false;
-            this.btnEditarMode();
+            DAOHabCaract.sqlUpdate(new ClHabitacionCaract(id_hab
+                                                            , id_caract        
+                                            ));
+        JOptionPane.showMessageDialog(this, "Modificado");
+        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        helper.Formularios.limpiar(this);
+        this.leerTodos(true);
         }
     }//GEN-LAST:event_btGrabarActionPerformed
 
@@ -260,28 +271,62 @@ public class panelEstadoHab extends javax.swing.JPanel {
     }//GEN-LAST:event_grDatosMouseClicked
 
     // Method Custom
+    private void cargarHab(){
+        for (Object dato : DAOHabitaciones.sqlLeerTodos()) {
+            cbHab.addItem(dato);
+        }
+    }
+    
+    private void cargarCaract(){
+        for (Object dato : DAOCaracteristicas.sqlLeerTodos()) {
+            cbCaract.addItem(dato);
+        }
+    }
+    
     private void leer(int id){
         this.id = id;
-        ClHabitacionEstados dato = DAOEstadoHab.sqlLeer(id);
-        txtNombre.setText(dato.getEstado());
+        ClHabitacionCaract dato = DAOHabCaract.sqlLeer(id);
+        
+        ClHabitaciones item;
+        for (int i = 0; i < cbHab.getItemCount(); i++)
+        {
+            item = (ClHabitaciones)cbHab.getItemAt(i);
+            if (item.getIdHabitacion()== dato.getIdHabitacion())
+            {
+                cbHab.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+        ClCaracteristicas item2;
+        for (int i = 0; i < cbCaract.getItemCount(); i++)
+        {
+            item2 = (ClCaracteristicas)cbCaract.getItemAt(i);
+            if (item2.getIdCaracteristica()== dato.getIdCaract())
+            {
+                cbCaract.setSelectedIndex(i);
+                break;
+            }
+        }
     }
     
     private void leerTodos(boolean todos){
         ArrayList dato;
         if(todos)
-            dato = DAOEstadoHab.sqlLeerTodos();
+            dato = DAOHabCaract.sqlLeerTodos();
         else 
-            dato = DAOEstadoHab.sqlBuscarByNombre(txtBuscar.getText());
+            //dato = DAOHabitaciones.sqlBuscarByNombre(txtBuscar.getText());
+            dato = DAOHabCaract.sqlLeerTodos();
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  
             dt.removeRow(i);
-        }        
+        }        //id caract?
         for(int x=0; x < dato.size(); x++){
-            ClHabitacionEstados xx = (ClHabitacionEstados)dato.get(x);
-            Object[] fila = new Object[7];
-            fila[0] = xx.getIdHabitacionEstado();
-            fila[1] = xx.getEstado();
+            ClHabitacionCaract xx = (ClHabitacionCaract)dato.get(x);
+            Object[] fila = new Object[3];
+            fila[0] = ((ClHabitaciones)DAOHabitaciones.sqlLeer(xx.getIdHabitacion())).getIdHabitacion();
+            fila[1] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getIdCaract())).getIdCaracteristica();
             dt.addRow(fila);
         }
     }
@@ -302,11 +347,13 @@ public class panelEstadoHab extends javax.swing.JPanel {
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btGrabar;
+    private javax.swing.JComboBox cbCaract;
+    private javax.swing.JComboBox cbHab;
     private javax.swing.JTable grDatos;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lbNombre;
+    private javax.swing.JLabel lbCaract;
+    private javax.swing.JLabel lbHab;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package veranum.GUI.hotel;
+package veranum.GUI.habitaciones;
 
 import helper.Formularios;
 import java.util.ArrayList;
@@ -297,6 +297,5 @@ public class panelTipoHab extends javax.swing.JPanel {
     private javax.swing.JLabel lbNombreServicio;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPrecioServicio;
     // End of variables declaration//GEN-END:variables
 }
