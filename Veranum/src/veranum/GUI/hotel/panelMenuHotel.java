@@ -24,7 +24,8 @@ public class panelMenuHotel extends javax.swing.JPanel {
 
     private boolean paraGrabar = false;
     private DefaultTableModel dt = new DefaultTableModel();
-    private int id = 0;
+    private int id_hotel = 0;
+    private int id_tipo_menu = 0;
     
     /**
      * Creates new form panelMenuHotel
@@ -93,17 +94,17 @@ public class panelMenuHotel extends javax.swing.JPanel {
 
         grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Hotel", "Tipo menú"
+                "Id Hotel", "Hotel", "Tipo menú", "Id Tipo menú"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -201,11 +202,12 @@ public class panelMenuHotel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
-        this.leer(Formularios.getSelectedRow(grDatos));
-        if(this.id == 0){
+        this.leer(Formularios.getSelectedRow2(grDatos, 0),
+                Formularios.getSelectedRow2(grDatos, 3));
+        if(this.id_hotel == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOHotelTipoMenu.sqlDelete(new ClHotelTipoMenu(this.id));
+            DAOHotelTipoMenu.sqlDelete(new ClHotelTipoMenu(this.id_hotel, this.id_tipo_menu));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
@@ -214,7 +216,8 @@ public class panelMenuHotel extends javax.swing.JPanel {
     }//GEN-LAST:event_btEliminarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        this.leer(Formularios.getSelectedRow(grDatos));
+        this.leer(Formularios.getSelectedRow2(grDatos, 0),
+                Formularios.getSelectedRow2(grDatos, 3));
         this.paraGrabar = true;
         this.btnEditarMode();
     }//GEN-LAST:event_btEditarActionPerformed
@@ -230,7 +233,8 @@ public class panelMenuHotel extends javax.swing.JPanel {
     private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
         int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
         if(row_dos >= 0){
-            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            this.leer(Formularios.getSelectedRow2(grDatos, 0),
+                Formularios.getSelectedRow2(grDatos, 3));
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
             this.paraGrabar = true;
             this.btnEditarMode();
@@ -240,8 +244,8 @@ public class panelMenuHotel extends javax.swing.JPanel {
     }//GEN-LAST:event_grDatosMouseClicked
 
     private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
-        int id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
-        int id_tipo_menu = ((ClTipoMenu)cbTipoMenu.getSelectedItem()).getIdTipoMenu();
+        id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
+        id_tipo_menu = ((ClTipoMenu)cbTipoMenu.getSelectedItem()).getIdTipoMenu();
         if(!paraGrabar){
             if(cbHotel.getSelectedItem() == null || cbTipoMenu.getSelectedItem()== null){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
@@ -283,9 +287,10 @@ public class panelMenuHotel extends javax.swing.JPanel {
         }
     }
     
-    private void leer(int id){
-        this.id = id;
-        ClHotelTipoMenu dato = DAOHotelTipoMenu.sqlLeer(id);
+    private void leer(int id1, int id2){
+        this.id_hotel = id1;
+        this.id_tipo_menu = id2;
+        ClHotelTipoMenu dato = DAOHotelTipoMenu.sqlLeer(id_hotel,id_tipo_menu);
         
         ClHoteles item;
         for (int i = 0; i < cbHotel.getItemCount(); i++)
@@ -324,9 +329,11 @@ public class panelMenuHotel extends javax.swing.JPanel {
         }        //id caract?
         for(int x=0; x < dato.size(); x++){
             ClHotelTipoMenu xx = (ClHotelTipoMenu)dato.get(x);
-            Object[] fila = new Object[3];
-            fila[0] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getIdHotel())).getNombre();
-            fila[1] = ((ClTipoMenu)DAOTipoMenu.sqlLeer(xx.getIdTipoMenu())).getNombre();
+            Object[] fila = new Object[6];
+            fila[0] = xx.getIdHotel();
+            fila[1] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getIdHotel())).getNombre();
+            fila[2] = ((ClTipoMenu)DAOTipoMenu.sqlLeer(xx.getIdTipoMenu())).getNombre();
+            fila[3] = xx.getIdTipoMenu();
             dt.addRow(fila);
         }
     }

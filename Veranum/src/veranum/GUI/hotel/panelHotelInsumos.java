@@ -338,6 +338,7 @@ public class panelHotelInsumos extends javax.swing.JPanel {
     private void leer(int id){
         this.id = id;
         ClHotelInsumos dato = DAOHotelInsumos.sqlLeer(id);
+        txtStock.setText(String.valueOf(dato.getStock()));
         
         ClInsumos item;
         for (int i = 0; i < cbInsumo.getItemCount(); i++)
@@ -384,7 +385,7 @@ public class panelHotelInsumos extends javax.swing.JPanel {
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  
             dt.removeRow(i);
-        }        //id caract?
+        }     
         for(int x=0; x < dato.size(); x++){
             ClHotelInsumos xx = (ClHotelInsumos)dato.get(x);
             Object[] fila = new Object[7];
