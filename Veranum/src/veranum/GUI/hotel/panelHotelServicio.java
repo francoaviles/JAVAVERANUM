@@ -25,7 +25,8 @@ public class panelHotelServicio extends javax.swing.JPanel {
     
     private boolean paraGrabar = false;
     private DefaultTableModel dt = new DefaultTableModel();
-    private int id = 0;
+    private int id_hotel = 0;
+    private int id_servicio = 0;
     
     /**
      * Creates new form panelHotelServicio
@@ -94,17 +95,17 @@ public class panelHotelServicio extends javax.swing.JPanel {
 
         grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Hotel", "Servicio"
+                "Id Hotel", "Hotel", "Servicio", "Id Servicio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -202,11 +203,12 @@ public class panelHotelServicio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
-        this.leer(Formularios.getSelectedRow(grDatos));
-        if(this.id == 0){
+        this.leer(Formularios.getSelectedRow2(grDatos, 0),
+                Formularios.getSelectedRow2(grDatos, 3));
+        if(this.id_hotel == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOHotelServicio.sqlDelete(new ClHotelServicios(this.id));
+            DAOHotelServicio.sqlDelete(new ClHotelServicios(this.id_hotel, this.id_servicio));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
@@ -215,7 +217,8 @@ public class panelHotelServicio extends javax.swing.JPanel {
     }//GEN-LAST:event_btEliminarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        this.leer(Formularios.getSelectedRow(grDatos));
+        this.leer(Formularios.getSelectedRow2(grDatos, 0),
+                Formularios.getSelectedRow2(grDatos, 3));
         this.paraGrabar = true;
         this.btnEditarMode();
     }//GEN-LAST:event_btEditarActionPerformed
@@ -231,7 +234,8 @@ public class panelHotelServicio extends javax.swing.JPanel {
     private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
         int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
         if(row_dos >= 0){
-            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()),
+                    Integer.parseInt(grDatos.getValueAt(row_dos, 3).toString()));
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
             this.paraGrabar = true;
             this.btnEditarMode();
@@ -241,8 +245,8 @@ public class panelHotelServicio extends javax.swing.JPanel {
     }//GEN-LAST:event_grDatosMouseClicked
 
     private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
-        int id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
-        int id_servicio = ((ClServicios)cbServicio.getSelectedItem()).getIdServicio();
+        id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
+        id_servicio = ((ClServicios)cbServicio.getSelectedItem()).getIdServicio();
         if(!paraGrabar){
             if(cbHotel.getSelectedItem() == null || cbServicio.getSelectedItem()== null){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
@@ -284,9 +288,10 @@ public class panelHotelServicio extends javax.swing.JPanel {
         }
     }
     
-    private void leer(int id){
-        this.id = id;
-        ClHotelServicios dato = DAOHotelServicio.sqlLeer(id);
+    private void leer(int id1, int id2){
+        this.id_hotel = id1;
+        this.id_servicio = id2;
+        ClHotelServicios dato = DAOHotelServicio.sqlLeer(id_hotel, id_servicio);
         
         ClHoteles item;
         for (int i = 0; i < cbHotel.getItemCount(); i++)
@@ -325,9 +330,11 @@ public class panelHotelServicio extends javax.swing.JPanel {
         }        //id caract?
         for(int x=0; x < dato.size(); x++){
             ClHotelServicios xx = (ClHotelServicios)dato.get(x);
-            Object[] fila = new Object[3];
-            fila[0] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getIdHotel())).getNombre();
-            fila[1] = ((ClServicios)DAOServicios.sqlLeer(xx.getIdServicio())).getNombre();
+            Object[] fila = new Object[6];
+            fila[0] = xx.getIdHotel();
+            fila[1] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getIdHotel())).getNombre();
+            fila[2] = ((ClServicios)DAOServicios.sqlLeer(xx.getIdServicio())).getNombre();
+            fila[3] = xx.getIdServicio();
             dt.addRow(fila);
         }
     }
