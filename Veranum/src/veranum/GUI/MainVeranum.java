@@ -5,6 +5,7 @@
  */
 package veranum.GUI;
 
+import helper.Formularios;
 import javax.swing.JOptionPane;
 import veranum.DAO.DAOLogin;
 import veranum.DAO.DAORol;
@@ -53,6 +54,12 @@ public class MainVeranum extends javax.swing.JFrame {
         lbRut.setText("Rut:");
 
         lbContrasena.setText("Contraseña: ");
+
+        txtRut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRutKeyTyped(evt);
+            }
+        });
 
         imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/logo.jpg"))); // NOI18N
 
@@ -158,6 +165,10 @@ public class MainVeranum extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void txtRutKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyTyped
+        Formularios.validarRut(evt);
+    }//GEN-LAST:event_txtRutKeyTyped
 
 
     /**

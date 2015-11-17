@@ -78,6 +78,12 @@ public class panelHabitaciones extends javax.swing.JPanel {
 
         lbCantPersonas.setText("Cantidad de Personas:");
 
+        txtCantPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantPersonasKeyTyped(evt);
+            }
+        });
+
         lbPrecio.setText("Precio:");
 
         lbTipo.setText("Tipo:");
@@ -330,6 +336,10 @@ public class panelHabitaciones extends javax.swing.JPanel {
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
         }
     }//GEN-LAST:event_grDatosMouseClicked
+
+    private void txtCantPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantPersonasKeyTyped
+        Formularios.soloNumeros(evt);
+    }//GEN-LAST:event_txtCantPersonasKeyTyped
 
     // Method Custom
     

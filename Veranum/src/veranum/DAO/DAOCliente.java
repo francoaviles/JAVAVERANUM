@@ -78,7 +78,7 @@ public class DAOCliente {
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClPasajeros> clientes = new ArrayList<>();        
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\"")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"id_rol\" = 3")){
             return null;
         }
         while(OracleConection.getInstance().sqlFetch()){

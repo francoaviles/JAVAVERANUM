@@ -150,6 +150,12 @@ public class panelHotelInsumos extends javax.swing.JPanel {
 
         lbStock.setText("Stock:");
 
+        txtStock.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtStockKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -304,6 +310,10 @@ public class panelHotelInsumos extends javax.swing.JPanel {
         this.paraGrabar = false;
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarActionPerformed
+
+    private void txtStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockKeyTyped
+        Formularios.soloNumeros(evt);
+    }//GEN-LAST:event_txtStockKeyTyped
 
     // Method Custom
     private void cargarInsumo(){

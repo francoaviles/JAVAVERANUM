@@ -71,10 +71,21 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
                 txtRutUsuarioFocusLost(evt);
             }
         });
+        txtRutUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRutUsuarioKeyTyped(evt);
+            }
+        });
 
         lbApeMaterno.setText("Apellido Materno:");
 
         lbTelefono.setText("Telefono:");
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
 
         lbMail.setText("E-mail:");
 
@@ -256,6 +267,14 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void txtRutUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutUsuarioKeyTyped
+        Formularios.validarRut(evt);
+    }//GEN-LAST:event_txtRutUsuarioKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        Formularios.soloNumeros(evt);
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private ClPasajeros leerUsuarios(String rut){
         ClPasajeros usu = DAOUsuarios.sqlLeer(rut.toUpperCase());

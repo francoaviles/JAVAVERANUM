@@ -96,6 +96,18 @@ public class panelCliente extends javax.swing.JPanel {
 
         lbFechaNacimiento.setText("Fecha de Nacimiento:");
 
+        txtRutUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRutUsuarioKeyTyped(evt);
+            }
+        });
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
+
         btGrabarUsuarios.setText("Grabar");
         btGrabarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -389,6 +401,14 @@ public class panelCliente extends javax.swing.JPanel {
             Formularios.ActiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
         }
     }//GEN-LAST:event_grClienteMouseClicked
+
+    private void txtRutUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutUsuarioKeyTyped
+        Formularios.validarRut(evt);
+    }//GEN-LAST:event_txtRutUsuarioKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        Formularios.soloNumeros(evt);
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
     // Method Custom
     private void cargarRol(){
