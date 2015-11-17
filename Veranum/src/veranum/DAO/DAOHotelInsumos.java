@@ -14,18 +14,12 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOHotelInsumos {
-    /*public static boolean sqlInsert(ClHotelInsumos hotelInsumos){
-        String sql="INSERT INTO \"hotel_insumos\" (\"id_insumo\", \"id_hotel\", \"id_medida\", \"stock\" ) VALUES ('"+hotelInsumos.getIdInsumo()+"','"+hotelInsumos.getIdInsumo()+"','"+hotelInsumos.getIdMedida()+"','"+hotelInsumos.getStock()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
-        return true;
-    }*/
-    
     public static boolean sqlInsert(ClHotelInsumos hotelInsumos){
-        String sql="INSERT INTO \"hotel_insumos\" (\"id_hotel_insumo\", \"id_insumo\", \"id_hotel\", \"id_medida\", \"stock\" ) VALUES ('"+hotelInsumos.getIdInsumoHotel()+"','"+hotelInsumos.getIdInsumo()+"','"+hotelInsumos.getIdInsumo()+"','"+hotelInsumos.getIdMedida()+"','"+hotelInsumos.getStock()+"')";
+        String sql="INSERT INTO \"hotel_insumos\" (\"id_insumo\", \"id_hotel\", \"id_medida\", \"stock\" ) VALUES ('"+hotelInsumos.getIdInsumo()+"','"+hotelInsumos.getIdHotel()+"','"+hotelInsumos.getIdMedida()+"','"+hotelInsumos.getStock()+"')";
         OracleConection.getInstance().sqlEjecutar(sql);
         return true;
     }
-    
+
     public static boolean sqlDelete(ClHotelInsumos hotelInsumos){
         String sql="DELETE FROM \"hotel_insumos\" WHERE \"id_insumo_hotel\" = "+hotelInsumos.getIdInsumoHotel()+"";
         OracleConection.getInstance().sqlEjecutar(sql);   

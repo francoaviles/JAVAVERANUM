@@ -273,3 +273,14 @@ create or replace trigger trg_tipo_reportes
       into :NEW."id_tipo_reporte"
       from dual;
   end;
+/
+CREATE  SEQUENCE hotel_insumos_seq;
+/
+create or replace trigger trg_hotel_insumos
+    before insert on "hotel_insumos"
+    for each row
+  begin
+    select hotel_insumos_seq.nextval
+      into :NEW."id_insumo_hotel"
+      from dual;
+  end;
