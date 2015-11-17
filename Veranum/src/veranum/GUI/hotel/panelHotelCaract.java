@@ -24,7 +24,8 @@ public class panelHotelCaract extends javax.swing.JPanel {
 
     private boolean paraGrabar = false;
     private DefaultTableModel dt = new DefaultTableModel();
-    private int id = 0;
+    private int id_hotel = 0;
+    private int id_caract = 0;
     
     /**
      * Creates new form panelHotelcaract
@@ -93,17 +94,17 @@ public class panelHotelCaract extends javax.swing.JPanel {
 
         grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Hotel", "Característica"
+                "Id Hotel", "Hotel", "Característica"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -201,11 +202,12 @@ public class panelHotelCaract extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
-        this.leer(Formularios.getSelectedRow(grDatos));
-        if(this.id == 0){
+        this.leer(Formularios.getSelectedRow2(grDatos, 0),
+                Formularios.getSelectedRow2(grDatos, 2));
+        if(this.id_hotel == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOHotelCaract.sqlDelete(new ClHotelCaract(this.id));
+            DAOHotelCaract.sqlDelete(new ClHotelCaract(this.id_hotel, this.id_caract));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
@@ -214,7 +216,8 @@ public class panelHotelCaract extends javax.swing.JPanel {
     }//GEN-LAST:event_btEliminarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        this.leer(Formularios.getSelectedRow(grDatos));
+        this.leer(Formularios.getSelectedRow2(grDatos, 0),
+                Formularios.getSelectedRow2(grDatos, 2));
         this.paraGrabar = true;
         this.btnEditarMode();
     }//GEN-LAST:event_btEditarActionPerformed
@@ -230,7 +233,9 @@ public class panelHotelCaract extends javax.swing.JPanel {
     private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
         int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
         if(row_dos >= 0){
-            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()),
+                    Integer.parseInt(grDatos.getValueAt(row_dos, 2).toString()));
+            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
             this.paraGrabar = true;
             this.btnEditarMode();
@@ -240,8 +245,8 @@ public class panelHotelCaract extends javax.swing.JPanel {
     }//GEN-LAST:event_grDatosMouseClicked
 
     private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
-        int id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
-        int id_caract = ((ClCaracteristicas)cbCaract.getSelectedItem()).getIdCaracteristica();
+        id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
+        id_caract = ((ClCaracteristicas)cbCaract.getSelectedItem()).getIdCaracteristica();
         if(!paraGrabar){
             if(cbHotel.getSelectedItem() == null || cbCaract.getSelectedItem()== null){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
@@ -283,9 +288,10 @@ public class panelHotelCaract extends javax.swing.JPanel {
         }
     }
     
-    private void leer(int id){
-        this.id = id;
-        ClHotelCaract dato = DAOHotelCaract.sqlLeer(id);
+    private void leer(int id1, int id2){
+        this.id_hotel = id1;
+        this.id_caract = id2;
+        ClHotelCaract dato = DAOHotelCaract.sqlLeer(id_hotel, id_caract);
         
         ClHoteles item;
         for (int i = 0; i < cbHotel.getItemCount(); i++)
@@ -321,12 +327,14 @@ public class panelHotelCaract extends javax.swing.JPanel {
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  
             dt.removeRow(i);
-        }        //id caract?
+        }     
         for(int x=0; x < dato.size(); x++){
             ClHotelCaract xx = (ClHotelCaract)dato.get(x);
-            Object[] fila = new Object[3];
-            fila[0] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getId_hotel())).getNombre();
-            fila[1] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getId_caract())).getIdCaracteristica();
+            Object[] fila = new Object[6];
+            fila[0] = xx.getId_hotel();
+            fila[1] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getId_hotel())).getNombre();
+            fila[2] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getId_caract())).getIdCaracteristica();
+            //fila[3] = xx.getId_caract();
             dt.addRow(fila);
         }
     }

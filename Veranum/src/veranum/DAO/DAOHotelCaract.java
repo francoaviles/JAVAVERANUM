@@ -21,7 +21,7 @@ public class DAOHotelCaract {
     }
     
     public static boolean sqlDelete(ClHotelCaract hotelCaract){
-        String sql="DELETE FROM \"hoteles_caracteristicas\" WHERE \"id_hotel\" = "+hotelCaract.getId_hotel()+"";
+        String sql="DELETE FROM \"hoteles_caracteristicas\" WHERE \"id_hotel\" = "+hotelCaract.getId_hotel()+" AND \"id_caracteristica\" = "+hotelCaract.getId_caract()+"";
         OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     
@@ -33,9 +33,9 @@ public class DAOHotelCaract {
         return true;
     }
     
-    public static ClHotelCaract sqlLeer(int id){     
+    public static ClHotelCaract sqlLeer(int id_hotel, int id_caracteristica){     
         ClHotelCaract hotelCaract = new ClHotelCaract();
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"hoteles_caracteristicas\" WHERE \"id_hotel\" ='"+id+"'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"hoteles_caracteristicas\" WHERE \"id_hotel\" ='"+id_hotel+"' AND \"id_caracteristica\" ='"+id_caracteristica+"'")){
             return null;
         }        
         if(!OracleConection.getInstance().sqlFetch()){
