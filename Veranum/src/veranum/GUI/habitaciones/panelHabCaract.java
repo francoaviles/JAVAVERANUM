@@ -15,6 +15,7 @@ import veranum.DAO.DAOHabitaciones;
 import veranum.entities.ClCaracteristicas;
 import veranum.entities.ClHabitacionCaract;
 import veranum.entities.ClHabitaciones;
+import veranum.entities.ClHoteles;
 
 /**
  *
@@ -94,17 +95,17 @@ public class panelHabCaract extends javax.swing.JPanel {
 
         grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id Habitación", "Habitación", "Característica", "Id Característica"
+                "Hotel", "Id Habitación", "Habitación", "Característica", "Id Característica"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -202,8 +203,8 @@ public class panelHabCaract extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
-        this.leer(Formularios.getSelectedRow2(grDatos, 0),
-                Formularios.getSelectedRow2(grDatos, 3));
+        this.leer(Formularios.getSelectedRow2(grDatos, 1),
+                Formularios.getSelectedRow2(grDatos, 4));
         if(this.id_hab == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
@@ -216,8 +217,8 @@ public class panelHabCaract extends javax.swing.JPanel {
     }//GEN-LAST:event_btEliminarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        this.leer(Formularios.getSelectedRow2(grDatos, 0),
-                Formularios.getSelectedRow2(grDatos, 3));
+        this.leer(Formularios.getSelectedRow2(grDatos, 1),
+                Formularios.getSelectedRow2(grDatos, 4));
         this.paraGrabar = true;
         this.btnEditarMode();
     }//GEN-LAST:event_btEditarActionPerformed
@@ -236,6 +237,7 @@ public class panelHabCaract extends javax.swing.JPanel {
     }//GEN-LAST:event_btDesactivarEditarActionPerformed
 
     private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
+        ClHabitacionCaract aux  = new ClHabitacionCaract(id_hab, id_caract);
         id_hab = ((ClHabitaciones)cbHab.getSelectedItem()).getIdHabitacion();
         id_caract = ((ClCaracteristicas)cbCaract.getSelectedItem()).getIdCaracteristica();
         if(!paraGrabar){
@@ -251,9 +253,10 @@ public class panelHabCaract extends javax.swing.JPanel {
             this.leerTodos(true);
         }
         }else{
+            
             DAOHabCaract.sqlUpdate(new ClHabitacionCaract(id_hab
                                                             , id_caract        
-                                            ));
+                                            ),aux);
         JOptionPane.showMessageDialog(this, "Modificado");
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         helper.Formularios.limpiar(this);
@@ -264,8 +267,8 @@ public class panelHabCaract extends javax.swing.JPanel {
     private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
         int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
         if(row_dos >= 0){
-            this.leer(Formularios.getSelectedRow2(grDatos, 0),
-                Formularios.getSelectedRow2(grDatos, 3));
+            this.leer(Formularios.getSelectedRow2(grDatos, 1),
+                Formularios.getSelectedRow2(grDatos, 4));
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
             this.paraGrabar = true;
             this.btnEditarMode();
@@ -330,10 +333,11 @@ public class panelHabCaract extends javax.swing.JPanel {
         for(int x=0; x < dato.size(); x++){
             ClHabitacionCaract xx = (ClHabitacionCaract)dato.get(x);
             Object[] fila = new Object[6];
-            fila[0] = xx.getIdHabitacion();
-            fila[1] = ((ClHabitaciones)DAOHabitaciones.sqlLeer(xx.getIdHabitacion())).getUbicacion();
-            fila[2] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getIdCaract())).getTipo();
-            fila[3] = xx.getIdCaract();
+            fila[0] = xx.getNombreHotel();
+            fila[1] = xx.getIdHabitacion();
+            fila[2] = ((ClHabitaciones)DAOHabitaciones.sqlLeer(xx.getIdHabitacion())).getUbicacion();
+            fila[3] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getIdCaract())).getTipo();
+            fila[4] = xx.getIdCaract();
             dt.addRow(fila);
         }
     }

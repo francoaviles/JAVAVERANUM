@@ -12,7 +12,8 @@ package veranum.entities;
 public class ClHabitacionCaract {
     private int idHabitacion;
     private int idCaract;
-
+    private String nombreHotel;
+    
     public ClHabitacionCaract() {
     }
     
@@ -23,6 +24,20 @@ public class ClHabitacionCaract {
     public ClHabitacionCaract(int idHabitacion, int idCaract) {
         setIdHabitacion(idHabitacion);
         setIdCaract(idCaract);
+    }
+    
+    public ClHabitacionCaract(int idHabitacion, int idCaract, String nombreHotel) {
+        setIdHabitacion(idHabitacion);
+        setIdCaract(idCaract);
+        setNombreHotel(nombreHotel);
+    }
+    
+    public String getNombreHotel() {
+        return nombreHotel;
+    }
+
+    public void setNombreHotel(String nombreHotel) {
+        this.nombreHotel = nombreHotel;
     }
 
     public int getIdHabitacion() {
