@@ -24,7 +24,8 @@ public class panelHabCaract extends javax.swing.JPanel {
 
     private boolean paraGrabar = false;
     private DefaultTableModel dt = new DefaultTableModel();
-    private int id = 0;
+    private int id_hab = 0;
+    private int id_caract = 0;
     
     /**
      * Creates new form panelHabCaract
@@ -93,17 +94,17 @@ public class panelHabCaract extends javax.swing.JPanel {
 
         grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Habitación", "Característica"
+                "Id Habitación", "Habitación", "Característica", "Id Característica"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -201,11 +202,12 @@ public class panelHabCaract extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
-        this.leer(Formularios.getSelectedRow(grDatos));
-        if(this.id == 0){
+        this.leer(Formularios.getSelectedRow2(grDatos, 0),
+                Formularios.getSelectedRow2(grDatos, 3));
+        if(this.id_hab == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOHabCaract.sqlDelete(new ClHabitacionCaract(this.id));
+            DAOHabCaract.sqlDelete(new ClHabitacionCaract(this.id_hab, this.id_caract));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
@@ -214,7 +216,8 @@ public class panelHabCaract extends javax.swing.JPanel {
     }//GEN-LAST:event_btEliminarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        this.leer(Formularios.getSelectedRow(grDatos));
+        this.leer(Formularios.getSelectedRow2(grDatos, 0),
+                Formularios.getSelectedRow2(grDatos, 3));
         this.paraGrabar = true;
         this.btnEditarMode();
     }//GEN-LAST:event_btEditarActionPerformed
@@ -233,8 +236,8 @@ public class panelHabCaract extends javax.swing.JPanel {
     }//GEN-LAST:event_btDesactivarEditarActionPerformed
 
     private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
-        int id_hab = ((ClHabitaciones)cbHab.getSelectedItem()).getIdHabitacion();
-        int id_caract = ((ClCaracteristicas)cbCaract.getSelectedItem()).getIdCaracteristica();
+        id_hab = ((ClHabitaciones)cbHab.getSelectedItem()).getIdHabitacion();
+        id_caract = ((ClCaracteristicas)cbCaract.getSelectedItem()).getIdCaracteristica();
         if(!paraGrabar){
             if(cbHab.getSelectedItem() == null || cbCaract.getSelectedItem()== null){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
@@ -261,7 +264,8 @@ public class panelHabCaract extends javax.swing.JPanel {
     private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
         int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
         if(row_dos >= 0){
-            this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()));
+            this.leer(Formularios.getSelectedRow2(grDatos, 0),
+                Formularios.getSelectedRow2(grDatos, 3));
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
             this.paraGrabar = true;
             this.btnEditarMode();
@@ -283,9 +287,10 @@ public class panelHabCaract extends javax.swing.JPanel {
         }
     }
     
-    private void leer(int id){
-        this.id = id;
-        ClHabitacionCaract dato = DAOHabCaract.sqlLeer(id);
+    private void leer(int id1, int id2){
+        this.id_hab = id1;
+        this.id_caract = id2;
+        ClHabitacionCaract dato = DAOHabCaract.sqlLeer(id_hab, id_caract);
         
         ClHabitaciones item;
         for (int i = 0; i < cbHab.getItemCount(); i++)
@@ -324,9 +329,11 @@ public class panelHabCaract extends javax.swing.JPanel {
         }        //id caract?
         for(int x=0; x < dato.size(); x++){
             ClHabitacionCaract xx = (ClHabitacionCaract)dato.get(x);
-            Object[] fila = new Object[3];
-            fila[0] = ((ClHabitaciones)DAOHabitaciones.sqlLeer(xx.getIdHabitacion())).getIdHabitacion();
-            fila[1] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getIdCaract())).getIdCaracteristica();
+            Object[] fila = new Object[6];
+            fila[0] = xx.getIdHabitacion();
+            fila[1] = ((ClHabitaciones)DAOHabitaciones.sqlLeer(xx.getIdHabitacion())).getUbicacion();
+            fila[2] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getIdCaract())).getTipo();
+            fila[3] = xx.getIdCaract();
             dt.addRow(fila);
         }
     }

@@ -21,7 +21,7 @@ public class DAOHabCaract {
     }
     
     public static boolean sqlDelete(ClHabitacionCaract habCaract){
-        String sql="DELETE FROM \"habitaciones_caracteristicas\" WHERE \"id_habitacion\" = "+habCaract.getIdHabitacion()+"";
+        String sql="DELETE FROM \"habitaciones_caracteristicas\" WHERE \"id_habitacion\" = "+habCaract.getIdHabitacion()+" AND \"id_caracteristica\" = "+habCaract.getIdCaract()+" ";
         OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
     
@@ -33,9 +33,9 @@ public class DAOHabCaract {
         return true;
     }
     
-    public static ClHabitacionCaract sqlLeer(int id){     
+    public static ClHabitacionCaract sqlLeer(int id_habitacion, int id_caract){     
         ClHabitacionCaract habCaract = new ClHabitacionCaract();
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"habitaciones_caracteristicas\" WHERE \"id_habitacion\" ='"+id+"'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"habitaciones_caracteristicas\" WHERE \"id_habitacion\" ='"+id_habitacion+"' AND \"id_caracteristica\" ='"+id_caract+"' ")){
             return null;
         }        
         if(!OracleConection.getInstance().sqlFetch()){
