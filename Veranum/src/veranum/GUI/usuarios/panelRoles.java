@@ -234,16 +234,22 @@ public class panelRoles extends javax.swing.JPanel {
                     );  
                     JOptionPane.showMessageDialog(this, "Agregado");
                 } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(this, "Error a insertar el dato.");
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
                 }
             Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
-            DAORol.sqlUpdate(new ClRol(this.id, txtNombreRol.getText()
-                , txtDescripcionRol.getText()));
-        JOptionPane.showMessageDialog(this, "Modificado");
+            try {
+                DAORol.sqlUpdate(new ClRol(this.id, txtNombreRol.getText()
+                        , txtDescripcionRol.getText())
+                );
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }
+        
         Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);

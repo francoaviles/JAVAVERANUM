@@ -5,6 +5,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClCaracteristicas;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,13 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOCaracteristicas {
-    public static boolean sqlInsert(ClCaracteristicas carac){
-        String sql="INSERT INTO \"caracteristicas\" (\"id_tipo_caract\", \"cantidad\", \"tipo\") VALUES ('"+carac.getIdTipoCaract()+"', '"+carac.getCantidad()+"', '"+carac.getTipo()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClCaracteristicas carac) throws SQLException{
+        String sql="INSERT INTO \"caracteristicas\" (\"id_tipo_caract\", \"cantidad\", \"tipo\") VALUES (?,?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, carac.getIdTipoCaract());
+        a.setInt(2, carac.getCantidad());
+        a.setString(3, carac.getTipo());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -26,9 +32,14 @@ public class DAOCaracteristicas {
         return true;
     }
     
-    public static boolean sqlUpdate(ClCaracteristicas carac){
-        String sql="UPDATE \"caracteristicas\" SET \"id_tipo_caract\" = '"+carac.getIdTipoCaract()+"', \"cantidad\" = '"+carac.getCantidad()+"' , \"tipo\" = '"+carac.getTipo()+"' WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClCaracteristicas carac) throws SQLException{
+        String sql="UPDATE \"caracteristicas\" SET \"id_tipo_caract\" = ?, \"cantidad\" = ?, \"tipo\" = ? WHERE \"id_caracteristica\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, carac.getIdTipoCaract());
+        a.setInt(2, carac.getCantidad());
+        a.setString(3, carac.getTipo());
+        a.setInt(4, carac.getIdCaracteristica());
+        OracleConection.getInstance().sqlEjecutarPreparacion(); 
         return true;
     }
       

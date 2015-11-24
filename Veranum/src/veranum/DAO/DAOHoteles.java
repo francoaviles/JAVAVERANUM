@@ -4,6 +4,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClHoteles;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,16 @@ import static veranum.utilidades.OracleConection.db;
  * @author Zacarias
  */
 public class DAOHoteles {   
-    public static boolean sqlInsert(ClHoteles hotel){
-        String sql="INSERT INTO \"hoteles\" (\"id_cadena\", \"id_region\", \"id_provincia\", \"id_comuna\", \"nombre\", \"direccion\" ) VALUES ('"+hotel.getIdCadena()+"','"+hotel.getIdRegion()+"','"+hotel.getIdProvincia()+"','"+hotel.getIdComuna()+"','"+hotel.getNombre()+"','"+hotel.getDireccion()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClHoteles hotel) throws SQLException{
+        String sql="INSERT INTO \"hoteles\" (\"id_cadena\", \"id_region\", \"id_provincia\", \"id_comuna\", \"nombre\", \"direccion\" ) VALUES (?,?,?,?,?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, hotel.getIdCadena());
+        a.setInt(2, hotel.getIdRegion());
+        a.setInt(3, hotel.getIdProvincia());
+        a.setInt(4, hotel.getIdComuna());
+        a.setString(5, hotel.getNombre());
+        a.setString(6, hotel.getDireccion());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -27,9 +36,17 @@ public class DAOHoteles {
         return true;
     }
     
-    public static boolean sqlUpdate(ClHoteles hotel){
-        String sql="UPDATE \"hoteles\" SET \"id_cadena\" = '"+hotel.getIdCadena()+"', \"id_region\" = '"+hotel.getIdRegion()+"', \"id_provincia\" = '"+hotel.getIdProvincia()+"', \"id_comuna\" = '"+hotel.getIdComuna()+"', \"nombre\" = '"+hotel.getNombre()+"', \"direccion\" = '"+hotel.getDireccion()+"' WHERE \"id_hotel\" = '"+hotel.getIdHotel()+"'";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClHoteles hotel) throws SQLException{
+        String sql="UPDATE \"hoteles\" SET \"id_cadena\" = ?, \"id_region\" = ?, \"id_provincia\" = ?, \"id_comuna\" = ?, \"nombre\" = ?, \"direccion\" = ? WHERE \"id_hotel\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, hotel.getIdCadena());
+        a.setInt(2, hotel.getIdRegion());
+        a.setInt(3, hotel.getIdProvincia());
+        a.setInt(4, hotel.getIdComuna());
+        a.setString(5, hotel.getNombre());
+        a.setString(6, hotel.getDireccion());
+        a.setInt(7, hotel.getIdHotel());
+        OracleConection.getInstance().sqlEjecutarPreparacion();  
         return true;
     }
     

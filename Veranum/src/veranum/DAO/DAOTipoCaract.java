@@ -5,6 +5,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClTipoCaracteristicas;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,12 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOTipoCaract {
-    public static boolean sqlInsert(ClTipoCaracteristicas caract){
-        String sql="INSERT INTO \"tipo_caracteristicas\" (\"nombre\", \"descripcion\") VALUES ('"+caract.getNombre()+"', '"+caract.getDescripcion()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClTipoCaracteristicas caract) throws SQLException{
+        String sql="INSERT INTO \"tipo_caracteristicas\" (\"nombre\", \"descripcion\") VALUES (?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, caract.getNombre());
+        a.setString(2, caract.getDescripcion());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -26,9 +31,13 @@ public class DAOTipoCaract {
         return true;
     }
     
-    public static boolean sqlUpdate(ClTipoCaracteristicas caract){
-        String sql="UPDATE \"tipo_caracteristicas\" SET \"nombre\" = '"+caract.getNombre()+"', \"descripcion\" = '"+caract.getDescripcion()+"' WHERE \"id_tipo_caract\" = "+caract.getIdTipoCaract()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClTipoCaracteristicas caract) throws SQLException{
+        String sql="UPDATE \"tipo_caracteristicas\" SET \"nombre\" = ?, \"descripcion\" = ? WHERE \"id_tipo_caract\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, caract.getNombre());
+        a.setString(2, caract.getDescripcion());
+        a.setInt(3, caract.getIdTipoCaract());
+        OracleConection.getInstance().sqlEjecutarPreparacion();  
         return true;
     }
     

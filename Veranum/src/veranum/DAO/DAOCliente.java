@@ -5,6 +5,9 @@
  */
 package veranum.DAO;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClPasajeros;
 import veranum.utilidades.OracleConection;
@@ -14,9 +17,20 @@ import veranum.utilidades.OracleConection;
  * @author Duoc
  */
 public class DAOCliente {
-    public static boolean sqlInsert(ClPasajeros clientes){
-        String sql="INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"id_region\", \"id_provincia\", \"id_comuna\", \"direccion\", \"fecha_nac\") VALUES ('"+clientes.getRut()+"','"+clientes.getNombre()+"','"+clientes.getApellido_pa()+"','"+clientes.getApellido_ma()+"','"+clientes.getTelefono()+"','"+clientes.getEmail()+"','"+clientes.getIdRegion()+"','"+clientes.getIdProvincia()+"','"+clientes.getIdComuna()+"','"+clientes.getDireccion()+"','"+clientes.getFechaNacimiento()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClPasajeros clientes) throws SQLException{
+        String sql="INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"contrasena\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"direccion\", \"fecha_nac\", \"id_rol\" ) VALUES (?,?,?,?,?,?,?,?,TO_DATE(?, 'dd/MM/YYYY'),?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, clientes.getRut());
+        a.setString(2, clientes.getNombre());
+        a.setString(3, clientes.getContrasena());
+        a.setString(4, clientes.getApellido_pa());
+        a.setString(5, clientes.getApellido_ma());
+        a.setString(6, clientes.getTelefono());
+        a.setString(7, clientes.getEmail());
+        a.setString(8, clientes.getDireccion());
+        a.setDate(9, (Date) clientes.getFechaNacimiento());
+        a.setInt(10, clientes.getIdRol());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -26,9 +40,21 @@ public class DAOCliente {
         return true;
     }
     
-    public static boolean sqlUpdate(ClPasajeros clientes){
-        String sql="UPDATE \"pasajeros\" SET \"rut\" = '"+clientes.getRut()+"', \"nombre\" = '"+clientes.getNombre()+"' AND \"apellido_pa\" = '"+clientes.getApellido_pa()+"', \"apellido_ma\" = '"+clientes.getApellido_ma()+"', \"telefono\" = '"+clientes.getTelefono()+"', \"email\" = '"+clientes.getEmail()+"', \"id_region\" = '"+clientes.getIdRegion()+"', \"id_provincia\" = '"+clientes.getIdProvincia()+"', \"id_comuna\" = '"+clientes.getIdComuna()+"', \"direccion\" = '"+clientes.getDireccion()+"', \"fecha_nac\" = '"+clientes.getFechaNacimiento()+"' WHERE \"rut\" = "+clientes.getRut()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClPasajeros clientes) throws SQLException{
+        String sql="UPDATE \"pasajeros\" SET \"rut\" = ?, \"nombre\" = ?, \"contrasena\" = ?, \"apellido_pa\" = ?, \"apellido_ma\" = ?, \"telefono\" = ?, \"email\" = ?, \"direccion\" = ?, \"fecha_nac\" = TO_DATE(?, 'dd/MM/YYYY') WHERE \"id_pasajero\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, clientes.getRut());
+        a.setString(2, clientes.getNombre());
+        a.setString(3, clientes.getContrasena());
+        a.setString(4, clientes.getApellido_pa());
+        a.setString(5, clientes.getApellido_ma());
+        a.setString(6, clientes.getTelefono());
+        a.setString(7, clientes.getEmail());
+        a.setString(8, clientes.getDireccion());
+        a.setDate(9, (Date) clientes.getFechaNacimiento());
+        a.setInt(10, clientes.getIdRol());
+        a.setInt(11, clientes.getIdPasajero());
+        OracleConection.getInstance().sqlEjecutarPreparacion();  
         return true;
     }
     

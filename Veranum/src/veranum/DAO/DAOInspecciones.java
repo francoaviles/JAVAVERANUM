@@ -4,6 +4,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClHabitacionInspecciones;
 import veranum.utilidades.OracleConection;
@@ -13,9 +15,14 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOInspecciones {
-    public static boolean sqlInsert(ClHabitacionInspecciones inspecciones){
-        String sql="INSERT INTO \"habitacion_inspecciones\" (\"id_habitacion\", \"fecha_inicio\", \"comentario\", \"nombre_inspector\" ) VALUES ('"+inspecciones.getIdHabitacion()+"','"+inspecciones.getFechaInicio()+"','"+inspecciones.getComentario()+"','"+inspecciones.getNombreInspector()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClHabitacionInspecciones inspecciones) throws SQLException{
+        String sql="INSERT INTO \"habitacion_inspecciones\" (\"id_habitacion\", \"fecha_inicio\", \"comentario\", \"nombre_inspector\" ) VALUES (?,?,?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, inspecciones.getIdHabitacion());
+        //a.setDate(2, inspecciones.getFechaInicio());
+        a.setString(3, inspecciones.getComentario());
+        a.setString(4, inspecciones.getNombreInspector());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -25,9 +32,15 @@ public class DAOInspecciones {
         return true;
     }
     
-    public static boolean sqlUpdate(ClHabitacionInspecciones inspecciones){
-        String sql="UPDATE \"habitacion_inspecciones\" SET \"id_habitacion\" = '"+inspecciones.getIdHabitacion()+"', \"fecha_inicio\" = '"+inspecciones.getFechaInicio()+"', \"comentario\" = '"+inspecciones.getComentario()+"', \"nombre_inspector\" = '"+inspecciones.getNombreInspector()+"' WHERE \"id_habitacion_inspeccion\" = "+inspecciones.getIdHabitacionInspeccion()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClHabitacionInspecciones inspecciones) throws SQLException{
+        String sql="UPDATE \"habitacion_inspecciones\" SET \"id_habitacion\" = ?, \"fecha_inicio\" = ?, \"comentario\" = ?, \"nombre_inspector\" = ? WHERE \"id_habitacion_inspeccion\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, inspecciones.getIdHabitacion());
+        //a.setDate(2, inspecciones.getFechaInicio());
+        a.setString(3, inspecciones.getComentario());
+        a.setString(4, inspecciones.getNombreInspector());
+        a.setInt(5, inspecciones.getIdHabitacionInspeccion());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     

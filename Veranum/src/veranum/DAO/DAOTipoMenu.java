@@ -5,6 +5,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClTipoMenu;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,11 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOTipoMenu {
-    public static boolean sqlInsert(ClTipoMenu menu){
-        String sql="INSERT INTO \"tipo_menu\" (\"nombre\") VALUES ('"+menu.getNombre()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClTipoMenu menu) throws SQLException{
+        String sql="INSERT INTO \"tipo_menu\" (\"nombre\") VALUES (?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, menu.getNombre());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -26,9 +30,12 @@ public class DAOTipoMenu {
         return true;
     }
     
-    public static boolean sqlUpdate(ClTipoMenu menu){
-        String sql="UPDATE \"tipo_menu\" SET \"nombre\" = '"+menu.getNombre()+"' WHERE \"id_tipo_menu\" = "+menu.getIdTipoMenu()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClTipoMenu menu) throws SQLException{
+        String sql="UPDATE \"tipo_menu\" SET \"nombre\" = ? WHERE \"id_tipo_menu\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, menu.getNombre());
+        a.setInt(2, menu.getIdTipoMenu());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     

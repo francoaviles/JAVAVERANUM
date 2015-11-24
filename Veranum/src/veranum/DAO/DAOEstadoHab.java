@@ -5,6 +5,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClHabitacionEstados;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,11 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOEstadoHab {
-    public static boolean sqlInsert(ClHabitacionEstados estado){
-        String sql="INSERT INTO \"habitacion_estados\" (\"estado\") VALUES ('"+estado.getEstado()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClHabitacionEstados estado) throws SQLException{
+        String sql="INSERT INTO \"habitacion_estados\" (\"estado\") VALUES (?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, estado.getEstado());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -26,9 +30,12 @@ public class DAOEstadoHab {
         return true;
     }
     
-    public static boolean sqlUpdate(ClHabitacionEstados estado){
-        String sql="UPDATE \"habitacion_estados\" SET \"estado\" = '"+estado.getEstado()+"' WHERE \"id_habitacion_estado\" = "+estado.getIdHabitacionEstado()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClHabitacionEstados estado) throws SQLException{
+        String sql="UPDATE \"habitacion_estados\" SET \"estado\" = ? WHERE \"id_habitacion_estado\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, estado.getEstado());
+        a.setInt(2, estado.getIdHabitacionEstado());        
+        OracleConection.getInstance().sqlEjecutarPreparacion();  
         return true;
     }
     

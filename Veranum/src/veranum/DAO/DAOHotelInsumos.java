@@ -5,6 +5,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClHotelInsumos;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,14 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOHotelInsumos {
-    public static boolean sqlInsert(ClHotelInsumos hotelInsumos){
-        String sql="INSERT INTO \"hotel_insumos\" (\"id_insumo\", \"id_hotel\", \"id_medida\", \"stock\" ) VALUES ('"+hotelInsumos.getIdInsumo()+"','"+hotelInsumos.getIdHotel()+"','"+hotelInsumos.getIdMedida()+"','"+hotelInsumos.getStock()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClHotelInsumos hotelInsumos) throws SQLException{
+        String sql="INSERT INTO \"hotel_insumos\" (\"id_insumo\", \"id_hotel\", \"id_medida\", \"stock\" ) VALUES (?,?,?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, hotelInsumos.getIdInsumo());
+        a.setInt(2, hotelInsumos.getIdHotel());
+        a.setInt(3, hotelInsumos.getIdMedida());
+        a.setInt(4, hotelInsumos.getStock());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
 
@@ -27,9 +34,15 @@ public class DAOHotelInsumos {
     
     }
     
-    public static boolean sqlUpdate(ClHotelInsumos hotelInsumos){
-        String sql="UPDATE \"hotel_insumos\" SET \"id_insumo\" = '"+hotelInsumos.getIdInsumo()+"', \"id_hotel\" = '"+hotelInsumos.getIdHotel()+"', \"id_medida\" = '"+hotelInsumos.getIdMedida()+"', \"stock\" = '"+hotelInsumos.getStock()+"' WHERE \"id_insumo_hotel\" = "+hotelInsumos.getIdInsumoHotel()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClHotelInsumos hotelInsumos) throws SQLException{
+        String sql="UPDATE \"hotel_insumos\" SET \"id_insumo\" = ?, \"id_hotel\" = ?, \"id_medida\" = ?, \"stock\" = ? WHERE \"id_insumo_hotel\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, hotelInsumos.getIdInsumo());
+        a.setInt(2, hotelInsumos.getIdHotel());
+        a.setInt(3, hotelInsumos.getIdMedida());
+        a.setInt(4, hotelInsumos.getStock());
+        a.setInt(5, hotelInsumos.getIdInsumoHotel());
+        OracleConection.getInstance().sqlEjecutarPreparacion();   
         return true;
     }
     

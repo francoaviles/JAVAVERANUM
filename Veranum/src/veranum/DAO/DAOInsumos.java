@@ -4,6 +4,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClInsumos;
 import veranum.utilidades.OracleConection;
@@ -13,9 +15,12 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOInsumos {
-    public static boolean sqlInsert(ClInsumos insumo){
-        String sql="INSERT INTO \"insumos\" (\"nombre\", \"descripcion\") VALUES ('"+insumo.getNombre()+"','"+insumo.getDescripcion()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClInsumos insumo) throws SQLException{
+        String sql="INSERT INTO \"insumos\" (\"nombre\", \"descripcion\") VALUES (?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, insumo.getNombre());
+        a.setString(2, insumo.getDescripcion());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -25,9 +30,13 @@ public class DAOInsumos {
         return true;
     }
     
-    public static boolean sqlUpdate(ClInsumos insumo){
-        String sql="UPDATE \"insumos\" SET \"nombre\" = '"+insumo.getNombre()+"', \"descripcion\" = '"+insumo.getDescripcion()+"'  WHERE \"id_insumo\" = "+insumo.getIdInsumo()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClInsumos insumo) throws SQLException{
+        String sql="UPDATE \"insumos\" SET \"nombre\" = ?, \"descripcion\" = ?  WHERE \"id_insumo\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, insumo.getNombre());
+        a.setString(2, insumo.getDescripcion());
+        a.setInt(3, insumo.getIdInsumo());
+        OracleConection.getInstance().sqlEjecutarPreparacion(); 
         return true;
     }
     

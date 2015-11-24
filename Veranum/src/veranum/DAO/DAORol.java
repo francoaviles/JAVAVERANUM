@@ -29,12 +29,15 @@ public class DAORol {
         String sql="DELETE FROM \"roles\" WHERE \"id_rol\" = "+rol.getIdRol()+"";
         OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
-    
     }
     
-    public static boolean sqlUpdate(ClRol rol){
-        String sql="UPDATE \"roles\" SET \"nombre\" = '"+rol.getNombre()+"', \"descripcion\" = '"+rol.getDescripcion()+"' WHERE \"id_rol\" = "+rol.getIdRol()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClRol rol) throws SQLException{
+        String sql="UPDATE \"roles\" SET \"nombre\" = ?, \"descripcion\" = ? WHERE \"id_rol\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, rol.getNombre());
+        a.setString(2, rol.getDescripcion());
+        a.setInt(3, rol.getIdRol());
+        OracleConection.getInstance().sqlEjecutarPreparacion();   
         return true;
     }
     

@@ -5,6 +5,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClCadenas;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,11 @@ import veranum.utilidades.OracleConection;
  * @author carlosdlg
  */
 public class DAOCadenas {
-    public static boolean sqlInsert(ClCadenas cadenas){
-        String sql="INSERT INTO \"cadenas\" (\"nombre\") VALUES ('"+cadenas.getNombre()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClCadenas cadenas) throws SQLException{
+        String sql="INSERT INTO \"cadenas\" (\"nombre\") VALUES (?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, cadenas.getNombre());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -26,10 +30,12 @@ public class DAOCadenas {
         return true;
     }
     
-    public static boolean sqlUpdate(ClCadenas cadenas)
-    {
-        String sql="UPDATE \"cadenas\" SET \"nombre\" = '"+cadenas.getNombre()+"' WHERE \"id_cadena\" = '"+cadenas.getIdCadena()+"'";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClCadenas cadenas) throws SQLException{
+        String sql="UPDATE \"cadenas\" SET \"nombre\" = ? WHERE \"id_cadena\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, cadenas.getNombre());
+        a.setInt(2, cadenas.getIdCadena());
+        OracleConection.getInstance().sqlEjecutarPreparacion();   
         return true;
     }
     

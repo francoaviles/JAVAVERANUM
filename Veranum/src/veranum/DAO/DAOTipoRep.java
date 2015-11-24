@@ -5,6 +5,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClTipoReportes;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,12 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOTipoRep {
-    public static boolean sqlInsert(ClTipoReportes rep){
-        String sql="INSERT INTO \"tipo_reportes\" (\"nombre\", \"descripcion\") VALUES ('"+rep.getNombre()+"', '"+rep.getDescripcion()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClTipoReportes rep) throws SQLException{
+        String sql="INSERT INTO \"tipo_reportes\" (\"nombre\", \"descripcion\") VALUES (?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, rep.getNombre());
+        a.setString(2, rep.getDescripcion());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -26,9 +31,13 @@ public class DAOTipoRep {
         return true;
     }
     
-    public static boolean sqlUpdate(ClTipoReportes rep){
-        String sql="UPDATE \"tipo_reportes\" SET \"nombre\" = '"+rep.getNombre()+"', \"descripcion\" = '"+rep.getDescripcion()+"' WHERE \"id_tipo_reporte\" = "+rep.getIdTipoReporte()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClTipoReportes rep) throws SQLException{
+        String sql="UPDATE \"tipo_reportes\" SET \"nombre\" = ?, \"descripcion\" = ? WHERE \"id_tipo_reporte\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, rep.getNombre());
+        a.setString(2, rep.getDescripcion());
+        a.setInt(3, rep.getIdTipoReporte());
+        OracleConection.getInstance().sqlEjecutarPreparacion();   
         return true;
     }
     

@@ -12,8 +12,7 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOLogin {
-    public ClPasajeros LoginIn(ClPasajeros usuario)
-    {
+    public ClPasajeros LoginIn(ClPasajeros usuario){
         ClPasajeros p = null;
         if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" = '"+usuario.getRut()+"' and \"contrasena\" = '"+usuario.getContrasena()+"'"))
         {

@@ -4,6 +4,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClHabitaciones;
 import veranum.utilidades.OracleConection;
@@ -13,9 +15,16 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOHabitaciones {
-    public static boolean sqlInsert(ClHabitaciones habitacion){
-        String sql="INSERT INTO \"habitaciones\" (\"id_hotel\", \"id_habitacion_tipo\", \"id_habitacion_estado\", \"ubicacion\", \"cant_personas\", \"precio\") VALUES ('"+habitacion.getIdHotel()+"','"+habitacion.getIdHabitacionTipo()+"','"+habitacion.getIdHabitacionEstado()+"','"+habitacion.getUbicacion()+"','"+habitacion.getCantPersonas()+"','"+habitacion.getPrecio()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClHabitaciones habitacion) throws SQLException{
+        String sql="INSERT INTO \"habitaciones\" (\"id_hotel\", \"id_habitacion_tipo\", \"id_habitacion_estado\", \"ubicacion\", \"cant_personas\", \"precio\") VALUES (?,?,?,?,?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, habitacion.getIdHotel());
+        a.setInt(2, habitacion.getIdHabitacionTipo());
+        a.setInt(3, habitacion.getIdHabitacionEstado());
+        a.setString(4, habitacion.getUbicacion());
+        a.setInt(5, habitacion.getCantPersonas());
+        a.setInt(6, habitacion.getPrecio());        
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -25,9 +34,17 @@ public class DAOHabitaciones {
         return true;
     }
     
-    public static boolean sqlUpdate(ClHabitaciones habitacion){
-        String sql="UPDATE \"habitaciones\" SET \"id_hotel\" = '"+habitacion.getIdHotel()+"', \"id_habitacion_tipo\" = '"+habitacion.getIdHabitacionTipo()+"', \"id_habitacion_estado\" = '"+habitacion.getIdHabitacionEstado()+"', \"ubicacion\" = '"+habitacion.getUbicacion()+"', \"cant_personas\" = '"+habitacion.getCantPersonas()+"', \"precio\" = '"+habitacion.getPrecio()+"' WHERE \"id_habitacion\" = "+habitacion.getIdHabitacion()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClHabitaciones habitacion) throws SQLException{
+        String sql="UPDATE \"habitaciones\" SET \"id_hotel\" = ?, \"id_habitacion_tipo\" = ?, \"id_habitacion_estado\" = ?, \"ubicacion\" = ?, \"cant_personas\" = ?, \"precio\" = ? WHERE \"id_habitacion\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, habitacion.getIdHotel());
+        a.setInt(2, habitacion.getIdHabitacionTipo());
+        a.setInt(3, habitacion.getIdHabitacionEstado());
+        a.setString(4, habitacion.getUbicacion());
+        a.setInt(5, habitacion.getCantPersonas());
+        a.setInt(6, habitacion.getPrecio());        
+        a.setInt(7, habitacion.getIdHabitacion());
+        OracleConection.getInstance().sqlEjecutarPreparacion();  
         return true;
     }
     

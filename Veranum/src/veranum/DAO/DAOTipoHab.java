@@ -5,6 +5,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClTipoHabitacion;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,11 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOTipoHab {
-    public static boolean sqlInsert(ClTipoHabitacion hab){
-        String sql="INSERT INTO \"habitacion_tipos\" (\"nombre\") VALUES ('"+hab.getNombre()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClTipoHabitacion hab) throws SQLException{
+        String sql="INSERT INTO \"habitacion_tipos\" (\"nombre\") VALUES (?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, hab.getNombre());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -26,9 +30,12 @@ public class DAOTipoHab {
         return true;
     }
     
-    public static boolean sqlUpdate(ClTipoHabitacion hab){
-        String sql="UPDATE \"habitacion_tipos\" SET \"nombre\" = '"+hab.getNombre()+"' WHERE \"id_habitacion_tipo\" = "+hab.getIdTipoHabit()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClTipoHabitacion hab) throws SQLException{
+        String sql="UPDATE \"habitacion_tipos\" SET \"nombre\" = ? WHERE \"id_habitacion_tipo\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, hab.getNombre());
+        a.setInt(2, hab.getIdTipoHabit());
+        OracleConection.getInstance().sqlEjecutarPreparacion();   
         return true;
     }
     

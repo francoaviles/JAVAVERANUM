@@ -5,6 +5,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClMedidas;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,11 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOMedidas {
-    public static boolean sqlInsert(ClMedidas medida){
-        String sql="INSERT INTO \"medidas\" (\"medida\") VALUES ('"+medida.getMedida()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClMedidas medida) throws SQLException{
+        String sql="INSERT INTO \"medidas\" (\"medida\") VALUES (?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, medida.getMedida());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -26,9 +30,12 @@ public class DAOMedidas {
         return true;
     }
     
-    public static boolean sqlUpdate(ClMedidas medida){
-        String sql="UPDATE \"medidas\" SET \"medida\" = '"+medida.getMedida()+"' WHERE \"id_medida\" = "+medida.getIdMedida()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClMedidas medida) throws SQLException{
+        String sql="UPDATE \"medidas\" SET \"medida\" = ? WHERE \"id_medida\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, medida.getMedida());
+        a.setInt(2, medida.getIdMedida());
+        OracleConection.getInstance().sqlEjecutarPreparacion();  
         return true;
     }
     

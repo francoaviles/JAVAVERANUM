@@ -4,6 +4,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClServicios;
 import veranum.utilidades.OracleConection;
@@ -13,9 +15,12 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOServicios {
-    public static boolean sqlInsert(ClServicios servicios){
-        String sql="INSERT INTO \"servicios\" (\"nombre\", \"precio\") VALUES ('"+servicios.getNombre()+"', '"+servicios.getPrecio()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClServicios servicios) throws SQLException{
+        String sql="INSERT INTO \"servicios\" (\"nombre\", \"precio\") VALUES (?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, servicios.getNombre());
+        a.setInt(2, servicios.getPrecio());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -25,10 +30,13 @@ public class DAOServicios {
         return true;
     }
     
-    public static boolean sqlUpdate(ClServicios servicios)
-    {
-        String sql="UPDATE \"servicios\" SET \"nombre\" = '"+servicios.getNombre()+"', \"precio\" = '"+servicios.getPrecio()+"' WHERE \"id_servicio\" = "+servicios.getIdServicio()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClServicios servicios) throws SQLException{
+        String sql="UPDATE \"servicios\" SET \"nombre\" = ?, \"precio\" = ? WHERE \"id_servicio\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, servicios.getNombre());
+        a.setInt(2, servicios.getPrecio());
+        a.setInt(3, servicios.getIdServicio());
+        OracleConection.getInstance().sqlEjecutarPreparacion();  
         return true;
     }
     

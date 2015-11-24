@@ -4,6 +4,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClComuna;
 import veranum.utilidades.OracleConection;
@@ -13,9 +15,12 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOComuna {
-    public static boolean sqlInsert(ClComuna comuna){
-        String sql="INSERT INTO \"comunas\" (\"comuna_nombre\", \"id_provincia\") VALUES ('"+comuna.getNombre()+"','"+comuna.getIdProvincia()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClComuna comuna) throws SQLException{
+        String sql="INSERT INTO \"comunas\" (\"comuna_nombre\", \"id_provincia\") VALUES (?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, comuna.getNombre());
+        a.setInt(2, comuna.getIdProvincia());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -25,9 +30,13 @@ public class DAOComuna {
         return true;
     }
     
-    public static boolean sqlUpdate(ClComuna comuna){
-        String sql="UPDATE \"comunas\" SET \"comuna_nombre\" = '"+comuna.getNombre()+"', \"id_provincia\" = '"+comuna.getIdProvincia()+"' WHERE \"id_comuna\" = "+comuna.getIdComuna()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClComuna comuna) throws SQLException{
+        String sql="UPDATE \"comunas\" SET \"comuna_nombre\" = ?, \"id_provincia\" = ? WHERE \"id_comuna\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, comuna.getNombre());
+        a.setInt(2, comuna.getIdProvincia());
+        a.setInt(3, comuna.getIdComuna());
+        OracleConection.getInstance().sqlEjecutarPreparacion(); 
         return true;
     }
     

@@ -4,6 +4,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClMenu;
 import veranum.utilidades.OracleConection;
@@ -13,9 +15,12 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOMenu {
-    public static boolean sqlInsert(ClMenu menu){
-        String sql="INSERT INTO \"menu\" (\"id_tipo_menu\", \"nombre\") VALUES ('"+menu.getTipoMenu()+"','"+menu.getNombre()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClMenu menu) throws SQLException{
+        String sql="INSERT INTO \"menu\" (\"id_tipo_menu\", \"nombre\") VALUES (?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, menu.getTipoMenu());
+        a.setString(2, menu.getNombre());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -25,9 +30,13 @@ public class DAOMenu {
         return true;
     }
     
-    public static boolean sqlUpdate(ClMenu menu){
-        String sql="UPDATE \"menu\" SET \"nombre\" = '"+menu.getNombre()+"', \"id_tipo_menu\" = '"+menu.getTipoMenu()+"'  WHERE \"id_menu\" = "+menu.getIdMenu()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClMenu menu) throws SQLException{
+        String sql="UPDATE \"menu\" SET \"nombre\" = ?, \"id_tipo_menu\" = ? WHERE \"id_menu\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, menu.getTipoMenu());
+        a.setString(2, menu.getNombre());
+        a.setInt(3, menu.getIdMenu());
+        OracleConection.getInstance().sqlEjecutarPreparacion();  
         return true;
     }
     

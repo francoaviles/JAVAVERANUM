@@ -4,6 +4,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClReportes;
 import veranum.utilidades.OracleConection;
@@ -13,9 +15,14 @@ import veranum.utilidades.OracleConection;
  * @author Zacarias
  */
 public class DAOReportes {
-    public static boolean sqlInsert(ClReportes reportes){
-        String sql="INSERT INTO \"reportes\" (\"id_tipo_reporte\", \"fecha_creacion\", \"archivo\", \"comentario\" ) VALUES ('"+reportes.getIdTipoReporte()+"','"+reportes.getFechaCreacion()+"','"+reportes.getArchivo()+"','"+reportes.getComentario()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClReportes reportes) throws SQLException{
+        String sql="INSERT INTO \"reportes\" (\"id_tipo_reporte\", \"fecha_creacion\", \"archivo\", \"comentario\" ) VALUES (?,?,?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, reportes.getIdTipoReporte());
+        //a.setDate(2, reportes.getFechaCreacion());
+        a.setString(3, reportes.getArchivo());
+        a.setString(4, reportes.getComentario());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
@@ -25,9 +32,15 @@ public class DAOReportes {
         return true;
     }
     
-    public static boolean sqlUpdate(ClReportes reportes){
-        String sql="UPDATE \"reportes\" SET \"id_tipo_reporte\" = '"+reportes.getIdTipoReporte()+"', \"fecha_creacion\" = '"+reportes.getFechaCreacion()+"', \"archivo\" = '"+reportes.getArchivo()+"', \"comentario\" = '"+reportes.getComentario()+"' WHERE \"id_reporte\" = "+reportes.getIdReporte()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
+    public static boolean sqlUpdate(ClReportes reportes) throws SQLException{
+        String sql="UPDATE \"reportes\" SET \"id_tipo_reporte\" = ?, \"fecha_creacion\" = ?, \"archivo\" = ?, \"comentario\" = ? WHERE \"id_reporte\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, reportes.getIdTipoReporte());
+        //a.setDate(2, reportes.getFechaCreacion());
+        a.setString(3, reportes.getArchivo());
+        a.setString(4, reportes.getComentario());
+        a.setInt(5, reportes.getIdReporte());
+        OracleConection.getInstance().sqlEjecutarPreparacion(); 
         return true;
     }
     
