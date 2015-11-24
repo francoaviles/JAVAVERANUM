@@ -6,6 +6,9 @@
 package veranum.GUI.reservas;
 
 import helper.Formularios;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import veranum.DAO.DAOUsuarios;
@@ -277,7 +280,11 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
                                                         , txtDireccionUsuario.getText()
                                                         , Formularios.deStringAFecha(txtFechaNacUsu.getText())
                                                         , id_rol);
-                 //DAOUsuarios.sqlInsert(user);
+                try {
+                    DAOUsuarios.sqlInsert(user);
+                } catch (SQLException ex) {
+                    Logger.getLogger(PasoUno_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                }
                  user.setIdPasajero(DAOUsuarios.sqlLastID());
             }
         } 
