@@ -318,7 +318,7 @@ public class panelTipoMenu extends javax.swing.JPanel {
         if(todos)
             dato = DAOTipoMenu.sqlLeerTodos();
         else 
-            dato = DAOTipoMenu.sqlBuscarByNombre(txtNombreTipoMenu.getText());
+            dato = DAOTipoMenu.sqlBuscarByNombre(txtBuscar.getText());
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  

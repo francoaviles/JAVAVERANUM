@@ -36,7 +36,7 @@ public class panelHotelServicio extends javax.swing.JPanel {
         this.cargarHotel();
         this.cargarServicio();
         grDatos.setEnabled(true);
-        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
         btDesactivarEditar.setVisible(false);
         this.leerTodos(true);
     }
@@ -51,7 +51,6 @@ public class panelHotelServicio extends javax.swing.JPanel {
     private void initComponents() {
 
         btEliminar = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         btBuscar = new javax.swing.JButton();
         btBuscarTodos = new javax.swing.JButton();
@@ -69,13 +68,6 @@ public class panelHotelServicio extends javax.swing.JPanel {
         btEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEliminarActionPerformed(evt);
-            }
-        });
-
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
-        btEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEditarActionPerformed(evt);
             }
         });
 
@@ -152,32 +144,28 @@ public class panelHotelServicio extends javax.swing.JPanel {
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btBuscarTodos)
-                        .addContainerGap(22, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btGrabar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbHotel)
-                                    .addComponent(lbServicio))
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btDesactivarEditar)
-                        .addGap(45, 45, 45))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btGrabar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbHotel)
+                            .addComponent(lbServicio))
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btDesactivarEditar)
+                .addGap(45, 45, 45))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btBuscarTodos)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +173,6 @@ public class panelHotelServicio extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEliminar)
-                    .addComponent(btEditar)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscar)
                     .addComponent(btBuscarTodos))
@@ -217,17 +204,10 @@ public class panelHotelServicio extends javax.swing.JPanel {
             DAOHotelServicio.sqlDelete(new ClHotelServicios(this.id_hotel, this.id_servicio));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
-            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
             this.leerTodos(true);
         }
     }//GEN-LAST:event_btEliminarActionPerformed
-
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        this.leer(Formularios.getSelectedRow2(grDatos, 0),
-                Formularios.getSelectedRow2(grDatos, 3));
-        this.paraGrabar = true;
-        this.btnEditarMode();
-    }//GEN-LAST:event_btEditarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         if(txtBuscar.getText().equals("")){
@@ -246,11 +226,11 @@ public class panelHotelServicio extends javax.swing.JPanel {
         if(row_dos >= 0){
             this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()),
                     Integer.parseInt(grDatos.getValueAt(row_dos, 3).toString()));
-            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            Formularios.ActiveBotonesEliminarEditar(btEliminar, btEliminar);
             this.paraGrabar = true;
             this.btnEditarMode();
         } else {
-            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            Formularios.ActiveBotonesEliminarEditar(btEliminar, btEliminar);
         }
     }//GEN-LAST:event_grDatosMouseClicked
 
@@ -265,11 +245,11 @@ public class panelHotelServicio extends javax.swing.JPanel {
                                                                 , id_servicio
                 ));
                 JOptionPane.showMessageDialog(this, "Agregado");
-                Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+                Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
                 helper.Formularios.limpiar(this);
                 this.leerTodos(true);
             }
-        }else{
+        }/*else{
             DAOHotelServicio.sqlUpdate(new ClHotelServicios(id_hotel
                                                             , id_servicio
             ));
@@ -277,7 +257,7 @@ public class panelHotelServicio extends javax.swing.JPanel {
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
-        }
+        }*/
     }//GEN-LAST:event_btGrabarActionPerformed
 
     private void btDesactivarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarActionPerformed
@@ -338,13 +318,13 @@ public class panelHotelServicio extends javax.swing.JPanel {
         if(todos)
             dato = DAOHotelServicio.sqlLeerTodos();
         else 
-            //dato = DAOHabitaciones.sqlBuscarByNombre(txtBuscar.getText());
+            //dato = DAOHotelServicio.sqlBuscarByNombre(txtBuscar.getText());
             dato = DAOHotelServicio.sqlLeerTodos();
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  
             dt.removeRow(i);
-        }        //id caract?
+        }        
         for(int x=0; x < dato.size(); x++){
             ClHotelServicios xx = (ClHotelServicios)dato.get(x);
             Object[] fila = new Object[6];
@@ -369,7 +349,6 @@ public class panelHotelServicio extends javax.swing.JPanel {
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btBuscarTodos;
     private javax.swing.JButton btDesactivarEditar;
-    private javax.swing.JButton btEditar;
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btGrabar;
     private javax.swing.JComboBox cbHotel;

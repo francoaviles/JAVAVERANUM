@@ -337,7 +337,7 @@ public class panelMenu extends javax.swing.JPanel {
         if(todos)
             dato = DAOMenu.sqlLeerTodos();
         else 
-            dato = DAOMenu.sqlBuscarByNombre(txtNombre.getText());
+            dato = DAOMenu.sqlBuscarByNombre(txtBuscar.getText());
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  

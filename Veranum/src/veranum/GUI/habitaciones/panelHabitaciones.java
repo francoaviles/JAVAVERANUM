@@ -296,7 +296,7 @@ public class panelHabitaciones extends javax.swing.JPanel {
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         if(txtBuscar.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar [Búsqueda por ubicación]");
         }else{
             this.leerTodos(false);
         } 
@@ -458,8 +458,8 @@ public class panelHabitaciones extends javax.swing.JPanel {
         if(todos)
             dato = DAOHabitaciones.sqlLeerTodos();
         else 
-            //dato = DAOHabitaciones.sqlBuscarByNombre(txtBuscar.getText());
-            dato = DAOHabitaciones.sqlLeerTodos();
+            dato = DAOHabitaciones.sqlBuscarByNombre(txtBuscar.getText());
+            //dato = DAOHabitaciones.sqlLeerTodos();
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  

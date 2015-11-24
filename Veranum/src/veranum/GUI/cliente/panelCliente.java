@@ -544,7 +544,7 @@ public class panelCliente extends javax.swing.JPanel {
         if(todos)
             cli = DAOCliente.sqlLeerTodos();
         else 
-            cli = DAOCliente.sqlBuscarByNombre(txtRutUsuario.getText());
+            cli = DAOCliente.sqlBuscarByNombre(txtBuscarCliente.getText());
         
         dt =  (DefaultTableModel) grCliente.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  

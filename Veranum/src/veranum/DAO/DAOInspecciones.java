@@ -61,5 +61,23 @@ public class DAOInspecciones {
                                 ));
         }     
         return inspecciones;
-    }  
+    }
+    
+    public static ArrayList sqlBuscarByNombre(String nombre){
+        ArrayList<ClHabitacionInspecciones> inspecciones = new ArrayList<>();        
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"habitacion_inspecciones\" WHERE \"nombre_inspector\" LIKE '%"+nombre+"%'")){
+            return null;
+        }
+        while(OracleConection.getInstance().sqlFetch()){
+            inspecciones.add(new ClHabitacionInspecciones(OracleConection.getInstance().getInt("id_habitacion_inspeccion")
+                                    , OracleConection.getInstance().getInt("id_habitacion")
+                                    , OracleConection.getInstance().getDate("fecha_inicio")
+                                    , OracleConection.getInstance().getString("comentario")
+                                    , OracleConection.getInstance().getString("nombre_inspector")
+                                ));
+            
+        }     
+        return inspecciones;
+    }
+    
 }

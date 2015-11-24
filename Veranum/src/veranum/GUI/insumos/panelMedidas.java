@@ -294,7 +294,7 @@ public class panelMedidas extends javax.swing.JPanel {
         if(todos)
             dato = DAOMedidas.sqlLeerTodos();
         else 
-            dato = DAOMedidas.sqlBuscarByNombre(txtNombreMedida.getText());
+            dato = DAOMedidas.sqlBuscarByNombre(txtBuscar.getText());
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  

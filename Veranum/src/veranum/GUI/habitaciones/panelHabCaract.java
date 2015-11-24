@@ -340,7 +340,7 @@ public class panelHabCaract extends javax.swing.JPanel {
         if(todos)
             dato = DAOHabCaract.sqlLeerTodos();
         else 
-            //dato = DAOHabitaciones.sqlBuscarByNombre(txtBuscar.getText());
+            //dato = DAOHabCaract.sqlBuscarByNombre(txtBuscar.getText());
             dato = DAOHabCaract.sqlLeerTodos();
         
         dt =  (DefaultTableModel) grDatos.getModel();        

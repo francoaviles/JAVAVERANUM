@@ -369,8 +369,7 @@ public class panelCaracteristicas extends javax.swing.JPanel {
         if(todos)
             dato = DAOCaracteristicas.sqlLeerTodos();
         else 
-            //dato = DAOTipoCaract.sqlBuscarByNombre(txtTipo.getText());
-            dato = DAOCaracteristicas.sqlLeerTodos();
+            dato = DAOCaracteristicas.sqlBuscarByNombre(txtBuscar.getText());
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  

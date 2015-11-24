@@ -380,8 +380,8 @@ public class panelInspecciones extends javax.swing.JPanel {
         if(todos)
             dato = DAOInspecciones.sqlLeerTodos();
         else 
-            //dato = DAOInspecciones.sqlBuscarByNombre(txtNombre.getText());
-            dato = DAOInspecciones.sqlLeerTodos();
+            dato = DAOInspecciones.sqlBuscarByNombre(txtBuscar.getText());
+            //dato = DAOInspecciones.sqlLeerTodos();
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  

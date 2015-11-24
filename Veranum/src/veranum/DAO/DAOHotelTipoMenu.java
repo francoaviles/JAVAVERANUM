@@ -27,11 +27,11 @@ public class DAOHotelTipoMenu {
     
     }
     
-    public static boolean sqlUpdate(ClHotelTipoMenu hTipoMenu){
+    /*public static boolean sqlUpdate(ClHotelTipoMenu hTipoMenu){
         String sql="UPDATE \"hotel_tipo_menu\" SET \"id_hotel\" = '"+hTipoMenu.getIdHotel()+"', \"id_tipo_menu\" = '"+hTipoMenu.getIdTipoMenu()+"' WHERE \"id_hotel\" = "+hTipoMenu.getIdHotel()+"";
         OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
-    }
+    }*/
     
     public static ClHotelTipoMenu sqlLeer(int id_hotel, int id_tipo_menu){     
         ClHotelTipoMenu hTipoMenu = new ClHotelTipoMenu();

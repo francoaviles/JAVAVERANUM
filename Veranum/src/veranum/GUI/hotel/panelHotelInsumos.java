@@ -262,7 +262,7 @@ public class panelHotelInsumos extends javax.swing.JPanel {
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         if(txtBuscar.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar [Búsqueda por Stock]");
         }else{
             this.leerTodos(false);
         } 
@@ -400,8 +400,8 @@ public class panelHotelInsumos extends javax.swing.JPanel {
         if(todos)
             dato = DAOHotelInsumos.sqlLeerTodos();
         else 
-            //dato = DAOHabitaciones.sqlBuscarByNombre(txtBuscar.getText());
-            dato = DAOHotelInsumos.sqlLeerTodos();
+            dato = DAOHotelInsumos.sqlBuscarByNombre(txtBuscar.getText());
+            //dato = DAOHotelInsumos.sqlLeerTodos();
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  

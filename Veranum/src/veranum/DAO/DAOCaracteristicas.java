@@ -62,14 +62,14 @@ public class DAOCaracteristicas {
         }     
         return carac;
     }    
-    /*
-    public static ArrayList sqlBuscarByNombre(String nombre){
+    
+    public static ArrayList sqlBuscarByNombre(String tipo){
         ArrayList<ClCaracteristicas> carac = new ArrayList<>();        
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"caracteristica\" WHERE \"carac\" LIKE '%"+nombre+"%'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"caracteristicas\" WHERE \"tipo\" LIKE '%"+tipo+"%'")){
             return null;
         }
         while(OracleConection.getInstance().sqlFetch()){
-            carac.add(new ClCaracteristicas(OracleConection.getInstance().getInt("id_caracteristicao")
+            carac.add(new ClCaracteristicas(OracleConection.getInstance().getInt("id_caracteristica")
                                     , OracleConection.getInstance().getInt("id_tipo_caract")
                                     , OracleConection.getInstance().getInt("cantidad")
                                     , OracleConection.getInstance().getString("tipo")
@@ -77,5 +77,5 @@ public class DAOCaracteristicas {
             
         }     
         return carac;
-    }*/
+    }
 }

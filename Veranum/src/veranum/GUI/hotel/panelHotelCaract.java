@@ -35,7 +35,7 @@ public class panelHotelCaract extends javax.swing.JPanel {
         this.cargarCaract();
         this.cargarHotel();
         grDatos.setEnabled(true);
-        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
         btDesactivarEditar.setVisible(false);
         this.leerTodos(true);
     }
@@ -50,7 +50,6 @@ public class panelHotelCaract extends javax.swing.JPanel {
     private void initComponents() {
 
         btEliminar = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         btBuscar = new javax.swing.JButton();
         btBuscarTodos = new javax.swing.JButton();
@@ -68,13 +67,6 @@ public class panelHotelCaract extends javax.swing.JPanel {
         btEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEliminarActionPerformed(evt);
-            }
-        });
-
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
-        btEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEditarActionPerformed(evt);
             }
         });
 
@@ -165,11 +157,9 @@ public class panelHotelCaract extends javax.swing.JPanel {
                 .addComponent(btDesactivarEditar)
                 .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -182,7 +172,6 @@ public class panelHotelCaract extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEliminar)
-                    .addComponent(btEditar)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscar)
                     .addComponent(btBuscarTodos))
@@ -214,17 +203,10 @@ public class panelHotelCaract extends javax.swing.JPanel {
             DAOHotelCaract.sqlDelete(new ClHotelCaract(this.id_hotel, this.id_caract));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
-            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
             this.leerTodos(true);
         }
     }//GEN-LAST:event_btEliminarActionPerformed
-
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        this.leer(Formularios.getSelectedRow2(grDatos, 0),
-                Formularios.getSelectedRow2(grDatos, 2));
-        this.paraGrabar = true;
-        this.btnEditarMode();
-    }//GEN-LAST:event_btEditarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         if(txtBuscar.getText().equals("")){
@@ -243,12 +225,12 @@ public class panelHotelCaract extends javax.swing.JPanel {
         if(row_dos >= 0){
             this.leer(Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString()),
                     Integer.parseInt(grDatos.getValueAt(row_dos, 2).toString()));
-            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
-            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            Formularios.ActiveBotonesEliminarEditar(btEliminar, btEliminar);
+            Formularios.ActiveBotonesEliminarEditar(btEliminar, btEliminar);
             this.paraGrabar = true;
             this.btnEditarMode();
         } else {
-            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            Formularios.ActiveBotonesEliminarEditar(btEliminar, btEliminar);
         }
     }//GEN-LAST:event_grDatosMouseClicked
 
@@ -263,11 +245,11 @@ public class panelHotelCaract extends javax.swing.JPanel {
                                                             , id_caract
                 ));
                 JOptionPane.showMessageDialog(this, "Agregado");
-                Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+                Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
                 helper.Formularios.limpiar(this);
                 this.leerTodos(true);
             }
-        }else{
+        }/*else{
             DAOHotelCaract.sqlUpdate(new ClHotelCaract(id_hotel
                                                     , id_caract
             ));
@@ -275,7 +257,7 @@ public class panelHotelCaract extends javax.swing.JPanel {
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
-        }
+        }*/
     }//GEN-LAST:event_btGrabarActionPerformed
 
     private void btDesactivarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesactivarEditarActionPerformed
@@ -336,7 +318,7 @@ public class panelHotelCaract extends javax.swing.JPanel {
         if(todos)
             dato = DAOHotelCaract.sqlLeerTodos();
         else 
-            //dato = DAOHabitaciones.sqlBuscarByNombre(txtBuscar.getText());
+            //dato = DAOHotelCaract.sqlBuscarByNombre(txtBuscar.getText());
             dato = DAOHotelCaract.sqlLeerTodos();
         
         dt =  (DefaultTableModel) grDatos.getModel();        
@@ -367,7 +349,6 @@ public class panelHotelCaract extends javax.swing.JPanel {
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btBuscarTodos;
     private javax.swing.JButton btDesactivarEditar;
-    private javax.swing.JButton btEditar;
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btGrabar;
     private javax.swing.JComboBox cbCaract;

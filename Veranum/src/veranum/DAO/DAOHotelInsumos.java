@@ -65,4 +65,21 @@ public class DAOHotelInsumos {
         }     
         return hotelInsumos;
     }
+    
+    public static ArrayList sqlBuscarByNombre(String stock){
+        ArrayList<ClHotelInsumos> hotelInsumos = new ArrayList<>();        
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"hotel_insumos\" WHERE \"stock\" LIKE '%"+stock+"%'")){
+            return null;
+        }
+        while(OracleConection.getInstance().sqlFetch()){
+            hotelInsumos.add(new ClHotelInsumos(OracleConection.getInstance().getInt("id_insumo_hotel")
+                                               , OracleConection.getInstance().getInt("id_insumo")
+                                               , OracleConection.getInstance().getInt("id_hotel")
+                                               , OracleConection.getInstance().getInt("id_medida")
+                                               , OracleConection.getInstance().getInt("stock")
+                                ));
+        }     
+        return hotelInsumos;
+    }
+        
 }

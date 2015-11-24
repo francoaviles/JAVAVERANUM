@@ -72,9 +72,9 @@ public class DAOEstadoHab {
         return estado;
     }    
     
-    public static ArrayList sqlBuscarByNombre(String nombre){
+    public static ArrayList sqlBuscarByNombre(String est){
         ArrayList<ClHabitacionEstados> estado = new ArrayList<>();        
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"habitacion_estados\" WHERE \"estado\" LIKE '%"+nombre+"%'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"habitacion_estados\" WHERE \"estado\" LIKE '%"+est+"%'")){
             return null;
         }
         while(OracleConection.getInstance().sqlFetch()){

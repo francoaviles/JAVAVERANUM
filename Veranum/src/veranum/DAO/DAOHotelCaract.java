@@ -27,11 +27,11 @@ public class DAOHotelCaract {
     
     }
     
-    public static boolean sqlUpdate(ClHotelCaract hotelCaract){
+    /*public static boolean sqlUpdate(ClHotelCaract hotelCaract){
         String sql="UPDATE \"hoteles_caracteristicas\" SET \"id_hotel\" = '"+hotelCaract.getId_hotel()+"', \"id_caracteristica\" = '"+hotelCaract.getId_caract()+"' WHERE \"id_hotel\" = "+hotelCaract.getId_hotel()+"";
         OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
-    }
+    }*/
     
     public static ClHotelCaract sqlLeer(int id_hotel, int id_caracteristica){     
         ClHotelCaract hotelCaract = new ClHotelCaract();
