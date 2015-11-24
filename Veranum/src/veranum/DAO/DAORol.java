@@ -5,6 +5,8 @@
  */
 package veranum.DAO;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClRol;
 import veranum.utilidades.OracleConection;
@@ -14,9 +16,12 @@ import veranum.utilidades.OracleConection;
  * @author carlosdlg
  */
 public class DAORol {
-    public static boolean sqlInsert(ClRol rol){
-        String sql="INSERT INTO \"roles\" (\"nombre\", \"descripcion\") VALUES ('"+rol.getNombre()+"','"+rol.getDescripcion()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
+    public static boolean sqlInsert(ClRol rol) throws SQLException{
+        String sql="INSERT INTO \"roles\" (\"nombre\", \"descripcion\") VALUES (?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, rol.getNombre());
+        a.setString(2, rol.getDescripcion());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
     
