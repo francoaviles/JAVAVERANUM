@@ -11,6 +11,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
@@ -24,6 +27,7 @@ import javax.swing.JViewport;
  */
 public class Formularios {
     public static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    public static SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
     
     public static void limpiar(JComponent obj, String excepto){
         Object[] arrObj = obj.getComponents();
@@ -214,6 +218,19 @@ public class Formularios {
         
         String formatedDate = dia_ + "/" + mes_ + "/" + ano;
         return formatedDate;    
+    }
+    
+    public static long diasBetweenFechas(String fecha1, String fecha2){
+        try {
+            Date date1 = myFormat.parse(fecha1);
+            Date date2 = myFormat.parse(fecha2);
+            long diff = date2.getTime() - date1.getTime();
+            long dias =  TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+            return dias;
+        } catch (ParseException ex) {
+            Logger.getLogger(Formularios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
     
     public static void habilita(JComponent obj, boolean sw)
