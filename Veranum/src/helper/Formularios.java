@@ -62,7 +62,7 @@ public class Formularios {
         char c = evt.getKeyChar();
         if (!((c >= '0') && (c <= '9') ||  (c == KeyEvent.VK_BACK_SPACE) ||   (c == KeyEvent.VK_DELETE))) {
             evt.consume();
-        } 
+        }
     }
     
     public static void validarRut(java.awt.event.KeyEvent evt)
@@ -70,7 +70,7 @@ public class Formularios {
         char c = evt.getKeyChar();
         if (!((c >= '0') && (c <= '9') ||  (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE) || (c == 'k') )) {
             evt.consume();
-        } 
+        }
     }
     
     public static int getTablaSeleccionada(java.awt.event.MouseEvent evt,javax.swing.JTable tabla, int cantClicks){
@@ -164,6 +164,5 @@ public class Formularios {
         }
         
     }   
-     
-     
+    
 }

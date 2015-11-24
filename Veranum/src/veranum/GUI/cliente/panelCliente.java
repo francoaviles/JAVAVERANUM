@@ -102,12 +102,6 @@ public class panelCliente extends javax.swing.JPanel {
             }
         });
 
-        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyTyped(evt);
-            }
-        });
-
         btGrabarUsuarios.setText("Grabar");
         btGrabarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -413,11 +407,11 @@ public class panelCliente extends javax.swing.JPanel {
 
     private void txtRutUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutUsuarioKeyTyped
         Formularios.validarRut(evt);
+        if (!(txtRutUsuario.getText().length() < 9)) {
+            //evt.setKeyChar('\0');
+            JOptionPane.showMessageDialog(this, "Ingreso de máximo de 9 caracteres"); 
+        } 
     }//GEN-LAST:event_txtRutUsuarioKeyTyped
-
-    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        Formularios.soloNumeros(evt);
-    }//GEN-LAST:event_txtTelefonoKeyTyped
 
     // Method Custom
     private void cargarRol(){

@@ -63,6 +63,12 @@ public class MainVeranum extends javax.swing.JFrame {
             }
         });
 
+        txtContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContrasenaKeyTyped(evt);
+            }
+        });
+
         imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/logo.jpg"))); // NOI18N
 
         lbTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -172,9 +178,19 @@ public class MainVeranum extends javax.swing.JFrame {
         Formularios.validarRut(evt);
         if (!(txtRut.getText().length() < 9)) {
             //evt.setKeyChar('\0');
-            JOptionPane.showMessageDialog(this, "Ingreso de máximo de 9 caracteres"); 
+            //evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            //Formularios.limpiar(txtRut);
+            txtRut.setText("");
+            JOptionPane.showMessageDialog(this, "Ingreso de máximo de 9 caracteres");
         } 
     }//GEN-LAST:event_txtRutKeyTyped
+
+    private void txtContrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyTyped
+        if (!(txtContrasena.getText().length() < 30)) {
+            //evt.setKeyChar('\0');
+            JOptionPane.showMessageDialog(this, "Ingreso de máximo de 9 caracteres"); 
+        } 
+    }//GEN-LAST:event_txtContrasenaKeyTyped
 
 
     

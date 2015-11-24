@@ -110,6 +110,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtContrasena">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtContrasenaKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="imgLogo">
       <Properties>
