@@ -6,7 +6,10 @@
 package veranum.GUI.insumos;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOMedidas;
@@ -238,18 +241,26 @@ public class panelMedidas extends javax.swing.JPanel {
             if(txtNombreMedida.getText().equals("")){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOMedidas.sqlInsert(new ClMedidas( txtNombreMedida.getText()
-                                            ));
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOMedidas.sqlInsert(new ClMedidas( txtNombreMedida.getText()
+                    ));
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
-            DAOMedidas.sqlUpdate(new ClMedidas( this.id
-                                                ,txtNombreMedida.getText()
-                                            ));
-        JOptionPane.showMessageDialog(this, "Modificado");
+            try {
+                DAOMedidas.sqlUpdate(new ClMedidas( this.id
+                        ,txtNombreMedida.getText()
+                ));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }   
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);

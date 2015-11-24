@@ -248,8 +248,7 @@ public class panelRoles extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Modificado");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
-            }
-        
+            }        
         Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);

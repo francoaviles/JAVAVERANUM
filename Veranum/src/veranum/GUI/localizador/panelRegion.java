@@ -6,7 +6,10 @@
 package veranum.GUI.localizador;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAORegiones;
@@ -246,18 +249,26 @@ public class panelRegion extends javax.swing.JPanel {
             if(txtNombreRegion.getText().equals("") || txtRegionOrdinal.getText().equals("") ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAORegiones.sqlInsert(new ClRegion(txtNombreRegion.getText()
-                    , txtRegionOrdinal.getText())
-            );
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAORegiones.sqlInsert(new ClRegion(txtNombreRegion.getText()
+                            , txtRegionOrdinal.getText())
+                    );
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditarRegion, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodosReg(true);
         }
         }else{
-            DAORegiones.sqlUpdate(     new ClRegion(this.id, txtNombreRegion.getText()
-                , txtRegionOrdinal.getText()));
-        JOptionPane.showMessageDialog(this, "Modificado");
+            try {
+                DAORegiones.sqlUpdate(     new ClRegion(this.id, txtNombreRegion.getText()
+                        , txtRegionOrdinal.getText()));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }  
         Formularios.DesactiveBotonesEliminarEditar(btEditarRegion, btEliminar);
         helper.Formularios.limpiar(this);
         this.leerTodosReg(true);

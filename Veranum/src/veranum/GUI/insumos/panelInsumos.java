@@ -6,7 +6,10 @@
 package veranum.GUI.insumos;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOInsumos;
@@ -227,18 +230,26 @@ public class panelInsumos extends javax.swing.JPanel {
             if(txtNombreInsumos.getText().equals("") || txtDescripcionInsumos.getText().equals("") ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOInsumos.sqlInsert(new ClInsumos(txtNombreInsumos.getText()
-                    , txtDescripcionInsumos.getText())
-            );
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOInsumos.sqlInsert(new ClInsumos(txtNombreInsumos.getText()
+                            , txtDescripcionInsumos.getText())
+                    );
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
-            DAOInsumos.sqlUpdate(     new ClInsumos(this.id, txtNombreInsumos.getText()
-                , txtDescripcionInsumos.getText()));
-        JOptionPane.showMessageDialog(this, "Modificado");
+            try {
+                DAOInsumos.sqlUpdate(new ClInsumos(this.id, txtNombreInsumos.getText()
+                        , txtDescripcionInsumos.getText()));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }  
         Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);

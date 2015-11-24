@@ -6,7 +6,10 @@
 package veranum.GUI.hotel;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOHotelInsumos;
@@ -292,24 +295,32 @@ public class panelHotelInsumos extends javax.swing.JPanel {
             if(txtStock.getText().equals("")){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOHotelInsumos.sqlInsert(new ClHotelInsumos(id_insumo
-                                                            , id_hotel
-                                                            , id_medida
-                                                            , Integer.parseInt(txtStock.getText()) 
-                ));
-                JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOHotelInsumos.sqlInsert(new ClHotelInsumos(id_insumo
+                            , id_hotel
+                            , id_medida
+                            , Integer.parseInt(txtStock.getText())
+                    ));
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
                 Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
                 helper.Formularios.limpiar(this);
                 this.leerTodos(true);
             }
         }else{
-            DAOHotelInsumos.sqlUpdate(new ClHotelInsumos( this.id
-                                                            , id_insumo
-                                                            , id_hotel
-                                                            , id_medida
-                                                            , Integer.parseInt(txtStock.getText()) 
+            try {
+                DAOHotelInsumos.sqlUpdate(new ClHotelInsumos( this.id
+                        , id_insumo
+                        , id_hotel
+                        , id_medida 
+                        , Integer.parseInt(txtStock.getText())
                 ));
-            JOptionPane.showMessageDialog(this, "Modificado");
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }  
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);

@@ -6,7 +6,10 @@
 package veranum.GUI.localizador;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOProvincia;
@@ -213,18 +216,26 @@ public class panelProvincias extends javax.swing.JPanel {
             if(txtNombreProvincia.getText().equals("") ){ 
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOProvincia.sqlInsert(new ClProvincia(txtNombreProvincia.getText()
-                    , id_region)
-            );
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOProvincia.sqlInsert(new ClProvincia(txtNombreProvincia.getText()
+                            , id_region)
+                    );
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditarProvincia, btEliminarProvincia);
             helper.Formularios.limpiar(this);
             this.leerTodosPro(true);
         }
         }else{
-            DAOProvincia.sqlUpdate(new ClProvincia(this.id, txtNombreProvincia.getText()
-                                    , id_region));
-            JOptionPane.showMessageDialog(this, "Modificado");
+            try {
+                DAOProvincia.sqlUpdate(new ClProvincia(this.id, txtNombreProvincia.getText()
+                        , id_region));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }  
             Formularios.DesactiveBotonesEliminarEditar(btEditarProvincia, btEliminarProvincia);
             helper.Formularios.limpiar(this);
             this.leerTodosPro(true);

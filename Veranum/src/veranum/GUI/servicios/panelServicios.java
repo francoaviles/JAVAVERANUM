@@ -6,7 +6,10 @@
 package veranum.GUI.servicios;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOServicios;
@@ -225,18 +228,26 @@ public class panelServicios extends javax.swing.JPanel {
             if(txtNombreServicio.getText().equals("") || txtPrecioServicio.getText().equals("") ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOServicios.sqlInsert(new ClServicios(txtNombreServicio.getText()
-                    , Integer.parseInt(txtPrecioServicio.getText()))
-            );
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOServicios.sqlInsert(new ClServicios(txtNombreServicio.getText()
+                            , Integer.parseInt(txtPrecioServicio.getText()))
+                    );
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditarServicio, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
-            DAOServicios.sqlUpdate(     new ClServicios(this.id, txtNombreServicio.getText()
-                , Integer.parseInt(txtPrecioServicio.getText())));
-        JOptionPane.showMessageDialog(this, "Modificado");
+            try {
+                DAOServicios.sqlUpdate(     new ClServicios(this.id, txtNombreServicio.getText()
+                        , Integer.parseInt(txtPrecioServicio.getText())));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }    
         Formularios.DesactiveBotonesEliminarEditar(btEditarServicio, btEliminar);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);

@@ -6,7 +6,10 @@
 package veranum.GUI.habitaciones;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOEstadoHab;
@@ -322,28 +325,37 @@ public class panelHabitaciones extends javax.swing.JPanel {
                ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOHabitaciones.sqlInsert(new ClHabitaciones(id_hotel
-                                                            , id_tipo
-                                                            , id_estado
-                                                            , txtUbicacion.getText()
-                                                            , Integer.parseInt(txtCantPersonas.getText())
-                                                            , Integer.parseInt(txtPrecio.getText())           
-                                            ));
+                try {
+                    DAOHabitaciones.sqlInsert(new ClHabitaciones(id_hotel
+                            , id_tipo
+                            , id_estado
+                            , txtUbicacion.getText()
+                            , Integer.parseInt(txtCantPersonas.getText())
+                            , Integer.parseInt(txtPrecio.getText())
+                    ));
+                JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             JOptionPane.showMessageDialog(this, "Agregado");
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
-            DAOHabitaciones.sqlUpdate(new ClHabitaciones( this.id
-                                                            , id_hotel
-                                                            , id_tipo
-                                                            , id_estado
-                                                            , txtUbicacion.getText()
-                                                            , Integer.parseInt(txtCantPersonas.getText())
-                                                            , Integer.parseInt(txtPrecio.getText())           
-                                            ));
-        JOptionPane.showMessageDialog(this, "Modificado");
+            try {
+                DAOHabitaciones.sqlUpdate(new ClHabitaciones( this.id
+                        , id_hotel
+                        , id_tipo
+                        , id_estado
+                        , txtUbicacion.getText()
+                        , Integer.parseInt(txtCantPersonas.getText())
+                        , Integer.parseInt(txtPrecio.getText())
+                ));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);

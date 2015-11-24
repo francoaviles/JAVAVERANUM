@@ -277,7 +277,7 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
                                                         , txtDireccionUsuario.getText()
                                                         , Formularios.deStringAFecha(txtFechaNacUsu.getText())
                                                         , id_rol);
-                 DAOUsuarios.sqlInsert(user);
+                 //DAOUsuarios.sqlInsert(user);
                  user.setIdPasajero(DAOUsuarios.sqlLastID());
             }
         } 

@@ -6,7 +6,10 @@
 package veranum.GUI.servicios;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOCaracteristicas;
@@ -283,22 +286,30 @@ public class panelCaracteristicas extends javax.swing.JPanel {
             if(txtCantidad.getText().equals("") || txtTipo.getText().equals("") ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOCaracteristicas.sqlInsert(new ClCaracteristicas( id_tipo_caract
-                                                                    , Integer.parseInt(txtCantidad.getText())
-                                                                    , txtTipo.getText()
-                                            ));
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOCaracteristicas.sqlInsert(new ClCaracteristicas( id_tipo_caract
+                            , Integer.parseInt(txtCantidad.getText())
+                            , txtTipo.getText()
+                    ));
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
+            try {
                 DAOCaracteristicas.sqlUpdate(new ClCaracteristicas( this.id
-                                                                    , id_tipo_caract
-                                                                    , Integer.parseInt(txtCantidad.getText())
-                                                                    , txtTipo.getText()
-                                            ));
-        JOptionPane.showMessageDialog(this, "Modificado");
+                        , id_tipo_caract
+                        , Integer.parseInt(txtCantidad.getText())
+                        , txtTipo.getText()
+                ));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            } 
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);

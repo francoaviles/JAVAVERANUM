@@ -6,7 +6,10 @@
 package veranum.GUI.reportes;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOHabitaciones;
@@ -292,24 +295,32 @@ public class panelInspecciones extends javax.swing.JPanel {
               ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOInspecciones.sqlInsert(new ClHabitacionInspecciones( id_tipo_hab
-                                                                        , Formularios.deStringAFecha(txtFechaInspeccion.getText())
-                                                                        , txtComentario.getText()
-                                                                        , txtNombre.getText()
-                                            ));
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOInspecciones.sqlInsert(new ClHabitacionInspecciones( id_tipo_hab
+                            , Formularios.deStringAFecha(txtFechaInspeccion.getText())
+                            , txtComentario.getText()
+                            , txtNombre.getText()
+                    ));
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
+            try {
                 DAOInspecciones.sqlUpdate(new ClHabitacionInspecciones( this.id
-                                                                        , id_tipo_hab
-                                                                        , Formularios.deStringAFecha(txtFechaInspeccion.getText())
-                                                                        , txtComentario.getText()
-                                                                        , txtNombre.getText()
-                                            ));
-        JOptionPane.showMessageDialog(this, "Modificado");
+                        , id_tipo_hab
+                        , Formularios.deStringAFecha(txtFechaInspeccion.getText())
+                        , txtComentario.getText()
+                        , txtNombre.getText()
+                ));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }  
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);

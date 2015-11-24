@@ -6,7 +6,10 @@
 package veranum.GUI.reportes;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOTipoRep;
@@ -257,20 +260,28 @@ public class panelTipoRep extends javax.swing.JPanel {
             if(txtNombre.getText().equals("") || txtDescrpción.getText().equals("") ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOTipoRep.sqlInsert(new ClTipoReportes(txtNombre.getText()
-                                                        , txtDescrpción.getText()
-                                            ));
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOTipoRep.sqlInsert(new ClTipoReportes(txtNombre.getText()
+                            , txtDescrpción.getText()
+                    ));
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
+            try {
                 DAOTipoRep.sqlUpdate(new ClTipoReportes( this.id
-                                                        , txtNombre.getText()
-                                                        , txtDescrpción.getText()
-                                            ));
-        JOptionPane.showMessageDialog(this, "Modificado");
+                        , txtNombre.getText()
+                        , txtDescrpción.getText()
+                ));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }  
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);

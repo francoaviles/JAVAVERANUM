@@ -6,7 +6,10 @@
 package veranum.GUI.localizador;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOComuna;
@@ -215,18 +218,26 @@ public class panelComunas extends javax.swing.JPanel {
             if(txtNombreComuna.getText().equals("") ){ 
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOComuna.sqlInsert(new ClComuna(txtNombreComuna.getText()
-                    , id_provi)
-            );
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOComuna.sqlInsert(new ClComuna(txtNombreComuna.getText()
+                            , id_provi)
+                    );
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditarComuna, btEliminarComuna);
             helper.Formularios.limpiar(this);
             this.leerTodosCom(true);
         }
         }else{
-            DAOComuna.sqlUpdate(new ClComuna(this.id, txtNombreComuna.getText()
-                , id_provi));
-            JOptionPane.showMessageDialog(this, "Modificado");
+            try {
+                DAOComuna.sqlUpdate(new ClComuna(this.id, txtNombreComuna.getText()
+                        , id_provi));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }   
             Formularios.DesactiveBotonesEliminarEditar(btEditarComuna, btEliminarComuna);
             helper.Formularios.limpiar(this);
             this.leerTodosCom(true);

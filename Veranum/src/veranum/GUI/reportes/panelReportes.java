@@ -6,7 +6,10 @@
 package veranum.GUI.reportes;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOReportes;
@@ -292,24 +295,32 @@ public class panelReportes extends javax.swing.JPanel {
               ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOReportes.sqlInsert(new ClReportes( Formularios.deStringAFecha(txtFechaCreacion.getText())
-                                                    , id_tipo
-                                                    , txtArchivo.getText()
-                                                    , txtComentario.getText()
-                                            ));
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOReportes.sqlInsert(new ClReportes( Formularios.deStringAFecha(txtFechaCreacion.getText())
+                            , id_tipo
+                            , txtArchivo.getText()
+                            , txtComentario.getText()
+                    ));
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
+            try {
                 DAOReportes.sqlUpdate(new ClReportes( this.id
-                                                    , Formularios.deStringAFecha(txtFechaCreacion.getText())
-                                                    , id_tipo
-                                                    , txtArchivo.getText()
-                                                    , txtComentario.getText()
-                                            ));
-        JOptionPane.showMessageDialog(this, "Modificado");
+                        , Formularios.deStringAFecha(txtFechaCreacion.getText())
+                        , id_tipo
+                        , txtArchivo.getText()
+                        , txtComentario.getText()
+                ));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }  
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);

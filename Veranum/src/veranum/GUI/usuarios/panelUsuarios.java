@@ -6,8 +6,11 @@
 package veranum.GUI.usuarios;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAORol;
@@ -379,36 +382,44 @@ public class panelUsuarios extends javax.swing.JPanel {
                ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAOUsuarios.sqlInsert(new ClPasajeros(txtRutUsuario.getText()
-                                                        , txtNombreUsuario.getText()
-                                                        , txtConstrasenaUsuario.getText()
-                                                        , txtApePaterno.getText()
-                                                        , txtApeMaterno.getText()
-                                                        , txtTelefono.getText()
-                                                        , txtMailUsuario.getText()
-                                                        , txtDireccionUsuario.getText()
-                                                        , Formularios.deStringAFecha(txtFechaNacUsu.getText())
-                                                        , id_rol)
-                                         );
-            JOptionPane.showMessageDialog(this, "Agregado");
+                try {
+                    DAOUsuarios.sqlInsert(new ClPasajeros(txtRutUsuario.getText()
+                            , txtNombreUsuario.getText()
+                            , txtConstrasenaUsuario.getText()
+                            , txtApePaterno.getText()
+                            , txtApeMaterno.getText()
+                            , txtTelefono.getText()
+                            , txtMailUsuario.getText()
+                            , txtDireccionUsuario.getText()
+                            , Formularios.deStringAFecha(txtFechaNacUsu.getText())
+                            , id_rol)
+                    );
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                }
             Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
         }else{
-            DAOUsuarios.sqlUpdate(new ClPasajeros(  this.id
-                                                    , txtRutUsuario.getText()
-                                                    , txtNombreUsuario.getText()
-                                                    , txtConstrasenaUsuario.getText()
-                                                    , txtApePaterno.getText()
-                                                    , txtApeMaterno.getText()
-                                                    , txtTelefono.getText()
-                                                    , txtMailUsuario.getText()
-                                                    , txtDireccionUsuario.getText()
-                                                    , Formularios.deStringAFecha(txtFechaNacUsu.getText())
-                                                    , id_rol
-                                ));
-        JOptionPane.showMessageDialog(this, "Modificado");
+            try {
+                DAOUsuarios.sqlUpdate(new ClPasajeros(  this.id
+                        , txtRutUsuario.getText()
+                        , txtNombreUsuario.getText()
+                        , txtConstrasenaUsuario.getText()
+                        , txtApePaterno.getText()
+                        , txtApeMaterno.getText()
+                        , txtTelefono.getText()
+                        , txtMailUsuario.getText()
+                        , txtDireccionUsuario.getText()
+                        , Formularios.deStringAFecha(txtFechaNacUsu.getText())
+                        , id_rol
+                ));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }  
         Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);
