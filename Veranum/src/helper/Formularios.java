@@ -7,6 +7,7 @@ package helper;
 
 import java.awt.Component;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -56,7 +57,7 @@ public class Formularios {
         }
         
     }
-    
+       
     public static void soloNumeros(java.awt.event.KeyEvent evt)
     {
         char c = evt.getKeyChar();
@@ -163,5 +164,7 @@ public class Formularios {
                 }
         }
         
-    } 
+    }   
+     
+     
 }
