@@ -231,10 +231,11 @@ public class panelRoles extends javax.swing.JPanel {
                 try {
                     DAORol.sqlInsert(new ClRol(txtNombreRol.getText()
                             , txtDescripcionRol.getText())
-                    );  } catch (SQLException ex) {
-                    Logger.getLogger(panelRoles.class.getName()).log(Level.SEVERE, null, ex);
+                    );  
+                    JOptionPane.showMessageDialog(this, "Agregado");
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Error a insertar el dato.");
                 }
-            JOptionPane.showMessageDialog(this, "Agregado");
             Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
