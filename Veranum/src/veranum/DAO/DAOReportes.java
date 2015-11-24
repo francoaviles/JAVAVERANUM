@@ -62,5 +62,24 @@ public class DAOReportes {
             
         }     
         return reportes;
-    }  
+    }
+    
+    public static ArrayList sqlBuscarByNombre(String archivo){
+        ArrayList<ClReportes> reportes = new ArrayList<>();        
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"reportes\" WHERE \"archivo\" LIKE '%"+archivo+"%'")){
+            return null;
+        }
+        while(OracleConection.getInstance().sqlFetch()){
+            reportes.add(new ClReportes(OracleConection.getInstance().getInt("id_reporte")
+                                    , OracleConection.getInstance().getDate("fecha_creacion")
+                                    , OracleConection.getInstance().getInt("id_tipo_reporte")
+                                    , OracleConection.getInstance().getString("archivo")
+                                    , OracleConection.getInstance().getString("comentario")
+                                ));
+            
+        }     
+        return reportes;
+    }
+    
+    
 }

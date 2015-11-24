@@ -326,7 +326,7 @@ public class panelTipoCaract extends javax.swing.JPanel {
         if(todos)
             dato = DAOTipoCaract.sqlLeerTodos();
         else 
-            dato = DAOTipoCaract.sqlBuscarByNombre(txtNombre.getText());
+            dato = DAOTipoCaract.sqlBuscarByNombre(txtBuscar.getText());
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  

@@ -380,8 +380,8 @@ public class panelReportes extends javax.swing.JPanel {
         if(todos)
             dato = DAOReportes.sqlLeerTodos();
         else 
-            //dato = DAOReportes.sqlBuscarByNombre(txtArchivo.getText());
-            dato = DAOReportes.sqlLeerTodos();
+            dato = DAOReportes.sqlBuscarByNombre(txtBuscar.getText());
+            //dato = DAOReportes.sqlLeerTodos();
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  

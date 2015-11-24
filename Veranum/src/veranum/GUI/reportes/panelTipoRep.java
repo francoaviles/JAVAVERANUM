@@ -323,7 +323,7 @@ public class panelTipoRep extends javax.swing.JPanel {
         if(todos)
             dato = DAOTipoRep.sqlLeerTodos();
         else 
-            dato = DAOTipoRep.sqlBuscarByNombre(txtNombre.getText());
+            dato = DAOTipoRep.sqlBuscarByNombre(txtBuscar.getText());
         
         dt =  (DefaultTableModel) grDatos.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  
