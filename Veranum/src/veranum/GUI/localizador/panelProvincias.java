@@ -60,6 +60,12 @@ public class panelProvincias extends javax.swing.JPanel {
 
         lbNombreProvincia.setText("Nombre Provincia:");
 
+        txtNombreProvincia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreProvinciaKeyTyped(evt);
+            }
+        });
+
         lbRegionProvincia.setText("Región:");
 
         btGrabarProvincia.setText("Grabar");
@@ -267,6 +273,13 @@ public class panelProvincias extends javax.swing.JPanel {
         this.paraGrabar = false;
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarProvinciaActionPerformed
+
+    private void txtNombreProvinciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProvinciaKeyTyped
+        if (!(txtNombreProvincia.getText().length() < 40)) {
+            Formularios.limpiarTxt(txtNombreProvincia);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreProvinciaKeyTyped
 
 
     private void cargarRegiones(){

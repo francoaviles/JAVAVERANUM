@@ -61,6 +61,12 @@ public class panelServicios extends javax.swing.JPanel {
 
         lbPrecioServicio.setText("Precio:");
 
+        txtNombreServicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreServicioKeyTyped(evt);
+            }
+        });
+
         txtPrecioServicio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrecioServicioKeyTyped(evt);
@@ -202,6 +208,10 @@ public class panelServicios extends javax.swing.JPanel {
 
     private void txtPrecioServicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioServicioKeyTyped
         helper.Formularios.soloNumeros(evt);
+        if (!(txtPrecioServicio.getText().length() < 5)) {
+            Formularios.limpiarTxt(txtPrecioServicio);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
     }//GEN-LAST:event_txtPrecioServicioKeyTyped
 
     private void btGrabarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarServicioActionPerformed
@@ -275,6 +285,13 @@ public class panelServicios extends javax.swing.JPanel {
         this.paraGrabar = false;
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarServicioActionPerformed
+
+    private void txtNombreServicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreServicioKeyTyped
+        if (!(txtNombreServicio.getText().length() < 30)) {
+            Formularios.limpiarTxt(txtNombreServicio);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreServicioKeyTyped
 
     // Method Custom
     private void leerServicio(int id){

@@ -119,6 +119,18 @@ public class panelTipoCaract extends javax.swing.JPanel {
 
         lbDescripción.setText("Descripción:");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
+        txtDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescripcionKeyTyped(evt);
+            }
+        });
+
         btGrabar.setText("Grabar");
         btGrabar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,6 +285,20 @@ public class panelTipoCaract extends javax.swing.JPanel {
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
         }
     }//GEN-LAST:event_grDatosMouseClicked
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        if (!(txtNombre.getText().length() < 30)) {
+            Formularios.limpiarTxt(txtNombre);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyTyped
+        if (!(txtDescripcion.getText().length() < 30)) {
+            Formularios.limpiarTxt(txtDescripcion);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtDescripcionKeyTyped
 
     // Method Custom    
     private void leer(int id){

@@ -133,8 +133,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombreRegion">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreRegionKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRegionOrdinal">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRegionOrdinalKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btGrabarRegion">
       <Properties>

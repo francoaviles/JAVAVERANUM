@@ -247,8 +247,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtComentario">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtComentarioKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombre">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btDesactivarEditar">
       <Properties>

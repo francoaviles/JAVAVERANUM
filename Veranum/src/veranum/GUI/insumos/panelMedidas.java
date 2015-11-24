@@ -111,6 +111,12 @@ public class panelMedidas extends javax.swing.JPanel {
 
         lbNombreMedida.setText("Nombre Medida");
 
+        txtNombreMedida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreMedidaKeyTyped(evt);
+            }
+        });
+
         btGrabar.setText("Grabar");
         btGrabar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,6 +261,13 @@ public class panelMedidas extends javax.swing.JPanel {
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
         }
     }//GEN-LAST:event_grDatosMouseClicked
+
+    private void txtNombreMedidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreMedidaKeyTyped
+        if (!(txtNombreMedida.getText().length() < 20)) {
+            Formularios.limpiarTxt(txtNombreMedida);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreMedidaKeyTyped
 
     // Method Custom    
     private void leer(int id){

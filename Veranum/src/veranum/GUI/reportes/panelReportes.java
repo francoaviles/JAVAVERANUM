@@ -84,7 +84,18 @@ public class panelReportes extends javax.swing.JPanel {
 
         txtComentario.setColumns(20);
         txtComentario.setRows(5);
+        txtComentario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtComentarioKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtComentario);
+
+        txtArchivo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtArchivoKeyTyped(evt);
+            }
+        });
 
         btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
         btEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -310,6 +321,20 @@ public class panelReportes extends javax.swing.JPanel {
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
         }
     }//GEN-LAST:event_grDatosMouseClicked
+
+    private void txtComentarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComentarioKeyTyped
+        if (!(txtComentario.getText().length() < 200)) {
+            Formularios.limpiarTxt(txtComentario);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtComentarioKeyTyped
+
+    private void txtArchivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtArchivoKeyTyped
+        if (!(txtArchivo.getText().length() < 50)) {
+            Formularios.limpiarTxt(txtArchivo);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtArchivoKeyTyped
 
     // Method Custom    
     private void cargarTipoRep(){

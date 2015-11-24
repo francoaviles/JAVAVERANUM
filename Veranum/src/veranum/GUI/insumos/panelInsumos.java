@@ -57,6 +57,18 @@ public class panelInsumos extends javax.swing.JPanel {
         btDesactivarEditarInsumos = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
+        txtDescripcionInsumos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescripcionInsumosKeyTyped(evt);
+            }
+        });
+
+        txtNombreInsumos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreInsumosKeyTyped(evt);
+            }
+        });
+
         btEditarInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
         btEditarInsumos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +281,20 @@ public class panelInsumos extends javax.swing.JPanel {
         this.paraGrabar = false;
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarInsumosActionPerformed
+
+    private void txtNombreInsumosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreInsumosKeyTyped
+        if (!(txtNombreInsumos.getText().length() < 25)) {
+            Formularios.limpiarTxt(txtNombreInsumos);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreInsumosKeyTyped
+
+    private void txtDescripcionInsumosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionInsumosKeyTyped
+        if (!(txtDescripcionInsumos.getText().length() < 60)) {
+            Formularios.limpiarTxt(txtDescripcionInsumos);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtDescripcionInsumosKeyTyped
 
     // Method Custom
     private void leerInsumos(int id){

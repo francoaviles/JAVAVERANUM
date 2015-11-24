@@ -55,6 +55,12 @@ public class panelTipoHab extends javax.swing.JPanel {
 
         lbNombreServicio.setText("Nombre:");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
         btGrabar.setText("Grabar");
         btGrabar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,6 +257,13 @@ public class panelTipoHab extends javax.swing.JPanel {
         this.paraGrabar = false;
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarActionPerformed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        if (!(txtNombre.getText().length() < 20)) {
+            Formularios.limpiarTxt(txtNombre);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
 
     // Method Custom
     private void leer(int id){

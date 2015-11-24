@@ -177,18 +177,15 @@ public class MainVeranum extends javax.swing.JFrame {
     private void txtRutKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyTyped
         Formularios.validarRut(evt);
         if (!(txtRut.getText().length() < 9)) {
-            //evt.setKeyChar('\0');
-            //evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-            //Formularios.limpiar(txtRut);
-            txtRut.setText("");
-            JOptionPane.showMessageDialog(this, "Ingreso de máximo de 9 caracteres");
+            Formularios.limpiarTxt(txtRut);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         } 
     }//GEN-LAST:event_txtRutKeyTyped
 
     private void txtContrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyTyped
         if (!(txtContrasena.getText().length() < 30)) {
-            //evt.setKeyChar('\0');
-            JOptionPane.showMessageDialog(this, "Ingreso de máximo de 9 caracteres"); 
+            Formularios.limpiarTxt(txtContrasena);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado"); 
         } 
     }//GEN-LAST:event_txtContrasenaKeyTyped
 

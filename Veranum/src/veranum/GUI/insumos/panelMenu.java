@@ -70,6 +70,12 @@ public class panelMenu extends javax.swing.JPanel {
             }
         });
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
         lbTipoMenu.setText("Tipo Menú:");
 
         btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
@@ -281,6 +287,13 @@ public class panelMenu extends javax.swing.JPanel {
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
         }
     }//GEN-LAST:event_grDatosMouseClicked
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        if (!(txtNombre.getText().length() < 25)) {
+            Formularios.limpiarTxt(txtNombre);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
 
     // Method Custom    
     private void cargarTipoMenu(){

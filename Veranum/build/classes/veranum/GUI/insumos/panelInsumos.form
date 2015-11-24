@@ -101,8 +101,14 @@
     <Component class="javax.swing.JTextField" name="txtBuscarInsumos">
     </Component>
     <Component class="javax.swing.JTextField" name="txtDescripcionInsumos">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDescripcionInsumosKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombreInsumos">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreInsumosKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btEditarInsumos">
       <Properties>

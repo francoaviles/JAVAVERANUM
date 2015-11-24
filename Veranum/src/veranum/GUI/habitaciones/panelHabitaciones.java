@@ -76,6 +76,12 @@ public class panelHabitaciones extends javax.swing.JPanel {
 
         lbUbicacion.setText("Ubicación:");
 
+        txtUbicacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUbicacionKeyTyped(evt);
+            }
+        });
+
         lbCantPersonas.setText("Cantidad de Personas:");
 
         txtCantPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -85,6 +91,12 @@ public class panelHabitaciones extends javax.swing.JPanel {
         });
 
         lbPrecio.setText("Precio:");
+
+        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyTyped(evt);
+            }
+        });
 
         lbTipo.setText("Tipo:");
 
@@ -346,7 +358,26 @@ public class panelHabitaciones extends javax.swing.JPanel {
 
     private void txtCantPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantPersonasKeyTyped
         Formularios.soloNumeros(evt);
+        if (!(txtCantPersonas.getText().length() < 3)) {
+            Formularios.limpiarTxt(txtCantPersonas);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
     }//GEN-LAST:event_txtCantPersonasKeyTyped
+
+    private void txtUbicacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUbicacionKeyTyped
+        if (!(txtUbicacion.getText().length() < 10)) {
+            Formularios.limpiarTxt(txtUbicacion);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtUbicacionKeyTyped
+
+    private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
+        Formularios.soloNumeros(evt);
+        if (!(txtPrecio.getText().length() < 6)) {
+            Formularios.limpiarTxt(txtPrecio);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtPrecioKeyTyped
 
     // Method Custom
     

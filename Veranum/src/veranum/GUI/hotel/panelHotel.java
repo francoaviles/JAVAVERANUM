@@ -89,6 +89,18 @@ public class panelHotel extends javax.swing.JPanel {
             }
         });
 
+        txtNombreHotel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreHotelKeyTyped(evt);
+            }
+        });
+
+        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionKeyTyped(evt);
+            }
+        });
+
         lbRegion.setText("Región:");
 
         lbProvincia.setText("Provincia:");
@@ -371,6 +383,20 @@ public class panelHotel extends javax.swing.JPanel {
         this.paraGrabar = false;
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarHotelActionPerformed
+
+    private void txtNombreHotelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreHotelKeyTyped
+        if (!(txtNombreHotel.getText().length() < 30)) {
+            Formularios.limpiarTxt(txtNombreHotel);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreHotelKeyTyped
+
+    private void txtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyTyped
+        if (!(txtDireccion.getText().length() < 50)) {
+            Formularios.limpiarTxt(txtDireccion);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtDireccionKeyTyped
 
     private void cargarProvincias(){
         int id_region = ((ClRegion)cbRegion.getSelectedItem()).getIdRegion();

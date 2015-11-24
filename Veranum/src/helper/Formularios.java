@@ -56,6 +56,13 @@ public class Formularios {
         }
         
     }
+    
+    public static void limpiarTxt(Component component) {
+        if (component instanceof JTextField) {
+            JTextField text = (JTextField) component;
+            text.setText("");
+        }
+    }
        
     public static void soloNumeros(java.awt.event.KeyEvent evt)
     {

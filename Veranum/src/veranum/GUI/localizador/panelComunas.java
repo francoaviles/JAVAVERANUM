@@ -64,6 +64,12 @@ public class panelComunas extends javax.swing.JPanel {
 
         lbProvinciaComuna.setText("Provincia:");
 
+        txtNombreComuna.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreComunaKeyTyped(evt);
+            }
+        });
+
         btGrabarComuna.setText("Grabar");
         btGrabarComuna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +275,13 @@ public class panelComunas extends javax.swing.JPanel {
         this.paraGrabar = false;
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarComunaActionPerformed
+
+    private void txtNombreComunaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreComunaKeyTyped
+        if (!(txtNombreComuna.getText().length() < 40)) {
+            Formularios.limpiarTxt(txtNombreComuna);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreComunaKeyTyped
 
     
     private void cargarProvincias(){

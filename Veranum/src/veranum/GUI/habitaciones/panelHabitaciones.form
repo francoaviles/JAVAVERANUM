@@ -133,6 +133,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtUbicacion">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUbicacionKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbCantPersonas">
       <Properties>
@@ -150,6 +153,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPrecio">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPrecioKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbTipo">
       <Properties>

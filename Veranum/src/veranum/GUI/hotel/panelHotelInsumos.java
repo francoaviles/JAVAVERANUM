@@ -317,6 +317,10 @@ public class panelHotelInsumos extends javax.swing.JPanel {
 
     private void txtStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockKeyTyped
         Formularios.soloNumeros(evt);
+        if (!(txtStock.getText().length() < 4)) {
+            Formularios.limpiarTxt(txtStock);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
     }//GEN-LAST:event_txtStockKeyTyped
 
     // Method Custom

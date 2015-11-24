@@ -113,6 +113,12 @@ public class panelTipoMenu extends javax.swing.JPanel {
 
         lbNombreTipoMenu.setText("Nombre Tipo Menú:");
 
+        txtNombreTipoMenu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreTipoMenuKeyTyped(evt);
+            }
+        });
+
         btGrabar.setText("Grabar");
         btGrabar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,6 +285,13 @@ public class panelTipoMenu extends javax.swing.JPanel {
             Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
         }
     }//GEN-LAST:event_grDatosMouseClicked
+
+    private void txtNombreTipoMenuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreTipoMenuKeyTyped
+        if (!(txtNombreTipoMenu.getText().length() < 30)) {
+            Formularios.limpiarTxt(txtNombreTipoMenu);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreTipoMenuKeyTyped
 
     // Method Custom    
     private void leer(int id){

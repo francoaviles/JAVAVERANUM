@@ -102,6 +102,48 @@ public class panelCliente extends javax.swing.JPanel {
             }
         });
 
+        txtNombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreUsuarioKeyTyped(evt);
+            }
+        });
+
+        txtConstrasenaUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtConstrasenaUsuarioKeyTyped(evt);
+            }
+        });
+
+        txtApePaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApePaternoKeyTyped(evt);
+            }
+        });
+
+        txtApeMaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApeMaternoKeyTyped(evt);
+            }
+        });
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
+
+        txtMailUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMailUsuarioKeyTyped(evt);
+            }
+        });
+
+        txtDireccionUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionUsuarioKeyTyped(evt);
+            }
+        });
+
         btGrabarUsuarios.setText("Grabar");
         btGrabarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -408,10 +450,59 @@ public class panelCliente extends javax.swing.JPanel {
     private void txtRutUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutUsuarioKeyTyped
         Formularios.validarRut(evt);
         if (!(txtRutUsuario.getText().length() < 9)) {
-            //evt.setKeyChar('\0');
-            JOptionPane.showMessageDialog(this, "Ingreso de máximo de 9 caracteres"); 
+            Formularios.limpiarTxt(txtRutUsuario);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         } 
     }//GEN-LAST:event_txtRutUsuarioKeyTyped
+
+    private void txtNombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreUsuarioKeyTyped
+        if (!(txtNombreUsuario.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtNombreUsuario);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreUsuarioKeyTyped
+
+    private void txtConstrasenaUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConstrasenaUsuarioKeyTyped
+        if (!(txtConstrasenaUsuario.getText().length() < 30)) {
+            Formularios.limpiarTxt(txtConstrasenaUsuario);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtConstrasenaUsuarioKeyTyped
+
+    private void txtApePaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApePaternoKeyTyped
+        if (!(txtApePaterno.getText().length() < 20)) {
+            Formularios.limpiarTxt(txtApePaterno);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtApePaternoKeyTyped
+
+    private void txtApeMaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApeMaternoKeyTyped
+        if (!(txtApeMaterno.getText().length() < 20)) {
+            Formularios.limpiarTxt(txtApeMaterno);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtApeMaternoKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        if (!(txtTelefono.getText().length() < 20)) {
+            Formularios.limpiarTxt(txtTelefono);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtMailUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMailUsuarioKeyTyped
+        if (!(txtMailUsuario.getText().length() < 20)) {
+            Formularios.limpiarTxt(txtMailUsuario);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtMailUsuarioKeyTyped
+
+    private void txtDireccionUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionUsuarioKeyTyped
+        if (!(txtDireccionUsuario.getText().length() < 50)) {
+            Formularios.limpiarTxt(txtDireccionUsuario);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtDireccionUsuarioKeyTyped
 
     // Method Custom
     private void cargarRol(){

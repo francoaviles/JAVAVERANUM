@@ -83,6 +83,18 @@ public class panelRegion extends javax.swing.JPanel {
             }
         });
 
+        txtNombreRegion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreRegionKeyTyped(evt);
+            }
+        });
+
+        txtRegionOrdinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRegionOrdinalKeyTyped(evt);
+            }
+        });
+
         btGrabarRegion.setText("Grabar");
         btGrabarRegion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,6 +275,20 @@ public class panelRegion extends javax.swing.JPanel {
             Formularios.ActiveBotonesEliminarEditar(btEditarRegion, btEliminar);
         }
     }//GEN-LAST:event_grRegionMouseClicked
+
+    private void txtNombreRegionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreRegionKeyTyped
+        if (!(txtNombreRegion.getText().length() < 40)) {
+            Formularios.limpiarTxt(txtNombreRegion);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreRegionKeyTyped
+
+    private void txtRegionOrdinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRegionOrdinalKeyTyped
+        if (!(txtNombreRegion.getText().length() < 4)) {
+            Formularios.limpiarTxt(txtNombreRegion);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtRegionOrdinalKeyTyped
     
     private void leerRegion(int id){
         this.id = id;

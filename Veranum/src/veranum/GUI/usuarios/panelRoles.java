@@ -60,6 +60,12 @@ public class panelRoles extends javax.swing.JPanel {
 
         lbNombreRol.setText("Nombre Rol:");
 
+        txtNombreRol.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreRolKeyTyped(evt);
+            }
+        });
+
         btGrabarRol.setText("Grabar");
         btGrabarRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +77,11 @@ public class panelRoles extends javax.swing.JPanel {
 
         txtDescripcionRol.setColumns(20);
         txtDescripcionRol.setRows(5);
+        txtDescripcionRol.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescripcionRolKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtDescripcionRol);
 
         btEliminarRoles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
@@ -274,6 +285,20 @@ public class panelRoles extends javax.swing.JPanel {
         this.paraGrabar = false;
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarRolesActionPerformed
+
+    private void txtNombreRolKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreRolKeyTyped
+        if (!(txtNombreRol.getText().length() < 25)) {
+            Formularios.limpiarTxt(txtNombreRol);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtNombreRolKeyTyped
+
+    private void txtDescripcionRolKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionRolKeyTyped
+        if (!(txtDescripcionRol.getText().length() < 100)) {
+            Formularios.limpiarTxt(txtDescripcionRol);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtDescripcionRolKeyTyped
 
     // Method Custom
     private void leerRol(int id){
