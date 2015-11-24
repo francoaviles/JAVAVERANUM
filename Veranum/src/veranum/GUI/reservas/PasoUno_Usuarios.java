@@ -6,6 +6,7 @@
 package veranum.GUI.reservas;
 
 import helper.Formularios;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import veranum.DAO.DAOUsuarios;
 import veranum.entities.ClPasajeros;
@@ -70,6 +71,7 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
 
         lbApePaterno.setText("Apellido Paterno:");
 
+        txtRutUsuario.setName("rut"); // NOI18N
         txtRutUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtRutUsuarioFocusLost(evt);
@@ -240,6 +242,13 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_txtFechaNacUsuFocusLost
 
     private void txtRutUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutUsuarioFocusLost
+        if(!Formularios.validarRut(txtRutUsuario.getText())){
+            JOptionPane.showMessageDialog(this, "Rut Inválido");
+            Formularios.limpiar(this);
+            return;
+        }
+        
+        
         if(!"".equals(txtRutUsuario.getText())){
             user = leerUsuarios(txtRutUsuario.getText().toUpperCase());
             if(user != null){
@@ -248,13 +257,14 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
             } else {
                 lblMensajeExists.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/error.png")));
                 lblMensajeExists.setText("Cliente NO existe. Llenar los datos.");
+                Formularios.limpiar(this, "rut");
             }
         }
     }//GEN-LAST:event_txtRutUsuarioFocusLost
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
 
-        /* if(user == null){
+        if(user == null){
             int id_rol = 3; //Cliente
             if(true){
                 user = new ClPasajeros(txtRutUsuario.getText()
@@ -270,8 +280,9 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
                  DAOUsuarios.sqlInsert(user);
                  user.setIdPasajero(DAOUsuarios.sqlLastID());
             }
-        } */
-        System.out.println("click");
+        } 
+        myTab.setEnabledAt(1, true);
+        myTab.setComponentAt(1, new PasoDos_Reserva(myTab, user));
         myTab.setSelectedIndex(1);
 
     }//GEN-LAST:event_btnSiguienteActionPerformed
@@ -286,16 +297,18 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
 
     private ClPasajeros leerUsuarios(String rut){
         ClPasajeros usu = DAOUsuarios.sqlLeer(rut.toUpperCase());
-        txtRutUsuario.setText(usu.getRut());
-        txtNombreUsuario.setText(usu.getNombre());
-        txtConstrasenaUsuario.setText(usu.getContrasena());
-        txtApePaterno.setText(usu.getApellido_pa());
-        txtApeMaterno.setText(usu.getApellido_ma());
-        txtTelefono.setText(usu.getTelefono());
-        txtMailUsuario.setText(usu.getEmail());
-        txtDireccionUsuario.setText(usu.getDireccion());
-        txtTelefono.setText(usu.getTelefono());
-        txtFechaNacUsu.setValue(usu.getStringFechaNac());
+        if(usu != null) {
+            txtRutUsuario.setText(usu.getRut());
+            txtNombreUsuario.setText(usu.getNombre());
+            txtConstrasenaUsuario.setText(usu.getContrasena());
+            txtApePaterno.setText(usu.getApellido_pa());
+            txtApeMaterno.setText(usu.getApellido_ma());
+            txtTelefono.setText(usu.getTelefono());
+            txtMailUsuario.setText(usu.getEmail());
+            txtDireccionUsuario.setText(usu.getDireccion());
+            txtTelefono.setText(usu.getTelefono());
+            txtFechaNacUsu.setValue(usu.getStringFechaNac());
+        }
         return usu;
     }
 

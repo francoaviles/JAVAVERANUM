@@ -25,6 +25,41 @@ import javax.swing.JViewport;
 public class Formularios {
     public static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     
+    public static void limpiar(JComponent obj, String excepto){
+        Object[] arrObj = obj.getComponents();
+        for(int x = 0; x< arrObj.length ; x++){
+            if(arrObj[x] instanceof JTextField)
+            {
+                JTextField ii = (JTextField)arrObj[x];
+                if(!"rut".equals(ii.getName()))
+                    ii.setText("");                
+            } 
+            
+            if(arrObj[x] instanceof JTextArea){
+                JTextArea xx = (JTextArea)arrObj[x];
+                 if(!"rut".equals(xx.getName()))
+                xx.setText("");
+            }
+            
+
+            if(arrObj[x] instanceof JScrollPane)
+            {
+                Object[] sad = ((JScrollPane)arrObj[x]).getComponents();
+                for(int i = 0; i< sad.length ; i++){
+                    if(sad[i] instanceof JViewport) {
+                        Component o = ((JViewport)sad[i]).getView();
+                        if(o instanceof JTextArea){
+                            JTextArea xx = (JTextArea)o;
+                             if(!"rut".equals(xx.getName()))
+                            xx.setText("");
+                        }
+                    }      
+                }
+            } 
+        }
+        
+    }
+    
     public static void limpiar(JComponent obj){
         Object[] arrObj = obj.getComponents();
         for(int x = 0; x< arrObj.length ; x++){

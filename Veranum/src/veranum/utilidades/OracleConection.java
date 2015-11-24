@@ -11,12 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import static java.sql.Types.ROWID;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static oracle.jdbc.OracleTypes.ROWID;
-import oracle.sql.ROWID;
 
 /**
  *
@@ -64,6 +61,26 @@ public class OracleConection {
                  System.out.println("Error a conectar " + e.getMessage());
         }
         return this;
+    }
+    
+    public PreparedStatement sqlPreparar(String sql){
+        try {
+            ps = conexion.prepareStatement(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(OracleConection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ps;
+    }
+    
+    
+    public boolean sqlEjecutarPreparacion(){
+        try {
+            rs = ps.executeQuery();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(OracleConection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
         
     public boolean sqlEjecutar(String sql){

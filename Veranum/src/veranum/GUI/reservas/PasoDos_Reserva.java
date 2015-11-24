@@ -5,7 +5,10 @@
  */
 package veranum.GUI.reservas;
 
+import helper.Formularios;
 import javax.swing.JTabbedPane;
+import veranum.DAO.DAOHoteles;
+import veranum.DAO.DAOTipoHab;
 import veranum.entities.ClPasajeros;
 
 /**
@@ -13,14 +16,19 @@ import veranum.entities.ClPasajeros;
  * @author Duoc
  */
 public class PasoDos_Reserva extends javax.swing.JPanel {
-
+    private JTabbedPane myTab;
+    private ClPasajeros pasajero;
     /**
      * Creates new form PasoDos_Reserva
+     * @param t
      * @param pasajero
      */
     public PasoDos_Reserva(JTabbedPane t, ClPasajeros pasajero) {
         initComponents();
-        System.out.println("reserva");
+        this.cargarHotel();
+        this.cargarTipoHab();
+        this.myTab = t;
+        this.pasajero = pasajero;
     }
 
     /**
@@ -32,30 +40,235 @@ public class PasoDos_Reserva extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
+        lbFechaIngreso = new javax.swing.JLabel();
+        txtFechaIngreso = new javax.swing.JFormattedTextField();
+        txtFechaSalida = new javax.swing.JFormattedTextField();
+        lbFechaSalida = new javax.swing.JLabel();
+        lblFechas = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        lblHotel = new javax.swing.JLabel();
+        cbHotel = new javax.swing.JComboBox();
+        lblTipo = new javax.swing.JLabel();
+        cbTipo = new javax.swing.JComboBox();
+        lblCantPersonas = new javax.swing.JLabel();
+        txtCantPersonas = new javax.swing.JTextField();
+        btnBuscarHabitaciones = new javax.swing.JButton();
 
-        jButton1.setText("jButton1");
+        btnAtras.setBackground(new java.awt.Color(255, 255, 255));
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/atras.png"))); // NOI18N
+        btnAtras.setText("Atrás");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+
+        lblTitulo.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        lblTitulo.setText("Reservar Habitación");
+
+        lbFechaIngreso.setText("Fecha Ingreso:");
+
+        txtFechaIngreso.setFormatterFactory(new javax.swing.JFormattedTextField.AbstractFormatterFactory(){
+            public javax.swing.JFormattedTextField.AbstractFormatter
+            getFormatter(javax.swing.JFormattedTextField tf) {
+
+                try {
+                    javax.swing.text.MaskFormatter mf = new javax.swing.text.MaskFormatter("##/##/####");
+                    mf.setPlaceholderCharacter('_');
+                    return mf;
+                } catch(java.text.ParseException pe){
+                    pe.printStackTrace();
+                }
+                return null;
+            }
+        });
+        txtFechaIngreso.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFechaIngresoFocusLost(evt);
+            }
+        });
+
+        txtFechaSalida.setFormatterFactory(new javax.swing.JFormattedTextField.AbstractFormatterFactory(){
+            public javax.swing.JFormattedTextField.AbstractFormatter
+            getFormatter(javax.swing.JFormattedTextField tf) {
+
+                try {
+                    javax.swing.text.MaskFormatter mf = new javax.swing.text.MaskFormatter("##/##/####");
+                    mf.setPlaceholderCharacter('_');
+                    return mf;
+                } catch(java.text.ParseException pe){
+                    pe.printStackTrace();
+                }
+                return null;
+            }
+        });
+        txtFechaSalida.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFechaSalidaFocusLost(evt);
+            }
+        });
+
+        lbFechaSalida.setText("Fecha Salida:");
+
+        lblFechas.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        lblFechas.setText("Fechas de reserva: ");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "Ubicación", "Cant. Personas", "Precio", "Tipo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        lblHotel.setText("Hotel: ");
+
+        lblTipo.setText("Tipo:");
+
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todas" }));
+
+        lblCantPersonas.setText("Cant. Personas:");
+
+        btnBuscarHabitaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(jButton1)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblHotel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTipo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCantPersonas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBuscarHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 201, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(lbFechaIngreso)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbFechaSalida)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblFechas))
+                            .addComponent(lblTitulo)))
+                    .addComponent(btnAtras))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(jButton1)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addComponent(lblTitulo)
+                .addGap(18, 18, 18)
+                .addComponent(lblFechas)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbFechaIngreso)
+                    .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbFechaSalida)
+                    .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHotel)
+                    .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTipo)
+                    .addComponent(lblCantPersonas)
+                    .addComponent(btnBuscarHabitaciones)
+                    .addComponent(txtCantPersonas)
+                    .addComponent(cbTipo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(104, 104, 104)
+                .addComponent(btnAtras)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        myTab.setEnabledAt(1, false);
+        myTab.setSelectedIndex(0);
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
+    private void txtFechaIngresoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFechaIngresoFocusLost
+        Formularios.deStringAFecha(txtFechaIngreso.getText());
+    }//GEN-LAST:event_txtFechaIngresoFocusLost
+
+    private void txtFechaSalidaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFechaSalidaFocusLost
+        Formularios.deStringAFecha(txtFechaSalida.getText());
+    }//GEN-LAST:event_txtFechaSalidaFocusLost
+
+
+    private void cargarHotel(){
+        for (Object dato : DAOHoteles.sqlLeerTodos()) {
+            cbHotel.addItem(dato);
+        }
+    }
+    
+    private void cargarTipoHab(){
+        for (Object dato : DAOTipoHab.sqlLeerTodos()) {
+            cbTipo.addItem(dato);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnBuscarHabitaciones;
+    private javax.swing.JComboBox cbHotel;
+    private javax.swing.JComboBox cbTipo;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbFechaIngreso;
+    private javax.swing.JLabel lbFechaSalida;
+    private javax.swing.JLabel lblCantPersonas;
+    private javax.swing.JLabel lblFechas;
+    private javax.swing.JLabel lblHotel;
+    private javax.swing.JLabel lblTipo;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txtCantPersonas;
+    private javax.swing.JFormattedTextField txtFechaIngreso;
+    private javax.swing.JFormattedTextField txtFechaSalida;
     // End of variables declaration//GEN-END:variables
 }

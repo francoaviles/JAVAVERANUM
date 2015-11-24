@@ -20,6 +20,9 @@ public class MainReserva extends javax.swing.JInternalFrame {
         tabReservas.addTab("Reservas", new PasoUno_Usuarios(tabReservas));
         tabReservas.addTab("Servicios", new PasoUno_Usuarios(tabReservas));
         tabReservas.addTab("Finalizar", new PasoUno_Usuarios(tabReservas));
+        tabReservas.setEnabledAt(1, false);
+        tabReservas.setEnabledAt(2, false);
+        tabReservas.setEnabledAt(3, false);
     }
 
     /**

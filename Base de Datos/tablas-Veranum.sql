@@ -104,7 +104,7 @@ CREATE TABLE "caracteristicas" (
 	"id_caracteristica" NUMBER NOT NULL,
 	"id_tipo_caract" Number NOT NULL,
 	"cantidad" Number NOT NULL,
-	"tipo" Varchar2(15) NOT NULL
+	"tipo" Varchar2(20) NOT NULL
 );
 /
 -- Keys
@@ -218,7 +218,7 @@ CREATE TABLE "convenios" (
 	"id_empresa" Number NOT NULL,
 	"fecha_inicio" Date,
 	"fecha_fin" Date,
-	"estado" Varchar2(10) NOT NULL
+	"estado" Varchar2(20) NOT NULL
 );
 /
 -- Keys
@@ -238,13 +238,13 @@ ALTER TABLE "hoteles_convenios" ADD CONSTRAINT "hoteles_conveniosPrimary" PRIMAR
 -- pasajeros
 CREATE TABLE "pasajeros" (
 	"id_pasajero" NUMBER NOT NULL,
-	"rut" Varchar2(12) NOT NULL,
-	"nombre" Varchar2(15) NOT NULL,
+	"rut" Varchar2(13) NOT NULL,
+	"nombre" Varchar2(18) NOT NULL,
 	"contrasena" Varchar2(255) NOT NULL,
 	"apellido_pa" Varchar2(20) NOT NULL,
 	"apellido_ma" Varchar2(20) NOT NULL,
 	"telefono" Varchar2(15) NOT NULL,
-	"email" Varchar2(20) NOT NULL,
+	"email" Varchar2(50) NOT NULL,
 	"id_region" Number,
 	"id_provincia" Number,
 	"id_comuna" Number,
