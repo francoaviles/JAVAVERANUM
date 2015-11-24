@@ -228,7 +228,11 @@ public class panelServicios extends javax.swing.JPanel {
     }//GEN-LAST:event_btGrabarServicioActionPerformed
 
     private void btBuscarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarServicioActionPerformed
-        this.leerTodos(false);
+        if(txtBuscarServicio.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodos(false);
+        } 
     }//GEN-LAST:event_btBuscarServicioActionPerformed
 
     private void grServicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grServicioMouseClicked

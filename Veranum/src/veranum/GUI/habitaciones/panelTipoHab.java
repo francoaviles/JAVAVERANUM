@@ -204,7 +204,11 @@ public class panelTipoHab extends javax.swing.JPanel {
     }//GEN-LAST:event_btGrabarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        this.leerTodos(false);
+        if(txtBuscar.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodos(false);
+        } 
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked

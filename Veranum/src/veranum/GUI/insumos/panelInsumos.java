@@ -193,7 +193,7 @@ public class panelInsumos extends javax.swing.JPanel {
                     .addComponent(lbDescripcionInsumos)
                     .addComponent(txtDescripcionInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btGrabarInsumos)
+                .addComponent(btGrabarInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(210, 210, 210))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -245,7 +245,11 @@ public class panelInsumos extends javax.swing.JPanel {
     }//GEN-LAST:event_btBuscarTodosInsumosActionPerformed
 
     private void btBuscarInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarInsumosActionPerformed
-        this.leerTodos(false);
+        if(txtBuscarInsumos.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodos(false);
+        } 
     }//GEN-LAST:event_btBuscarInsumosActionPerformed
 
     private void grInsumosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grInsumosMouseClicked

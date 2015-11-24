@@ -218,7 +218,11 @@ public class panelTipoRep extends javax.swing.JPanel {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        this.leerTodos(false);
+        if(txtBuscar.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodos(false);
+        } 
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosActionPerformed
@@ -232,7 +236,7 @@ public class panelTipoRep extends javax.swing.JPanel {
 
     private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
         if(!paraGrabar){
-            if(txtNombre.getText().equals("")){
+            if(txtNombre.getText().equals("") || txtDescrpción.getText().equals("") ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
                 DAOTipoRep.sqlInsert(new ClTipoReportes(txtNombre.getText()

@@ -325,7 +325,16 @@ public class panelUsuarios extends javax.swing.JPanel {
     private void btGrabarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarUsuariosActionPerformed
         int id_rol = ((ClRol)cbRol.getSelectedItem()).getIdRol();
         if(!paraGrabar){
-            if(txtRutUsuario.getText().equals("") || txtNombreUsuario.getText().equals("") ){
+            if(txtRutUsuario.getText().equals("") 
+               || txtNombreUsuario.getText().equals("")
+               || txtConstrasenaUsuario.getText().equals("")
+               || txtApePaterno.getText().equals("")
+               || txtApeMaterno.getText().equals("")
+               || txtTelefono.getText().equals("")
+               || txtMailUsuario.getText().equals("")     
+               || txtDireccionUsuario.getText().equals("")
+               || txtFechaNacUsu.getText().equals("")              
+               ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
                 DAOUsuarios.sqlInsert(new ClPasajeros(txtRutUsuario.getText()
@@ -378,7 +387,11 @@ public class panelUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_btEliminarUsuarioActionPerformed
 
     private void btBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarUsuarioActionPerformed
-        this.leerTodos(false);
+        if(txtBuscarUsuario.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodos(false);
+        } 
     }//GEN-LAST:event_btBuscarUsuarioActionPerformed
 
     private void btBuscarTodosUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosUsuarioActionPerformed

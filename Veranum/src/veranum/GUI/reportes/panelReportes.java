@@ -250,7 +250,11 @@ public class panelReportes extends javax.swing.JPanel {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        this.leerTodos(false);
+        if(txtBuscar.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodos(false);
+        } 
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosActionPerformed
@@ -265,7 +269,10 @@ public class panelReportes extends javax.swing.JPanel {
     private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
         int id_tipo = ((ClTipoReportes)cbTipoRepor.getSelectedItem()).getIdTipoReporte();
         if(!paraGrabar){
-            if(txtFechaCreacion.getText().equals("")){
+            if(txtFechaCreacion.getText().equals("")
+               || txtArchivo.getText().equals("")
+               || txtComentario.getText().equals("")
+              ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
                 DAOReportes.sqlInsert(new ClReportes( Formularios.deStringAFecha(txtFechaCreacion.getText())

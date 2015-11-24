@@ -288,7 +288,9 @@ public class panelHotel extends javax.swing.JPanel {
         int id_comu = ((ClComuna)cbComuna.getSelectedItem()).getIdComuna();
         System.out.println(id_region);
         if(!paraGrabar){
-            if(false ){ 
+            if(txtNombreHotel.getText().equals("")
+               || txtDireccion.getText().equals("")
+               ){ 
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
                 DAOHoteles.sqlInsert(new ClHoteles( id_cadena,
@@ -335,7 +337,11 @@ public class panelHotel extends javax.swing.JPanel {
     }//GEN-LAST:event_grHotelMouseClicked
 
     private void btBuscarHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarHotelActionPerformed
-        this.leerTodos(false);
+        if(txtBuscarHotel.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodos(false);
+        } 
     }//GEN-LAST:event_btBuscarHotelActionPerformed
 
     private void btBuscarTodosHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosHotelActionPerformed

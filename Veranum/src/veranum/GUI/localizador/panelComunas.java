@@ -200,7 +200,7 @@ public class panelComunas extends javax.swing.JPanel {
     private void btGrabarComunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarComunaActionPerformed
         int id_provi = ((ClProvincia)cbProvincia.getSelectedItem()).getIdProvincia();
         if(!paraGrabar){
-            if(txtNombreComuna.getText().equals("") ){ //falta cb
+            if(txtNombreComuna.getText().equals("") ){ 
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
                 DAOComuna.sqlInsert(new ClComuna(txtNombreComuna.getText()
@@ -222,7 +222,11 @@ public class panelComunas extends javax.swing.JPanel {
     }//GEN-LAST:event_btGrabarComunaActionPerformed
 
     private void btBuscarComunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarComunaActionPerformed
-        this.leerTodosCom(false);
+        if(txtBuscarComuna.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodosCom(false);
+        }         
     }//GEN-LAST:event_btBuscarComunaActionPerformed
 
     private void grComunaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grComunaMouseClicked

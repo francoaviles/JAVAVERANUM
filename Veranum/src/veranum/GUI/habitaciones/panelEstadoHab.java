@@ -212,7 +212,11 @@ public class panelEstadoHab extends javax.swing.JPanel {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        this.leerTodos(false);
+        if(txtBuscar.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+        }else{
+            this.leerTodos(false);
+        }  
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosActionPerformed

@@ -198,7 +198,7 @@ public class panelProvincias extends javax.swing.JPanel {
     private void btGrabarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarProvinciaActionPerformed
         int id_region = ((ClRegion)cbRegion.getSelectedItem()).getIdRegion();
         if(!paraGrabar){
-            if(txtNombreProvincia.getText().equals("") ){ //falta el cb
+            if(txtNombreProvincia.getText().equals("") ){ 
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
                 DAOProvincia.sqlInsert(new ClProvincia(txtNombreProvincia.getText()
@@ -220,7 +220,11 @@ public class panelProvincias extends javax.swing.JPanel {
     }//GEN-LAST:event_btGrabarProvinciaActionPerformed
 
     private void btBuscarProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarProvinciaActionPerformed
-        this.leerTodosPro(false);
+        if(txtBuscarProvincia.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodosPro(false);
+        }         
     }//GEN-LAST:event_btBuscarProvinciaActionPerformed
 
     private void grProvinciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grProvinciaMouseClicked

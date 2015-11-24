@@ -277,7 +277,11 @@ public class panelHabitaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        this.leerTodos(false);
+        if(txtBuscar.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodos(false);
+        } 
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosActionPerformed
@@ -294,7 +298,10 @@ public class panelHabitaciones extends javax.swing.JPanel {
         int id_tipo = ((ClTipoHabitacion)cbTipo.getSelectedItem()).getIdTipoHabit();
         int id_estado = ((ClHabitacionEstados)cbEstado.getSelectedItem()).getIdHabitacionEstado();
         if(!paraGrabar){
-            if(txtUbicacion.getText().equals("") || txtCantPersonas.getText().equals("") ){
+            if(txtUbicacion.getText().equals("") 
+               || txtCantPersonas.getText().equals("") 
+               || txtPrecio.getText().equals("") 
+               ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
                 DAOHabitaciones.sqlInsert(new ClHabitaciones(id_hotel

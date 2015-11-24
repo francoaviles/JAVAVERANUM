@@ -212,7 +212,11 @@ public class panelRegion extends javax.swing.JPanel {
     }//GEN-LAST:event_btEditarRegionActionPerformed
 
     private void btBuscarRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarRegionActionPerformed
-        this.leerTodosReg(false);
+        if(txtBuscarRegion.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodosReg(false);
+        }         
     }//GEN-LAST:event_btBuscarRegionActionPerformed
 
     private void btBuscarTodosRegionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosRegionActionPerformed

@@ -177,12 +177,13 @@ public class panelRoles extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEliminarRoles)
-                    .addComponent(btEditarRoles)
-                    .addComponent(btBuscarRoles)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btBuscarRoles, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btBuscarTodosRoles)
-                    .addComponent(txtBuscarRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBuscarRoles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btEliminarRoles)
+                        .addComponent(btEditarRoles)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -245,7 +246,11 @@ public class panelRoles extends javax.swing.JPanel {
     }//GEN-LAST:event_btEditarRolesActionPerformed
 
     private void btBuscarRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarRolesActionPerformed
-        this.leerTodos(false);
+        if(txtBuscarRoles.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            this.leerTodos(false);
+        } 
     }//GEN-LAST:event_btBuscarRolesActionPerformed
 
     private void btBuscarTodosRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarTodosRolesActionPerformed

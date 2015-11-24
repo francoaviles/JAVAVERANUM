@@ -65,12 +65,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btEliminarRoles" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btEditarRoles" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btBuscarRoles" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="btBuscarTodosRoles" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="txtBuscarRoles" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btEliminarRoles" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btEditarRoles" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="139" max="-2" attributes="0"/>
