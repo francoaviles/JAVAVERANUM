@@ -570,7 +570,7 @@ public class panelUsuarios extends javax.swing.JPanel {
         if(todos)
             usu = DAOUsuarios.sqlLeerTodos();
         else 
-            usu = DAOUsuarios.sqlBuscarByNombre(txtRutUsuario.getText());
+            usu = DAOUsuarios.sqlBuscarByNombre(txtBuscarUsuario.getText());
         
         dt =  (DefaultTableModel) grUsuario.getModel();        
         for (int i = dt.getRowCount() -1; i >= 0; i--){  
