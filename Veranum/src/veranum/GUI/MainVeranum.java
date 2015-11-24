@@ -156,6 +156,10 @@ public class MainVeranum extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         DAOLogin u =  new DAOLogin();
+        if(!Formularios.validarRut(txtRut.getText())){
+            JOptionPane.showMessageDialog(this, "Rut Incorrecto."); 
+            return;
+        }
         ClPasajeros p = new ClPasajeros(txtRut.getText(), txtContrasena.getText());
         if(u.LoginIn(p) == null){
            JOptionPane.showMessageDialog(this, "Combinación Usuario/Contraseña incorrecto."); 
