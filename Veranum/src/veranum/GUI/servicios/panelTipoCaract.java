@@ -72,6 +72,12 @@ public class panelTipoCaract extends javax.swing.JPanel {
             }
         });
 
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyTyped(evt);
+            }
+        });
+
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,10 +164,10 @@ public class panelTipoCaract extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                             .addComponent(jSeparator1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btEliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btBuscar)
@@ -299,6 +305,13 @@ public class panelTipoCaract extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtDescripcionKeyTyped
+
+    private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
+        if (!(txtBuscar.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscar);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarKeyTyped
 
     // Method Custom    
     private void leer(int id){

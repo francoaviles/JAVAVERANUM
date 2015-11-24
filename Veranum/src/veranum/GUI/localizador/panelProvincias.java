@@ -122,6 +122,12 @@ public class panelProvincias extends javax.swing.JPanel {
             }
         });
 
+        txtBuscarProvincia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarProvinciaKeyTyped(evt);
+            }
+        });
+
         btEditarProvincia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
         btEditarProvincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,6 +286,13 @@ public class panelProvincias extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtNombreProvinciaKeyTyped
+
+    private void txtBuscarProvinciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarProvinciaKeyTyped
+        if (!(txtBuscarProvincia.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscarProvincia);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarProvinciaKeyTyped
 
 
     private void cargarRegiones(){

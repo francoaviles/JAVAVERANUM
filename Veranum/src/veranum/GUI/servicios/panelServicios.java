@@ -127,6 +127,12 @@ public class panelServicios extends javax.swing.JPanel {
             }
         });
 
+        txtBuscarServicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarServicioKeyTyped(evt);
+            }
+        });
+
         btEditarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
         btEditarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -292,6 +298,13 @@ public class panelServicios extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtNombreServicioKeyTyped
+
+    private void txtBuscarServicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarServicioKeyTyped
+        if (!(txtBuscarServicio.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscarServicio);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarServicioKeyTyped
 
     // Method Custom
     private void leerServicio(int id){

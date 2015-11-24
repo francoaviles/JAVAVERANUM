@@ -194,6 +194,12 @@ public class panelCliente extends javax.swing.JPanel {
             }
         });
 
+        txtBuscarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarClienteKeyTyped(evt);
+            }
+        });
+
         btBuscarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
         btBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -503,6 +509,13 @@ public class panelCliente extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtDireccionUsuarioKeyTyped
+
+    private void txtBuscarClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarClienteKeyTyped
+        if (!(txtBuscarCliente.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscarCliente);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarClienteKeyTyped
 
     // Method Custom
     private void cargarRol(){

@@ -92,6 +92,12 @@ public class panelMenu extends javax.swing.JPanel {
             }
         });
 
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyTyped(evt);
+            }
+        });
+
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,6 +300,13 @@ public class panelMenu extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
+        if (!(txtBuscar.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscar);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarKeyTyped
 
     // Method Custom    
     private void cargarTipoMenu(){

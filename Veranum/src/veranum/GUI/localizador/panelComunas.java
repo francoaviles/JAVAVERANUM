@@ -124,6 +124,12 @@ public class panelComunas extends javax.swing.JPanel {
             }
         });
 
+        txtBuscarComuna.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarComunaKeyTyped(evt);
+            }
+        });
+
         btEditarComuna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
         btEditarComuna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,6 +288,13 @@ public class panelComunas extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtNombreComunaKeyTyped
+
+    private void txtBuscarComunaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarComunaKeyTyped
+        if (!(txtBuscarComuna.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscarComuna);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarComunaKeyTyped
 
     
     private void cargarProvincias(){

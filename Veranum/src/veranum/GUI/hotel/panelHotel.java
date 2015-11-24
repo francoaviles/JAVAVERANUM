@@ -179,6 +179,12 @@ public class panelHotel extends javax.swing.JPanel {
             }
         });
 
+        txtBuscarHotel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarHotelKeyTyped(evt);
+            }
+        });
+
         btDesactivarEditarHotel.setBackground(new java.awt.Color(255, 0, 0));
         btDesactivarEditarHotel.setText("Salir Modo Editar");
         btDesactivarEditarHotel.addActionListener(new java.awt.event.ActionListener() {
@@ -397,6 +403,13 @@ public class panelHotel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtDireccionKeyTyped
+
+    private void txtBuscarHotelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarHotelKeyTyped
+        if (!(txtBuscarHotel.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscarHotel);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarHotelKeyTyped
 
     private void cargarProvincias(){
         int id_region = ((ClRegion)cbRegion.getSelectedItem()).getIdRegion();

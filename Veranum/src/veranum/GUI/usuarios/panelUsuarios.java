@@ -167,6 +167,12 @@ public class panelUsuarios extends javax.swing.JPanel {
             }
         });
 
+        txtBuscarUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarUsuarioKeyTyped(evt);
+            }
+        });
+
         btBuscarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
         btBuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -518,6 +524,13 @@ public class panelUsuarios extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtDireccionUsuarioKeyTyped
+
+    private void txtBuscarUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarUsuarioKeyTyped
+        if (!(txtBuscarUsuario.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscarUsuario);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarUsuarioKeyTyped
 
     // Method Custom
     private void cargarRol(){

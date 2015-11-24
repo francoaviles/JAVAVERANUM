@@ -69,6 +69,12 @@ public class panelRegion extends javax.swing.JPanel {
             }
         });
 
+        txtBuscarRegion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarRegionKeyTyped(evt);
+            }
+        });
+
         btBuscarRegion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
         btBuscarRegion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,6 +295,13 @@ public class panelRegion extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtRegionOrdinalKeyTyped
+
+    private void txtBuscarRegionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarRegionKeyTyped
+        if (!(txtBuscarRegion.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscarRegion);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarRegionKeyTyped
     
     private void leerRegion(int id){
         this.id = id;

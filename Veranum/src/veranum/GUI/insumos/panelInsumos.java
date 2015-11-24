@@ -57,6 +57,12 @@ public class panelInsumos extends javax.swing.JPanel {
         btDesactivarEditarInsumos = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
+        txtBuscarInsumos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarInsumosKeyTyped(evt);
+            }
+        });
+
         txtDescripcionInsumos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDescripcionInsumosKeyTyped(evt);
@@ -295,6 +301,13 @@ public class panelInsumos extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtDescripcionInsumosKeyTyped
+
+    private void txtBuscarInsumosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarInsumosKeyTyped
+        if (!(txtBuscarInsumos.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscarInsumos);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarInsumosKeyTyped
 
     // Method Custom
     private void leerInsumos(int id){

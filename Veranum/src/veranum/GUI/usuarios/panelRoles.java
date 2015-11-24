@@ -99,6 +99,12 @@ public class panelRoles extends javax.swing.JPanel {
             }
         });
 
+        txtBuscarRoles.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarRolesKeyTyped(evt);
+            }
+        });
+
         btBuscarRoles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
         btBuscarRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,6 +305,13 @@ public class panelRoles extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtDescripcionRolKeyTyped
+
+    private void txtBuscarRolesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarRolesKeyTyped
+        if (!(txtBuscarRoles.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtBuscarRoles);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtBuscarRolesKeyTyped
 
     // Method Custom
     private void leerRol(int id){
