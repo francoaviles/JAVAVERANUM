@@ -6,9 +6,7 @@
 package veranum.GUI;
 
 import helper.Formularios;
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import veranum.DAO.DAOLogin;
 import veranum.DAO.DAORol;
 import veranum.entities.ClPasajeros;
@@ -169,6 +167,7 @@ public class MainVeranum extends javax.swing.JFrame {
             ClRol rol = drol.sqlLeer(p.getIdRol());
             if(rol.getNombre().equals("Admin")){
                 AdminVeranum ver = new AdminVeranum(p);
+                ver.setExtendedState(ver.MAXIMIZED_BOTH);
                 ver.setVisible(true);
                 this.setVisible(false);
             } else {

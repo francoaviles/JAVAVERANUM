@@ -1163,10 +1163,207 @@ INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (1, 'Reserv
 INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (2, 'Pagada');
 INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (3, 'Cancelada');
 
+Insert into "servicios" ("id_servicio","nombre","precio") values ('1','Gimnasio','75000');
+Insert into "servicios" ("id_servicio","nombre","precio") values ('2','Piscina','35000');
+Insert into "servicios" ("id_servicio","nombre","precio") values ('3','Spa','20000');
+Insert into "servicios" ("id_servicio","nombre","precio") values ('4','Cancha de Tenis','60000');
+
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('5','Individual','para una persona');
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('6','Grupal','4 o más');
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('7','Duos','2 personas');
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('8','Parejas','2 personas');
+
+Insert into "tipo_menu" ("id_tipo_menu","nombre") values ('1','Desayuno');
+Insert into "tipo_menu" ("id_tipo_menu","nombre") values ('2','Almuerzo');
+Insert into "tipo_menu" ("id_tipo_menu","nombre") values ('3','Once');
+Insert into "tipo_menu" ("id_tipo_menu","nombre") values ('4','Cena');
+
+Insert into "tipo_reportes" ("id_tipo_reporte","nombre","descripcion") values ('1','Sanitario Hotel','sanidad del hotel');
+Insert into "tipo_reportes" ("id_tipo_reporte","nombre","descripcion") values ('2','Sanitario piezas','Sanidad de las piezas');
+Insert into "tipo_reportes" ("id_tipo_reporte","nombre","descripcion") values ('3','Sanitario baño','sanidad de los baños');
+Insert into "tipo_reportes" ("id_tipo_reporte","nombre","descripcion") values ('4','Daños','daños por los clientes');
 
 INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (1, 'Admin', 'Super administrador');
 INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (2, 'Recepcionista', 'Puede realizar reservas y modificarlas.');
 INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (3, 'Cliente', 'Pasajero del hotel');
+
+Insert into "pasajeros" ("id_pasajero","rut","nombre","contrasena","apellido_pa","apellido_ma","telefono","email","id_region","id_provincia","id_comuna","direccion","fecha_nac","id_rol") values ('1','182745782','Zacarias','asd','Medina','Garcia','12345678','z.medina@duoc.cl',null,null,null,'miKasa',to_date('02/11/92','DD/MM/RR'),'1');
+Insert into "pasajeros" ("id_pasajero","rut","nombre","contrasena","apellido_pa","apellido_ma","telefono","email","id_region","id_provincia","id_comuna","direccion","fecha_nac","id_rol") values ('2','17254388K','Carlos','asd','de la Guarda','Gonzalez','1231231','carlos@asd.com',null,null,null,'sucasa 123',to_date('01/01/88','DD/MM/RR'),'1');
+Insert into "pasajeros" ("id_pasajero","rut","nombre","contrasena","apellido_pa","apellido_ma","telefono","email","id_region","id_provincia","id_comuna","direccion","fecha_nac","id_rol") values ('3','123455679','Daniel','d.media','Medina','Osorio','1231235','d.medina@asd.cl',null,null,null,'asd 123',to_date('01/01/90','DD/MM/RR'),'1');
+Insert into "pasajeros" ("id_pasajero","rut","nombre","contrasena","apellido_pa","apellido_ma","telefono","email","id_region","id_provincia","id_comuna","direccion","fecha_nac","id_rol") values ('4','123455578','Carlos','c.vasquez','Vasquez','Munoz','1321234','c.vasquez@asd.cl',null,null,null,'asd 123',to_date('01/01/90','DD/MM/RR'),'1');
+Insert into "pasajeros" ("id_pasajero","rut","nombre","contrasena","apellido_pa","apellido_ma","telefono","email","id_region","id_provincia","id_comuna","direccion","fecha_nac","id_rol") values ('5','109998881','Victor','v.vasquez','Vasquez','Munoz','1123123','v.vasquez@asd.cl',null,null,null,'asdasd 123',to_date('01/01/80','DD/MM/RR'),'3');
+
+Insert into "cadenas" ("id_cadena","nombre") values ('1','Veranum');
+
+Insert into "hoteles" ("id_hotel","id_cadena","id_region","id_provincia","id_comuna","nombre","direccion") values ('1','1','7','25','118','VHSantiago','Santa María 1742');
+Insert into "hoteles" ("id_hotel","id_cadena","id_region","id_provincia","id_comuna","nombre","direccion") values ('2','1','6','20','81','VHViña del Mar','Armada de Chile 15');
+Insert into "hoteles" ("id_hotel","id_cadena","id_region","id_provincia","id_comuna","nombre","direccion") values ('3','1','5','12','35','VHCoquimbo','Avda. Penuelas Norte 56');
+Insert into "hoteles" ("id_hotel","id_cadena","id_region","id_provincia","id_comuna","nombre","direccion") values ('4','1','11','38','265','VHPucon','Clemente Holzapfel 190');
+Insert into "hoteles" ("id_hotel","id_cadena","id_region","id_provincia","id_comuna","nombre","direccion") values ('5','1','1','1','1','VHArica','Ingeniero Raul Pey Casado 3105');
+Insert into "hoteles" ("id_hotel","id_cadena","id_region","id_provincia","id_comuna","nombre","direccion") values ('6','1','15','51','338','VHPunta Arenas','Avenida Cristobal Colon 716');
+
+
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('1','Arroz','carbohidrato');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('2','spaghetti','carbohidrato');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('3','Sal','asd');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('4','Azucar','Endulzante');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('5','Stevia','asds');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('6','Cuchara','asd');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('7','Cuchillo','cortar');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('8','Tenedor','asdsd');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('9','Chuchara Té','para el té :v');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('10','Vaso vidrio','rrr');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('11','vaso plastico','vlfkdngvfj');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('12','Copa de vino','un manjar');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('13','Espumante','para usar la copa xdg');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('14','tomate','asd');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('15','espinaca','gg');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('16','acelga','ggg');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('17','cebolla','gg');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('18','cebollin','ggg');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('19','zanahoria','gwerw');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('20','Aceite','ggs');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('21','ajo','f');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('22','pimenton','gbfd');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('23','brocoli','gfd');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('24','lomo liso','gfd');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('25','lomo vetado','gfd');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('26','huachalomo','sdfdfw');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('27','reineta','gsdfj');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('28','jurel','sdffg');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('29','lechuga','legfdsg');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('30','congrio','sdf');
+
+Insert into "medidas" ("id_medida","medida") values ('1','Kilogramos');
+Insert into "medidas" ("id_medida","medida") values ('2','Gramos');
+Insert into "medidas" ("id_medida","medida") values ('3','Litros');
+Insert into "medidas" ("id_medida","medida") values ('4','Centimetors Cubicos');
+Insert into "medidas" ("id_medida","medida") values ('5','Miligramos');
+
+
+
+Insert into "menu" ("id_menu","id_tipo_menu","nombre") values ('1','1','Desayuno Sano');
+Insert into "menu" ("id_menu","id_tipo_menu","nombre") values ('2','2','Almuerzo Uno');
+Insert into "menu" ("id_menu","id_tipo_menu","nombre") values ('3','3','Once Uno');
+Insert into "menu" ("id_menu","id_tipo_menu","nombre") values ('4','4','Cena uno');
+
+
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('4','8','100','Cama matrimonio');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('5','5','100','Silla');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('3','5','100','Cama Individual');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('6','6','100','Mesa');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('7','5','50','Escritorios');
+
+
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('1','4');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('1','5');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('1','7');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('2','4');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('2','5');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('2','3');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('2','6');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('2','7');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('3','4');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('3','5');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('3','3');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('3','6');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('3','7');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('4','4');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('4','5');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('4','3');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('4','6');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('4','7');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('5','4');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('5','5');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('5','3');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('5','6');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('5','7');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('6','4');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('6','5');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('6','3');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('6','6');
+Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('6','7');
+
+
+Insert into "habitacion_estados" ("id_habitacion_estado","estado") values ('1','Disponible');
+Insert into "habitacion_estados" ("id_habitacion_estado","estado") values ('2','Reservada');
+Insert into "habitacion_estados" ("id_habitacion_estado","estado") values ('3','Ocupada');
+
+Insert into "habitacion_tipos" ("id_habitacion_tipo","nombre") values ('1','VIP');
+Insert into "habitacion_tipos" ("id_habitacion_tipo","nombre") values ('2','Business');
+Insert into "habitacion_tipos" ("id_habitacion_tipo","nombre") values ('3','Basica');
+
+
+Insert into "habitaciones" ("id_habitacion","id_hotel","id_habitacion_tipo","id_habitacion_estado","ubicacion","cant_personas","precio") values ('1','1','1','1','10','2','200000');
+Insert into "habitaciones" ("id_habitacion","id_hotel","id_habitacion_tipo","id_habitacion_estado","ubicacion","cant_personas","precio") values ('2','1','2','1','6','2','150000');
+Insert into "habitaciones" ("id_habitacion","id_hotel","id_habitacion_tipo","id_habitacion_estado","ubicacion","cant_personas","precio") values ('3','1','2','1','1','5','60000');
+Insert into "habitaciones" ("id_habitacion","id_hotel","id_habitacion_tipo","id_habitacion_estado","ubicacion","cant_personas","precio") values ('4','1','2','1','1','3','45000');
+Insert into "habitaciones" ("id_habitacion","id_hotel","id_habitacion_tipo","id_habitacion_estado","ubicacion","cant_personas","precio") values ('5','2','1','1','10','2','220000');
+Insert into "habitaciones" ("id_habitacion","id_hotel","id_habitacion_tipo","id_habitacion_estado","ubicacion","cant_personas","precio") values ('6','2','2','1','6','2','155000');
+Insert into "habitaciones" ("id_habitacion","id_hotel","id_habitacion_tipo","id_habitacion_estado","ubicacion","cant_personas","precio") values ('7','2','3','1','1','5','55000');
+Insert into "habitaciones" ("id_habitacion","id_hotel","id_habitacion_tipo","id_habitacion_estado","ubicacion","cant_personas","precio") values ('8','3','1','1','10','2','200000');
+
+
+
+Insert into "habitaciones_caracteristicas" ("id_habitacion","id_caracteristica") values ('1','4');
+Insert into "habitaciones_caracteristicas" ("id_habitacion","id_caracteristica") values ('1','7');
+Insert into "habitaciones_caracteristicas" ("id_habitacion","id_caracteristica") values ('1','6');
+Insert into "habitaciones_caracteristicas" ("id_habitacion","id_caracteristica") values ('2','3');
+Insert into "habitaciones_caracteristicas" ("id_habitacion","id_caracteristica") values ('2','6');
+Insert into "habitaciones_caracteristicas" ("id_habitacion","id_caracteristica") values ('3','3');
+
+
+
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('1','1');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('1','2');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('1','3');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('1','4');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('2','1');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('2','2');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('2','3');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('2','4');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('3','1');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('3','2');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('3','3');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('3','4');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('4','1');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('4','2');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('4','3');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('4','4');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('5','1');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('5','2');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('5','3');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('5','4');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('6','1');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('6','2');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('6','3');
+Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('6','4');
+
+
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('1','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('1','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('1','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('1','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('2','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('2','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('2','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('2','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('3','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('3','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('3','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('3','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('4','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('4','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('4','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('4','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('5','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('5','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('5','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('5','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('6','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('6','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('6','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('6','4');
 
 /
 CREATE  SEQUENCE roles_seq START WITH 4 INCREMENT BY 1;
@@ -1444,7 +1641,17 @@ create or replace trigger trg_tipo_reportes
       into :NEW."id_tipo_reporte"
       from dual;
   end;
-
+/
+CREATE  SEQUENCE hotel_insumos_seq;
+/
+create or replace trigger trg_hotel_insumos
+    before insert on "hotel_insumos"
+    for each row
+  begin
+    select hotel_insumos_seq.nextval
+      into :NEW."id_insumo_hotel"
+      from dual;
+  end;
 
 
 

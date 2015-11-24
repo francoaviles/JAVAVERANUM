@@ -56,7 +56,8 @@ public class PasoDos_Reserva extends javax.swing.JPanel {
 
     private void setDiasTotal(){
         lblDias.setText(""+this.dias);
-        lblTotalPrecio.setText(""+this.total);
+        lblTotalPrecio.setText("$"+this.total);
+        lblTotalFinalPrecio.setText("$"+(this.dias*this.total));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -92,6 +93,8 @@ public class PasoDos_Reserva extends javax.swing.JPanel {
         lblDias = new javax.swing.JLabel();
         lblTotalPrecio = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
+        lblTotalFinal = new javax.swing.JLabel();
+        lblTotalFinalPrecio = new javax.swing.JLabel();
 
         btnAtras.setBackground(new java.awt.Color(255, 255, 255));
         btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/atras.png"))); // NOI18N
@@ -222,11 +225,17 @@ public class PasoDos_Reserva extends javax.swing.JPanel {
         lblDias.setFont(new java.awt.Font("Simplified Arabic", 1, 24)); // NOI18N
         lblDias.setForeground(new java.awt.Color(51, 0, 0));
 
-        lblTotalPrecio.setFont(new java.awt.Font("Simplified Arabic", 1, 24)); // NOI18N
+        lblTotalPrecio.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         lblTotalPrecio.setForeground(new java.awt.Color(51, 0, 0));
 
         lblTotal.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        lblTotal.setText("| Total: $");
+        lblTotal.setText("Total x noche: ");
+
+        lblTotalFinal.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        lblTotalFinal.setText("Total:");
+
+        lblTotalFinalPrecio.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        lblTotalFinalPrecio.setForeground(new java.awt.Color(51, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -234,6 +243,32 @@ public class PasoDos_Reserva extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(lbFechaIngreso)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbFechaSalida)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblFechas))
+                            .addComponent(lblTitulo)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblTotalDias)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDias)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAtras)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,38 +296,16 @@ public class PasoDos_Reserva extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblReservas)
                                         .addGap(0, 0, Short.MAX_VALUE))))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAtras)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblTotal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTotalPrecio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblTotalFinal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTotalFinalPrecio)))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(lbFechaIngreso)
-                                        .addGap(43, 43, 43)
-                                        .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbFechaSalida)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(lblFechas))
-                            .addComponent(lblTitulo)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTotalDias)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDias)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTotal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTotalPrecio)))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,11 +350,19 @@ public class PasoDos_Reserva extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotalDias)
-                    .addComponent(lblDias)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblTotal)
-                        .addComponent(lblTotalPrecio)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                    .addComponent(lblDias))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTotal)
+                            .addComponent(lblTotalPrecio)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTotalFinal)
+                            .addComponent(lblTotalFinalPrecio))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(btnAtras)
                 .addContainerGap())
         );
@@ -487,6 +508,8 @@ public class PasoDos_Reserva extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblTotalDias;
+    private javax.swing.JLabel lblTotalFinal;
+    private javax.swing.JLabel lblTotalFinalPrecio;
     private javax.swing.JLabel lblTotalPrecio;
     private javax.swing.JTextField txtCantPersonas;
     private javax.swing.JFormattedTextField txtFechaIngreso;
