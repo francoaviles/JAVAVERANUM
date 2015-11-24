@@ -6,7 +6,10 @@
 package veranum.GUI.usuarios;
 
 import helper.Formularios;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAORol;
@@ -225,9 +228,12 @@ public class panelRoles extends javax.swing.JPanel {
             if(txtNombreRol.getText().equals("") || txtDescripcionRol.getText().equals("") ){
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
-                DAORol.sqlInsert(new ClRol(txtNombreRol.getText()
-                    , txtDescripcionRol.getText())
-            );
+                try {
+                    DAORol.sqlInsert(new ClRol(txtNombreRol.getText()
+                            , txtDescripcionRol.getText())
+                    );  } catch (SQLException ex) {
+                    Logger.getLogger(panelRoles.class.getName()).log(Level.SEVERE, null, ex);
+                }
             JOptionPane.showMessageDialog(this, "Agregado");
             Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
             helper.Formularios.limpiar(this);
