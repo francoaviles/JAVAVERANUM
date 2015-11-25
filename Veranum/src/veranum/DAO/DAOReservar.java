@@ -39,6 +39,12 @@ public class DAOReservar {
             b.setInt(1, xx.getIdHabitacion());
             b.setInt(2, id_reserva);
             OracleConection.getInstance().sqlEjecutarPreparacion();
+            
+            String sql_update="UPDATE \"habitaciones\" SET  \"id_habitacion_estado\" = ? WHERE \"id_habitacion\" = ?";
+            PreparedStatement bb = OracleConection.getInstance().sqlPreparar(sql_update);
+            bb.setInt(1, 3);
+            bb.setInt(2, xx.getIdHabitacion());
+            OracleConection.getInstance().sqlEjecutarPreparacion();
         }
         // servicios
         for(int i = 0; i < reserva.getServicios().size(); i++){

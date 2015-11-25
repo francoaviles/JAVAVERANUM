@@ -9,9 +9,14 @@ import helper.Formularios;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
+import veranum.DAO.DAOHoteles;
 import veranum.DAO.DAOReservar;
+import veranum.DAO.DAOTipoHab;
 import veranum.entities.ClHabitaciones;
+import veranum.entities.ClHoteles;
 import veranum.entities.ClReservar;
+import veranum.entities.ClServicios;
+import veranum.entities.ClTipoHabitacion;
 
 /**
  *
@@ -21,6 +26,7 @@ public class PasoCuatro_Finalizar extends javax.swing.JPanel {
     private final JTabbedPane myTab;
     private final ClReservar reserva;
     private String detalle = "";
+    public static String newline = System.getProperty("line.separator");
     /**
      * Creates new form PasoCuatro_Finalizar
      * @param t
@@ -31,34 +37,59 @@ public class PasoCuatro_Finalizar extends javax.swing.JPanel {
         this.myTab = t;
         this.reserva = reserva;
         
+        
         try {
             DAOReservar.sqlInsert(this.reserva);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error a Insertar los datos");
         }
+        
+        taDetalle.setText(this.generarDetalle());
     }
 
-    public String generarDetalle(){
-        detalle += "\n---------------------------------------------\n";
-        detalle += "Nombre: "+reserva.getUsuario().getNombre();
+    public final String generarDetalle(){
+        detalle += "\t---------------------------------------------"+newline;
+        detalle += "\tNombre: "+reserva.getUsuario().getNombre();
         detalle += " "+reserva.getUsuario().getApellido_pa();
         detalle += " "+reserva.getUsuario().getApellido_ma();
-        detalle += "\n";
-        detalle += "Rut: "+reserva.getUsuario().getRut();
-        detalle += "\n";
-        detalle += "Fecha Ingreso: "+Formularios.deFechaToString(reserva.getFechaIngreso());
-        detalle += "\n";
-        detalle += "Fecha Salida: "+Formularios.deFechaToString(reserva.getFechaSalida());
-        detalle += "\n---------------------------------------------\n";
-        detalle += "-- Habitaciones: ";
-        detalle += "\n---------------------------------------------\n";
+        detalle += newline;
+        detalle += "\tRut: "+reserva.getUsuario().getRut();
+        detalle += newline;
+        detalle += "\tFecha Ingreso: "+Formularios.deFechaToString(reserva.getFechaIngreso());
+        detalle += newline;
+        detalle += "\tFecha Salida: "+Formularios.deFechaToString(reserva.getFechaSalida());
+        detalle += newline+"\t---------------------------------------------"+newline;
+        detalle += "\t-- Habitaciones: ";
+        detalle += newline+"\t---------------------------------------------"+newline;
         
         for(int i = 0; i < reserva.getReservas().size(); i++){
             ClHabitaciones xx = (ClHabitaciones)reserva.getReservas().get(i);
-            detalle += "#"+i;
-            detalle += "| ";
-            detalle += "\n";
+            detalle += "\t#"+i;
+            detalle += "| "+xx.getUbicacion();
+            detalle += " - "+((ClTipoHabitacion)DAOTipoHab.sqlLeer(xx.getIdHabitacionTipo())).getNombre();
+            detalle += " - "+((ClHoteles)DAOHoteles.sqlLeer(xx.getIdHotel())).getNombre();
+            detalle += "\t\t $"+xx.getPrecio();
+            detalle += newline;
         }
+        
+       detalle += newline+"\t---------------------------------------------"+newline;
+        detalle += "\t-- Servicios: ";
+        detalle += newline+"\t---------------------------------------------"+newline;
+        for(int i = 0; i < reserva.getServicios().size(); i++){
+            ClServicios xx = (ClServicios)reserva.getServicios().get(i);
+            detalle += "#"+i;
+            detalle += "| "+xx.getNombre();
+            detalle += "\t\t $"+xx.getPrecio();
+            detalle += newline;
+        }
+        detalle += newline+"\t---------------------------------------------"+newline+newline+newline;
+        detalle += "\tDías totales: "+reserva.getDias();
+        detalle += newline;
+        detalle += "\tPrecio por noche: $"+reserva.getTotalxnoche();
+        detalle += newline;
+        detalle += "\tTotal a pagar: $"+reserva.getTotal();
+        detalle += newline;
+        
         return this.detalle;
     }
     /**
@@ -73,7 +104,9 @@ public class PasoCuatro_Finalizar extends javax.swing.JPanel {
         lblTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblDetalle = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taDetalle = new javax.swing.JTextArea();
+        btnfinalizar = new javax.swing.JButton();
 
         lblTitulo.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         lblTitulo.setText("¡Reserva Finalizada!");
@@ -84,7 +117,14 @@ public class PasoCuatro_Finalizar extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Hotel Veranum Detalle de Reserva");
 
-        lblDetalle.setText("DETALLE");
+        taDetalle.setEditable(false);
+        taDetalle.setColumns(20);
+        taDetalle.setRows(5);
+        taDetalle.setBorder(null);
+        taDetalle.setFocusable(false);
+        taDetalle.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        taDetalle.setRequestFocusEnabled(false);
+        jScrollPane1.setViewportView(taDetalle);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -93,9 +133,11 @@ public class PasoCuatro_Finalizar extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(lblDetalle))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,37 +145,64 @@ public class PasoCuatro_Finalizar extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblDetalle)
-                .addContainerGap(388, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        btnfinalizar.setBackground(new java.awt.Color(204, 255, 255));
+        btnfinalizar.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnfinalizar.setText("FINALIZAR");
+        btnfinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfinalizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(lblTitulo)
+                        .addGap(0, 148, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnfinalizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(6, 6, 6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnfinalizar)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnfinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfinalizarActionPerformed
+        myTab.setEnabledAt(1, false);
+        myTab.setEnabledAt(2, false);
+        myTab.setEnabledAt(3, false);
+        myTab.setComponentAt(0, new PasoUno_Usuarios(myTab));
+        myTab.setSelectedIndex(0);
+    }//GEN-LAST:event_btnfinalizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnfinalizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblDetalle;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextArea taDetalle;
     // End of variables declaration//GEN-END:variables
 }
