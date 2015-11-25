@@ -16,6 +16,7 @@ public class ClReservar {
     private ClPasajeros usuario;
     private ArrayList<ClHabitaciones> reservas = new ArrayList<>(); 
     private ArrayList<ClServicios> servicios = new ArrayList<>(); 
+    private ClEstadoReserva estado;
     private Date fechaIngreso;
     private Date fechaSalida;
     private long dias;
@@ -41,6 +42,14 @@ public class ClReservar {
         setDias(dias);
         setTotalxnoche(totalxnoche);
         setReservas(reservas);
+    }
+
+    public ClEstadoReserva getEstado() {
+        return estado;
+    }
+
+    public void setEstado(ClEstadoReserva estado) {
+        this.estado = estado;
     }
 
     

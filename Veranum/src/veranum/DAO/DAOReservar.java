@@ -5,12 +5,13 @@
  */
 package veranum.DAO;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import veranum.entities.ClHabitaciones;
-import veranum.entities.ClHoteles;
-import veranum.entities.ClTipoHabitacion;
+import veranum.entities.ClReservar;
+import veranum.entities.ClServicios;
 import veranum.utilidades.OracleConection;
 
 /**
@@ -18,6 +19,41 @@ import veranum.utilidades.OracleConection;
  * @author Duoc
  */
 public class DAOReservar {
+    
+    public static boolean sqlInsert(ClReservar reserva) throws SQLException{
+        String sql="INSERT INTO \"reservas\" (\"id_pasajero\", \"id_reserva_estado\", \"fecha_ingreso\", \"fecha_salida\", \"precio_total\" ) VALUES (?,?,?,?,?)";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, reserva.getUsuario().getIdPasajero());
+        a.setInt(2, reserva.getEstado().getIdReserva());
+        a.setDate(3, (new java.sql.Date(reserva.getFechaIngreso().getTime())));
+        a.setDate(4, (new java.sql.Date(reserva.getFechaSalida().getTime())));
+        a.setLong(5, reserva.getTotal());
+        OracleConection.getInstance().sqlEjecutarPreparacion();
+        
+        int id_reserva = DAOReservar.sqlLastID();
+        // habitaciones 
+        for(int i = 0; i < reserva.getReservas().size(); i++){
+            ClHabitaciones xx = (ClHabitaciones)reserva.getReservas().get(i);
+            String sql_habitacion = "INSERT INTO \"habitaciones_reservas\" (\"id_habitacion\", \"id_reserva\") VALUES (?,?) ";
+            PreparedStatement b = OracleConection.getInstance().sqlPreparar(sql_habitacion);
+            b.setInt(1, xx.getIdHabitacion());
+            b.setInt(2, id_reserva);
+            OracleConection.getInstance().sqlEjecutarPreparacion();
+        }
+        // servicios
+        for(int i = 0; i < reserva.getServicios().size(); i++){
+            ClServicios xx = (ClServicios)reserva.getServicios().get(i);
+            String sql_habitacion = "INSERT INTO \"servicios_reservas\" (\"id_servicio\", \"id_reserva\") VALUES (?,?) ";
+            PreparedStatement b = OracleConection.getInstance().sqlPreparar(sql_habitacion);
+            b.setInt(1, xx.getIdServicio());
+            b.setInt(2, id_reserva);
+            OracleConection.getInstance().sqlEjecutarPreparacion();
+        }
+        
+        return true;
+    }
+    
+    
     public static ArrayList sqlBuscarHabitacion(int hotel, int tipo, int cant) throws SQLException{
         ArrayList<ClHabitaciones> habitacion = new ArrayList<>();  
         
@@ -54,5 +90,9 @@ public class DAOReservar {
         }     
         return habitacion;
 
+    }
+    
+    public static int sqlLastID(){
+        return OracleConection.getInstance().sqlLastID("reservas_seq");
     }
 }
