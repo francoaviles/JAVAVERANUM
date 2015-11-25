@@ -147,6 +147,12 @@ public class panelCliente extends javax.swing.JPanel {
             }
         });
 
+        txtFechaNacUsu.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFechaNacUsuFocusLost(evt);
+            }
+        });
+
         btGrabarUsuarios.setText("Grabar");
         btGrabarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -529,6 +535,10 @@ public class panelCliente extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtBuscarClienteKeyTyped
+
+    private void txtFechaNacUsuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFechaNacUsuFocusLost
+        Formularios.deStringAFecha(txtFechaNacUsu.getText());
+    }//GEN-LAST:event_txtFechaNacUsuFocusLost
 
     // Method Custom
     private void cargarRol(){

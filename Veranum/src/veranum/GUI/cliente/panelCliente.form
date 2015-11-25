@@ -269,6 +269,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFechaNacUsu">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFechaNacUsuFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btGrabarUsuarios">
       <Properties>

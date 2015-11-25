@@ -296,10 +296,18 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
 
     private void txtRutUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutUsuarioKeyTyped
         Formularios.validarRut(evt);
+        if (!(txtRutUsuario.getText().length() < 9)) {
+            Formularios.limpiarTxt(txtRutUsuario);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
     }//GEN-LAST:event_txtRutUsuarioKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
         Formularios.soloNumeros(evt);
+        if (!(txtTelefono.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtTelefono);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private ClPasajeros leerUsuarios(String rut){

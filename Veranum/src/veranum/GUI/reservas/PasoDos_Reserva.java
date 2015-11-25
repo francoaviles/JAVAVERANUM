@@ -195,6 +195,12 @@ public class PasoDos_Reserva extends javax.swing.JPanel {
 
         lblCantPersonas.setText("Cant. Personas:");
 
+        txtCantPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantPersonasKeyTyped(evt);
+            }
+        });
+
         btnBuscarHabitaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/magnifier12.png"))); // NOI18N
         btnBuscarHabitaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -433,6 +439,14 @@ public class PasoDos_Reserva extends javax.swing.JPanel {
         myTab.setComponentAt(2, new PasoTres_Servicios(myTab, reserva));
         myTab.setSelectedIndex(2);
     }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void txtCantPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantPersonasKeyTyped
+        Formularios.soloNumeros(evt);
+        if (!(txtCantPersonas.getText().length() < 4)) {
+            Formularios.limpiarTxt(txtCantPersonas);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtCantPersonasKeyTyped
 
     private ClHabitaciones leer(int id){
         return DAOHabitaciones.sqlLeer(id);
