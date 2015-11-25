@@ -403,7 +403,7 @@ CREATE TABLE "menu" (
   "id_menu" NUMBER NOT NULL,
   "id_tipo_menu" Number NOT NULL,
   "nombre" Varchar2(100) NOT NULL,
-  "number" Number NOT NULL
+  "precio" Number NOT NULL
 );
 /
 -- Keys
