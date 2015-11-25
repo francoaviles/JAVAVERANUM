@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Zacarias/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/GUI/reservas/PasoUno_Usuarios.java</file>
-=======
-            <file>file:/C:/Users/Duoc/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/DAO/DAOReservar.java</file>
-            <file>file:/C:/Users/Duoc/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/GUI/reservas/MainReserva.java</file>
-            <file>file:/C:/Users/Duoc/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/GUI/reservas/PasoDos_Reserva.java</file>
->>>>>>> origin/master
+            <file>file:/C:/Users/carlosdlg/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/entities/ClReservar.java</file>
+            <file>file:/C:/Users/carlosdlg/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/GUI/reservas/PasoDos_Reserva.java</file>
+            <file>file:/C:/Users/carlosdlg/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/GUI/reservas/MainReserva.java</file>
+            <file>file:/C:/Users/carlosdlg/Documents/GitHub/JAVAVERANUM/Veranum/src/veranum/GUI/reservas/PasoTres_Servicios.java</file>
         </group>
     </open-files>
 </project-private>
