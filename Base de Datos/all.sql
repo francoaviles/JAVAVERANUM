@@ -1164,6 +1164,11 @@ INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (1, 'Reserv
 INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (2, 'Pagada');
 INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (3, 'Cancelada');
 
+INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (1, 'Admin', 'Super administrador');
+INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (2, 'Recepcionista', 'Puede realizar reservas y modificarlas.');
+INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (3, 'Cliente', 'Pasajero del hotel');
+
+
 Insert into "servicios" ("id_servicio","nombre","precio") values ('1','Gimnasio','75000');
 Insert into "servicios" ("id_servicio","nombre","precio") values ('2','Piscina','35000');
 Insert into "servicios" ("id_servicio","nombre","precio") values ('3','Spa','20000');
@@ -1184,9 +1189,7 @@ Insert into "tipo_reportes" ("id_tipo_reporte","nombre","descripcion") values ('
 Insert into "tipo_reportes" ("id_tipo_reporte","nombre","descripcion") values ('3','Sanitario baño','sanidad de los baños');
 Insert into "tipo_reportes" ("id_tipo_reporte","nombre","descripcion") values ('4','Daños','daños por los clientes');
 
-INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (1, 'Admin', 'Super administrador');
-INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (2, 'Recepcionista', 'Puede realizar reservas y modificarlas.');
-INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (3, 'Cliente', 'Pasajero del hotel');
+
 
 Insert into "pasajeros" ("id_pasajero","rut","nombre","contrasena","apellido_pa","apellido_ma","telefono","email","id_region","id_provincia","id_comuna","direccion","fecha_nac","id_rol") values ('1','182745782','Zacarias','asd','Medina','Garcia','12345678','z.medina@duoc.cl',null,null,null,'miKasa',to_date('02/11/92','DD/MM/RR'),'1');
 Insert into "pasajeros" ("id_pasajero","rut","nombre","contrasena","apellido_pa","apellido_ma","telefono","email","id_region","id_provincia","id_comuna","direccion","fecha_nac","id_rol") values ('2','17254388K','Carlos','asd','de la Guarda','Gonzalez','1231231','carlos@asd.com',null,null,null,'sucasa 123',to_date('01/01/88','DD/MM/RR'),'1');
@@ -1243,10 +1246,10 @@ Insert into "medidas" ("id_medida","medida") values ('5','Miligramos');
 
 
 
-Insert into "menu" ("id_menu","id_tipo_menu","nombre") values ('1','1','Desayuno Sano');
-Insert into "menu" ("id_menu","id_tipo_menu","nombre") values ('2','2','Almuerzo Uno');
-Insert into "menu" ("id_menu","id_tipo_menu","nombre") values ('3','3','Once Uno');
-Insert into "menu" ("id_menu","id_tipo_menu","nombre") values ('4','4','Cena uno');
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('1','1','Desayuno Sano', 6990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('2','2','Almuerzo Uno', 8990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('3','3','Once Uno', 4590);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('4','4','Cena uno', 3990);
 
 
 Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('4','8','100','Cama matrimonio');
@@ -1378,7 +1381,7 @@ create or replace trigger trg_roles
       from dual;
   end;
 /
-CREATE  SEQUENCE cadenas_seq;
+CREATE  SEQUENCE cadenas_seq START WITH 2 INCREMENT BY 1;
 /
 create or replace trigger trg_cadenas
     before insert on "cadenas"
@@ -1389,7 +1392,7 @@ create or replace trigger trg_cadenas
       from dual;
   end;
 /
-CREATE  SEQUENCE caracteristicas_seq;
+CREATE  SEQUENCE caracteristicas_seq START WITH 6 INCREMENT BY 1;
 /
 create or replace trigger trg_caracteristicas
     before insert on "caracteristicas"
@@ -1433,7 +1436,6 @@ create or replace trigger trg_empresas
       from dual;
   end;
 /
-/
 CREATE  SEQUENCE estado_reservas_seq  START WITH 4 INCREMENT BY 1; 
 /
 create or replace trigger trg_estado_reservas
@@ -1445,7 +1447,7 @@ create or replace trigger trg_estado_reservas
       from dual;
   end;
   /
-  CREATE  SEQUENCE habitacion_estados_seq;
+  CREATE  SEQUENCE habitacion_estados_seq START WITH 4 INCREMENT BY 1;
   /
   create or replace trigger trg_habitacion_estados
       before insert on "habitacion_estados"
@@ -1467,7 +1469,7 @@ create or replace trigger trg_estado_reservas
           from dual;
       end;
 /
-CREATE  SEQUENCE habitacion_tipos_seq;
+CREATE  SEQUENCE habitacion_tipos_seq START WITH 4 INCREMENT BY 1;
 /
 create or replace trigger trg_habitacion_tipos
     before insert on "habitacion_tipos"
@@ -1478,7 +1480,7 @@ create or replace trigger trg_habitacion_tipos
       from dual;
   end;
 /
-CREATE  SEQUENCE habitaciones_seq;
+CREATE  SEQUENCE habitaciones_seq START WITH 9 INCREMENT BY 1;
 /
 create or replace trigger trg_habitaciones
     before insert on "habitaciones"
@@ -1500,7 +1502,7 @@ create or replace trigger trg_historial_precios
       from dual;
   end;
 /
-CREATE  SEQUENCE hoteles_seq;
+CREATE  SEQUENCE hoteles_seq START WITH 6 INCREMENT BY 1;
 /
 create or replace trigger trg_hoteles
     before insert on "hoteles"
@@ -1511,7 +1513,7 @@ create or replace trigger trg_hoteles
       from dual;
   end;
 /
-CREATE  SEQUENCE insumos_seq;
+CREATE  SEQUENCE insumos_seq START WITH 31 INCREMENT BY 1;
 /
 create or replace trigger trg_insumos
     before insert on "insumos"
@@ -1522,7 +1524,7 @@ create or replace trigger trg_insumos
       from dual;
   end;
 /
-CREATE  SEQUENCE medidas_seq;
+CREATE  SEQUENCE medidas_seq START WITH 7 INCREMENT BY 1;
 /
 create or replace trigger trg_medidas
     before insert on "medidas"
@@ -1533,7 +1535,7 @@ create or replace trigger trg_medidas
       from dual;
   end;
 /
-CREATE  SEQUENCE menu_seq;
+CREATE  SEQUENCE menu_seq START WITH 5 INCREMENT BY 1;
 /
 create or replace trigger trg_menu
     before insert on "menu"
@@ -1544,7 +1546,7 @@ create or replace trigger trg_menu
       from dual;
   end;
 /
-CREATE  SEQUENCE pasajeros_seq;
+CREATE  SEQUENCE pasajeros_seq START WITH 6 INCREMENT BY 1;
 /
 create or replace trigger trg_pasajeros
     before insert on "pasajeros"
@@ -1599,7 +1601,7 @@ create or replace trigger trg_reservas
       from dual;
   end;
 /
-CREATE  SEQUENCE servicios_seq;
+CREATE  SEQUENCE servicios_seq START WITH 5 INCREMENT BY 1;
 /
 create or replace trigger trg_servicios
     before insert on "servicios"
@@ -1610,7 +1612,7 @@ create or replace trigger trg_servicios
       from dual;
   end;
 /
-CREATE  SEQUENCE tipo_caracteristicas_seq;
+CREATE  SEQUENCE tipo_caracteristicas_seq START WITH 5 INCREMENT BY 1;
 /
 create or replace trigger trg_tipo_caracteristicas
     before insert on "tipo_caracteristicas"
@@ -1621,7 +1623,7 @@ create or replace trigger trg_tipo_caracteristicas
       from dual;
   end;
 /
-CREATE  SEQUENCE tipo_menu_seq;
+CREATE  SEQUENCE tipo_menu_seq START WITH 5 INCREMENT BY 1;
 /
 create or replace trigger trg_tipo_menu
     before insert on "tipo_menu"
@@ -1632,7 +1634,7 @@ create or replace trigger trg_tipo_menu
       from dual;
   end;
 /
-CREATE  SEQUENCE tipo_reportes_seq;
+CREATE  SEQUENCE tipo_reportes_seq START WITH 5 INCREMENT BY 1;
 /
 create or replace trigger trg_tipo_reportes
     before insert on "tipo_reportes"
@@ -1653,6 +1655,7 @@ create or replace trigger trg_hotel_insumos
       into :NEW."id_insumo_hotel"
       from dual;
   end;
+/
 
 
 
