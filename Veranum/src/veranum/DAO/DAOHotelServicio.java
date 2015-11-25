@@ -46,6 +46,29 @@ public class DAOHotelServicio {
         return hotelServicio;
     }
     
+    public static ArrayList sqlLeerXHotel(int id_hotel){     
+        ArrayList<ClHotelServicios> hotelServicio = new ArrayList<>();
+        if(!OracleConection.getInstance().sqlSelect("SELECT "
+                + " \"servicios\".\"nombre\","
+                + "\"servicios\".\"precio\","
+                + "\"hoteles_servicios\".\"id_hotel\","
+                + "\"hoteles_servicios\".\"id_servicio\" "
+                + "FROM \"hoteles_servicios\"  "
+                + "INNER JOIN \"servicios\" ON \"servicios\".\"id_servicio\" = \"hoteles_servicios\".\"id_servicio\"  "
+                + "WHERE \"id_hotel\" ='"+id_hotel+"'")){
+            return null;
+        }
+        while(OracleConection.getInstance().sqlFetch()){
+            hotelServicio.add(new ClHotelServicios(OracleConection.getInstance().getInt("id_hotel")
+                                    , OracleConection.getInstance().getInt("id_servicio")
+                                    , OracleConection.getInstance().getString("nombre")
+                                    , OracleConection.getInstance().getInt("precio")
+                                ));
+            
+        }     
+        return hotelServicio;
+    }
+    
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClHotelServicios> hotelServicio = new ArrayList<>();
         if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"hoteles_servicios\"")){

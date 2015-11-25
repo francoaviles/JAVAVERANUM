@@ -5,6 +5,8 @@
  */
 package veranum.entities;
 
+import veranum.DAO.DAOServicios;
+
 /**
  *
  * @author Zacarias
@@ -12,6 +14,8 @@ package veranum.entities;
 public class ClHotelServicios {
     private int idHotel;
     private int idServicio;
+    private String nombreServicio;
+    private int precioServicio;
 
     public ClHotelServicios() {
     }
@@ -25,6 +29,31 @@ public class ClHotelServicios {
         setIdServicio(idServicio);
     }
 
+    public ClHotelServicios(int idHotel, int idServicio, String nombreServicio, int precioServicio) {
+        setIdHotel(idHotel);
+        setIdServicio(idServicio);
+        setNombreServicio(nombreServicio);
+        setPrecioServicio(precioServicio);
+    }
+
+    
+    public String getNombreServicio() {
+        return nombreServicio;
+    }
+
+    public void setNombreServicio(String nombreServicio) {
+        this.nombreServicio = nombreServicio;
+    }
+
+    public int getPrecioServicio() {
+        return precioServicio;
+    }
+
+    public void setPrecioServicio(int precioServicio) {
+        this.precioServicio = precioServicio;
+    }
+
+    
     public int getIdHotel() {
         return idHotel;
     }
@@ -39,6 +68,12 @@ public class ClHotelServicios {
 
     public void setIdServicio(int idServicio) {
         this.idServicio = idServicio;
+    }
+    
+    @Override
+    public String toString(){
+        ClServicios servicio = DAOServicios.sqlLeer(this.idServicio);
+        return servicio.getNombre() + " - $"+servicio.getPrecio();
     }
     
     

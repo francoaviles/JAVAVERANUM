@@ -5,8 +5,17 @@
  */
 package veranum.GUI.reservas;
 
+import helper.Formularios;
+import java.util.ArrayList;
 import javax.swing.JTabbedPane;
+import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOHotelServicio;
+import veranum.DAO.DAOTipoHab;
+import veranum.entities.ClHabitaciones;
+import veranum.entities.ClHotelServicios;
 import veranum.entities.ClReservar;
+import veranum.entities.ClServicios;
+import veranum.entities.ClTipoHabitacion;
 
 /**
  *
@@ -15,6 +24,8 @@ import veranum.entities.ClReservar;
 public class PasoTres_Servicios extends javax.swing.JPanel {
     private final JTabbedPane myTab;
     private final ClReservar reserva;
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int id_hotel = 0;
     /**
      * Creates new form PasoTres_Servicios
      * @param t
@@ -24,6 +35,16 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
         initComponents();
         this.myTab = t;
         this.reserva = reserva;
+        lblResumenRut.setText("Rut: "+reserva.getUsuario().getRut());
+        lblResumenNombre.setText("Nombre: "+reserva.getUsuario().getNombre()+" "+reserva.getUsuario().getApellido_pa()+" "+reserva.getUsuario().getApellido_ma());
+        lblResumenDias.setText("Días: "+reserva.getDias());
+        lblResumenFechaIngreso.setText("Ingreso: "+Formularios.deFechaToString(reserva.getFechaIngreso()));
+        lblResumenFechaSalida.setText("Salida: "+Formularios.deFechaToString(reserva.getFechaSalida()));
+        lblResumenTotal.setText("Total: $"+reserva.getTotal());
+        lblResumenTotalxNoche.setText("Total x Noche: $"+reserva.getTotalxnoche());
+        lblResumenTotalHabitaciones.setText("Habitaciones: "+reserva.getReservas().size());
+        this.cargarHabitacionesReservadas();
+        this.cargarServiciosHoteles();
     }
     
     
@@ -40,6 +61,21 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
 
         lblTitulo = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblResumen = new javax.swing.JLabel();
+        lblResumenRut = new javax.swing.JLabel();
+        lblResumenNombre = new javax.swing.JLabel();
+        lblResumenFechaIngreso = new javax.swing.JLabel();
+        lblResumenFechaSalida = new javax.swing.JLabel();
+        lblResumenDias = new javax.swing.JLabel();
+        lblResumenTotalxNoche = new javax.swing.JLabel();
+        lblResumenTotal = new javax.swing.JLabel();
+        lblResumenTotalHabitaciones = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        grResumen = new javax.swing.JTable();
+        lblServicios = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        grServicios = new javax.swing.JTable();
 
         lblTitulo.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         lblTitulo.setText("Reserva de Servicios");
@@ -53,26 +89,158 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        lblResumen.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        lblResumen.setText("RESUMEN DEL MOMENTO:");
+
+        lblResumenRut.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenRut.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenRut.setText("Rut");
+
+        lblResumenNombre.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenNombre.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenNombre.setText("NombreCompleto");
+
+        lblResumenFechaIngreso.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenFechaIngreso.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenFechaIngreso.setText("Fecha Ingreso");
+
+        lblResumenFechaSalida.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenFechaSalida.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenFechaSalida.setText("FechaSalida");
+
+        lblResumenDias.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenDias.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenDias.setText("Dias");
+
+        lblResumenTotalxNoche.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenTotalxNoche.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenTotalxNoche.setText("TotalxNoche");
+
+        lblResumenTotal.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenTotal.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenTotal.setText("Total");
+
+        lblResumenTotalHabitaciones.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenTotalHabitaciones.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenTotalHabitaciones.setText("Habitaciones Cant");
+
+        grResumen.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Habitación", "Tipo", "Precio"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(grResumen);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblResumenTotalxNoche)
+                            .addComponent(lblResumenTotalHabitaciones)
+                            .addComponent(lblResumenDias)
+                            .addComponent(lblResumenFechaSalida)
+                            .addComponent(lblResumenFechaIngreso)
+                            .addComponent(lblResumenNombre)
+                            .addComponent(lblResumenRut)
+                            .addComponent(lblResumen)
+                            .addComponent(lblResumenTotal))
+                        .addGap(0, 94, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblResumen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblResumenRut)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblResumenNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblResumenFechaIngreso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblResumenFechaSalida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblResumenDias)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblResumenTotalHabitaciones)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(lblResumenTotalxNoche)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblResumenTotal)
+                .addContainerGap())
+        );
+
+        lblServicios.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        lblServicios.setText("Servicios:");
+
+        grServicios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Servicio", "Precio"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(grServicios);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnAtras))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTitulo)))
-                .addGap(0, 326, Short.MAX_VALUE))
+                    .addComponent(lblTitulo)
+                    .addComponent(btnAtras)
+                    .addComponent(lblServicios)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addGap(64, 64, 64)
+                        .addComponent(lblServicios)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(btnAtras)
                 .addContainerGap())
         );
@@ -83,9 +251,57 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
         myTab.setSelectedIndex(1);
     }//GEN-LAST:event_btnAtrasActionPerformed
 
+    private void cargarHabitacionesReservadas(){
+        dt =  (DefaultTableModel) grResumen.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }  
+        for(int x=0; x < this.reserva.getReservas().size(); x++){
+            ClHabitaciones xx = (ClHabitaciones)this.reserva.getReservas().get(x);
+            this.id_hotel = xx.getIdHotel();
+            Object[] fila = new Object[4];
+            fila[0] = xx.getUbicacion();
+            fila[1] = ((ClTipoHabitacion)DAOTipoHab.sqlLeer(xx.getIdHabitacionTipo())).getNombre();
+            fila[2] = xx.getPrecio();
+            dt.addRow(fila);
+        }    
+    }
+    
+    
+    private void cargarServiciosHoteles(){
+         ArrayList sev = new ArrayList<>();
+        dt =  (DefaultTableModel) grServicios.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }  
+        sev = DAOHotelServicio.sqlLeerXHotel(id_hotel);
+        
+        for(int x=0; x < sev.size(); x++){
+            ClHotelServicios xx = (ClHotelServicios)sev.get(x);
+            Object[] fila = new Object[2];
+            fila[0] = xx.getNombreServicio();
+            fila[1] = xx.getPrecioServicio();
+            dt.addRow(fila);
+        }    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
+    private javax.swing.JTable grResumen;
+    private javax.swing.JTable grServicios;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblResumen;
+    private javax.swing.JLabel lblResumenDias;
+    private javax.swing.JLabel lblResumenFechaIngreso;
+    private javax.swing.JLabel lblResumenFechaSalida;
+    private javax.swing.JLabel lblResumenNombre;
+    private javax.swing.JLabel lblResumenRut;
+    private javax.swing.JLabel lblResumenTotal;
+    private javax.swing.JLabel lblResumenTotalHabitaciones;
+    private javax.swing.JLabel lblResumenTotalxNoche;
+    private javax.swing.JLabel lblServicios;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

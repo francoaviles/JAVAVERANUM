@@ -26,7 +26,7 @@ public class DAOReservar {
             and += "AND \"id_habitacion_tipo\" = ?";
         }
         if (cant > 0) {
-            and += "AND \"cant_personas\" <= ? ";
+            and += "AND \"cant_personas\" >= ? ";
         }
         String sql = "SELECT * FROM \"habitaciones\" WHERE \"id_hotel\" = ? AND \"id_habitacion_estado\" = ? "+and;
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
