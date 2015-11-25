@@ -9,8 +9,11 @@ import helper.Formularios;
 import java.util.ArrayList;
 import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOEstadoReserva;
 import veranum.DAO.DAOHotelServicio;
+import veranum.DAO.DAOServicios;
 import veranum.DAO.DAOTipoHab;
+import veranum.entities.ClEstadoReserva;
 import veranum.entities.ClHabitaciones;
 import veranum.entities.ClHotelServicios;
 import veranum.entities.ClReservar;
@@ -26,6 +29,7 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
     private final ClReservar reserva;
     private DefaultTableModel dt = new DefaultTableModel();
     private int id_hotel = 0;
+    private int total_servicios = 0;
     /**
      * Creates new form PasoTres_Servicios
      * @param t
@@ -45,6 +49,7 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
         lblResumenTotalHabitaciones.setText("Habitaciones: "+reserva.getReservas().size());
         this.cargarHabitacionesReservadas();
         this.cargarServiciosHoteles();
+        this.cargarEstados();
     }
     
     
@@ -68,14 +73,21 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
         lblResumenFechaIngreso = new javax.swing.JLabel();
         lblResumenFechaSalida = new javax.swing.JLabel();
         lblResumenDias = new javax.swing.JLabel();
-        lblResumenTotalxNoche = new javax.swing.JLabel();
-        lblResumenTotal = new javax.swing.JLabel();
         lblResumenTotalHabitaciones = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         grResumen = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        grServiciosContratados = new javax.swing.JTable();
+        lblResumenTotalHabitaciones1 = new javax.swing.JLabel();
+        btnReservar = new javax.swing.JButton();
         lblServicios = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         grServicios = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        lblResumenTotalxNoche = new javax.swing.JLabel();
+        lblResumenTotal = new javax.swing.JLabel();
+        lblEstadoReserva = new javax.swing.JLabel();
+        cbEstadoReserva = new javax.swing.JComboBox();
 
         lblTitulo.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         lblTitulo.setText("Reserva de Servicios");
@@ -114,14 +126,6 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
         lblResumenDias.setForeground(new java.awt.Color(87, 87, 87));
         lblResumenDias.setText("Dias");
 
-        lblResumenTotalxNoche.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        lblResumenTotalxNoche.setForeground(new java.awt.Color(87, 87, 87));
-        lblResumenTotalxNoche.setText("TotalxNoche");
-
-        lblResumenTotal.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        lblResumenTotal.setForeground(new java.awt.Color(87, 87, 87));
-        lblResumenTotal.setText("Total");
-
         lblResumenTotalHabitaciones.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         lblResumenTotalHabitaciones.setForeground(new java.awt.Color(87, 87, 87));
         lblResumenTotalHabitaciones.setText("Habitaciones Cant");
@@ -144,6 +148,41 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(grResumen);
 
+        grServiciosContratados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Servicio", "Precio", "#"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        grServiciosContratados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grServiciosContratadosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(grServiciosContratados);
+
+        lblResumenTotalHabitaciones1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenTotalHabitaciones1.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenTotalHabitaciones1.setText("Servicios Contratados:");
+
+        btnReservar.setBackground(new java.awt.Color(51, 255, 51));
+        btnReservar.setText("RESERVAR");
+        btnReservar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -151,19 +190,20 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnReservar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblResumenTotalxNoche)
+                            .addComponent(lblResumenTotalHabitaciones1)
                             .addComponent(lblResumenTotalHabitaciones)
                             .addComponent(lblResumenDias)
                             .addComponent(lblResumenFechaSalida)
                             .addComponent(lblResumenFechaIngreso)
                             .addComponent(lblResumenNombre)
                             .addComponent(lblResumenRut)
-                            .addComponent(lblResumen)
-                            .addComponent(lblResumenTotal))
-                        .addGap(0, 94, Short.MAX_VALUE)))
+                            .addComponent(lblResumen))
+                        .addGap(0, 40, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -185,10 +225,12 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
                 .addComponent(lblResumenTotalHabitaciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(lblResumenTotalxNoche)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblResumenTotal)
+                .addComponent(lblResumenTotalHabitaciones1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -200,18 +242,59 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Servicio", "Precio"
+                "#", "Servicio", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        grServicios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grServiciosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(grServicios);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
+        lblResumenTotalxNoche.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenTotalxNoche.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenTotalxNoche.setText("TotalxNoche");
+
+        lblResumenTotal.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblResumenTotal.setForeground(new java.awt.Color(87, 87, 87));
+        lblResumenTotal.setText("Total");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblResumenTotalxNoche)
+                    .addComponent(lblResumenTotal))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblResumenTotalxNoche)
+                .addGap(18, 18, 18)
+                .addComponent(lblResumenTotal)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblEstadoReserva.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        lblEstadoReserva.setText("Estado Reserva:");
+
+        cbEstadoReserva.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -219,14 +302,16 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblTitulo)
                     .addComponent(btnAtras)
                     .addComponent(lblServicios)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblEstadoReserva)
+                    .addComponent(cbEstadoReserva, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,9 +323,15 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
                         .addGap(64, 64, 64)
                         .addComponent(lblServicios)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblEstadoReserva)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbEstadoReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtras)
                 .addContainerGap())
         );
@@ -250,6 +341,34 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
         myTab.setEnabledAt(2, false);
         myTab.setSelectedIndex(1);
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void grServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grServiciosMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grServicios, 2);
+
+        if(row_dos >= 0){
+            this.reserva.getServicios().add(this.leerServicio(Integer.parseInt(grServicios.getValueAt(row_dos, 0).toString())));
+            this.cargarServiciosReservados();
+        }
+    }//GEN-LAST:event_grServiciosMouseClicked
+
+    private void grServiciosContratadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grServiciosContratadosMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grServiciosContratados, 2);
+
+        if(row_dos >= 0){
+            this.reserva.getServicios().remove(Integer.parseInt(grServiciosContratados.getValueAt(row_dos, 2).toString()));
+            this.cargarServiciosReservados();
+        }
+    }//GEN-LAST:event_grServiciosContratadosMouseClicked
+
+    private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
+        reserva.setEstado((ClEstadoReserva)cbEstadoReserva.getSelectedItem());
+        long newTotal = reserva.getTotal() + total_servicios;
+        reserva.setTotal(newTotal);
+        
+        myTab.setEnabledAt(3, true);
+        myTab.setComponentAt(3, new PasoCuatro_Finalizar(myTab, reserva));
+        myTab.setSelectedIndex(3);
+    }//GEN-LAST:event_btnReservarActionPerformed
 
     private void cargarHabitacionesReservadas(){
         dt =  (DefaultTableModel) grResumen.getModel();        
@@ -267,6 +386,34 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
         }    
     }
     
+    private void cargarServiciosReservados(){
+        dt =  (DefaultTableModel) grServiciosContratados.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }  
+        total_servicios = 0;
+        for(int x=0; x < this.reserva.getServicios().size(); x++){
+            ClServicios xx = (ClServicios)this.reserva.getServicios().get(x);
+            Object[] fila = new Object[4];
+            total_servicios += xx.getPrecio();
+            fila[0] = xx.getNombre();
+            fila[1] = xx.getPrecio();
+            fila[2] = x;
+            dt.addRow(fila);
+        }   
+        calculaPrecio();
+    }
+    
+    private long calculaPrecio(){
+        long precio = reserva.getTotal() + total_servicios;
+        lblResumenTotal.setText("Total: $"+precio);
+        return precio;
+    }
+    
+    private ClServicios leerServicio(int id){
+        return DAOServicios.sqlLeer(id);
+    }
+    
     
     private void cargarServiciosHoteles(){
          ArrayList sev = new ArrayList<>();
@@ -278,20 +425,33 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
         
         for(int x=0; x < sev.size(); x++){
             ClHotelServicios xx = (ClHotelServicios)sev.get(x);
-            Object[] fila = new Object[2];
-            fila[0] = xx.getNombreServicio();
-            fila[1] = xx.getPrecioServicio();
+            Object[] fila = new Object[3];
+            fila[0] = xx.getIdServicio();
+            fila[1] = xx.getNombreServicio();
+            fila[2] = xx.getPrecioServicio();
             dt.addRow(fila);
         }    
+    }
+    
+    private void cargarEstados(){
+        for (Object dato : DAOEstadoReserva.sqlLeerTodos()) {
+            cbEstadoReserva.addItem(dato);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnReservar;
+    private javax.swing.JComboBox cbEstadoReserva;
     private javax.swing.JTable grResumen;
     private javax.swing.JTable grServicios;
+    private javax.swing.JTable grServiciosContratados;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblEstadoReserva;
     private javax.swing.JLabel lblResumen;
     private javax.swing.JLabel lblResumenDias;
     private javax.swing.JLabel lblResumenFechaIngreso;
@@ -300,6 +460,7 @@ public class PasoTres_Servicios extends javax.swing.JPanel {
     private javax.swing.JLabel lblResumenRut;
     private javax.swing.JLabel lblResumenTotal;
     private javax.swing.JLabel lblResumenTotalHabitaciones;
+    private javax.swing.JLabel lblResumenTotalHabitaciones1;
     private javax.swing.JLabel lblResumenTotalxNoche;
     private javax.swing.JLabel lblServicios;
     private javax.swing.JLabel lblTitulo;
