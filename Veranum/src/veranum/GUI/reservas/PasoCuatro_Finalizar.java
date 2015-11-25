@@ -5,12 +5,12 @@
  */
 package veranum.GUI.reservas;
 
+import helper.Formularios;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import veranum.DAO.DAOReservar;
+import veranum.entities.ClHabitaciones;
 import veranum.entities.ClReservar;
 
 /**
@@ -20,7 +20,7 @@ import veranum.entities.ClReservar;
 public class PasoCuatro_Finalizar extends javax.swing.JPanel {
     private final JTabbedPane myTab;
     private final ClReservar reserva;
-    private String detalle;
+    private String detalle = "";
     /**
      * Creates new form PasoCuatro_Finalizar
      * @param t
@@ -39,11 +39,26 @@ public class PasoCuatro_Finalizar extends javax.swing.JPanel {
     }
 
     public String generarDetalle(){
+        detalle += "\n---------------------------------------------\n";
         detalle += "Nombre: "+reserva.getUsuario().getNombre();
         detalle += " "+reserva.getUsuario().getApellido_pa();
         detalle += " "+reserva.getUsuario().getApellido_ma();
         detalle += "\n";
+        detalle += "Rut: "+reserva.getUsuario().getRut();
+        detalle += "\n";
+        detalle += "Fecha Ingreso: "+Formularios.deFechaToString(reserva.getFechaIngreso());
+        detalle += "\n";
+        detalle += "Fecha Salida: "+Formularios.deFechaToString(reserva.getFechaSalida());
+        detalle += "\n---------------------------------------------\n";
+        detalle += "-- Habitaciones: ";
+        detalle += "\n---------------------------------------------\n";
         
+        for(int i = 0; i < reserva.getReservas().size(); i++){
+            ClHabitaciones xx = (ClHabitaciones)reserva.getReservas().get(i);
+            detalle += "#"+i;
+            detalle += "| ";
+            detalle += "\n";
+        }
         return this.detalle;
     }
     /**
