@@ -31,5 +31,50 @@ namespace Veranum.DAO
             }
             return pasajero;
         }
+
+        public static Boolean InsertPasajero(ClPasajero p) {
+            String sql=  String.Format("INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"contrasena\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"direccion\", \"fecha_nac\", \"id_rol\" ) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',TO_DATE('{8}', 'dd/MM/YYYY'),'{9}')",
+                                        p.Rut
+                                        ,p.Nombre
+                                        ,p.Contrasena
+                                        ,p.ApellidoMa
+                                        ,p.ApellidoPa
+                                        ,p.Telefono
+                                        ,p.Email
+                                        ,p.Direccion
+                                        ,p.Fecha_nac
+                                        ,p.IdRol);
+            DB.Instance.Ejecutar(sql);
+            return true;
+        }
+
+        public static Boolean UpdatePasajero(ClPasajero p)
+        {
+            String sql = String.Format("UPDATE \"pasajeros\" SET \"rut\" = '{0}', \"nombre\" = '{1}', \"contrasena\" = '{2}', \"apellido_pa\" = '{3}', \"apellido_ma\" = '{4}', \"telefono\" = '{5}', \"email\" = '{6}', \"direccion\" = '{7}', \"fecha_nac\" = TO_DATE('{8}', 'dd/MM/YYYY') WHERE \"id_pasajero\" = '{9}'",
+                                        p.Rut
+                                        , p.Nombre
+                                        , p.Contrasena
+                                        , p.ApellidoMa
+                                        , p.ApellidoPa
+                                        , p.Telefono
+                                        , p.Email
+                                        , p.Direccion
+                                        , p.Fecha_nac
+                                        , p.IdPasajero);
+            DB.Instance.Ejecutar(sql);
+            return true;
+        }
+
+        public static Boolean DeletePasajero(ClPasajero p)
+        {
+            String sql = String.Format("DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = '{0}' ",
+                                        p.IdPasajero
+                                        );
+            DB.Instance.Ejecutar(sql);
+            return true;
+        }
+
+
+
     }
 }
