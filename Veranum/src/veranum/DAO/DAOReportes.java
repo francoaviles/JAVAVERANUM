@@ -19,7 +19,7 @@ public class DAOReportes {
         String sql="INSERT INTO \"reportes\" (\"id_tipo_reporte\", \"fecha_creacion\", \"archivo\", \"comentario\" ) VALUES (?,?,?,?)";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, reportes.getIdTipoReporte());
-        //a.setDate(2, reportes.getFechaCreacion());
+        a.setDate(2, (new java.sql.Date(reportes.getFechaCreacion().getTime())));
         a.setString(3, reportes.getArchivo());
         a.setString(4, reportes.getComentario());
         OracleConection.getInstance().sqlEjecutarPreparacion();
@@ -36,7 +36,7 @@ public class DAOReportes {
         String sql="UPDATE \"reportes\" SET \"id_tipo_reporte\" = ?, \"fecha_creacion\" = ?, \"archivo\" = ?, \"comentario\" = ? WHERE \"id_reporte\" = ?";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, reportes.getIdTipoReporte());
-        //a.setDate(2, reportes.getFechaCreacion());
+        a.setDate(2, (new java.sql.Date(reportes.getFechaCreacion().getTime())));
         a.setString(3, reportes.getArchivo());
         a.setString(4, reportes.getComentario());
         a.setInt(5, reportes.getIdReporte());
