@@ -280,13 +280,13 @@ ALTER TABLE "hoteles_convenios" ADD CONSTRAINT "hoteles_conveniosPrimary" PRIMAR
 -- pasajeros
 CREATE TABLE "pasajeros" (
   "id_pasajero" NUMBER NOT NULL,
-  "rut" Varchar2(12) NOT NULL,
-  "nombre" Varchar2(15) NOT NULL,
+  "rut" Varchar2(15) NOT NULL,
+  "nombre" Varchar2(20) NOT NULL,
   "contrasena" Varchar2(255) NOT NULL,
   "apellido_pa" Varchar2(20) NOT NULL,
   "apellido_ma" Varchar2(20) NOT NULL,
   "telefono" Varchar2(15) NOT NULL,
-  "email" Varchar2(20) NOT NULL,
+  "email" Varchar2(50) NOT NULL,
   "id_region" Number,
   "id_provincia" Number,
   "id_comuna" Number,
@@ -402,7 +402,8 @@ ALTER TABLE "hotel_tipo_menu"
 CREATE TABLE "menu" (
   "id_menu" NUMBER NOT NULL,
   "id_tipo_menu" Number NOT NULL,
-  "nombre" Varchar2(100) NOT NULL
+  "nombre" Varchar2(100) NOT NULL,
+  "number" Number NOT NULL
 );
 /
 -- Keys
