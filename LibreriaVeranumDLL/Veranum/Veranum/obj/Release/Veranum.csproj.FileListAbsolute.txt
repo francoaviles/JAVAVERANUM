@@ -16,3 +16,9 @@ C:\Users\carlosdlg\Documents\GitHub\JAVAVERANUM\LibreriaVeranumDLL\Veranum\Veran
 C:\Users\carlosdlg\Documents\GitHub\JAVAVERANUM\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.csprojResolveAssemblyReference.cache
 C:\Users\carlosdlg\Documents\GitHub\JAVAVERANUM\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.dll
 C:\Users\carlosdlg\Documents\GitHub\JAVAVERANUM\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.pdb
+C:\Users\Zacarias\Documents\GitHub\JAVAVERANUM\LibreriaVeranumDLL\Veranum\Veranum\bin\Release\Veranum.dll
+C:\Users\Zacarias\Documents\GitHub\JAVAVERANUM\LibreriaVeranumDLL\Veranum\Veranum\bin\Release\Veranum.pdb
+C:\Users\Zacarias\Documents\GitHub\JAVAVERANUM\LibreriaVeranumDLL\Veranum\Veranum\bin\Release\Oracle.DataAccess.dll
+C:\Users\Zacarias\Documents\GitHub\JAVAVERANUM\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.csprojResolveAssemblyReference.cache
+C:\Users\Zacarias\Documents\GitHub\JAVAVERANUM\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.dll
+C:\Users\Zacarias\Documents\GitHub\JAVAVERANUM\LibreriaVeranumDLL\Veranum\Veranum\obj\Release\Veranum.pdb
