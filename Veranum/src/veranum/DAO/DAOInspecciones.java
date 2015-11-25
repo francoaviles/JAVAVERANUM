@@ -19,7 +19,7 @@ public class DAOInspecciones {
         String sql="INSERT INTO \"habitacion_inspecciones\" (\"id_habitacion\", \"fecha_inicio\", \"comentario\", \"nombre_inspector\" ) VALUES (?,?,?,?)";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, inspecciones.getIdHabitacion());
-        //a.setDate(2, inspecciones.getFechaInicio());
+        a.setDate(2, (new java.sql.Date(inspecciones.getFechaInicio().getTime())));
         a.setString(3, inspecciones.getComentario());
         a.setString(4, inspecciones.getNombreInspector());
         OracleConection.getInstance().sqlEjecutarPreparacion();
@@ -36,7 +36,7 @@ public class DAOInspecciones {
         String sql="UPDATE \"habitacion_inspecciones\" SET \"id_habitacion\" = ?, \"fecha_inicio\" = ?, \"comentario\" = ?, \"nombre_inspector\" = ? WHERE \"id_habitacion_inspeccion\" = ?";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, inspecciones.getIdHabitacion());
-        //a.setDate(2, inspecciones.getFechaInicio());
+        a.setDate(2, (new java.sql.Date(inspecciones.getFechaInicio().getTime())));
         a.setString(3, inspecciones.getComentario());
         a.setString(4, inspecciones.getNombreInspector());
         a.setInt(5, inspecciones.getIdHabitacionInspeccion());

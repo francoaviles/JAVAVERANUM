@@ -18,7 +18,7 @@ import veranum.utilidades.OracleConection;
  */
 public class DAOCliente {
     public static boolean sqlInsert(ClPasajeros clientes) throws SQLException{
-        String sql="INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"contrasena\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"direccion\", \"fecha_nac\", \"id_rol\" ) VALUES (?,?,?,?,?,?,?,?,TO_DATE(?, 'dd/MM/YYYY'),?)";
+        String sql="INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"contrasena\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"direccion\", \"fecha_nac\", \"id_rol\" ) VALUES (?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, clientes.getRut());
         a.setString(2, clientes.getNombre());
@@ -28,7 +28,7 @@ public class DAOCliente {
         a.setString(6, clientes.getTelefono());
         a.setString(7, clientes.getEmail());
         a.setString(8, clientes.getDireccion());
-        a.setDate(9, (Date) clientes.getFechaNacimiento());
+        a.setDate(9, (new java.sql.Date(clientes.getFechaNacimiento().getTime())));
         a.setInt(10, clientes.getIdRol());
         OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
@@ -41,7 +41,7 @@ public class DAOCliente {
     }
     
     public static boolean sqlUpdate(ClPasajeros clientes) throws SQLException{
-        String sql="UPDATE \"pasajeros\" SET \"rut\" = ?, \"nombre\" = ?, \"contrasena\" = ?, \"apellido_pa\" = ?, \"apellido_ma\" = ?, \"telefono\" = ?, \"email\" = ?, \"direccion\" = ?, \"fecha_nac\" = TO_DATE(?, 'dd/MM/YYYY') WHERE \"id_pasajero\" = ?";
+        String sql="UPDATE \"pasajeros\" SET \"rut\" = ?, \"nombre\" = ?, \"contrasena\" = ?, \"apellido_pa\" = ?, \"apellido_ma\" = ?, \"telefono\" = ?, \"email\" = ?, \"direccion\" = ?, \"fecha_nac\" = ? WHERE \"id_pasajero\" = ?";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, clientes.getRut());
         a.setString(2, clientes.getNombre());
@@ -51,7 +51,7 @@ public class DAOCliente {
         a.setString(6, clientes.getTelefono());
         a.setString(7, clientes.getEmail());
         a.setString(8, clientes.getDireccion());
-        a.setDate(9, (Date) clientes.getFechaNacimiento());
+        a.setDate(9, (new java.sql.Date(clientes.getFechaNacimiento().getTime())));
         a.setInt(10, clientes.getIdRol());
         a.setInt(11, clientes.getIdPasajero());
         OracleConection.getInstance().sqlEjecutarPreparacion();  
