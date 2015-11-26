@@ -11,4 +11,12 @@
         setHeight: "502"
     });
 
+    $(".registroForm").validate({
+        rules: {
+            "ctl00$ContentPlaceHolder1$txtRut": {
+                required: true
+            }
+        }
+    });
+
 });
