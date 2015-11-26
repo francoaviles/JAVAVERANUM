@@ -1,0 +1,329 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B5B71B73-EB8F-B270-A4DA-A22ED031BB7D" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="pasajeros">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>pasajeros</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:20 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_pasajero" id="2ED8C898-7A99-FC95-8D43-2802244442FB">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>id_pasajero</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rut" id="D6259166-2128-938D-4061-702856FDB4F8">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>rut</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>12 BYTE</dataTypeSize>
+<ownDataTypeParameters>12 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="E5714850-17A7-D599-B484-91CE4ADA517D">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>nombre</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15 BYTE</dataTypeSize>
+<ownDataTypeParameters>15 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="contrasena" id="2839540E-93CD-E775-8BE3-B3DFB806E162">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>contrasena</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellido_pa" id="575EFE9D-A7DF-160C-72F1-55EDF5B9FE88">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>apellido_pa</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellido_ma" id="E53848E8-D549-6CF7-035B-24365D79687C">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>apellido_ma</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telefono" id="0B3A6F28-EBF9-C9AE-02EF-34382F721CD1">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>telefono</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15 BYTE</dataTypeSize>
+<ownDataTypeParameters>15 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="AA5E1CE0-F01E-2FE1-BC72-F794AFBF3EF7">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>email</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_region" id="BAF2522B-81C8-B02B-8FF9-65C2F73600D8">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>id_region</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D3BFFA2F-63A5-9314-5E83-BE81933549A8" referredColumn="A607620B-B774-4D34-F2C5-76B2D89C1190"/>
+</associations>
+</Column>
+<Column name="id_provincia" id="F1CC24BB-3EBA-ABC9-C0CA-41694DD9B043">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>id_provincia</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="006501ED-BF26-0A74-9D82-62CF6F07B00B" referredColumn="D842690B-7463-07D5-8FDD-2720E66A4FBF"/>
+</associations>
+</Column>
+<Column name="id_comuna" id="1AE1F36D-5948-FD11-4E1E-93288A9F9F04">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>id_comuna</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3EEE038C-C90A-CD26-D989-26E3097EFEF7" referredColumn="B5EDF7FE-A423-7FCA-DA4E-590BDA882FA5"/>
+</associations>
+</Column>
+<Column name="direccion" id="47967553-3913-6651-FF3D-B9AE84D13830">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>direccion</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fecha_nac" id="7C57BF26-A592-7BE0-F7B2-4F88DC6C89E1">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>fecha_nac</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_rol" id="BD0942A9-567D-5263-5A9A-634001B4BED6">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>pasajeros</sourceObjSchema>
+<sourceObjName>id_rol</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="30ECD592-5F6A-92FE-C9A7-58FA5DD0272F" referredColumn="1DA42CE3-691C-0B5B-ABA9-F2C3B94ED2F4"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="456E5A79-7FE5-3C79-2996-3188932134B8" name="pasajerosPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>pasajerosPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:24 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2ED8C898-7A99-FC95-8D43-2802244442FB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7631AB48-C2D5-2C6B-E2F0-49C271A4A125" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="pasajerosPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>pasajerosPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:22 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2ED8C898-7A99-FC95-8D43-2802244442FB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="22607D5E-241F-99A9-48C3-BD0161C14DEF" name="pasajeros_comuna_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1AE1F36D-5948-FD11-4E1E-93288A9F9F04"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="44885AC1-8039-C05C-6F3A-6122567F6EF3" name="pasajeros_provincia_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F1CC24BB-3EBA-ABC9-C0CA-41694DD9B043"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F4F02202-40F0-AC01-2A92-5D83DF757BC7" name="pasajeros_region_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BAF2522B-81C8-B02B-8FF9-65C2F73600D8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AA8545B6-5606-A49E-A305-4F4BB8A7C5E8" name="pasajeros_roles_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BD0942A9-567D-5263-5A9A-634001B4BED6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

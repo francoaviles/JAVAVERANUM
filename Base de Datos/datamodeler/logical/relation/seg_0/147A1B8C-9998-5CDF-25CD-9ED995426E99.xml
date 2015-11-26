@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="hoteles_convenios" directorySegmentName="seg_0" id="147A1B8C-9998-5CDF-25CD-9ED995426E99">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:11:40 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>9BE1359C-AA9C-4F61-64A6-58063A8FA793</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>BBCDA3E6-74AA-6458-BADB-4B8966DAA3E7</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

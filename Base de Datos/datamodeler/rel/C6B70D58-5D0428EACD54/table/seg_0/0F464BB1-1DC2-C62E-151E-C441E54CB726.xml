@@ -1,0 +1,169 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0F464BB1-1DC2-C62E-151E-C441E54CB726" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="hotel_insumos">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>hotel_insumos</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:19 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_insumo_hotel" id="DE2125E8-A94E-AA22-4247-74C953A1B7CD">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>hotel_insumos</sourceObjSchema>
+<sourceObjName>id_insumo_hotel</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_insumo" id="0F66A3A8-AA27-3A4F-1282-E120E969B508">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>hotel_insumos</sourceObjSchema>
+<sourceObjName>id_insumo</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="99C23535-F5E2-CDF9-0E66-81CA57D8181D" referredColumn="104A1823-669E-DC0E-E63F-ECC4ABDC7AEB"/>
+</associations>
+</Column>
+<Column name="id_hotel" id="34119BAD-A6BF-C0F2-AD91-186A0D58CF88">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>hotel_insumos</sourceObjSchema>
+<sourceObjName>id_hotel</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CDEC08BC-C545-2AB9-69C0-0DF1B2CBAE0C" referredColumn="E2891835-45CB-50F8-946E-A47414A3ABEE"/>
+</associations>
+</Column>
+<Column name="id_medida" id="EFC60D22-D7C2-6475-BF6F-493B125374B6">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>hotel_insumos</sourceObjSchema>
+<sourceObjName>id_medida</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1A600F6C-881E-6E85-281F-071049805508" referredColumn="A3D6C4D7-D252-00B9-B729-4F07D2A147AD"/>
+</associations>
+</Column>
+<Column name="stock" id="AD101681-4586-936A-E317-563771F1198A">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>hotel_insumos</sourceObjSchema>
+<sourceObjName>stock</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="469DFADE-346F-7B55-660E-572D6E374448" name="hotel_insumosPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>hotel_insumosPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:24 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DE2125E8-A94E-AA22-4247-74C953A1B7CD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4FBCEB9F-08A1-A638-F7E2-49DF25000237" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="hotel_insumosPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>hotel_insumosPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:22 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DE2125E8-A94E-AA22-4247-74C953A1B7CD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AC4B83A9-D7E5-1100-3648-645C60A786C3" name="hotel_insumos_hoteles_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="34119BAD-A6BF-C0F2-AD91-186A0D58CF88"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F1BA009B-9DD7-FACB-2324-D9A0CD2B7185" name="hotel_insumos_insumos_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0F66A3A8-AA27-3A4F-1282-E120E969B508"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CE1509E8-53E2-D4C5-AED5-78DBE8F7490E" name="hotel_insumos_medidas_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EFC60D22-D7C2-6475-BF6F-493B125374B6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

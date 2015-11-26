@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="09C425E0-0BAD-1C02-74BA-76D8631FEF24" name="reserva reportes">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>43ADAD6A-0BAB-DF35-3017-7F43ABC968FE</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id reserva reporte" id="5DB636C8-FAA7-B41C-A0AC-43DBE988E9D2">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>2C1CF3B0-BD48-8D70-A87A-ED356C08D0DD</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id reserva" id="7EE375E8-94F0-8240-ABD6-6187C3CA3A57">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>29132629-AB68-8656-8CAE-9F1F04AB96CF</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>64DC5A92-4F90-4349-D25A-85E7D48610CD</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha reporte" id="A96C0999-ECAC-5DFA-1BFD-823AA381C28F">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>AC625A77-2787-7F27-6CB6-B617A62D9AC7</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="comentario" id="DD71DCD4-3BA9-4EE5-CA74-3F0ED1F82507">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>A46ADE0B-FC7B-BFDF-B2FA-0438481D04DB</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tipo" id="A3E240E9-69F8-F8F3-DEDE-05383CD81C4B">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>25CE7F36-924C-C588-E9D6-BA5D0CF9F1E9</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="valor" id="10B3D000-13B0-9F87-1EB6-97760F88D4AC">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>5C65C0DB-215B-3F6B-086F-BA924D2A67CC</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B871D4C8-0DC2-45A7-B99E-34DC35F969CA" name="reserva reportesPrimary">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>AB79B2B2-305B-5EEB-60C1-4D47B7797A9A</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>5DB636C8-FAA7-B41C-A0AC-43DBE988E9D2</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

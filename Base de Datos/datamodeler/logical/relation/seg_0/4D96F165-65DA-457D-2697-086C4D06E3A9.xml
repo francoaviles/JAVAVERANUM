@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="habitacion_inspecciones_FK" directorySegmentName="seg_0" id="4D96F165-65DA-457D-2697-086C4D06E3A9">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>5D547A46-2A21-6AA7-523B-BBFA62ED9082</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>78A88346-A101-4B9F-A44B-C6F70E33310D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>3E818C56-C764-A8F1-B067-8E86292576D7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>5A03C356-24F7-6DAB-C591-D7393FA00F02</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

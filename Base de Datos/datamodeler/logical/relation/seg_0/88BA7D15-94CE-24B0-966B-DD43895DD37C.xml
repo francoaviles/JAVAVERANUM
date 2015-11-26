@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="habitaciones_caract_FK" directorySegmentName="seg_0" id="88BA7D15-94CE-24B0-966B-DD43895DD37C">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>2C5C6E14-3477-48A6-A40E-DAFC39D234F1</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>78A88346-A101-4B9F-A44B-C6F70E33310D</sourcePk>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>3E818C56-C764-A8F1-B067-8E86292576D7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>5DF10263-F984-E887-012C-6D0E6995D310</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

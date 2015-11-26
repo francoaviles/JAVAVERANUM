@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E6296936-2929-5B37-3400-65FAFE2C790B" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="habitacion_estados">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>habitacion_estados</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:19 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_habitacion_estado" id="F5C5397D-9970-EED8-8276-DAF8E6B29B75">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>habitacion_estados</sourceObjSchema>
+<sourceObjName>id_habitacion_estado</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="estado" id="BA40F7A4-5DD3-17AC-3FB6-16AFDCAED048">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>habitacion_estados</sourceObjSchema>
+<sourceObjName>estado</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D8B69BC2-8135-DC2A-15A6-736DAC8D5928" name="habitacion_estadosPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>habitacion_estadosPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:23 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F5C5397D-9970-EED8-8276-DAF8E6B29B75"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C56A336C-CF9E-6745-FF34-1FDBB55F0E1C" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="habitacion_estadosPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>habitacion_estadosPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:22 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F5C5397D-9970-EED8-8276-DAF8E6B29B75"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

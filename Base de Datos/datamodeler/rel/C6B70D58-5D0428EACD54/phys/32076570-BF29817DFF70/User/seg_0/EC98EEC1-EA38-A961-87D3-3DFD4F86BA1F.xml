@@ -1,0 +1,10 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="PORTAFOLIO" directorySegmentName="seg_0" id="EC98EEC1-EA38-A961-87D3-3DFD4F86BA1F">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjName>PORTAFOLIO</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:11 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<schemaObject>5D4BC863-7FEE-7275-6B1C-39034EE995C2</schemaObject>
+</UserOraclev10g>

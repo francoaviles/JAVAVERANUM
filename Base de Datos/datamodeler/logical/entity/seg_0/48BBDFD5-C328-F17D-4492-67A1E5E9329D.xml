@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="48BBDFD5-C328-F17D-4492-67A1E5E9329D" name="tipo caracteristicas">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>4B1472E3-5D3D-F988-3DCE-11E2C6FBC0C2</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id tipo caract" id="3DC4A9A0-A33E-6CB2-C609-6B7FB5A1DF4D">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>4679DBE1-6503-22A1-5397-24919E1175BA</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="A0709FA8-9303-260B-8305-036EF1F72002">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>1E302E91-A298-3C28-7855-C94009E372BE</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion" id="2A10D2AB-1C05-F7FB-8F1B-5DA969153B7B">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>D3472BEE-5CA4-7A28-3B4F-441A1AE8A5BF</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="97DB5416-6D59-9953-A81F-229713AF60F7" name="tipo caracteristicaPrimary">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>05000135-A5EB-E0E8-5098-ED68D85DF293</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3DC4A9A0-A33E-6CB2-C609-6B7FB5A1DF4D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

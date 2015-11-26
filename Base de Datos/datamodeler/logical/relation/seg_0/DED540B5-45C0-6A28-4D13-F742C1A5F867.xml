@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="habit_hab_estados_FK" directorySegmentName="seg_0" id="DED540B5-45C0-6A28-4D13-F742C1A5F867">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>D5E2847B-1FF3-C56D-F4E2-301B9DF00AE8</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>69B0EBB3-C75E-D88F-4B9B-FCEBD13670DA</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>0B41C4B4-F151-2FE3-B197-E3D52E46C977</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>3E818C56-C764-A8F1-B067-8E86292576D7</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="hote_tipo_menu" directorySegmentName="seg_0" id="F23361B3-19E3-86E6-FF05-3CDEC62000E9">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:08:34 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>9BE1359C-AA9C-4F61-64A6-58063A8FA793</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>76048138-2C38-0493-5232-9FA29552F63D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

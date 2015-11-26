@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BE947A67-EB42-6C1A-6D50-82AF061431B5" name="hotel insumos">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>0F464BB1-1DC2-C62E-151E-C441E54CB726</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id insumo hotel" id="827D9E5F-30AA-3E17-D0DD-B326C34EFAB0">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>DE2125E8-A94E-AA22-4247-74C953A1B7CD</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id insumo" id="6F0BC804-A4C5-6C8C-8AA2-2C322CAFC735">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>BEC2B675-A30F-0B1E-1BBB-3EF4D0AB4829</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>C5CBC655-8397-2AE2-7A89-84C9AAD82498</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id hotel" id="BAA6F243-2D0C-A5F7-7149-C8025B455F94">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>D169CFA6-CD77-A39C-8552-2E5DF3DD1E60</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>CA9186D0-7564-FA3C-6B7F-668FF1E23508</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id medida" id="28963C69-C3A7-C4C0-840D-D6B0118D1266">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>81628E9F-EB8A-27DC-C41E-77FCF74D47AA</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>52256EA5-21EC-B6E7-56D1-07DF600ABEFE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="stock" id="17DEB6D1-576E-C82A-7235-88482D47CEF7">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>AD101681-4586-936A-E317-563771F1198A</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D5D86830-1695-7807-1426-BD16C0D7A737" name="hotel insumosPrimary">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>469DFADE-346F-7B55-660E-572D6E374448</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>827D9E5F-30AA-3E17-D0DD-B326C34EFAB0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

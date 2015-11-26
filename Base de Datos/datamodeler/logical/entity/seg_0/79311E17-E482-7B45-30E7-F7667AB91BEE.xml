@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="79311E17-E482-7B45-30E7-F7667AB91BEE" name="hoteles convenios">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>C229751C-CF60-42FD-8C3E-6F96F8E7CF4D</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id hotel" id="65F6490A-661F-777B-2511-BA7849ED3EFB">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>59ABD6AD-F8CC-15AC-12DF-252D0810CE42</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>CA9186D0-7564-FA3C-6B7F-668FF1E23508</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id convenio" id="79AF0499-B0E4-8C18-8043-DC31F28D52D0">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>647C6043-758F-790A-BFA6-4886EB731C61</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>29100C38-54E3-851E-1DE6-D36C3310652C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E93823DF-A256-EBB1-AEAE-819ACB2FCB3D" name="hoteles conveniosPrimary">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>FCD6C6D5-F3E1-25DA-9676-7C062E13C422</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>65F6490A-661F-777B-2511-BA7849ED3EFB</attributeRef>
+<attributeRef>79AF0499-B0E4-8C18-8043-DC31F28D52D0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

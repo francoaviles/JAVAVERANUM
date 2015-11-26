@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="hotel_insumos_medidas_FK" directorySegmentName="seg_0" id="81628E9F-EB8A-27DC-C41E-77FCF74D47AA">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>1A600F6C-881E-6E85-281F-071049805508</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>F07498FF-2668-8E50-FD22-64097545040C</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>FA1A56A3-B0A2-8415-2565-13E03E3BE332</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>BE947A67-EB42-6C1A-6D50-82AF061431B5</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

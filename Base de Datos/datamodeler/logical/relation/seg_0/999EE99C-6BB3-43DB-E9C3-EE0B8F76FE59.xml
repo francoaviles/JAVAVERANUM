@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="menu_insumos_medidas_FK" directorySegmentName="seg_0" id="999EE99C-6BB3-43DB-E9C3-EE0B8F76FE59">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:15 UTC</createdTime>
+<generatorID>D55852AD-FC1B-C94C-7984-49D84B3C2554</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>F07498FF-2668-8E50-FD22-64097545040C</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>FA1A56A3-B0A2-8415-2565-13E03E3BE332</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>4BA0316F-26EC-851E-71D9-DF4812925A90</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

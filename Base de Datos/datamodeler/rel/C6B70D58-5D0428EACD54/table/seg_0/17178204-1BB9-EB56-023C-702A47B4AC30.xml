@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="17178204-1BB9-EB56-023C-702A47B4AC30" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="tipo_reportes">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>tipo_reportes</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:20 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_tipo_reporte" id="FF2881B7-6AB4-356C-3E07-042783A13EE5">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>tipo_reportes</sourceObjSchema>
+<sourceObjName>id_tipo_reporte</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="2838B57F-119C-5116-8F0A-D1374E0457A0">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>tipo_reportes</sourceObjSchema>
+<sourceObjName>nombre</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="90CC150A-7FB8-B355-49EE-D7FFD681A24C">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>tipo_reportes</sourceObjSchema>
+<sourceObjName>descripcion</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2FD0263A-0551-26EB-7FE1-9A5DE13FCCB5" name="tipo_reportesPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>tipo_reportesPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:24 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FF2881B7-6AB4-356C-3E07-042783A13EE5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AA522312-1E54-6D91-5145-A392F2FCBD4B" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="tipo_reportesPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>tipo_reportesPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:22 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FF2881B7-6AB4-356C-3E07-042783A13EE5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

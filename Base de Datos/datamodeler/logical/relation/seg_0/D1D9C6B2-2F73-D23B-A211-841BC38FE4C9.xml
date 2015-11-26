@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="convenios_empresas_FK" directorySegmentName="seg_0" id="D1D9C6B2-2F73-D23B-A211-841BC38FE4C9">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:13 UTC</createdTime>
+<generatorID>C6714A41-A334-DCC0-6231-BC1A8D891DE7</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>EC55D849-A1BC-6D87-E127-C7AA1188218A</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>C2848F66-C1EA-7B98-BE09-EA782F9D50F4</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>BBCDA3E6-74AA-6458-BADB-4B8966DAA3E7</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

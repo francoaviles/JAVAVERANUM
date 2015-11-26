@@ -1,0 +1,4 @@
+F:\Portafolio\LibreriaVeranumDLL\Veranum\Veranum\bin\Debug\Veranum.dll
+F:\Portafolio\LibreriaVeranumDLL\Veranum\Veranum\bin\Debug\Veranum.pdb
+F:\Portafolio\LibreriaVeranumDLL\Veranum\Veranum\obj\Debug\Veranum.dll
+F:\Portafolio\LibreriaVeranumDLL\Veranum\Veranum\obj\Debug\Veranum.pdb

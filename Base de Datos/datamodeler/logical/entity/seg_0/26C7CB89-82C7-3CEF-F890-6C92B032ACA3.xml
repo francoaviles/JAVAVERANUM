@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="26C7CB89-82C7-3CEF-F890-6C92B032ACA3" name="menu">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>952F7914-0A66-3C7E-AB5F-548880208C59</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id menu" id="7FEDB263-E3EE-5390-6AA4-920AA3916191">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>5FE1C4EF-9A75-D348-037C-7AC28E9B9799</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id tipo menu" id="70BB608C-95A4-E955-D6F2-859DBE4592A0">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>8DE65584-D4DC-D542-6229-B7F7A2A65E8E</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>1C1F61DD-7C2B-8641-3621-5E5A4FC372F3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="C3D5FAE2-4700-3B72-1C5C-E9891DFD4A4F">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>3D478C18-8F70-4D1C-9474-4FE117B1EE35</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="31662B54-9CB9-04A7-4B54-46196E68F194" name="menuPrimary">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>95A32D0C-3131-06C0-0D5E-13B39FE10B77</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7FEDB263-E3EE-5390-6AA4-920AA3916191</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

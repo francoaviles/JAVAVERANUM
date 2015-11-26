@@ -1,0 +1,200 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="26A54C99-CFC4-EA92-FFCF-35F49EECF151" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="habitaciones">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>habitaciones</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:19 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_habitacion" id="E446AAB9-16FA-0B0F-B2F2-F668FD2AB60E">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>habitaciones</sourceObjSchema>
+<sourceObjName>id_habitacion</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_hotel" id="FCED7F0D-D83D-32E8-E0EF-63E657FDEF13">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>habitaciones</sourceObjSchema>
+<sourceObjName>id_hotel</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="88BC5DA7-376F-CD72-828A-55B4E542BBFC" referredColumn="E2891835-45CB-50F8-946E-A47414A3ABEE"/>
+</associations>
+</Column>
+<Column name="id_habitacion_tipo" id="02B63209-F164-D89C-42E5-EF4FB6D7BCE8">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>habitaciones</sourceObjSchema>
+<sourceObjName>id_habitacion_tipo</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="876F2CAE-E7AC-59B6-5008-C61922BFD244" referredColumn="17C03D1B-7448-44B2-B219-11087D8DFC25"/>
+</associations>
+</Column>
+<Column name="id_habitacion_estado" id="40CD53C3-0616-49DE-4119-C46C2C848414">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>habitaciones</sourceObjSchema>
+<sourceObjName>id_habitacion_estado</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D5E2847B-1FF3-C56D-F4E2-301B9DF00AE8" referredColumn="F5C5397D-9970-EED8-8276-DAF8E6B29B75"/>
+</associations>
+</Column>
+<Column name="ubicacion" id="E0DFCAB1-2F5A-3F1A-E155-C4286E49966F">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>habitaciones</sourceObjSchema>
+<sourceObjName>ubicacion</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cant_personas" id="4BCC6806-5EC7-BB7B-2DDB-7EE559CAD14C">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>habitaciones</sourceObjSchema>
+<sourceObjName>cant_personas</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="precio" id="A6780F2F-F26A-80E4-E2EF-306F02A03AD6">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>habitaciones</sourceObjSchema>
+<sourceObjName>precio</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="698B57ED-40D5-F15C-CD47-8FE90606DF78" name="habitacionesPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>habitacionesPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:23 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E446AAB9-16FA-0B0F-B2F2-F668FD2AB60E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0EE200B2-5F59-0B68-033B-80521559D589" schemaObject="5D4BC863-7FEE-7275-6B1C-39034EE995C2" name="habitacionesPrimary">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>habitacionesPrimary</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:22 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E446AAB9-16FA-0B0F-B2F2-F668FD2AB60E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="17D62127-8A3E-9FF6-20AC-1AF697FEEEE4" name="habitaciones_hoteles_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FCED7F0D-D83D-32E8-E0EF-63E657FDEF13"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="56A8BBB4-F169-1437-B188-65978347891C" name="habit_hab_estados_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="40CD53C3-0616-49DE-4119-C46C2C848414"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B129FE75-5CE4-8317-9CF5-1A30CBC4FB42" name="habit_hab_tipos_FK">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="02B63209-F164-D89C-42E5-EF4FB6D7BCE8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,132 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9BE1359C-AA9C-4F61-64A6-58063A8FA793" name="hoteles">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>63F5904F-D045-1FD8-5739-0D2462ABF9F6</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id hotel" id="CA9186D0-7564-FA3C-6B7F-668FF1E23508">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>E2891835-45CB-50F8-946E-A47414A3ABEE</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id cadena" id="AA40BF79-65E1-12CB-375D-419B420E7353">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>7C3E4BB2-3CA2-1DD2-2497-C3BA51B6B1FF</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>09AE68D6-ADA1-C0EF-2A06-A71FE91AF866</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id region" id="10D29D93-06B4-18F1-28F7-8537A8566AD3">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>6CF9C660-BABF-E40D-9FCA-509029231D92</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>6388C881-D361-0E17-7202-F9077AB06A0D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id provincia" id="A5FBA4AD-C184-951F-72D0-38762FA8B3FC">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>D6226B77-C8E0-654C-7982-6D6F7B68B0F8</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>E3914B41-DDC8-9128-E177-88CFBF145F72</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id comuna" id="5DCB49C0-1460-A323-9C3B-E545A0E8550E">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>BC8DCC6A-67CA-4B69-5660-14B92ABB3963</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<referedAttribute>2838BCAC-9747-1353-35FF-D043F03FC748</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="880584B9-D621-704F-3060-0AED938E3A33">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>1128EF83-339F-96B2-286C-2DF411395DE2</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="direccion" id="118071BE-88AF-F9E2-D34D-7F5609B6FAF3">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>F05C33ED-DCD6-4044-27D3-E3C32D002605</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="866EB2CF-B511-CC46-B15D-3FF17D79FE22" name="hotelesPrimary">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:12 UTC</createdTime>
+<generatorID>BBD84F71-7E34-775B-620D-20C70A396713</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>CA9186D0-7564-FA3C-6B7F-668FF1E23508</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

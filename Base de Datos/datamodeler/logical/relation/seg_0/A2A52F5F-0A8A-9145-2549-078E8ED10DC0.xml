@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="pasajeros_provincia_FK" directorySegmentName="seg_0" id="A2A52F5F-0A8A-9145-2549-078E8ED10DC0">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:15 UTC</createdTime>
+<generatorID>006501ED-BF26-0A74-9D82-62CF6F07B00B</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>B39F4C80-ACA1-AE76-EAA3-453415849B9B</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1EF40E10-772F-EEB1-62FB-E96C3C6EE7BC</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>7BFB22D8-45BF-6C64-536D-BB7CF831CA8F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

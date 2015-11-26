@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="reservas_pasajeros_FK" directorySegmentName="seg_0" id="31C48BB8-4ED7-A8CB-2F48-42428976C233">
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 01:07:15 UTC</createdTime>
+<generatorID>270D7A6E-7FD7-300D-E801-876C1FC048F3</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="C6B70D58-76D2-1E40-AACF-5D0428EACD54" value="true"/>
+</engineerTo>
+<sourcePk>D48436A0-E13B-CCCC-0179-CCE71D6BC536</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>7BFB22D8-45BF-6C64-536D-BB7CF831CA8F</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>9B5F445A-97FF-C944-7802-D23D95F006F1</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

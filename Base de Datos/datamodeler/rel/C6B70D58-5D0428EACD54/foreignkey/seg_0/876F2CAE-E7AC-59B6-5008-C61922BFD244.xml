@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="876F2CAE-E7AC-59B6-5008-C61922BFD244" containerWithKeyObject="26A54C99-CFC4-EA92-FFCF-35F49EECF151" localFKIndex="B129FE75-5CE4-8317-9CF5-1A30CBC4FB42" name="habit_hab_tipos_FK">
+<sourceConnName>portafolio</sourceConnName>
+<sourceObjSchema>PORTAFOLIO</sourceObjSchema>
+<sourceObjName>habit_hab_tipos_FK</sourceObjName>
+<createdBy>carlos</createdBy>
+<createdTime>2015-10-25 00:50:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>57B9B2E1-6408-21A6-8C7F-244E1F70EEAF</referredTableID>
+<keyObject>16A97E18-566E-8E44-D12E-D52C6387D81A</keyObject>
+<referredKeyID>16A97E18-566E-8E44-D12E-D52C6387D81A</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
