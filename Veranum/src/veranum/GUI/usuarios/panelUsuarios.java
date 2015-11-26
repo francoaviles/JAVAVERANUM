@@ -369,7 +369,12 @@ public class panelUsuarios extends javax.swing.JPanel {
 
     private void btGrabarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarUsuariosActionPerformed
         int id_rol = ((ClRol)cbRol.getSelectedItem()).getIdRol();
-        if(!paraGrabar){
+        if(!Formularios.validarRut(txtRutUsuario.getText())){
+            JOptionPane.showMessageDialog(this, "Rut Incorrecto."); 
+            Formularios.limpiarTxt(txtRutUsuario);
+            return;
+            }
+        if(!paraGrabar){            
             if(txtRutUsuario.getText().equals("") 
                || txtNombreUsuario.getText().equals("")
                || txtConstrasenaUsuario.getText().equals("")

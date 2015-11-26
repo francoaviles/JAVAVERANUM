@@ -185,7 +185,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lbRut">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Rut:"/>
+        <Property name="text" type="java.lang.String" value="Rut o Pasaporte:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbNombreUsuario">

@@ -81,7 +81,7 @@ public class panelCliente extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         txtFechaNacUsu = new javax.swing.JFormattedTextField();
 
-        lbRut.setText("Rut:");
+        lbRut.setText("Rut o Pasaporte:");
 
         lbNombreUsuario.setText("Nombre:");
 
