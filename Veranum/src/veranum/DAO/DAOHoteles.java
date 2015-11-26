@@ -17,7 +17,7 @@ import static veranum.utilidades.OracleConection.db;
  */
 public class DAOHoteles {   
     public static boolean sqlInsert(ClHoteles hotel) throws SQLException{
-        String sql="INSERT INTO \"hoteles\" (\"id_cadena\", \"id_region\", \"id_provincia\", \"id_comuna\", \"nombre\", \"direccion\" ) VALUES (?,?,?,?,?,?)";
+        String sql="INSERT INTO \"hoteles\" (\"id_cadena\", \"id_region\", \"id_provincia\", \"id_comuna\", \"nombre\", \"direccion\") VALUES(?,?,?,?,?,?)";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, hotel.getIdCadena());
         a.setInt(2, hotel.getIdRegion());
