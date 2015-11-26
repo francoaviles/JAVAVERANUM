@@ -65,9 +65,14 @@ namespace Veranum.Conexion
             _cmd.Parameters.Add(new OracleParameter(field, objeto));
         }
 
-        public void Procesar()
+        public int Procesar()
         {
-             OracleDataReader reader = _cmd.ExecuteReader();
+            return _cmd.ExecuteNonQuery();
+        }
+
+        public OracleDataReader Reader()
+        {
+            return _cmd.ExecuteReader();
         }
 
         public int Ejecutar(string query)
@@ -88,7 +93,6 @@ namespace Veranum.Conexion
                 return null;
             }
 
-            _cmd = new OracleCommand(query, _con);
             using(OracleDataAdapter adapter = new OracleDataAdapter(_cmd))
             {
                 adapter.Fill(_result);
@@ -104,7 +108,7 @@ namespace Veranum.Conexion
                 return false;
             }
 
-            var da = new OracleDataAdapter(query, _con);
+            var da = new OracleDataAdapter(_cmd);
             var dt = new DataTable();
             da.Fill(dt);
 

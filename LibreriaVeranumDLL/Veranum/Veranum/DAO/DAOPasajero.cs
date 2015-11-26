@@ -13,14 +13,18 @@ namespace Veranum.DAO
         public static ClPasajero LoginIn(ClPasajero p) 
         {
             ClPasajero pasajero = null;
-            String sql = String.Format("SELECT * FROM \"pasajeros\" WHERE \"rut\" = '{0}' AND \"contrasena\" = '{1}'", 
-                                        p.Rut,
-                                        p.Contrasena);
+            String sql = "SELECT * FROM \"pasajeros\" WHERE \"rut\" = :rut AND \"contrasena\" = :contrasena";
 
             DB.Instance.Conectar(Constantes.CONEXION_DUOC);
-            DataTable dt = DB.Instance.Leer(sql);
 
-            if(dt.Rows.Count > 0){
+            DB.Instance.EjecutarQuery(sql);
+            DB.Instance.setParameter("rut", p.Rut);
+            DB.Instance.setParameter("contrasena", p.Contrasena);
+            DataTable dt = DB.Instance.Leer(sql);
+            DB.Instance.Cerrar();
+
+            if (dt.Rows.Count > 0)
+            {
                 pasajero = new ClPasajero(p.Rut, p.Contrasena);
                 pasajero.IdRol = int.Parse(dt.Rows[0]["id_rol"].ToString());
                 pasajero.Nombre = dt.Rows[0]["nombre"].ToString();
