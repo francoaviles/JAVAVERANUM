@@ -4,7 +4,7 @@
     <div class="grid_8">
         <h2 class="heading text-2 color-4 wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">Ingresar</h2>
             <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-            <form id="formGeneral" runat="server">
+            <form id="formLogin" method="post" class="loginForm"  runat="server">
                   <div class="form-group">
                     <label for="lblRut">Rut:</label>
                       <asp:TextBox ID="txtRut" CssClass="form-control" runat="server"></asp:TextBox>

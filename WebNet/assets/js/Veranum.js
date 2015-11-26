@@ -67,4 +67,19 @@
         }
     });
 
+    $(".loginForm").validate({
+        rules: {
+            "ctl00$ContentPlaceHolder1$txtRut": {
+                required: true,
+                minlength: 8,
+                maxlength: 15
+            },
+            "ctl00$ContentPlaceHolder1$txtContraseña":{
+                required: true,
+                minlength: 3,
+                maxlength: 30
+            }
+        }
+    });
+
 });
