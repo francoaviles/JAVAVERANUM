@@ -1502,7 +1502,7 @@ create or replace trigger trg_historial_precios
       from dual;
   end;
 /
-CREATE  SEQUENCE hoteles_seq START WITH 6 INCREMENT BY 1;
+CREATE  SEQUENCE hoteles_seq START WITH 7 INCREMENT BY 1;
 /
 create or replace trigger trg_hoteles
     before insert on "hoteles"

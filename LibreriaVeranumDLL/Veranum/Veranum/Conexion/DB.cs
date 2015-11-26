@@ -54,6 +54,22 @@ namespace Veranum.Conexion
             _con.Open();
         }
 
+        public OracleCommand EjecutarQuery(string query) 
+        { 
+            _cmd = new OracleCommand(query, _con);
+            return _cmd;
+        }
+
+        public void setParameter(string field, object objeto)
+        {
+            _cmd.Parameters.Add(new OracleParameter(field, objeto));
+        }
+
+        public void Procesar()
+        {
+             OracleDataReader reader = _cmd.ExecuteReader();
+        }
+
         public int Ejecutar(string query)
         {
             if (_con == null)
