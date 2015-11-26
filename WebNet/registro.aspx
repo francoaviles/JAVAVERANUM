@@ -46,5 +46,21 @@
             Text="Registrarme" onclick="btnRegistro_Click" />
         
     </div>
+    <div class="grid_6 cajaservicios">
+        <h2 class="text-3 color-4 wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">¿Por qué registrarme?</h2>
+        <p>
+            Con tu cuenta en Veranum podrás tener un control de todas reservas que has hecho en nuestros diferentes hoteles. 
+        </p>
+        <hr />
+        <div style="text-align: left">
+        <strong style="font-weight: bold">Beneficios de tu cuenta:</strong>
+        <ul>
+            <li>- ¡Podrás hacer reservaciones por nuestro sitio web!</li>
+            <li>- Puedes cancelar tu reservación en cualquier momento.</li>
+            <li>- Tendrás un control de todas las reservas que has hecho.</li>
+            <li>- Reservar una habitación sólo indicando tu RUT en nuestros hoteles. </li>
+        </ul>
+        </div>
+    </div>
 </asp:Content>
 

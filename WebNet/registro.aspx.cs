@@ -29,6 +29,13 @@ public partial class registro : System.Web.UI.Page
                                     DateTime.ParseExact(txtFechaNac.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture),
                                     3
                                 );
-        DAOPasajero.InsertPasajero(p);
+        if (DAOPasajero.InsertPasajero(p))
+        {
+            Response.Redirect("registro_existoso.aspx");
+        }
+        else
+        {
+            lblError.Text = "Ocurrido un error a registrar un nuevo usuario. Por favor intente de nuevo.";
+        }
     }
 }

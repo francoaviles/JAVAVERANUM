@@ -53,9 +53,9 @@ namespace Veranum.DAO
             DB.Instance.setParameter("direccion", p.Direccion);
             DB.Instance.setParameter("fecha_nac", p.Fecha_nac);
             DB.Instance.setParameter("idrol", p.IdRol);
-            DB.Instance.Procesar();
+            int r = DB.Instance.Procesar();
             DB.Instance.Cerrar();
-            return true;
+            return r > 0;
         }
 
         public static Boolean UpdatePasajero(ClPasajero p)

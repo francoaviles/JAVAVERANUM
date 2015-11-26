@@ -14,6 +14,9 @@ public partial class servicios : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (VeranumMaster.pagina != "servicio")
+            VeranumMaster.pagina = "servicio";
+
         this.dt_servicios = DAOServicios.sqlServicios();
     }
 }
