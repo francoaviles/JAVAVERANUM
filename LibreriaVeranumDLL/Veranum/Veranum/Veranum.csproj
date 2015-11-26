@@ -63,6 +63,9 @@
     <Compile Include="DAO\Constantes.cs" />
     <Compile Include="DAO\DAOHoteles.cs" />
     <Compile Include="DAO\DAOPasajero.cs" />
+    <Compile Include="DAO\DAOHabitaciones.cs" />
+    <Compile Include="DAO\DAOReservar.cs" />
+    <Compile Include="DAO\DAOServicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

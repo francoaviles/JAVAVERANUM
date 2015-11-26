@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Veranum.Clases
 {
-    class ClRol
+    public class ClRol
     {
         private int idRol;
         private string nombre;

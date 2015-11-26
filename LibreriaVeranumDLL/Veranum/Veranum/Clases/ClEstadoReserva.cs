@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Veranum.Clases
 {
-    class ClEstadoReserva
+    public class ClEstadoReserva
     {
         private int idReservaEstado;
         private string nombre;

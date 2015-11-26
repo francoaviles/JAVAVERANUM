@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Veranum.DAO
 {
-    class DAOHabitaciones
+    public class DAOHabitaciones
     {
         public static DataTable sqlHoteles()
         {

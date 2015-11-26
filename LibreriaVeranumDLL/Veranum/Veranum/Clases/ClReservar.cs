@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Veranum.Clases
 {
-    class ClReservar
+    public class ClReservar
     {
         private ClPasajero usuario;
         private List<ClHabitaciones> reservas = new List<ClHabitaciones>();

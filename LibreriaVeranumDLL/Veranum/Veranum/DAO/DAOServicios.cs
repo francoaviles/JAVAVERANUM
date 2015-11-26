@@ -9,11 +9,11 @@ using System.Data;
 
 namespace Veranum.DAO
 {
-    class DAOServicios
+    public class DAOServicios
     {
-        public static DataTable sqlHoteles()
+        public static DataTable sqlServicios()
         {
-            String sql = @"select * from servicios";
+            String sql = @"SELECT * FROM servicios";
 
             DB.Instance.Conectar(Constantes.CONEXION_DUOC);
 
