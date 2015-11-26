@@ -53,3 +53,7 @@ hs_err_pid*
 *.class
 *.xml
 *.properties
+*.properties
+Veranum/nbproject/private/private.xml
+LibreriaVeranumDLL/Veranum/Veranum/obj/Debug/Veranum.csproj.FileListAbsolute.txt
+Veranum/nbproject/project.properties
