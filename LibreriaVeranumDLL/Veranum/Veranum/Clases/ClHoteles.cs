@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Veranum.Clases
 {
-    class ClHoteles
+    public class ClHoteles
     {
         private int idHotel;
         private int idCadena;

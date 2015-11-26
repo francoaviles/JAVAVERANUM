@@ -9,12 +9,19 @@ using System.Data;
 
 namespace Veranum.DAO
 {
-    class DAOHoteles
+    public class DAOHoteles
     {
-        public static ClHoteles LoginIn(ClHoteles p)
+        public static DataTable sqlHoteles()
         {
-            ClHoteles dato = null;
-            String sql = "SELECT \"regiones\".\"region_nombre\",\"provincias\".\"provincia_nombre\",\"comunas\".\"comuna_nombre\",\"hoteles\".* FROM \"hoteles\" LEFT JOIN \"regiones\" ON \"regiones\".\"id_region\" = \"hoteles\".\"id_region\" LEFT JOIN \"provincias\" ON \"provincias\".\"id_provincia\" = \"hoteles\".\"id_provincia\" LEFT JOIN \"comunas\" ON \"comunas\".\"id_comuna\" = \"hoteles\".\"id_comuna\" ";
+            String sql = @"SELECT 
+                            ""regiones"".""region_nombre"",
+                            ""provincias"".""provincia_nombre"",
+                            ""comunas"".""comuna_nombre"", 
+                            ""hoteles"".* 
+                        FROM ""hoteles"" 
+                        LEFT JOIN ""regiones"" ON ""regiones"".""id_region"" = ""hoteles"".""id_region"" 
+                        LEFT JOIN ""provincias"" ON ""provincias"".""id_provincia"" = ""hoteles"".""id_provincia"" 
+                        LEFT JOIN ""comunas"" ON ""comunas"".""id_comuna"" = ""hoteles"".""id_comuna"" ";
 
             DB.Instance.Conectar(Constantes.CONEXION_DUOC);
 
@@ -22,6 +29,7 @@ namespace Veranum.DAO
             DataTable dt = DB.Instance.Leer(sql);
             DB.Instance.Cerrar();
 
+            /* 
             if (dt.Rows.Count > 0)
             {
                 dato = new ClHoteles();
@@ -36,7 +44,9 @@ namespace Veranum.DAO
                 dato.Provincia = dt.Rows[0]["provincia_nombre"].ToString();
                 dato.Comuna = dt.Rows[0]["comuna_nombre"].ToString(); 
             }
-            return dato;
+            */
+
+            return dt;
         }
     }
 }

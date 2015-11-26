@@ -48,6 +48,7 @@
     <Compile Include="Clases\ClComuna.cs" />
     <Compile Include="Clases\ClEstadoReserva.cs" />
     <Compile Include="Clases\ClHabitaciones.cs" />
+    <Compile Include="Clases\ClHoteles.cs" />
     <Compile Include="Clases\ClHotelServicio.cs" />
     <Compile Include="Clases\ClPasajero.cs" />
     <Compile Include="Clases\ClProvincia.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Clases\ClTipoReserva.cs" />
     <Compile Include="Conexion\DB.cs" />
     <Compile Include="DAO\Constantes.cs" />
+    <Compile Include="DAO\DAOHoteles.cs" />
     <Compile Include="DAO\DAOPasajero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

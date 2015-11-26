@@ -6,13 +6,15 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Home</title>
 		<meta charset="utf-8">
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-		<link rel="stylesheet" href="assets/css/grid.css">
-		<link rel="stylesheet" href="assets/css/bootstrap-custom.css">
-		<link rel="stylesheet" href="assets/css/animate.css">
-		<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.css">
-		<script src="assets/js/jquery.js"></script>
-		<script src="assets/js/wow.min.js"></script>
+         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/assets/css/grid.css">
+		<link rel="stylesheet" href="/assets/css/bootstrap-custom.css">
+		<link rel="stylesheet" href="/assets/css/animate.css">
+		<link rel="stylesheet" href="/assets/css/jquery.mCustomScrollbar.css">
+        <link rel="stylesheet" href="/assets/css/veranum.css">
+		<script src="/assets/js/jquery.js"></script>
+		<script src="/assets/js/wow.min.js"></script>
 		<script>
 		    $(document).ready(function () {
 		        //----------------WOW ini-----------------
@@ -22,7 +24,7 @@
 		        else { $('.wow').css('visibility', 'visible'); }
 		    });
 		</script>
-		<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
 		<script>
 		    $(document).ready(function () {
 		        //----------------scrollbar ini-----------------
@@ -46,7 +48,7 @@
 							<!--=======================-->
 							<div class="header-top_s1">
 								<h1>
-                                    <a href="index.aspx">
+                                    <a href="/index.aspx">
                                         Veranum<span>Hotel&Resort</span></a>
                                     </a>
                                 </h1>
@@ -55,10 +57,10 @@
                                         <strong>Bienvenido: </strong> <%=((Veranum.Clases.ClPasajero)Session["login"]).Nombre %>
                                         <%=((Veranum.Clases.ClPasajero)Session["login"]).ApellidoPa %> 
                                         <%=((Veranum.Clases.ClPasajero)Session["login"]).ApellidoMa %> 
-                                    <a href="logout.aspx" class="register">Mis reservas</a>
-                                    <a href="logout.aspx" class="register">Salir</a>
+                                    <a href="/logout.aspx" class="register">Mis reservas</a>
+                                    <a href="/logout.aspx" class="register">Salir</a>
                                 <% } else { %>
-									<a href="Login.aspx" class="login">Entrar</a>
+									<a href="/Login.aspx" class="login">Entrar</a>
 									<a href="#" class="register">Registrarme</a>
                                  <% } %>
 								</div>
@@ -74,22 +76,21 @@
 							<div class="header-top_s2">
 								<nav>
 									<ul class="sf-menu sf-js-enabled sf-arrows">
-										<li class="current"><a href="">Inicio</a></li>
-										<li class=""><a href="" class="sf-with-ul">Hoteles</a></li>
+										<li class="current"><a href="/index.aspx">Inicio</a></li>
+										<li class=""><a href="/Hoteles/Todos.aspx" class="sf-with-ul">Hoteles</a></li>
 										<li><a href="">Servicios</a></li>
 										<li><a href="">Habitaciones</a></li>
 										<li><a href="">Reservar</a></li>
 										<li><a href="">Contacto</a></li>
 									</ul>
-									<select class="select-menu sf-menu sf-js-enabled sf-arrows" style="display: inline-block;">
-										<option value="#">Menú</option>
-										<option value="" selected="selected">&nbsp;Inicio</option>
-										<option value="">&nbsp;Hoteles</option>
-										<option value="">&nbsp;Servicios</option>
-										<option value="">&nbsp;Habitaciones</option>
-										<option value="">&nbsp;Reservar</option>
-										<option value="">&nbsp;Contacto</option>
-									</select>
+									<div class="select-menu sf-menu sf-js-enabled sf-arrows" style="display: block;">
+										<a href="/index.aspx" style="display: block">-> Inicio</a>
+                                        <a href="/Hoteles/Todos.aspx" style="display: block">-> Hoteles</a>
+                                        <a href="#" style="display: block">-> Servicios</a>
+                                        <a href="#" style="display: block">-> Habitaciones</a>
+                                        <a href="#" style="display: block">-> Reservar</a>
+                                        <a href="#" style="display: block">-> Contacto</a>
+									</div>
 								</nav>
 							</div>
 							<!--=======================-->
@@ -135,6 +136,6 @@
 			</div>
 		</section>
 	</footer>
-	<script src="assets/js/script.js"></script>
+	<script src="/assets/js/script.js"></script>
 </body>
 </html>
