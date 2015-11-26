@@ -77,7 +77,7 @@ public class PasoCuatro_Finalizar extends javax.swing.JPanel {
         detalle += newline+"\t---------------------------------------------"+newline;
         for(int i = 0; i < reserva.getServicios().size(); i++){
             ClServicios xx = (ClServicios)reserva.getServicios().get(i);
-            detalle += "#"+i;
+            detalle += "\t#"+i;
             detalle += "| "+xx.getNombre();
             detalle += "\t\t $"+xx.getPrecio();
             detalle += newline;

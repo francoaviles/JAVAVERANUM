@@ -61,7 +61,7 @@
 										<li class="<% if(VeranumMaster.pagina == "inicio")  Response.Write("current"); %>"><a href="index.aspx">Inicio</a></li>
 										<li class="<% if(VeranumMaster.pagina == "hotel")  Response.Write("current"); %>"><a href="hoteles.aspx" class="sf-with-ul">Hoteles</a></li>
 										<li class="<% if(VeranumMaster.pagina == "servicio")  Response.Write("current"); %>"><a href="servicios.aspx">Servicios</a></li>
-										<li class="<% if(VeranumMaster.pagina == "habitacion")  Response.Write("current"); %>"><a href="">Habitaciones</a></li>
+										<li class="<% if(VeranumMaster.pagina == "habitacion")  Response.Write("current"); %>"><a href="habitaciones.aspx">Habitaciones</a></li>
 										<li class="<% if(VeranumMaster.pagina == "reserva")  Response.Write("current"); %>"><a href="">Reservar</a></li>
 										<li class="<% if(VeranumMaster.pagina == "contacto")  Response.Write("current"); %>"><a href="">Contacto</a></li>
 									</ul>
@@ -69,7 +69,7 @@
 										<a href="index.aspx" style="display: block">-> Inicio</a>
                                         <a href="hoteles.aspx" style="display: block">-> Hoteles</a>
                                         <a href="servicios.aspx" style="display: block">-> Servicios</a>
-                                        <a href="#" style="display: block">-> Habitaciones</a>
+                                        <a href="habitaciones.aspx" style="display: block">-> Habitaciones</a>
                                         <a href="#" style="display: block">-> Reservar</a>
                                         <a href="#" style="display: block">-> Contacto</a>
 									</div>

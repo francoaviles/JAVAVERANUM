@@ -66,6 +66,7 @@
     <Compile Include="DAO\DAOHabitaciones.cs" />
     <Compile Include="DAO\DAOReservar.cs" />
     <Compile Include="DAO\DAOServicios.cs" />
+    <Compile Include="DAO\DAOTipoHab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
