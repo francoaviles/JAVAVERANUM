@@ -1612,7 +1612,7 @@ create or replace trigger trg_servicios
       from dual;
   end;
 /
-CREATE  SEQUENCE tipo_caracteristicas_seq START WITH 5 INCREMENT BY 1;
+CREATE  SEQUENCE tipo_caracteristicas_seq START WITH 7 INCREMENT BY 1;
 /
 create or replace trigger trg_tipo_caracteristicas
     before insert on "tipo_caracteristicas"
