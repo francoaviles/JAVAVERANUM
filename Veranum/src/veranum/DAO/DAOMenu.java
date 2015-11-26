@@ -16,10 +16,11 @@ import veranum.utilidades.OracleConection;
  */
 public class DAOMenu {
     public static boolean sqlInsert(ClMenu menu) throws SQLException{
-        String sql="INSERT INTO \"menu\" (\"id_tipo_menu\", \"nombre\") VALUES (?,?)";
+        String sql="INSERT INTO \"menu\" (\"id_tipo_menu\", \"nombre\", \"precio\" ) VALUES (?,?,?)";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, menu.getTipoMenu());
         a.setString(2, menu.getNombre());
+        a.setInt(3, menu.getPrecio());
         OracleConection.getInstance().sqlEjecutarPreparacion();
         return true;
     }
@@ -31,11 +32,12 @@ public class DAOMenu {
     }
     
     public static boolean sqlUpdate(ClMenu menu) throws SQLException{
-        String sql="UPDATE \"menu\" SET \"nombre\" = ?, \"id_tipo_menu\" = ? WHERE \"id_menu\" = ?";
+        String sql="UPDATE \"menu\" SET \"nombre\" = ?, \"id_tipo_menu\" = ?, \"precio\" = ? WHERE \"id_menu\" = ?";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, menu.getTipoMenu());
         a.setString(2, menu.getNombre());
-        a.setInt(3, menu.getIdMenu());
+        a.setInt(3, menu.getPrecio());
+        a.setInt(4, menu.getIdMenu());
         OracleConection.getInstance().sqlEjecutarPreparacion();  
         return true;
     }
@@ -51,6 +53,7 @@ public class DAOMenu {
         menu.setIdMenu(OracleConection.getInstance().getInt("id_menu"));
         menu.setTipoMenu(OracleConection.getInstance().getInt("id_tipo_menu"));
         menu.setNombre(OracleConection.getInstance().getString("nombre"));
+        menu.setIdMenu(OracleConection.getInstance().getInt("precio"));
         return menu;
     }
     
@@ -65,6 +68,7 @@ public class DAOMenu {
         menu.setIdMenu(OracleConection.getInstance().getInt("id_menu"));
         menu.setTipoMenu(OracleConection.getInstance().getInt("id_tipo_menu"));
         menu.setNombre(OracleConection.getInstance().getString("nombre"));
+        menu.setIdMenu(OracleConection.getInstance().getInt("precio"));
         return menu;
     }
     
@@ -77,6 +81,7 @@ public class DAOMenu {
             menu.add(new ClMenu(OracleConection.getInstance().getInt("id_menu")
                                     , OracleConection.getInstance().getInt("id_tipo_menu")
                                     , OracleConection.getInstance().getString("nombre")
+                                    , OracleConection.getInstance().getInt("precio")
                                 ));
             
         }     
@@ -92,6 +97,7 @@ public class DAOMenu {
             menu.add(new ClMenu(OracleConection.getInstance().getInt("id_menu")
                                     , OracleConection.getInstance().getInt("id_tipo_menu")
                                     , OracleConection.getInstance().getString("nombre")
+                                    , OracleConection.getInstance().getInt("precio")
                                 ));
             
         }     

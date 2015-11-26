@@ -8,8 +8,6 @@ package veranum.GUI.insumos;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOMenu;
@@ -63,6 +61,8 @@ public class panelMenu extends javax.swing.JPanel {
         grDatos = new javax.swing.JTable();
         btDesactivarEditar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        lbPrecio = new javax.swing.JLabel();
+        txtPrecio = new javax.swing.JTextField();
 
         lbNombreMenu.setText("Nombre menú:");
 
@@ -117,17 +117,17 @@ public class panelMenu extends javax.swing.JPanel {
 
         grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "#", "Tipo Menú", "Nombre Menú"
+                "#", "Tipo Menú", "Nombre Menú", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -152,6 +152,14 @@ public class panelMenu extends javax.swing.JPanel {
             }
         });
 
+        lbPrecio.setText("Precio:");
+
+        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,20 +167,6 @@ public class panelMenu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbTipoMenu)
-                            .addComponent(lbNombreMenu))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(92, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btDesactivarEditar)
-                                .addGap(108, 108, 108))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
@@ -191,7 +185,24 @@ public class panelMenu extends javax.swing.JPanel {
                                     .addComponent(btGrabar, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
-                    .addComponent(jSeparator1)))
+                    .addComponent(jSeparator1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbTipoMenu)
+                            .addComponent(lbNombreMenu)
+                            .addComponent(lbPrecio))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cbTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btDesactivarEditar)
+                                .addGap(108, 108, 108))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                                .addContainerGap(92, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,9 +228,13 @@ public class panelMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNombreMenu)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbPrecio)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addComponent(btGrabar)
-                .addGap(242, 242, 242))
+                .addGap(216, 216, 216))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -268,6 +283,7 @@ public class panelMenu extends javax.swing.JPanel {
                 try {
                     DAOMenu.sqlInsert(new ClMenu( id_tipo
                             , txtNombre.getText()
+                            , Integer.parseInt(txtPrecio.getText())
                     ));
                     JOptionPane.showMessageDialog(this, "Agregado");
                 } catch (SQLException ex) {
@@ -282,6 +298,7 @@ public class panelMenu extends javax.swing.JPanel {
                 DAOMenu.sqlUpdate(new ClMenu( this.id
                         , id_tipo
                         ,txtNombre.getText()
+                        ,Integer.parseInt(txtPrecio.getText())
                 ));
                 JOptionPane.showMessageDialog(this, "Modificado");
             } catch (SQLException ex) {
@@ -319,6 +336,14 @@ public class panelMenu extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarKeyTyped
 
+    private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
+        Formularios.soloNumeros(evt);
+        if (!(txtPrecio.getText().length() < 4)) {
+            Formularios.limpiarTxt(txtPrecio);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtPrecioKeyTyped
+
     // Method Custom    
     private void cargarTipoMenu(){
         for (Object dato : DAOTipoMenu.sqlLeerTodos()) {
@@ -330,6 +355,7 @@ public class panelMenu extends javax.swing.JPanel {
         this.id = id;
         ClMenu dato = DAOMenu.sqlLeer(id);
         txtNombre.setText(dato.getNombre());
+        txtPrecio.setText(String.valueOf(dato.getPrecio()));
         
         ClTipoMenu item;
         for (int i = 0; i < cbTipoMenu.getItemCount(); i++)
@@ -360,6 +386,7 @@ public class panelMenu extends javax.swing.JPanel {
             fila[0] = xx.getIdMenu();
             fila[1] = ((ClTipoMenu)DAOTipoMenu.sqlLeer(xx.getTipoMenu())).getNombre();;
             fila[2] = xx.getNombre();
+            fila[3] = xx.getPrecio();
             dt.addRow(fila);
         }
     }
@@ -385,8 +412,10 @@ public class panelMenu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbNombreMenu;
+    private javax.swing.JLabel lbPrecio;
     private javax.swing.JLabel lbTipoMenu;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }

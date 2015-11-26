@@ -12,6 +12,7 @@ public class ClMenu {
     private int idMenu;
     private int tipoMenu;
     private String nombre;
+    private int precio;
 
     public ClMenu() {
 
@@ -25,15 +26,17 @@ public class ClMenu {
         setNombre(nombre);
     }
     
-    public ClMenu(int tipoMenu, String nombre) {
+    public ClMenu(int tipoMenu, String nombre, int precio) {
         setTipoMenu(tipoMenu);
         setNombre(nombre);
+        setPrecio(precio);
     }
     
-    public ClMenu(int idMenu, int tipoMenu, String nombre) {
+    public ClMenu(int idMenu, int tipoMenu, String nombre,int precio) {
         setIdMenu(idMenu);
         setTipoMenu(tipoMenu);
         setNombre(nombre);
+        setPrecio(precio);
     }
 
     public int getIdMenu() {
@@ -58,6 +61,14 @@ public class ClMenu {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
     
     
