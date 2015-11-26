@@ -1392,7 +1392,7 @@ create or replace trigger trg_cadenas
       from dual;
   end;
 /
-CREATE  SEQUENCE caracteristicas_seq START WITH 6 INCREMENT BY 1;
+CREATE  SEQUENCE caracteristicas_seq START WITH 8 INCREMENT BY 1;
 /
 create or replace trigger trg_caracteristicas
     before insert on "caracteristicas"
@@ -1612,7 +1612,7 @@ create or replace trigger trg_servicios
       from dual;
   end;
 /
-CREATE  SEQUENCE tipo_caracteristicas_seq START WITH 7 INCREMENT BY 1;
+CREATE  SEQUENCE tipo_caracteristicas_seq START WITH 9 INCREMENT BY 1;
 /
 create or replace trigger trg_tipo_caracteristicas
     before insert on "tipo_caracteristicas"
