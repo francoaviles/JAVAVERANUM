@@ -9,7 +9,7 @@
               <asp:TextBox ID="txtRut" CssClass="form-control" runat="server"></asp:TextBox>
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Contraseña:</label>
+            <label for="lblContrasena">Contraseña:</label>
               <asp:TextBox ID="txtContraseña" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
           </div>
         <asp:Button ID="btnIngresar" CssClass="btn btn-default" runat="server" 

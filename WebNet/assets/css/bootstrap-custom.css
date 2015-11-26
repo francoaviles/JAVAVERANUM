@@ -298,13 +298,13 @@ p + p {
   display: inline-block;
   padding: 0 10px;
 }
-.hblock-1 .register {
+.hblock-1 .blockpintado {
   display: inline-block;
   padding: 0 10px;
   color: #ffffff;
   background: #50b0d8;
 }
-.hblock-1 .register:hover {
+.hblock-1 .blockpintado:hover {
   background: #2f3133;
 }
 #stuck_container {
@@ -709,8 +709,6 @@ h1 a:hover {
 .block-4_s6 {
   margin-left: -30px;
   padding: 11px 0 30px 30px;
-  border: solid #e7ebee;
-  border-width: 0 0 1px 0;
 }
 .block-4_s6_item:before,
 .block-4_s6_item:after {

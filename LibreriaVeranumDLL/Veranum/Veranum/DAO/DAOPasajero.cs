@@ -37,18 +37,24 @@ namespace Veranum.DAO
         }
 
         public static Boolean InsertPasajero(ClPasajero p) {
-            String sql=  String.Format("INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"contrasena\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"direccion\", \"fecha_nac\", \"id_rol\" ) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',TO_DATE('{8}', 'dd/MM/YYYY'),'{9}')",
-                                        p.Rut
-                                        ,p.Nombre
-                                        ,p.Contrasena
-                                        ,p.ApellidoMa
-                                        ,p.ApellidoPa
-                                        ,p.Telefono
-                                        ,p.Email
-                                        ,p.Direccion
-                                        ,p.Fecha_nac
-                                        ,p.IdRol);
-            DB.Instance.Ejecutar(sql);
+            String sql=  @"INSERT INTO ""pasajeros"" 
+                            (""rut"", ""nombre"", ""contrasena"", ""apellido_pa"", ""apellido_ma"", ""telefono"", ""email"", ""direccion"", ""fecha_nac"", ""id_rol"") 
+                            VALUES (:rut,:nombre,:contrasena,:apellido_pa,:apellido_ma,:telefono,:email,:direccion,TO_DATE(:fecha_nac, 'dd-MM-YYYY HH24:MI:SS'),:idrol)";
+
+            DB.Instance.Conectar(Constantes.CONEXION_DUOC);
+            DB.Instance.EjecutarQuery(sql);
+            DB.Instance.setParameter("rut", p.Rut);
+            DB.Instance.setParameter("nombre", p.Nombre);
+            DB.Instance.setParameter("contrasena", p.Contrasena);
+            DB.Instance.setParameter("apellido_pa", p.ApellidoPa);
+            DB.Instance.setParameter("apellido_ma", p.ApellidoMa);
+            DB.Instance.setParameter("telefono", p.Telefono);
+            DB.Instance.setParameter("email", p.Email);
+            DB.Instance.setParameter("direccion", p.Direccion);
+            DB.Instance.setParameter("fecha_nac", p.Fecha_nac);
+            DB.Instance.setParameter("idrol", p.IdRol);
+            DB.Instance.Procesar();
+            DB.Instance.Cerrar();
             return true;
         }
 

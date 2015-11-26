@@ -9,6 +9,7 @@ public partial class index2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (VeranumMaster.pagina != "inicio")
+            VeranumMaster.pagina = "inicio";
     }
 }

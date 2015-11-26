@@ -13,7 +13,7 @@ namespace Veranum.DAO
     {
         public static DataTable sqlServicios()
         {
-            String sql = @"SELECT * FROM servicios";
+            String sql = @"SELECT * FROM ""servicios"" ";
 
             DB.Instance.Conectar(Constantes.CONEXION_DUOC);
 

@@ -10,10 +10,10 @@ using Veranum.DAO;
 
 public partial class servicios : System.Web.UI.Page
 {
-    public DataTable servicios; 
+    public DataTable dt_servicios; 
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.servicios = DAOServicios.sqlServicios();
+        this.dt_servicios = DAOServicios.sqlServicios();
     }
 }
