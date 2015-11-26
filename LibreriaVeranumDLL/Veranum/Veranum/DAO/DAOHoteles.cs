@@ -40,7 +40,7 @@ namespace Veranum.DAO
                 dato.IdComuna = int.Parse(dt.Rows[0]["id_comuna"].ToString());
                 dato.Nombre = dt.Rows[0]["nombre"].ToString();
                 dato.Direccion = dt.Rows[0]["direccion"].ToString();
-                dato.Region = dt.Rows[0]["region_nombre"].ToString(); ;
+                dato.Region = dt.Rows[0]["region_nombre"].ToString(); 
                 dato.Provincia = dt.Rows[0]["provincia_nombre"].ToString();
                 dato.Comuna = dt.Rows[0]["comuna_nombre"].ToString(); 
             }
