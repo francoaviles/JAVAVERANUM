@@ -19,7 +19,7 @@
                     <hr />
                     <div class="wrap-box__none">
                         Desde 
-                        <div class="text-5"><span class="color-5 text__bold">$5000 </span> / Noche</div>
+                        <div class="text-5"><span class="color-5 text__bold">$<%=dt_tb.Rows[i]["precio"].ToString()%> </span> / Noche</div>
                     </div>
                 </div>
             </div>

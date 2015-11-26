@@ -12,7 +12,14 @@ namespace Veranum.DAO
     {
         public static DataTable sqlTodos()
         {
-            String sql = @"SELECT * FROM ""habitacion_tipos"" ";
+            String sql = @"SELECT 
+                            DISTINCT ""habitaciones"".""id_habitacion_tipo"",
+                            MIN(""habitaciones"".""precio"") as ""precio"",
+                            ""habitacion_tipos"".""nombre""
+                        FROM ""habitacion_tipos"" 
+                        LEFT JOIN ""habitaciones"" ON ""habitaciones"".""id_habitacion_tipo"" = ""habitacion_tipos"".""id_habitacion_tipo""
+                        GROUP BY ""habitaciones"".""id_habitacion_tipo"", ""habitacion_tipos"".""nombre""
+                        ";
 
             DB.Instance.Conectar(Constantes.CONEXION_DUOC);
 
