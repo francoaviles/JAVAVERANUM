@@ -14,34 +14,55 @@
     $(".registroForm").validate({
         rules: {
             "ctl00$ContentPlaceHolder1$txtRut": {
-                required: true
+                required: true,
+                minlength: 8,
+                maxlength: 15
+
             },
             "ctl00$ContentPlaceHolder1$txtContraseña": {
-                required: true
+                required: true,
+                minlength: 3,
+                maxlength: 30
             },
             "ctl00$ContentPlaceHolder1$txtNombre": {
-                required: true
+                required: true,
+                minlength: 2,
+                maxlength: 20
             },
             "ctl00$ContentPlaceHolder1$txtApePa": {
-                required: true
+                required: true,
+                minlength: 2,
+                maxlength: 20
             },
             "ctl00$ContentPlaceHolder1$txtApeMa": {
-                required: true
+                required: true,
+                minlength: 2,
+                maxlength: 20
             },
             "ctl00$ContentPlaceHolder1$txtFechaNac": {
                 required: true,
-                date: true
+                date: true,
+                minlength: 8,
+                maxlength: 20
+
             },
             "ctl00$ContentPlaceHolder1$txtTelefono": {
                 required: true,
-                number: true
+                number: true,
+                minlength: 7,
+                maxlength: 15
             },
             "ctl00$ContentPlaceHolder1$txtDireccion": {
                 required: true,
+                minlength: 5,
+                maxlength: 50
+
             },
             "ctl00$ContentPlaceHolder1$txtEmail": {
                 required: true,
-                email: true
+                email: true,
+                minlength: 3,
+                maxlength: 50
             }
         }
     });
