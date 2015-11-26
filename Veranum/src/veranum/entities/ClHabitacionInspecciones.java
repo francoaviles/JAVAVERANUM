@@ -4,6 +4,7 @@
  */
 package veranum.entities;
 
+import helper.Formularios;
 import java.util.Date;
 
 /**
@@ -76,6 +77,10 @@ public class ClHabitacionInspecciones {
 
     public void setNombreInspector(String nombreInspector) {
         this.nombreInspector = nombreInspector;
+    }
+    
+    public String getStringFecha(){
+        return Formularios.deFechaToString(getFechaInicio());
     }
     
     @Override

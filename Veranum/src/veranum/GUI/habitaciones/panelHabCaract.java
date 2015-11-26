@@ -36,7 +36,7 @@ public class panelHabCaract extends javax.swing.JPanel {
         this.cargarCaract();
         this.cargarHab();
         grDatos.setEnabled(true);
-        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+        Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
         btDesactivarEditar.setVisible(false);
         this.leerTodos(true);
     }
@@ -51,7 +51,6 @@ public class panelHabCaract extends javax.swing.JPanel {
     private void initComponents() {
 
         btEliminar = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         btBuscar = new javax.swing.JButton();
         btBuscarTodos = new javax.swing.JButton();
@@ -69,13 +68,6 @@ public class panelHabCaract extends javax.swing.JPanel {
         btEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEliminarActionPerformed(evt);
-            }
-        });
-
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/write13.png"))); // NOI18N
-        btEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEditarActionPerformed(evt);
             }
         });
 
@@ -154,11 +146,9 @@ public class panelHabCaract extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -185,7 +175,6 @@ public class panelHabCaract extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEliminar)
-                    .addComponent(btEditar)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscar)
                     .addComponent(btBuscarTodos))
@@ -217,17 +206,10 @@ public class panelHabCaract extends javax.swing.JPanel {
             DAOHabCaract.sqlDelete(new ClHabitacionCaract(this.id_hab, this.id_caract));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
-            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
             this.leerTodos(true);
         }
     }//GEN-LAST:event_btEliminarActionPerformed
-
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        this.leer(Formularios.getSelectedRow2(grDatos, 1),
-                Formularios.getSelectedRow2(grDatos, 4));
-        this.paraGrabar = true;
-        this.btnEditarMode();
-    }//GEN-LAST:event_btEditarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         if(txtBuscar.getText().equals("")){
@@ -258,11 +240,11 @@ public class panelHabCaract extends javax.swing.JPanel {
                                                             , id_caract      
                                             ));
             JOptionPane.showMessageDialog(this, "Agregado");
-            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
         }
-        }else{
+        }/*else{
             
             DAOHabCaract.sqlUpdate(new ClHabitacionCaract(id_hab
                                                             , id_caract        
@@ -271,7 +253,7 @@ public class panelHabCaract extends javax.swing.JPanel {
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);
-        }
+        }*/
     }//GEN-LAST:event_btGrabarActionPerformed
 
     private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
@@ -279,11 +261,11 @@ public class panelHabCaract extends javax.swing.JPanel {
         if(row_dos >= 0){
             this.leer(Formularios.getSelectedRow2(grDatos, 1),
                 Formularios.getSelectedRow2(grDatos, 4));
-            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            Formularios.ActiveBotonesEliminarEditar(btEliminar, btEliminar);
             this.paraGrabar = true;
             this.btnEditarMode();
         } else {
-            Formularios.ActiveBotonesEliminarEditar(btEditar, btEliminar);
+            Formularios.ActiveBotonesEliminarEditar(btEliminar, btEliminar);
         }
     }//GEN-LAST:event_grDatosMouseClicked
 
@@ -372,7 +354,6 @@ public class panelHabCaract extends javax.swing.JPanel {
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btBuscarTodos;
     private javax.swing.JButton btDesactivarEditar;
-    private javax.swing.JButton btEditar;
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btGrabar;
     private javax.swing.JComboBox cbCaract;

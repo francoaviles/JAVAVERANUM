@@ -8,14 +8,14 @@ package veranum.GUI.reportes;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOHabitaciones;
+import veranum.DAO.DAOHoteles;
 import veranum.DAO.DAOInspecciones;
 import veranum.entities.ClHabitacionInspecciones;
 import veranum.entities.ClHabitaciones;
+import veranum.entities.ClHoteles;
 
 /**
  *
@@ -50,7 +50,6 @@ public class panelInspecciones extends javax.swing.JPanel {
     private void initComponents() {
 
         lbFechaInsp = new javax.swing.JLabel();
-        txtFechaInspeccion = new javax.swing.JTextField();
         btGrabar = new javax.swing.JButton();
         btEliminar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
@@ -67,6 +66,7 @@ public class panelInspecciones extends javax.swing.JPanel {
         btDesactivarEditar = new javax.swing.JButton();
         cbHabInspeccion = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
+        txtFechaInspeccion = new javax.swing.JFormattedTextField();
 
         lbFechaInsp.setText("Fecha Inspección:");
 
@@ -113,17 +113,17 @@ public class panelInspecciones extends javax.swing.JPanel {
 
         grDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "#", "Habitación Inspección", "Fecha Inspección", "Comentario", "Nombre Inspector"
+                "#", "Hotel", "Habitación Inspección", "Fecha Inspección", "Comentario", "Nombre Inspector"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -194,9 +194,9 @@ public class panelInspecciones extends javax.swing.JPanel {
                                         .addComponent(lbNombreInspector))
                                     .addGap(35, 35, 35)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtFechaInspeccion)
                                         .addComponent(txtComentario)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                                        .addComponent(txtFechaInspeccion)))))
                         .addContainerGap(16, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbIdHabInspeccion)
@@ -233,7 +233,9 @@ public class panelInspecciones extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbFechaInsp)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbFechaInsp)
+                            .addComponent(txtFechaInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(lbComentarioInspeccion)
                         .addGap(18, 18, 18)
@@ -241,13 +243,26 @@ public class panelInspecciones extends javax.swing.JPanel {
                             .addComponent(lbNombreInspector)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtFechaInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(31, 31, 31)
                         .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(btGrabar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        txtFechaInspeccion.setFormatterFactory(new javax.swing.JFormattedTextField.AbstractFormatterFactory(){
+            public javax.swing.JFormattedTextField.AbstractFormatter
+            getFormatter(javax.swing.JFormattedTextField tf) {
+                try {
+                    javax.swing.text.MaskFormatter mf = new javax.swing.text.MaskFormatter("##/##/####");
+                    mf.setPlaceholderCharacter('_');
+                    return mf;
+                } catch(java.text.ParseException pe){
+                    pe.printStackTrace();
+                }
+                return null;
+            }
+        });
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
@@ -370,7 +385,7 @@ public class panelInspecciones extends javax.swing.JPanel {
     private void leer(int id){
         this.id = id;
         ClHabitacionInspecciones dato = DAOInspecciones.sqlLeer(id);
-        txtFechaInspeccion.setText(dato.getFechaInicio().toString());
+        txtFechaInspeccion.setValue(dato.getStringFecha().toString());
         txtComentario.setText(dato.getComentario());
         txtNombre.setText(dato.getNombreInspector());
         
@@ -402,10 +417,11 @@ public class panelInspecciones extends javax.swing.JPanel {
             ClHabitacionInspecciones xx = (ClHabitacionInspecciones)dato.get(x);
             Object[] fila = new Object[7];
             fila[0] = xx.getIdHabitacionInspeccion();
-            fila[1] = ((ClHabitaciones)DAOHabitaciones.sqlLeer(xx.getIdHabitacion()));
-            fila[2] = xx.getFechaInicio();
-            fila[2] = xx.getComentario();
-            fila[2] = xx.getNombreInspector();
+            fila[1] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getIdHabitacion())).getNombre();
+            fila[2] = ((ClHabitaciones)DAOHabitaciones.sqlLeer(xx.getIdHabitacion()));
+            fila[3] = xx.getStringFecha();
+            fila[4] = xx.getComentario();
+            fila[5] = xx.getNombreInspector();
             dt.addRow(fila);
         }
     }
@@ -436,7 +452,7 @@ public class panelInspecciones extends javax.swing.JPanel {
     private javax.swing.JLabel lbNombreInspector;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtComentario;
-    private javax.swing.JTextField txtFechaInspeccion;
+    private javax.swing.JFormattedTextField txtFechaInspeccion;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

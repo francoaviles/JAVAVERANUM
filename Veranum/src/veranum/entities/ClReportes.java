@@ -4,11 +4,8 @@
  */
 package veranum.entities;
 
+import helper.Formularios;
 import java.util.Date;
-
-
-
-
 
 /**
  *
@@ -86,5 +83,8 @@ public class ClReportes {
         this.comentario = comentario;
     }
     
+    public String getStringFecha(){
+        return Formularios.deFechaToString(getFechaCreacion());
+    }
     
 }

@@ -41,7 +41,7 @@ public class DAOCliente {
     }
     
     public static boolean sqlUpdate(ClPasajeros clientes) throws SQLException{
-        String sql="UPDATE \"pasajeros\" SET \"rut\" = ?, \"nombre\" = ?, \"contrasena\" = ?, \"apellido_pa\" = ?, \"apellido_ma\" = ?, \"telefono\" = ?, \"email\" = ?, \"direccion\" = ?, \"fecha_nac\" = ? WHERE \"id_pasajero\" = ?";
+        String sql="UPDATE \"pasajeros\" SET \"rut\" = ?, \"nombre\" = ?, \"contrasena\" = ?, \"apellido_pa\" = ?, \"apellido_ma\" = ?, \"telefono\" = ?, \"email\" = ?, \"direccion\" = ?, \"fecha_nac\" = ?, \"id_rol\" = ?  WHERE \"id_pasajero\" = ?";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, clientes.getRut());
         a.setString(2, clientes.getNombre());

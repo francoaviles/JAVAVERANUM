@@ -8,8 +8,6 @@ package veranum.GUI.reportes;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOReportes;
@@ -39,8 +37,6 @@ public class panelReportes extends javax.swing.JPanel {
         this.leerTodos(true);
     }
 
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,7 +54,6 @@ public class panelReportes extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtComentario = new javax.swing.JTextArea();
         cbTipoRepor = new javax.swing.JComboBox();
-        txtFechaCreacion = new javax.swing.JTextField();
         txtArchivo = new javax.swing.JTextField();
         btEliminar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
@@ -69,6 +64,7 @@ public class panelReportes extends javax.swing.JPanel {
         grDatos = new javax.swing.JTable();
         btDesactivarEditar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        txtFechaCreacion = new javax.swing.JFormattedTextField();
 
         lbFechaCreacion.setText("Fecha Creación:");
 
@@ -159,6 +155,9 @@ public class panelReportes extends javax.swing.JPanel {
             }
         });
         jScrollPane3.setViewportView(grDatos);
+        if (grDatos.getColumnModel().getColumnCount() > 0) {
+            grDatos.getColumnModel().getColumn(0).setMaxWidth(30);
+        }
 
         btDesactivarEditar.setBackground(new java.awt.Color(255, 0, 0));
         btDesactivarEditar.setText("Salir Modo Editar");
@@ -175,6 +174,7 @@ public class panelReportes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -194,24 +194,18 @@ public class panelReportes extends javax.swing.JPanel {
                                     .addComponent(lbTipo)
                                     .addComponent(lbComentario)
                                     .addComponent(btGrabar, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbTipoRepor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 31, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbFechaCreacion)
-                                .addGap(31, 31, 31)
-                                .addComponent(txtFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btDesactivarEditar)
-                        .addGap(41, 41, 41))
-                    .addComponent(jSeparator1)))
+                                .addGap(45, 45, 45)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFechaCreacion)
+                                    .addComponent(cbTipoRepor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtArchivo)
+                                    .addComponent(jScrollPane1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btDesactivarEditar)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,8 +224,8 @@ public class panelReportes extends javax.swing.JPanel {
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbFechaCreacion)
-                    .addComponent(txtFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btDesactivarEditar))
+                    .addComponent(btDesactivarEditar)
+                    .addComponent(txtFechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbArchivo)
@@ -248,6 +242,20 @@ public class panelReportes extends javax.swing.JPanel {
                 .addComponent(btGrabar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        txtFechaCreacion.setFormatterFactory(new javax.swing.JFormattedTextField.AbstractFormatterFactory(){
+            public javax.swing.JFormattedTextField.AbstractFormatter
+            getFormatter(javax.swing.JFormattedTextField tf) {
+                try {
+                    javax.swing.text.MaskFormatter mf = new javax.swing.text.MaskFormatter("##/##/####");
+                    mf.setPlaceholderCharacter('_');
+                    return mf;
+                } catch(java.text.ParseException pe){
+                    pe.printStackTrace();
+                }
+                return null;
+            }
+        });
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
@@ -370,7 +378,7 @@ public class panelReportes extends javax.swing.JPanel {
     private void leer(int id){
         this.id = id;
         ClReportes dato = DAOReportes.sqlLeer(id);
-        txtFechaCreacion.setText(dato.getFechaCreacion().toString());
+        txtFechaCreacion.setValue(dato.getStringFecha());
         txtArchivo.setText(dato.getArchivo());
         txtComentario.setText(dato.getComentario());
         
@@ -438,6 +446,6 @@ public class panelReportes extends javax.swing.JPanel {
     private javax.swing.JTextField txtArchivo;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextArea txtComentario;
-    private javax.swing.JTextField txtFechaCreacion;
+    private javax.swing.JFormattedTextField txtFechaCreacion;
     // End of variables declaration//GEN-END:variables
 }

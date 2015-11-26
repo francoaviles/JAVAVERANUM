@@ -178,7 +178,7 @@ public class MainVeranum extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void txtRutKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyTyped
-        Formularios.validarRut(evt);
+        Formularios.validarRutLargo(evt);
         if (!(txtRut.getText().length() < 9)) {
             Formularios.limpiarTxt(txtRut);
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");

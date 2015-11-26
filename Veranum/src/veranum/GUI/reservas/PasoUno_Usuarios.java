@@ -295,7 +295,7 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void txtRutUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutUsuarioKeyTyped
-        Formularios.validarRut(evt);
+        Formularios.validarRutLargo(evt);
         if (!(txtRutUsuario.getText().length() < 9)) {
             Formularios.limpiarTxt(txtRutUsuario);
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");

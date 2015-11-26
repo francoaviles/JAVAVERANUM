@@ -67,7 +67,6 @@ public class panelCliente extends javax.swing.JPanel {
         txtTelefono = new javax.swing.JTextField();
         txtMailUsuario = new javax.swing.JTextField();
         txtDireccionUsuario = new javax.swing.JTextField();
-        txtFechaNacUsu = new javax.swing.JTextField();
         btGrabarUsuarios = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         grCliente = new javax.swing.JTable();
@@ -80,6 +79,7 @@ public class panelCliente extends javax.swing.JPanel {
         lbRol = new javax.swing.JLabel();
         cbRol = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
+        txtFechaNacUsu = new javax.swing.JFormattedTextField();
 
         lbRut.setText("Rut:");
 
@@ -144,12 +144,6 @@ public class panelCliente extends javax.swing.JPanel {
         txtDireccionUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDireccionUsuarioKeyTyped(evt);
-            }
-        });
-
-        txtFechaNacUsu.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFechaNacUsuFocusLost(evt);
             }
         });
 
@@ -297,7 +291,7 @@ public class panelCliente extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtFechaNacUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(txtFechaNacUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(28, 28, 28))
                     .addGroup(layout.createSequentialGroup()
@@ -365,6 +359,20 @@ public class panelCliente extends javax.swing.JPanel {
                 .addComponent(btGrabarUsuarios)
                 .addGap(251, 251, 251))
         );
+
+        txtFechaNacUsu.setFormatterFactory(new javax.swing.JFormattedTextField.AbstractFormatterFactory(){
+            public javax.swing.JFormattedTextField.AbstractFormatter
+            getFormatter(javax.swing.JFormattedTextField tf) {
+                try {
+                    javax.swing.text.MaskFormatter mf = new javax.swing.text.MaskFormatter("##/##/####");
+                    mf.setPlaceholderCharacter('_');
+                    return mf;
+                } catch(java.text.ParseException pe){
+                    pe.printStackTrace();
+                }
+                return null;
+            }
+        });
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarClienteActionPerformed
@@ -473,11 +481,11 @@ public class panelCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_grClienteMouseClicked
 
     private void txtRutUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutUsuarioKeyTyped
-        Formularios.validarRut(evt);
+        Formularios.validarRutLargo(evt);
         if (!(txtRutUsuario.getText().length() < 9)) {
             Formularios.limpiarTxt(txtRutUsuario);
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
-        } 
+        }
     }//GEN-LAST:event_txtRutUsuarioKeyTyped
 
     private void txtNombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreUsuarioKeyTyped
@@ -509,6 +517,7 @@ public class panelCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_txtApeMaternoKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        Formularios.soloNumeros(evt);
         if (!(txtTelefono.getText().length() < 20)) {
             Formularios.limpiarTxt(txtTelefono);
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
@@ -536,10 +545,6 @@ public class panelCliente extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarClienteKeyTyped
 
-    private void txtFechaNacUsuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFechaNacUsuFocusLost
-        Formularios.deStringAFecha(txtFechaNacUsu.getText());
-    }//GEN-LAST:event_txtFechaNacUsuFocusLost
-
     // Method Custom
     private void cargarRol(){
         for (Object rol : DAORol.sqlLeerTodos()) {
@@ -559,7 +564,18 @@ public class panelCliente extends javax.swing.JPanel {
         txtMailUsuario.setText(cli.getEmail());
         txtDireccionUsuario.setText(cli.getDireccion());
         txtTelefono.setText(cli.getTelefono());
-        txtFechaNacUsu.setText(cli.getFechaNacimiento().toString());
+        txtFechaNacUsu.setValue(cli.getStringFechaNac());
+        
+        ClRol item;
+        for (int i = 0; i < cbRol.getItemCount(); i++)
+        {
+            item = (ClRol)cbRol.getItemAt(i);
+            if (item.getIdRol()== cli.getIdRol())
+            {
+                cbRol.setSelectedIndex(i);
+                break;
+            }
+        }
     }
     
     private void leerTodos(boolean todos){
@@ -585,7 +601,7 @@ public class panelCliente extends javax.swing.JPanel {
             fila[6] = xx.getTelefono();
             fila[7] = xx.getEmail();
             fila[8] = xx.getDireccion();
-            fila[9] = xx.getFechaNacimiento();
+            fila[9] = xx.getStringFechaNac();
             fila[10] = ((ClRol)DAORol.sqlLeer(xx.getIdRol())).getNombre();
             dt.addRow(fila);
         }
@@ -626,7 +642,7 @@ public class panelCliente extends javax.swing.JPanel {
     private javax.swing.JTextField txtBuscarCliente;
     private javax.swing.JTextField txtConstrasenaUsuario;
     private javax.swing.JTextField txtDireccionUsuario;
-    private javax.swing.JTextField txtFechaNacUsu;
+    private javax.swing.JFormattedTextField txtFechaNacUsu;
     private javax.swing.JTextField txtMailUsuario;
     private javax.swing.JTextField txtNombreUsuario;
     private javax.swing.JTextField txtRutUsuario;

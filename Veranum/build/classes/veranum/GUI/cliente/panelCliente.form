@@ -89,7 +89,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="cbRol" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtFechaNacUsu" min="-2" pref="134" max="-2" attributes="0"/>
+                                          <Component id="txtFechaNacUsu" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -268,11 +268,6 @@
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDireccionUsuarioKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtFechaNacUsu">
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFechaNacUsuFocusLost"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btGrabarUsuarios">
       <Properties>
         <Property name="text" type="java.lang.String" value="Grabar"/>
@@ -446,6 +441,11 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtFechaNacUsu">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtFechaNacUsu.setFormatterFactory(new javax.swing.JFormattedTextField.AbstractFormatterFactory(){&#xa;    public javax.swing.JFormattedTextField.AbstractFormatter&#xa;    getFormatter(javax.swing.JFormattedTextField tf) {&#xa;        try {&#xa;            javax.swing.text.MaskFormatter mf = new javax.swing.text.MaskFormatter(&quot;##/##/####&quot;);&#xa;            mf.setPlaceholderCharacter(&apos;_&apos;);&#xa;            return mf;&#xa;        } catch(java.text.ParseException pe){&#xa;            pe.printStackTrace();&#xa;        }&#xa;        return null;&#xa;    }&#xa;});"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
