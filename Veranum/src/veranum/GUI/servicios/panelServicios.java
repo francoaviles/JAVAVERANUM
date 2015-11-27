@@ -217,7 +217,7 @@ public class panelServicios extends javax.swing.JPanel {
 
     private void txtPrecioServicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioServicioKeyTyped
         helper.Formularios.soloNumeros(evt);
-        if (!(txtPrecioServicio.getText().length() < 5)) {
+        if (!(txtPrecioServicio.getText().length() < 9)) {
             Formularios.limpiarTxt(txtPrecioServicio);
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }

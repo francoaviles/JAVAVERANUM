@@ -391,7 +391,7 @@ public class panelHabitaciones extends javax.swing.JPanel {
 
     private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
         Formularios.soloNumeros(evt);
-        if (!(txtPrecio.getText().length() < 6)) {
+        if (!(txtPrecio.getText().length() < 9)) {
             Formularios.limpiarTxt(txtPrecio);
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }

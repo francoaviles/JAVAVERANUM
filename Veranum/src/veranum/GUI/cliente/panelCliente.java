@@ -255,7 +255,7 @@ public class panelCliente extends javax.swing.JPanel {
                                     .addComponent(lbRut)
                                     .addComponent(lbNombreUsuario)
                                     .addComponent(lbContrasena))
-                                .addGap(61, 61, 61)
+                                .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtConstrasenaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
