@@ -38,7 +38,7 @@ public class HotelesTest {
 
     @Test
    public void testSalutationMessage() {
-      System.out.println("Inside testSalutationMessage()");
+      System.out.println("test");
       assertEquals(1,1);
    }
 }
