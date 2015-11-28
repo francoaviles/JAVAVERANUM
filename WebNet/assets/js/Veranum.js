@@ -82,4 +82,13 @@
         }
     });
 
+    $('input[id$="txtFechaNac"]').datepicker({
+        dateFormat: "dd/mm/yy",
+        yearRange: "-100:+0",
+        maxDate: "-15y",
+        minDate: "-100y",
+        changeMonth: true,
+        changeYear: true
+    });
+
 });

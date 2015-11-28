@@ -12,10 +12,13 @@
 		<link rel="stylesheet" href="assets/css/bootstrap-custom.css">
 		<link rel="stylesheet" href="assets/css/animate.css">
 		<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.css">
+        <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+        <link rel="stylesheet" href="assets/css/jquery-ui.theme.min.css">
         <link rel="stylesheet" href="assets/css/veranum.css">
 		<script src="assets/js/jquery.js"></script>
         <script src="assets/js/jquery.validate.js"></script>
 		<script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/jquery-ui.min.js"></script>
         <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
 		<script src="assets/js/Veranum.js"></script>
 	</head>
