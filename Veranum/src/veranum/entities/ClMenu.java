@@ -71,5 +71,9 @@ public class ClMenu {
         this.precio = precio;
     }
     
+    @Override
+    public String toString(){
+        return getNombre();
+    }
     
 }

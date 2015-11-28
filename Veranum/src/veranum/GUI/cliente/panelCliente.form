@@ -44,7 +44,7 @@
                                   <Component id="lbNombreUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbContrasena" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtNombreUsuario" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                                   <Component id="txtConstrasenaUsuario" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
@@ -185,7 +185,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lbRut">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Rut:"/>
+        <Property name="text" type="java.lang.String" value="Rut o Pasaporte:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbNombreUsuario">

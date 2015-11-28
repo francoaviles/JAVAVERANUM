@@ -11,9 +11,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOHotelTipoMenu;
 import veranum.DAO.DAOHoteles;
+import veranum.DAO.DAOMenu;
 import veranum.DAO.DAOTipoMenu;
 import veranum.entities.ClHotelTipoMenu;
 import veranum.entities.ClHoteles;
+import veranum.entities.ClMenu;
 import veranum.entities.ClTipoMenu;
 
 /**
@@ -25,7 +27,7 @@ public class panelMenuHotel extends javax.swing.JPanel {
     private boolean paraGrabar = false;
     private DefaultTableModel dt = new DefaultTableModel();
     private int id_hotel = 0;
-    private int id_tipo_menu = 0;
+    private int id_menu = 0;
     
     /**
      * Creates new form panelMenuHotel
@@ -33,7 +35,7 @@ public class panelMenuHotel extends javax.swing.JPanel {
     public panelMenuHotel() {
         initComponents();
         this.cargarHotel();
-        this.cargarTipoMenu();
+        this.cargarMenu();
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
         btDesactivarEditar.setVisible(false);
@@ -59,7 +61,7 @@ public class panelMenuHotel extends javax.swing.JPanel {
         lbHotel = new javax.swing.JLabel();
         lbTipoMenu = new javax.swing.JLabel();
         cbHotel = new javax.swing.JComboBox();
-        cbTipoMenu = new javax.swing.JComboBox();
+        cbMenu = new javax.swing.JComboBox();
         btGrabar = new javax.swing.JButton();
         btDesactivarEditar = new javax.swing.JButton();
 
@@ -98,7 +100,7 @@ public class panelMenuHotel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Id Hotel", "Hotel", "Tipo menú", "Id Tipo menú"
+                "Id Hotel", "Hotel", "Menú", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -115,10 +117,13 @@ public class panelMenuHotel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(grDatos);
+        if (grDatos.getColumnModel().getColumnCount() > 0) {
+            grDatos.getColumnModel().getColumn(0).setMaxWidth(60);
+        }
 
         lbHotel.setText("Hotel:");
 
-        lbTipoMenu.setText("Tipo Menú");
+        lbTipoMenu.setText("Menú:");
 
         btGrabar.setText("Grabar");
         btGrabar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +167,7 @@ public class panelMenuHotel extends javax.swing.JPanel {
                                     .addComponent(lbTipoMenu))
                                 .addGap(48, 48, 48)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btDesactivarEditar)
@@ -189,7 +194,7 @@ public class panelMenuHotel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbTipoMenu)
-                    .addComponent(cbTipoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addComponent(btGrabar)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -202,7 +207,7 @@ public class panelMenuHotel extends javax.swing.JPanel {
         if(this.id_hotel == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOHotelTipoMenu.sqlDelete(new ClHotelTipoMenu(this.id_hotel, this.id_tipo_menu));
+            DAOHotelTipoMenu.sqlDelete(new ClHotelTipoMenu(this.id_hotel, this.id_menu));
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
@@ -237,22 +242,18 @@ public class panelMenuHotel extends javax.swing.JPanel {
 
     private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
         id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
-        id_tipo_menu = ((ClTipoMenu)cbTipoMenu.getSelectedItem()).getIdTipoMenu();
+        id_menu = ((ClMenu)cbMenu.getSelectedItem()).getIdMenu();
         if(!paraGrabar){
-            if(cbHotel.getSelectedItem() == null || cbTipoMenu.getSelectedItem()== null){
-                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
-            }else{
                 DAOHotelTipoMenu.sqlInsert(new ClHotelTipoMenu(id_hotel
-                                                            , id_tipo_menu
+                                                            , id_menu
                 ));
                 JOptionPane.showMessageDialog(this, "Agregado");
                 Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
                 helper.Formularios.limpiar(this);
                 this.leerTodos(true);
-            }
         }/*else{
             DAOHotelTipoMenu.sqlUpdate(new ClHotelTipoMenu(id_hotel
-                                                        , id_tipo_menu
+                                                        , id_menu
             ));
             JOptionPane.showMessageDialog(this, "Modificado");
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
@@ -280,16 +281,16 @@ public class panelMenuHotel extends javax.swing.JPanel {
         }
     }
     
-    private void cargarTipoMenu(){
-        for (Object dato : DAOTipoMenu.sqlLeerTodos()) {
-            cbTipoMenu.addItem(dato);
+    private void cargarMenu(){
+        for (Object dato : DAOMenu.sqlLeerTodos()) {
+            cbMenu.addItem(dato);
         }
     }
     
     private void leer(int id1, int id2){
         this.id_hotel = id1;
-        this.id_tipo_menu = id2;
-        ClHotelTipoMenu dato = DAOHotelTipoMenu.sqlLeer(id_hotel,id_tipo_menu);
+        this.id_menu = id2;
+        ClHotelTipoMenu dato = DAOHotelTipoMenu.sqlLeer(id_hotel,id_menu);
         
         ClHoteles item;
         for (int i = 0; i < cbHotel.getItemCount(); i++)
@@ -302,13 +303,13 @@ public class panelMenuHotel extends javax.swing.JPanel {
             }
         }
         
-        ClTipoMenu item2;
-        for (int i = 0; i < cbTipoMenu.getItemCount(); i++)
+        ClMenu item2;
+        for (int i = 0; i < cbMenu.getItemCount(); i++)
         {
-            item2 = (ClTipoMenu)cbTipoMenu.getItemAt(i);
-            if (item2.getIdTipoMenu()== dato.getIdTipoMenu())
+            item2 = (ClMenu)cbMenu.getItemAt(i);
+            if (item2.getIdMenu()== dato.getIdMenu())
             {
-                cbTipoMenu.setSelectedIndex(i);
+                cbMenu.setSelectedIndex(i);
                 break;
             }
         }
@@ -331,8 +332,8 @@ public class panelMenuHotel extends javax.swing.JPanel {
             Object[] fila = new Object[6];
             fila[0] = xx.getIdHotel();
             fila[1] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getIdHotel())).getNombre();
-            fila[2] = ((ClTipoMenu)DAOTipoMenu.sqlLeer(xx.getIdTipoMenu())).getNombre();
-            fila[3] = xx.getIdTipoMenu();
+            fila[2] = ((ClMenu)DAOMenu.sqlLeer(xx.getIdMenu())).getNombre();
+            fila[3] = ((ClMenu)DAOMenu.sqlLeer(xx.getIdMenu())).getPrecio();
             dt.addRow(fila);
         }
     }
@@ -353,7 +354,7 @@ public class panelMenuHotel extends javax.swing.JPanel {
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btGrabar;
     private javax.swing.JComboBox cbHotel;
-    private javax.swing.JComboBox cbTipoMenu;
+    private javax.swing.JComboBox cbMenu;
     private javax.swing.JTable grDatos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

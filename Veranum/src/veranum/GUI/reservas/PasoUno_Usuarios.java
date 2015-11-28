@@ -66,7 +66,7 @@ public class PasoUno_Usuarios extends javax.swing.JPanel {
         txtApePaterno.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtApePaterno.setNextFocusableComponent(txtNombreUsuario);
 
-        lbRut.setText("Rut:");
+        lbRut.setText("Rut o Pasaporte:");
 
         lbNombreUsuario.setText("Nombre:");
 

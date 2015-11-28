@@ -53,7 +53,7 @@ public class DAOMenu {
         menu.setIdMenu(OracleConection.getInstance().getInt("id_menu"));
         menu.setTipoMenu(OracleConection.getInstance().getInt("id_tipo_menu"));
         menu.setNombre(OracleConection.getInstance().getString("nombre"));
-        menu.setIdMenu(OracleConection.getInstance().getInt("precio"));
+        menu.setPrecio(OracleConection.getInstance().getInt("precio"));
         return menu;
     }
     
@@ -68,7 +68,7 @@ public class DAOMenu {
         menu.setIdMenu(OracleConection.getInstance().getInt("id_menu"));
         menu.setTipoMenu(OracleConection.getInstance().getInt("id_tipo_menu"));
         menu.setNombre(OracleConection.getInstance().getString("nombre"));
-        menu.setIdMenu(OracleConection.getInstance().getInt("precio"));
+        menu.setPrecio(OracleConection.getInstance().getInt("precio"));
         return menu;
     }
     

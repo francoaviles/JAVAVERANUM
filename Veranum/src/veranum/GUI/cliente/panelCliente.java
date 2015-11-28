@@ -81,7 +81,7 @@ public class panelCliente extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         txtFechaNacUsu = new javax.swing.JFormattedTextField();
 
-        lbRut.setText("Rut:");
+        lbRut.setText("Rut o Pasaporte:");
 
         lbNombreUsuario.setText("Nombre:");
 
@@ -255,7 +255,7 @@ public class panelCliente extends javax.swing.JPanel {
                                     .addComponent(lbRut)
                                     .addComponent(lbNombreUsuario)
                                     .addComponent(lbContrasena))
-                                .addGap(61, 61, 61)
+                                .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtConstrasenaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)

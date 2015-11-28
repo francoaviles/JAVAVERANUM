@@ -388,13 +388,13 @@ ALTER TABLE "tipo_menu" ADD CONSTRAINT "tipo_menuPrimary" PRIMARY KEY ("id_tipo_
 -- hote_tipo_menu
 CREATE TABLE "hotel_tipo_menu" (
   "id_hotel" NUMBER NOT NULL,
-  "id_tipo_menu" Number NOT NULL
+  "id_menu" Number NOT NULL
 );
 /
 -- Keys
 ALTER TABLE "hotel_tipo_menu" 
-  ADD CONSTRAINT "hote_tipo_menuPrimary"
-  PRIMARY KEY ("id_hotel", "id_tipo_menu");
+  ADD CONSTRAINT "hotel_tipo_menuPrimary"
+  PRIMARY KEY ("id_hotel", "id_menu");
 /
 
 -- -----------------------------------------------
@@ -640,8 +640,8 @@ ALTER TABLE "hotel_tipo_menu"
 -- --------
 ALTER TABLE "hotel_tipo_menu" 
   ADD CONSTRAINT "hotel_tipo_menu_tipo_menu_FK" 
-  FOREIGN KEY ("id_tipo_menu") 
-    REFERENCES "tipo_menu" ("id_tipo_menu");
+  FOREIGN KEY ("id_menu") 
+    REFERENCES "menu" ("id_menu");
 /
 -- --------
 ALTER TABLE "menu" 
@@ -1344,30 +1344,30 @@ Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('6','3');
 Insert into "hoteles_servicios" ("id_hotel","id_servicio") values ('6','4');
 
 
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('1','1');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('1','2');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('1','3');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('1','4');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('2','1');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('2','2');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('2','3');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('2','4');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('3','1');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('3','2');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('3','3');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('3','4');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('4','1');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('4','2');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('4','3');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('4','4');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('5','1');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('5','2');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('5','3');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('5','4');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('6','1');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('6','2');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('6','3');
-Insert into "hotel_tipo_menu" ("id_hotel","id_tipo_menu") values ('6','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('1','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('1','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('1','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('1','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('2','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('2','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('2','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('2','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('3','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('3','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('3','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('3','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('4','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('4','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('4','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('4','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('5','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('5','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('5','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('5','4');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('6','1');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('6','2');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('6','3');
+Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('6','4');
 
 /
 CREATE  SEQUENCE roles_seq START WITH 4 INCREMENT BY 1;

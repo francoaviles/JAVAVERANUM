@@ -11,7 +11,7 @@ package veranum.entities;
  */
 public class ClHotelTipoMenu {
     private int idHotel;
-    private int idTipoMenu;
+    private int idMenu;
 
     public ClHotelTipoMenu() {
     }
@@ -20,9 +20,9 @@ public class ClHotelTipoMenu {
         setIdHotel(idHotel);
     }
     
-    public ClHotelTipoMenu(int idHotel, int idTipoMenu) {
+    public ClHotelTipoMenu(int idHotel, int idMenu) {
         setIdHotel(idHotel);
-        setIdTipoMenu(idTipoMenu);
+        setIdMenu(idMenu);
     }
 
     public int getIdHotel() {
@@ -33,12 +33,12 @@ public class ClHotelTipoMenu {
         this.idHotel = idHotel;
     }
 
-    public int getIdTipoMenu() {
-        return idTipoMenu;
+    public int getIdMenu() {
+        return idMenu;
     }
 
-    public void setIdTipoMenu(int idTipoMenu) {
-        this.idTipoMenu = idTipoMenu;
+    public void setIdMenu(int idMenu) {
+        this.idMenu = idMenu;
     }
     
 }
