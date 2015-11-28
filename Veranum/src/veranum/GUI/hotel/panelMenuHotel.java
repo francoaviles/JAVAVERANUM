@@ -244,19 +244,10 @@ public class panelMenuHotel extends javax.swing.JPanel {
         id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
         id_menu = ((ClMenu)cbMenu.getSelectedItem()).getIdMenu();
         if(!paraGrabar){
-            if(cbHotel.getSelectedItem() == null || cbMenu.getSelectedItem()== null){
-                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
-            }else{
                 DAOHotelTipoMenu.sqlInsert(new ClHotelTipoMenu(id_hotel
                                                             , id_menu
                 ));
                 JOptionPane.showMessageDialog(this, "Agregado");
-                Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
-                helper.Formularios.limpiar(this);
-                this.leerTodos(true);
-            }
-        }else{
-                JOptionPane.showMessageDialog(this, "Ya existe!");
                 Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
                 helper.Formularios.limpiar(this);
                 this.leerTodos(true);
