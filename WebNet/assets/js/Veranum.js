@@ -91,4 +91,42 @@
         changeYear: true
     });
 
+    $('input[id$="txtFechaIngreso"]').datepicker({
+        dateFormat: 'dd/mm/yy',
+        minDate: "+0d",
+        changeMonth: true,
+        changeYear: true,
+        numberOfMonths: 1,
+        onClose: function (selectedDate) {
+            var date2 = $('input[id$="txtFechaIngreso"]').datepicker('getDate');
+            date2.setDate(date2.getDate() + 1);
+            $("#fecha_termino").datepicker("option", "minDate", date2);
+            if ($('input[id$="txtFechaSalida"]').val().length <= 0)
+                $('input[id$="txtFechaSalida"]').datepicker('setDate', date2);
+
+            var date = $('input[id$="txtFechaIngreso"]').datepicker('getDate');
+            var date2 = $('input[id$="txtFechaSalida"]').datepicker('getDate');
+            dias = Math.ceil((date2 - date) / (1000 * 60 * 60 * 24));
+            $('.dias_totales').html(dias);
+        }
+    });
+    $('input[id$="txtFechaSalida"]').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        minDate: "+2d",
+        numberOfMonths: 1,
+        onClose: function (selectedDate) {
+            var date2 = $('input[id$="txtFechaSalida"]').datepicker('getDate');
+            date2.setDate(date2.getDate() - 1);
+            $('input[id$="txtFechaIngreso"]').datepicker("option", "maxDate", date2);
+        },
+        onSelect: function () {
+            var date = $('input[id$="txtFechaIngreso"]').datepicker('getDate');
+            var date2 = $('input[id$="txtFechaSalida"]').datepicker('getDate');
+            dias = Math.ceil((date2 - date) / (1000 * 60 * 60 * 24));
+            $('.dias_totales').html(dias);
+        }
+    });
+
 });

@@ -20,6 +20,12 @@ public partial class VeranumMaster : System.Web.UI.MasterPage
         {
             VeranumMaster.pagina = "";
         }
+
+        if (Session["flash"] != null)
+        {
+            lblSessionFlash.Text = Session["flash"].ToString();
+            Session["flash"] = null;
+        }
     }
 
 }

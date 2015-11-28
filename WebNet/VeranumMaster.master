@@ -66,7 +66,7 @@
 										<li class="<% if(VeranumMaster.pagina == "hotel")  Response.Write("current"); %>"><a href="hoteles.aspx" class="sf-with-ul">Hoteles</a></li>
 										<li class="<% if(VeranumMaster.pagina == "servicio")  Response.Write("current"); %>"><a href="servicios.aspx">Servicios</a></li>
 										<li class="<% if(VeranumMaster.pagina == "habitacion")  Response.Write("current"); %>"><a href="habitaciones.aspx">Habitaciones</a></li>
-										<li class="<% if(VeranumMaster.pagina == "reserva")  Response.Write("current"); %>"><a href="">Reservar</a></li>
+										<li class="<% if(VeranumMaster.pagina == "reserva")  Response.Write("current"); %>"><a href="reservar.aspx">Reservar</a></li>
 										<li class="<% if(VeranumMaster.pagina == "contacto")  Response.Write("current"); %>"><a href="">Contacto</a></li>
 									</ul>
 									<div class="select-menu sf-menu sf-js-enabled sf-arrows" style="display: block;">
@@ -74,7 +74,7 @@
                                         <a href="hoteles.aspx" style="display: block">-> Hoteles</a>
                                         <a href="servicios.aspx" style="display: block">-> Servicios</a>
                                         <a href="habitaciones.aspx" style="display: block">-> Habitaciones</a>
-                                        <a href="#" style="display: block">-> Reservar</a>
+                                        <a href="reservar.aspx" style="display: block">-> Reservar</a>
                                         <a href="#" style="display: block">-> Contacto</a>
 									</div>
 								</nav>
@@ -95,6 +95,9 @@
 		<article class="super-box-1">
 			<div class="container">
 				<div class="row">
+                    <% if (Session["flash"] != null){ %>
+                        <div class="cajaerror"><asp:Label ID="lblSessionFlash" runat="server" Text="Label"></asp:Label></div>
+                    <% } %>
 	                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
                 </div>
 			</div>

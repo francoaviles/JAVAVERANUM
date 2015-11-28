@@ -16,7 +16,12 @@
                 <asp:Button ID="btnIngresar" CssClass="btn btn-default" runat="server" 
                     Text="Entrar" onclick="btnIngresar_Click" />
             </form>
-        
+    </div>
+    <div class="grid_4">
+     <h2 class="heading text-2 color-4 wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">¿No tienes cuenta?</h2>
+        <p>
+            <a href="registro.aspx">Registrate</a>
+        </p>
     </div>
 </asp:Content>
 
