@@ -20,7 +20,7 @@ public class MainHotel extends javax.swing.JInternalFrame {
         tabContenido.addTab("Hoteles", new panelHotel());
         tabContenido.addTab("Servicios Hotel", new panelHotelServicio());
         tabContenido.addTab("Características Hotel", new panelHotelCaract());
-        tabContenido.addTab("Hotel Tipo Menú", new panelMenuHotel());
+        tabContenido.addTab("Hotel Menú", new panelMenuHotel());
         tabContenido.addTab("Insumos Hotel", new panelHotelInsumos());
         
         

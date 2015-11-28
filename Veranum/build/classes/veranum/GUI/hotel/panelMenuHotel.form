@@ -41,7 +41,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cbTipoMenu" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbMenu" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="cbHotel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -77,7 +77,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbTipoMenu" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbTipoMenu" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbMenu" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="btGrabar" min="-2" max="-2" attributes="0"/>
@@ -135,13 +135,13 @@
               <Table columnCount="4" rowCount="4">
                 <Column editable="false" title="Id Hotel" type="java.lang.Object"/>
                 <Column editable="false" title="Hotel" type="java.lang.Object"/>
-                <Column editable="false" title="Tipo men&#xfa;" type="java.lang.Object"/>
-                <Column editable="false" title="Id Tipo men&#xfa;" type="java.lang.Object"/>
+                <Column editable="false" title="Men&#xfa;" type="java.lang.Object"/>
+                <Column editable="false" title="Precio" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="60" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -182,7 +182,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbTipoMenu">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tipo Men&#xfa;"/>
+        <Property name="text" type="java.lang.String" value="Men&#xfa;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbHotel">
@@ -195,7 +195,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cbTipoMenu">
+    <Component class="javax.swing.JComboBox" name="cbMenu">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>

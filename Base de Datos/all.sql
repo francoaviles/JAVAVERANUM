@@ -393,7 +393,7 @@ CREATE TABLE "hotel_tipo_menu" (
 /
 -- Keys
 ALTER TABLE "hotel_tipo_menu" 
-  ADD CONSTRAINT "hote_tipo_menuPrimary"
+  ADD CONSTRAINT "hotel_tipo_menuPrimary"
   PRIMARY KEY ("id_hotel", "id_menu");
 /
 
