@@ -21,7 +21,7 @@ namespace Veranum.DAO
             DB.Instance.Conectar(Constantes.CONEXION_DUOC);
             DB.Instance.EjecutarQuery(sql_r);
             DB.Instance.setParameter("idpasajero", p.IdPasajero);
-            DB.Instance.setParameter("idreserva", 3);
+            DB.Instance.setParameter("idreserva", 1);
             DB.Instance.setParameter("fecha1", fecha1);
             DB.Instance.setParameter("fecha2", fecha2);
             DB.Instance.setParameter("total", total);
@@ -69,51 +69,75 @@ namespace Veranum.DAO
             return id_reserva;
         }
 
-        public static List<ClHabitaciones> sqlBuscarHabitacion(int hotel, int tipo, int cant)
+        public static DataTable getReservaByUser(ClPasajero p) 
         {
-            List<ClHabitaciones> habitacion = new List<ClHabitaciones>();
+            string sql_r = @"SELECT * 
+                            FROM ""reservas""
+                            LEFT JOIN ""estado_reservas"" ON   ""reservas"".""id_reserva_estado"" = ""estado_reservas"".""id_reserva_estado""
+                            WHERE ""id_pasajero"" = :id
+                            ORDER BY ""id_reserva"" DESC ";
 
-
-            return habitacion;
-
-
-            /*public static ArrayList sqlBuscarHabitacion(int hotel, int tipo, int cant) throws SQLException{
-            ArrayList<ClHabitaciones> habitacion = new ArrayList<>();  
-        
-            String and = " ";
-            if(tipo != 0) {
-                and += "AND \"id_habitacion_tipo\" = ?";
-            }
-            if (cant > 0) {
-                and += "AND \"cant_personas\" >= ? ";
-            }
-            String sql = "SELECT * FROM \"habitaciones\" WHERE \"id_hotel\" = ? AND \"id_habitacion_estado\" = ? "+and;
-            PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
-            a.setInt(1, hotel);
-            a.setInt(2, 1);
-            if(tipo != 0)
-                 a.setInt(3, tipo);
-            if(cant > 0 && tipo != 0)
-                a.setInt(4, cant);
-            else if(cant > 0)
-                a.setInt(3, cant);
-        
-            OracleConection.getInstance().sqlEjecutarPreparacion();
-        
-            while(OracleConection.getInstance().sqlFetch()){
-                habitacion.add(new ClHabitaciones(OracleConection.getInstance().getInt("id_habitacion")
-                                        , OracleConection.getInstance().getInt("id_hotel")
-                                        , OracleConection.getInstance().getInt("id_habitacion_tipo")
-                                        , OracleConection.getInstance().getInt("id_habitacion_estado")
-                                        , OracleConection.getInstance().getString("ubicacion")
-                                        , OracleConection.getInstance().getInt("cant_personas")
-                                        , OracleConection.getInstance().getInt("precio")
-                                    ));
-            
-            }     
-            return habitacion;
-
-        }*/
+            DB.Instance.Conectar(Constantes.CONEXION_DUOC);
+            DB.Instance.EjecutarQuery(sql_r);
+            DB.Instance.setParameter("id", p.IdPasajero);
+            DataTable dt = DB.Instance.Leer(sql_r);
+            return dt;
         }
+
+        public static DataTable getDetalleHabs(int idreserva) 
+        {
+            string sql_r = @"SELECT * 
+                            FROM ""habitaciones_reservas""
+                            LEFT JOIN ""habitaciones"" ON  ""habitaciones_reservas"".""id_habitacion"" = ""habitaciones"".""id_habitacion""
+                            WHERE ""id_reserva"" = :id";
+
+            DB.Instance.EjecutarQuery(sql_r);
+            DB.Instance.setParameter("id", idreserva);
+            DataTable dt = DB.Instance.Leer(sql_r);
+            
+
+            return dt;
+        }
+
+        public static DataTable getDetalleServ(int idreserva) 
+        {
+            string sql_r = @"SELECT * 
+                            FROM ""servicios_reservas""
+                            LEFT JOIN ""servicios"" ON  ""servicios_reservas"".""id_servicio"" = ""servicios"".""id_servicio""
+                            WHERE ""id_reserva"" = :id";
+
+            DB.Instance.EjecutarQuery(sql_r);
+            DB.Instance.setParameter("id", idreserva);
+            DataTable dt = DB.Instance.Leer(sql_r);
+            
+
+            return dt;
+        
+        }
+
+        public static List<DataTable> getDetalle(ClPasajero p) {
+            List<DataTable> table = new List<DataTable>();
+            DataTable dt = DAOReservar.getReservaByUser(p);
+            DataTable habs = new DataTable();
+            DataTable servs = new DataTable();
+
+            table.Add(dt);
+            for (int i = 0; i < dt.Rows.Count; i++) {
+                habs.Merge(DAOReservar.getDetalleHabs(int.Parse(dt.Rows[i]["id_reserva"].ToString())));
+                servs.Merge(DAOReservar.getDetalleServ(int.Parse(dt.Rows[i]["id_reserva"].ToString())));
+            }
+            table.Add(habs);
+            table.Add(servs);
+
+            return table;
+        
+        }
+
+        public static void cerrar()
+        {
+            DB.Instance.Cerrar();
+        }
+
+
     }
 }

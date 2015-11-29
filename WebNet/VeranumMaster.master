@@ -43,7 +43,7 @@
                                         <strong>Bienvenido: </strong> <%=((Veranum.Clases.ClPasajero)Session["login"]).Nombre %>
                                         <%=((Veranum.Clases.ClPasajero)Session["login"]).ApellidoPa %> 
                                         <%=((Veranum.Clases.ClPasajero)Session["login"]).ApellidoMa %> 
-                                    <a href="logout.aspx" class="blockpintado">Mis reservas</a>
+                                    <a href="misreservas.aspx" class="blockpintado">Mis reservas</a>
                                     <a href="logout.aspx" class="blockpintado">Salir</a>
                                 <% } else { %>
 									<a href="Login.aspx" class="login">Entrar</a>
@@ -67,7 +67,7 @@
 										<li class="<% if(VeranumMaster.pagina == "servicio")  Response.Write("current"); %>"><a href="servicios.aspx">Servicios</a></li>
 										<li class="<% if(VeranumMaster.pagina == "habitacion")  Response.Write("current"); %>"><a href="habitaciones.aspx">Habitaciones</a></li>
 										<li class="<% if(VeranumMaster.pagina == "reserva")  Response.Write("current"); %>"><a href="reservar.aspx">Reservar</a></li>
-										<li class="<% if(VeranumMaster.pagina == "contacto")  Response.Write("current"); %>"><a href="">Contacto</a></li>
+										<li class="<% if(VeranumMaster.pagina == "contacto")  Response.Write("current"); %>"><a href="contacto.aspx">Contacto</a></li>
 									</ul>
 									<div class="select-menu sf-menu sf-js-enabled sf-arrows" style="display: block;">
 										<a href="index.aspx" style="display: block">-> Inicio</a>
@@ -75,7 +75,7 @@
                                         <a href="servicios.aspx" style="display: block">-> Servicios</a>
                                         <a href="habitaciones.aspx" style="display: block">-> Habitaciones</a>
                                         <a href="reservar.aspx" style="display: block">-> Reservar</a>
-                                        <a href="#" style="display: block">-> Contacto</a>
+                                        <a href="contacto.aspx" style="display: block">-> Contacto</a>
 									</div>
 								</nav>
 							</div>
