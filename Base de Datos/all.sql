@@ -1167,7 +1167,7 @@ INSERT INTO "estado_reservas" ("id_reserva_estado", "nombre") VALUES (3, 'Cancel
 INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (1, 'Admin', 'Super administrador');
 INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (2, 'Recepcionista', 'Puede realizar reservas y modificarlas.');
 INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (3, 'Cliente', 'Pasajero del hotel');
-
+INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (4, 'Inspector', 'Inspecciones sanitarias y de habitacion');
 
 Insert into "servicios" ("id_servicio","nombre","precio") values ('1','Gimnasio','75000');
 Insert into "servicios" ("id_servicio","nombre","precio") values ('2','Piscina','35000');

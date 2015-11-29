@@ -8,8 +8,6 @@ package veranum.GUI.usuarios;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAORol;
@@ -288,14 +286,23 @@ public class panelRoles extends javax.swing.JPanel {
 
     private void grRolesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grRolesMouseClicked
         int row_dos = Formularios.getTablaSeleccionada(evt, grRoles, 2);
-
+        int id_rol = Formularios.getSelectedRow(grRoles);
         if(row_dos >= 0){
-            this.leerRol(Integer.parseInt(grRoles.getValueAt(row_dos, 0).toString()));
-            Formularios.ActiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
-            this.paraGrabar = true;
-            this.btnEditarMode();
+            
+            if(id_rol != 1 && id_rol != 2 && id_rol != 3 && id_rol != 4){
+                this.leerRol(id_rol);
+                Formularios.ActiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
+                this.paraGrabar = true;
+                this.btnEditarMode();
+            }else {
+                Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
+            }
         } else {
-            Formularios.ActiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
+            if(id_rol != 0 && id_rol != 1 && id_rol != 2 && id_rol != 3 && id_rol != 4){
+                Formularios.ActiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
+            }else {
+                Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
+            }
         }
     }//GEN-LAST:event_grRolesMouseClicked
 

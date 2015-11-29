@@ -1,5 +1,9 @@
 
+import helper.Formularios;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javax.print.attribute.Size2DSyntax.MM;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -48,24 +52,24 @@ public class ClienteTest {
        System.out.println("------------------------------------");
        System.out.println("Creación de Cliente");
        System.out.println("------------------------------------");
-        try {
-            assertTrue(DAOCliente.sqlInsert(new ClPasajeros("112454683","test","test","test","test","test","test","test",TO_DATE("25/11/1968", dd/MM/yyyy),3)));
+       try {
+            assertTrue(DAOCliente.sqlInsert(new ClPasajeros("112454683","test","test","test","test","test","test","test",Formularios.deStringAFecha("10/10/2005"),3)));
             System.out.println("Agregar existoso. ");
         } catch (SQLException ex) {
-            assertTrue(false);
+            Logger.getLogger(ClienteTest.class.getName()).log(Level.SEVERE, null, ex);
         }
    }
    
    @Test
    public void Test02EditarCliente() {
        System.out.println("------------------------------------");
-       System.out.println("Editar de Hotel");
+       System.out.println("Editar de Cliente");
        System.out.println("------------------------------------");
         try {
-            assertTrue(DAOCliente.sqlUpdate(new ClPasajeros("112454683","test","test","test","test","test","test","test",TO_DATE("25/11/1968", dd/MM/yyyy),3,6)));
+            assertTrue(DAOCliente.sqlUpdate(new ClPasajeros(6,"112454683","test","test","test","test","test","test","test",Formularios.deStringAFecha("10/10/2005"),3)));
             System.out.println("Editar existoso. ");
         } catch (SQLException ex) {
-            assertTrue(false);
+            Logger.getLogger(ClienteTest.class.getName()).log(Level.SEVERE, null, ex);
         }
    }
    
