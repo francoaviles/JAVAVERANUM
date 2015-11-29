@@ -95,11 +95,11 @@ public class OracleConection {
     
     public boolean sqlEjecutar(String sql, String pk){
         try {
-            System.out.println(sql);
+            //System.out.println(sql);
             ps = conexion.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.executeUpdate();
         } catch (Exception ex) {
-            System.out.println("Error EJECUTAR 2 " + ex.getMessage());
+            //System.out.println("Error EJECUTAR 2 " + ex.getMessage());
             ex.getStackTrace();
             return false;
         }
@@ -123,7 +123,7 @@ public class OracleConection {
     public boolean sqlSelect(String sql){
         try {
             rs = st.executeQuery(sql);
-            System.out.println(sql);
+            //System.out.println(sql);
             return true;
         } catch (Exception ex) {
             System.out.println("Error conexion " + ex.getMessage());

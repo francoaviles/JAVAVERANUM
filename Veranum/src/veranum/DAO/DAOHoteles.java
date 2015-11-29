@@ -25,15 +25,12 @@ public class DAOHoteles {
         a.setInt(4, hotel.getIdComuna());
         a.setString(5, hotel.getNombre());
         a.setString(6, hotel.getDireccion());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClHoteles hotel){
         String sql="DELETE FROM \"hoteles\" WHERE \"id_hotel\" = "+hotel.getIdHotel()+"";
-        System.out.println(sql);
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+        return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClHoteles hotel) throws SQLException{
@@ -46,8 +43,7 @@ public class DAOHoteles {
         a.setString(5, hotel.getNombre());
         a.setString(6, hotel.getDireccion());
         a.setInt(7, hotel.getIdHotel());
-        OracleConection.getInstance().sqlEjecutarPreparacion();  
-        return true;
+        return OracleConection.getInstance().sqlEjecutarPreparacion();  
     }
     
     public static ClHoteles sqlLeer(int id){     
