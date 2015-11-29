@@ -28,6 +28,7 @@ public class panelUsuarios extends javax.swing.JPanel {
     private DefaultTableModel dt = new DefaultTableModel();
     private int id = 0;
     Date f_nac ;
+    private ClPasajeros user = null;
     
     /**
      * Creates new form panelUsuarios
@@ -101,6 +102,11 @@ public class panelUsuarios extends javax.swing.JPanel {
 
         lbRol.setText("Rol:");
 
+        txtRutUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRutUsuarioFocusLost(evt);
+            }
+        });
         txtRutUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtRutUsuarioKeyTyped(evt);
@@ -548,6 +554,22 @@ public class panelUsuarios extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarUsuarioKeyTyped
 
+    private void txtRutUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutUsuarioFocusLost
+        if(!"".equals(txtRutUsuario.getText())){
+            user = leerUsuarios(txtRutUsuario.getText().toUpperCase());
+            if(user != null){
+                //lblMensajeExists.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/check_si.png")));
+                //lblMensajeExists.setText("Cliente Existe");
+                Formularios.ActiveBotonesEliminarEditar(btEliminarUsuario, btEditarUsuario);
+                
+            } else {
+                //lblMensajeExists.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/error.png")));
+                //lblMensajeExists.setText("Cliente NO existe. Llenar los datos.");
+                //Formularios.limpiar(this, "rut");
+            }
+        }
+    }//GEN-LAST:event_txtRutUsuarioFocusLost
+    
     // Method Custom
     private void cargarRol(){
         for (Object rol : DAORol.sqlLeerTodos()) {
@@ -608,6 +630,23 @@ public class panelUsuarios extends javax.swing.JPanel {
             fila[10] = ((ClRol)DAORol.sqlLeer(xx.getIdRol())).getNombre();
             dt.addRow(fila);
         }
+    }
+    
+    private ClPasajeros leerUsuarios(String rut){
+        ClPasajeros usu = DAOUsuarios.sqlLeer(rut.toUpperCase());
+        if(usu != null) {
+            txtRutUsuario.setText(usu.getRut());
+            txtNombreUsuario.setText(usu.getNombre());
+            txtConstrasenaUsuario.setText(usu.getContrasena());
+            txtApePaterno.setText(usu.getApellido_pa());
+            txtApeMaterno.setText(usu.getApellido_ma());
+            txtTelefono.setText(usu.getTelefono());
+            txtMailUsuario.setText(usu.getEmail());
+            txtDireccionUsuario.setText(usu.getDireccion());
+            txtTelefono.setText(usu.getTelefono());
+            txtFechaNacUsu.setValue(usu.getStringFechaNac());
+        }
+        return usu;
     }
     
     private void btnEditarMode(){
