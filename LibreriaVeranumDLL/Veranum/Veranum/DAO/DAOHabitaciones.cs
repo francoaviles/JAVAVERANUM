@@ -46,5 +46,38 @@ namespace Veranum.DAO
             return dt;
         }
 
+
+        public static DataTable HabDisponibles(String fecha1, String fecha2, int idHotel, int cantPersonas) {
+
+            String sql = @"SELECT *
+                        FROM ""habitaciones""
+                        LEFT JOIN ""habitacion_tipos"" ON  ""habitaciones"".""id_habitacion_tipo"" = ""habitacion_tipos"".""id_habitacion_tipo""
+                        LEFT JOIN ""hoteles"" ON  ""hoteles"".""id_hotel"" = ""habitaciones"".""id_hotel""
+                        WHERE NOT ""habitaciones"".""id_habitacion"" IN 
+                            (SELECT ""id_habitacion"" FROM ""habitaciones_reservas""
+                              WHERE ""habitaciones_reservas"".""id_reserva"" IN 
+                                  (SELECT ""id_reserva"" FROM ""reservas"" 
+                                  WHERE  ""reservas"".""fecha_ingreso"" BETWEEN TO_DATE(:fecha1, 'DD/MM/YYYY') AND TO_DATE(:fecha2, 'DD/MM/YYYY')
+                                  OR ""reservas"".""fecha_salida"" BETWEEN TO_DATE(:fecha1, 'DD/MM/YYYY') AND TO_DATE(:fecha2, 'DD/MM/YYYY')
+                                  )
+                            )
+                        AND  ""hoteles"".""id_hotel"" = :idhotel
+                        AND ""habitaciones"".""cant_personas"" >= :cant
+                        ORDER BY ""habitaciones"".""cant_personas"" ASC";
+
+            DB.Instance.Conectar(Constantes.CONEXION_DUOC);
+
+            DB.Instance.EjecutarQuery(sql);
+            DB.Instance.setParameter("fecha1", fecha1);
+            DB.Instance.setParameter("fecha2", fecha2);
+            DB.Instance.setParameter("idhotel", idHotel);
+            DB.Instance.setParameter("cant", cantPersonas);
+            DB.Instance.Procesar(); 
+            DataTable dt = DB.Instance.Leer(sql);
+            DB.Instance.Cerrar();
+
+            return dt;
+        }
+
     }
 }

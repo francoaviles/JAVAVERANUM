@@ -26,6 +26,7 @@ namespace Veranum.DAO
             if (dt.Rows.Count > 0)
             {
                 pasajero = new ClPasajero(p.Rut, p.Contrasena);
+                pasajero.IdPasajero = int.Parse(dt.Rows[0]["id_pasajero"].ToString());
                 pasajero.IdRol = int.Parse(dt.Rows[0]["id_rol"].ToString());
                 pasajero.Nombre = dt.Rows[0]["nombre"].ToString();
                 pasajero.ApellidoPa = dt.Rows[0]["apellido_pa"].ToString();

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 public partial class VeranumMaster : System.Web.UI.MasterPage
 {
     public static string pagina = "";
-
+    public string aux_flash = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!VeranumMaster.pagina.Contains("inicio") &&
@@ -26,6 +26,7 @@ public partial class VeranumMaster : System.Web.UI.MasterPage
             lblSessionFlash.Text = Session["flash"].ToString();
             Session["flash"] = null;
         }
+       
     }
 
 }

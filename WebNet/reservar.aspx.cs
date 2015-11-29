@@ -7,10 +7,14 @@ using System.Web.UI.WebControls;
 
 using System.Data;
 using Veranum.DAO;
+using Veranum.Clases;
 
 public partial class reservar : System.Web.UI.Page
 {
     public DataTable hoteles;
+    public string nohab = "none";
+    public string pasodos = "none";
+    public string pasotres = "none";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -27,5 +31,9 @@ public partial class reservar : System.Web.UI.Page
         cbHoteles.DataTextField = "nombre";
         cbHoteles.DataValueField = "id_hotel";
         cbHoteles.DataBind();
+    }
+    protected void btnSeguir_Click(object sender, EventArgs e)
+    {
+        this.pasodos = "block";
     }
 }

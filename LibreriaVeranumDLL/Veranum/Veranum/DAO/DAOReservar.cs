@@ -10,6 +10,64 @@ namespace Veranum.DAO
 {
     public class DAOReservar
     {
+        public static int sqlInsertar(string fecha1, string fecha2, int total, int idhotel, int cant, List<string> habitaciones, List<string> servicios, ClPasajero p) 
+        {
+            string sql_r = @"INSERT INTO ""reservas""
+                                (""id_pasajero"",""id_reserva_estado"",""fecha_ingreso"",""fecha_salida"",""precio_total"") 
+                            VALUES
+                                (:idpasajero,:idreserva,TO_DATE(:fecha1, 'dd/MM/YYYY'),TO_DATE(:fecha2, 'dd/MM/YYYY'),:total)
+                             ";
+
+            DB.Instance.Conectar(Constantes.CONEXION_DUOC);
+            DB.Instance.EjecutarQuery(sql_r);
+            DB.Instance.setParameter("idpasajero", p.IdPasajero);
+            DB.Instance.setParameter("idreserva", 3);
+            DB.Instance.setParameter("fecha1", fecha1);
+            DB.Instance.setParameter("fecha2", fecha2);
+            DB.Instance.setParameter("total", total);
+            DB.Instance.Procesar();
+            int id_reserva = DB.Instance.LastID("reservas_seq");
+
+
+            string sql_hr = @"INSERT INTO ""habitaciones_reservas""
+                            (""id_habitacion"",""id_reserva"")
+                            VALUES
+                            (:idh, :idr)";
+
+            string sql_sr = @"INSERT INTO ""servicios_reservas""
+                            (""id_servicio"",""id_reserva"")
+                            VALUES
+                            (:ids, :idr)";
+
+            string sqlu_h = @"UPDATE ""habitaciones"" SET
+                            ""id_habitacion_estado"" = :estado
+                            WHERE
+                            ""id_habitacion"" = :idha";
+
+            for (int h = 0; h < habitaciones.Count; h++) {
+                DB.Instance.EjecutarQuery(sql_hr);
+                DB.Instance.setParameter("idh", habitaciones[h]);
+                DB.Instance.setParameter("idr", id_reserva);
+                DB.Instance.Procesar();
+
+                DB.Instance.EjecutarQuery(sqlu_h);
+                DB.Instance.setParameter("estado", 3);
+                DB.Instance.setParameter("idha", habitaciones[h]);
+                DB.Instance.Procesar();
+            }
+
+            for (int s = 0; s < servicios.Count; s++)
+            {
+                DB.Instance.EjecutarQuery(sql_sr);
+                DB.Instance.setParameter("ids", servicios[s]);
+                DB.Instance.setParameter("idr", id_reserva);
+                DB.Instance.Procesar();
+            }
+
+
+            DB.Instance.Cerrar();
+            return id_reserva;
+        }
 
         public static List<ClHabitaciones> sqlBuscarHabitacion(int hotel, int tipo, int cant)
         {

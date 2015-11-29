@@ -163,8 +163,8 @@ label
 {
     padding: 15px;
     margin-top: 15px;
-    background-color: #ffff00;
-    color: #000;
+    background-color: red;
+    color: #fff;
     text-align: center; 
     border-radius: 5px;
 }

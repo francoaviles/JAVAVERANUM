@@ -65,9 +65,22 @@ namespace Veranum.Conexion
             _cmd.Parameters.Add(new OracleParameter(field, objeto));
         }
 
+        public int getLastID() {
+            return Convert.ToInt32(_cmd.ExecuteScalar());
+        }
+
         public int Procesar()
         {
             return _cmd.ExecuteNonQuery();
+        }
+
+        public int LastID(string secuencia) {
+            string sql = "SELECT " + secuencia + ".CURRVAL FROM DUAL";
+            DB.Instance.EjecutarQuery(sql);
+            DB.Instance.Procesar();
+            DataTable dt = DB.Instance.Leer(sql);
+            int id = int.Parse(dt.Rows[0][0].ToString());
+            return id;
         }
 
         public OracleDataReader Reader()

@@ -17,10 +17,10 @@
                     Text="Entrar" onclick="btnIngresar_Click" />
             </form>
     </div>
-    <div class="grid_4">
+    <div class="grid_4 cajaregistro">
      <h2 class="heading text-2 color-4 wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">¿No tienes cuenta?</h2>
         <p>
-            <a href="registro.aspx">Registrate</a>
+            <a class="cajahab" href="registro.aspx">Registrate</a>
         </p>
     </div>
 </asp:Content>
