@@ -388,7 +388,7 @@ public class panelUsuarios extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(this, "Ingrese los Datos");
                 }else{
                     try {
-                        if(!txtRutUsuario.getText().equals(DAOUsuarios.sqlLeer(txtRutUsuario.getText()).getRut())){ 
+                        if(DAOUsuarios.sqlLeer(txtRutUsuario.getText().toUpperCase()) == null){ 
                             DAOUsuarios.sqlInsert(new ClPasajeros(txtRutUsuario.getText()
                                 , txtNombreUsuario.getText()
                                 , txtConstrasenaUsuario.getText()
@@ -401,15 +401,15 @@ public class panelUsuarios extends javax.swing.JPanel {
                                 , id_rol)
                         );
                             JOptionPane.showMessageDialog(this, "Agregado");
+                            Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
+                            Formularios.limpiar(this);
+                            this.leerTodos(true);
                         }else{
                             JOptionPane.showMessageDialog(this, "Rut ya existe");
                         }                        
                     } catch (SQLException ex) {
                         JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
                     }
-                Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
-                Formularios.limpiar(this);
-                this.leerTodos(true);
                 }
         }else{
             try {

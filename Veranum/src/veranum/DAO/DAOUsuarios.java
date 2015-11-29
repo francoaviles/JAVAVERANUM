@@ -84,13 +84,15 @@ public class DAOUsuarios {
     }
     
     public static ClPasajeros sqlLeer(String rut){     
-        ClPasajeros usuarios = new ClPasajeros();       
+        ClPasajeros usuarios;       
         if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" ='"+rut+"'")){
             return null;
         }        
         if(!OracleConection.getInstance().sqlFetch()){
             return null;
         }        
+        
+        usuarios = new ClPasajeros();
         usuarios.setIdPasajero(OracleConection.getInstance().getInt("id_pasajero"));
         usuarios.setRut(OracleConection.getInstance().getString("rut"));
         usuarios.setNombre(OracleConection.getInstance().getString("nombre"));
