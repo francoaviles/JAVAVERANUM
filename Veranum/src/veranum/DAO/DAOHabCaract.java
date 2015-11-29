@@ -29,7 +29,7 @@ public class DAOHabCaract {
     
     }
     
-    public static boolean sqlUpdate(ClHabitacionCaract habCaract, ClHabitacionCaract habCaract2){
+    /*public static boolean sqlUpdate(ClHabitacionCaract habCaract, ClHabitacionCaract habCaract2){
         String sql="UPDATE \"habitaciones_caracteristicas\" SET " +
                     "\"id_caracteristica\" = "+habCaract.getIdCaract()+"," +
                     "\"id_habitacion\" = "+habCaract.getIdHabitacion()+"" +
@@ -38,7 +38,7 @@ public class DAOHabCaract {
         System.out.println(sql);
         OracleConection.getInstance().sqlEjecutar(sql);   
         return true;
-    }
+    }*/
     
     public static ClHabitacionCaract sqlLeer(int id_habitacion, int id_caract){     
         ClHabitacionCaract habCaract = new ClHabitacionCaract();
