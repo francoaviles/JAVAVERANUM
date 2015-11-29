@@ -250,8 +250,6 @@ public class Formularios {
         }
         
     }
-    
-    
     /*
     public boolean isEmail(String correo) {
         Pattern pat = null;
@@ -265,6 +263,6 @@ public class Formularios {
             return false;
         }        
     }
-    */
+       */
     
 }
