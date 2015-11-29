@@ -400,7 +400,7 @@ public class panelUsuarios extends javax.swing.JPanel {
                                 , Formularios.deStringAFecha(txtFechaNacUsu.getText())
                                 , id_rol)
                         );
-                        JOptionPane.showMessageDialog(this, "Agregado");
+                            JOptionPane.showMessageDialog(this, "Agregado");
                         }else{
                             JOptionPane.showMessageDialog(this, "Rut ya existe");
                         }                        

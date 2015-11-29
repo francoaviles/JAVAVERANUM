@@ -70,7 +70,7 @@ public class DAOUsuarios {
             return null;
         }        
         usuarios.setIdPasajero(OracleConection.getInstance().getInt("id_pasajero"));
-        usuarios.setRut(OracleConection.getInstance().getString("rut"));
+        usuarios.setRut(OracleConection.getInstance().getString("rut").toUpperCase());
         usuarios.setNombre(OracleConection.getInstance().getString("nombre"));
         usuarios.setContrasena(OracleConection.getInstance().getString("contrasena"));
         usuarios.setApellido_pa(OracleConection.getInstance().getString("apellido_pa"));
@@ -83,9 +83,9 @@ public class DAOUsuarios {
         return usuarios;
     }
     
-    public static ClPasajeros sqlLeer(String name){     
+    public static ClPasajeros sqlLeer(String rut){     
         ClPasajeros usuarios = new ClPasajeros();       
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" ='"+name+"'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" ='"+rut+"'")){
             return null;
         }        
         if(!OracleConection.getInstance().sqlFetch()){
