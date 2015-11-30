@@ -23,14 +23,14 @@ public class DAOHotelInsumos {
         a.setInt(2, hotelInsumos.getIdHotel());
         a.setInt(3, hotelInsumos.getIdMedida());
         a.setInt(4, hotelInsumos.getStock());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
 
     public static boolean sqlDelete(ClHotelInsumos hotelInsumos){
         String sql="DELETE FROM \"hotel_insumos\" WHERE \"id_insumo_hotel\" = "+hotelInsumos.getIdInsumoHotel()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+         
+        return OracleConection.getInstance().sqlEjecutar(sql);  
     
     }
     
@@ -42,8 +42,8 @@ public class DAOHotelInsumos {
         a.setInt(3, hotelInsumos.getIdMedida());
         a.setInt(4, hotelInsumos.getStock());
         a.setInt(5, hotelInsumos.getIdInsumoHotel());
-        OracleConection.getInstance().sqlEjecutarPreparacion();   
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();   
     }
     
     public static ClHotelInsumos sqlLeer(int id){     

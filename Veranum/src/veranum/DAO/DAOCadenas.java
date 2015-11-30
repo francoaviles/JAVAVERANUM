@@ -20,14 +20,13 @@ public class DAOCadenas {
         String sql="INSERT INTO \"cadenas\" (\"nombre\") VALUES (?)";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, cadenas.getNombre());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClCadenas cadenas){
         String sql="DELETE FROM \"cadenas\" WHERE \"nombre\" = '"+cadenas.getNombre()+"'";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+         
+        return OracleConection.getInstance().sqlEjecutar(sql);  
     }
     
     public static boolean sqlUpdate(ClCadenas cadenas) throws SQLException{
@@ -35,8 +34,8 @@ public class DAOCadenas {
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, cadenas.getNombre());
         a.setInt(2, cadenas.getIdCadena());
-        OracleConection.getInstance().sqlEjecutarPreparacion();   
-        return true;
+           
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static ClCadenas sqlLeer(String name){     

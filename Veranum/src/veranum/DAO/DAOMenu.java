@@ -21,14 +21,14 @@ public class DAOMenu {
         a.setInt(1, menu.getTipoMenu());
         a.setString(2, menu.getNombre());
         a.setInt(3, menu.getPrecio());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClMenu menu){
         String sql="DELETE FROM \"menu\" WHERE \"id_menu\" = "+menu.getIdMenu()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+          
+        return OracleConection.getInstance().sqlEjecutar(sql); 
     }
     
     public static boolean sqlUpdate(ClMenu menu) throws SQLException{
@@ -38,8 +38,8 @@ public class DAOMenu {
         a.setString(2, menu.getNombre());
         a.setInt(3, menu.getPrecio());
         a.setInt(4, menu.getIdMenu());
-        OracleConection.getInstance().sqlEjecutarPreparacion();  
-        return true;
+          
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static ClMenu sqlLeer(int id){     

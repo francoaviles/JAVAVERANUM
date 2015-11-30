@@ -22,8 +22,8 @@ public class DAOCaracteristicas {
         a.setInt(1, carac.getIdTipoCaract());
         a.setInt(2, carac.getCantidad());
         a.setString(3, carac.getTipo());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClCaracteristicas carac){
@@ -38,8 +38,8 @@ public class DAOCaracteristicas {
         a.setInt(2, carac.getCantidad());
         a.setString(3, carac.getTipo());
         a.setInt(4, carac.getIdCaracteristica());
-        OracleConection.getInstance().sqlEjecutarPreparacion(); 
-        return true;
+         
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
       
     public static ClCaracteristicas sqlLeer(int id){     

@@ -20,14 +20,13 @@ public class DAOTipoMenu {
         String sql="INSERT INTO \"tipo_menu\" (\"nombre\") VALUES (?)";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, menu.getNombre());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClTipoMenu menu){
         String sql="DELETE FROM \"tipo_menu\" WHERE \"id_tipo_menu\" = "+menu.getIdTipoMenu()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClTipoMenu menu) throws SQLException{
@@ -35,8 +34,8 @@ public class DAOTipoMenu {
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, menu.getNombre());
         a.setInt(2, menu.getIdTipoMenu());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static ClTipoMenu sqlLeer(String name){     

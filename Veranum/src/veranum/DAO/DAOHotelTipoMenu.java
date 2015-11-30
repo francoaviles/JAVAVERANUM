@@ -16,14 +16,14 @@ import veranum.utilidades.OracleConection;
 public class DAOHotelTipoMenu {
     public static boolean sqlInsert(ClHotelTipoMenu hTipoMenu){
         String sql="INSERT INTO \"hotel_tipo_menu\" (\"id_hotel\", \"id_menu\") VALUES ('"+hTipoMenu.getIdHotel()+"','"+hTipoMenu.getIdMenu()+"')";
-        OracleConection.getInstance().sqlEjecutar(sql);
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutar(sql);
     }
     
     public static boolean sqlDelete(ClHotelTipoMenu hTipoMenu){
         String sql="DELETE FROM \"hotel_tipo_menu\" WHERE \"id_hotel\" = "+hTipoMenu.getIdHotel()+" AND \"id_menu\" ="+hTipoMenu.getIdMenu()+" ";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutar(sql);
     
     }
     

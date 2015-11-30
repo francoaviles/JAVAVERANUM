@@ -20,14 +20,14 @@ public class DAOProvincia {
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, provincia.getNombre());
         a.setInt(2, provincia.getIdRegion());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClProvincia provincia){
         String sql="DELETE FROM \"provincias\" WHERE \"id_provincia\" = "+provincia.getIdProvincia()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+           
+        return OracleConection.getInstance().sqlEjecutar(sql);
     }
     
     public static boolean sqlUpdate(ClProvincia provincia) throws SQLException{
@@ -36,8 +36,8 @@ public class DAOProvincia {
         a.setString(1, provincia.getNombre());
         a.setInt(2, provincia.getIdRegion());
         a.setInt(3, provincia.getIdProvincia());
-        OracleConection.getInstance().sqlEjecutarPreparacion(); 
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion(); 
     }
     
     public static ClProvincia sqlLeer(int id){     

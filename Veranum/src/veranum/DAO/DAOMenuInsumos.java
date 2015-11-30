@@ -23,14 +23,14 @@ public class DAOMenuInsumos {
         a.setInt(2, menuInsumos.getIdMenu());
         a.setInt(3, menuInsumos.getIdMedida());
         a.setInt(4, menuInsumos.getCantidad());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
 
     public static boolean sqlDelete(ClMenuInsumos menuInsumos){
         String sql="DELETE FROM \"menu_insumos\" WHERE \"id_menu_insumo\" = "+menuInsumos.getIdMenuInsumo()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutar(sql);   
     
     }
     
@@ -42,8 +42,8 @@ public class DAOMenuInsumos {
         a.setInt(3, menuInsumos.getIdMedida());
         a.setInt(4, menuInsumos.getCantidad());
         a.setInt(5, menuInsumos.getIdMenuInsumo());
-        OracleConection.getInstance().sqlEjecutarPreparacion();   
-        return true;
+          
+        return OracleConection.getInstance().sqlEjecutarPreparacion(); 
     }
     
     public static ClMenuInsumos sqlLeer(int id){     

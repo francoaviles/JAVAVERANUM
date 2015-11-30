@@ -22,14 +22,14 @@ public class DAOReportes {
         a.setDate(2, (new java.sql.Date(reportes.getFechaCreacion().getTime())));
         a.setString(3, reportes.getArchivo());
         a.setString(4, reportes.getComentario());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClReportes reportes){
         String sql="DELETE FROM \"reportes\" WHERE \"id_reporte\" = "+reportes.getIdReporte()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+         
+        return OracleConection.getInstance().sqlEjecutar(sql);  
     }
     
     public static boolean sqlUpdate(ClReportes reportes) throws SQLException{
@@ -40,8 +40,8 @@ public class DAOReportes {
         a.setString(3, reportes.getArchivo());
         a.setString(4, reportes.getComentario());
         a.setInt(5, reportes.getIdReporte());
-        OracleConection.getInstance().sqlEjecutarPreparacion(); 
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion(); 
     }
     
     public static ClReportes sqlLeer(int id){     

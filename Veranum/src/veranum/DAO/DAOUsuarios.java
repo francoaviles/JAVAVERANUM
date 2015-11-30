@@ -29,8 +29,8 @@ public class DAOUsuarios {
         a.setString(8, usuarios.getDireccion());
         a.setDate(9, (new java.sql.Date(usuarios.getFechaNacimiento().getTime())));
         a.setInt(10, usuarios.getIdRol());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static int sqlLastID(){
@@ -39,8 +39,8 @@ public class DAOUsuarios {
     
     public static boolean sqlDelete(ClPasajeros usuarios){
         String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = "+usuarios.getIdPasajero()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+          
+        return OracleConection.getInstance().sqlEjecutar(sql); 
     }
     
     public static boolean sqlUpdate(ClPasajeros usuarios) throws SQLException{
@@ -57,8 +57,8 @@ public class DAOUsuarios {
         a.setDate(9, (new java.sql.Date(usuarios.getFechaNacimiento().getTime())));
         a.setInt(10, usuarios.getIdRol());
         a.setInt(11, usuarios.getIdPasajero());
-        OracleConection.getInstance().sqlEjecutarPreparacion();  
-        return true;
+         
+        return OracleConection.getInstance().sqlEjecutarPreparacion(); 
     }
     
     public static ClPasajeros sqlLeer(int id){     

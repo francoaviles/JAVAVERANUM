@@ -20,14 +20,14 @@ public class DAOTipoHab {
         String sql="INSERT INTO \"habitacion_tipos\" (\"nombre\") VALUES (?)";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, hab.getNombre());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClTipoHabitacion hab){
         String sql="DELETE FROM \"habitacion_tipos\" WHERE \"id_habitacion_tipo\" = "+hab.getIdTipoHabit()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClTipoHabitacion hab) throws SQLException{
@@ -35,8 +35,8 @@ public class DAOTipoHab {
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, hab.getNombre());
         a.setInt(2, hab.getIdTipoHabit());
-        OracleConection.getInstance().sqlEjecutarPreparacion();   
-        return true;
+           
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static ClTipoHabitacion sqlLeer(int id){     

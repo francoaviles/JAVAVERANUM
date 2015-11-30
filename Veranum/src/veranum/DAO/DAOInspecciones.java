@@ -22,14 +22,14 @@ public class DAOInspecciones {
         a.setDate(2, (new java.sql.Date(inspecciones.getFechaInicio().getTime())));
         a.setString(3, inspecciones.getComentario());
         a.setString(4, inspecciones.getNombreInspector());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClHabitacionInspecciones inspecciones){
         String sql="DELETE FROM \"habitacion_inspecciones\" WHERE \"id_habitacion_inspeccion\" = "+inspecciones.getIdHabitacionInspeccion()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+         
+        return OracleConection.getInstance().sqlEjecutar(sql);  
     }
     
     public static boolean sqlUpdate(ClHabitacionInspecciones inspecciones) throws SQLException{
@@ -40,8 +40,8 @@ public class DAOInspecciones {
         a.setString(3, inspecciones.getComentario());
         a.setString(4, inspecciones.getNombreInspector());
         a.setInt(5, inspecciones.getIdHabitacionInspeccion());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static ClHabitacionInspecciones sqlLeer(int id){     

@@ -24,14 +24,14 @@ public class DAOHabitaciones {
         a.setString(4, habitacion.getUbicacion());
         a.setInt(5, habitacion.getCantPersonas());
         a.setInt(6, habitacion.getPrecio());        
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClHabitaciones habitacion){
         String sql="DELETE FROM \"habitaciones\" WHERE \"id_habitacion\" = "+habitacion.getIdHabitacion()+"";
         OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+        return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClHabitaciones habitacion) throws SQLException{
@@ -44,8 +44,8 @@ public class DAOHabitaciones {
         a.setInt(5, habitacion.getCantPersonas());
         a.setInt(6, habitacion.getPrecio());        
         a.setInt(7, habitacion.getIdHabitacion());
-        OracleConection.getInstance().sqlEjecutarPreparacion();  
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();  
     }
     
     public static ClHabitaciones sqlLeer(int id){     

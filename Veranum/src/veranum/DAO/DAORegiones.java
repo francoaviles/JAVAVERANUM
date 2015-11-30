@@ -21,14 +21,14 @@ public class DAORegiones {
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, region.getNombre());
         a.setString(2, region.getOrdinal());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClRegion region){
         String sql="DELETE FROM \"regiones\" WHERE \"id_region\" = "+region.getIdRegion()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+          
+        return OracleConection.getInstance().sqlEjecutar(sql); 
     
     }
     
@@ -38,8 +38,8 @@ public class DAORegiones {
         a.setString(1, region.getNombre());
         a.setString(2, region.getOrdinal());
         a.setInt(3, region.getIdRegion());
-        OracleConection.getInstance().sqlEjecutarPreparacion(); 
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion(); 
     }
     
     public static ClRegion sqlLeer(int id){     

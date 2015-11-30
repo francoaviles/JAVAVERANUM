@@ -29,14 +29,14 @@ public class DAOCliente {
         a.setString(8, clientes.getDireccion());
         a.setDate(9, (new java.sql.Date(clientes.getFechaNacimiento().getTime())));
         a.setInt(10, clientes.getIdRol());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClPasajeros clientes){
         String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = "+clientes.getIdPasajero()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClPasajeros clientes) throws SQLException{
@@ -53,8 +53,8 @@ public class DAOCliente {
         a.setDate(9, (new java.sql.Date(clientes.getFechaNacimiento().getTime())));
         a.setInt(10, clientes.getIdRol());
         a.setInt(11, clientes.getIdPasajero());
-        OracleConection.getInstance().sqlEjecutarPreparacion();  
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();  
     }
     
     public static ClPasajeros sqlLeer(int id){     

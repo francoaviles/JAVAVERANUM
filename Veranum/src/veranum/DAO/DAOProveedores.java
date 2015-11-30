@@ -26,8 +26,8 @@ public class DAOProveedores {
         a.setString(4, proveedores.getEmail());
         a.setString(5, proveedores.getDireccion());
         a.setInt(6, proveedores.getIdRol());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static int sqlLastID(){
@@ -36,8 +36,8 @@ public class DAOProveedores {
     
     public static boolean sqlDelete(ClPasajeros proveedores){
         String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = "+proveedores.getIdPasajero()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+          
+        return OracleConection.getInstance().sqlEjecutar(sql); 
     }
     
     public static boolean sqlUpdate(ClPasajeros proveedores) throws SQLException{
@@ -50,8 +50,8 @@ public class DAOProveedores {
         a.setString(8, proveedores.getDireccion());
         a.setInt(10, proveedores.getIdRol());
         a.setInt(11, proveedores.getIdPasajero());
-        OracleConection.getInstance().sqlEjecutarPreparacion();  
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();  
     }
     
     public static ClPasajeros sqlLeer(int id){     

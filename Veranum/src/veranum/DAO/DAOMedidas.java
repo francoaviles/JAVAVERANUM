@@ -20,14 +20,14 @@ public class DAOMedidas {
         String sql="INSERT INTO \"medidas\" (\"medida\") VALUES (?)";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, medida.getMedida());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClMedidas medida){
         String sql="DELETE FROM \"medidas\" WHERE \"id_medida\" = "+medida.getIdMedida()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+         
+        return OracleConection.getInstance().sqlEjecutar(sql);  
     }
     
     public static boolean sqlUpdate(ClMedidas medida) throws SQLException{
@@ -35,8 +35,8 @@ public class DAOMedidas {
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, medida.getMedida());
         a.setInt(2, medida.getIdMedida());
-        OracleConection.getInstance().sqlEjecutarPreparacion();  
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();  
     }
     
     public static ClMedidas sqlLeer(String name){     

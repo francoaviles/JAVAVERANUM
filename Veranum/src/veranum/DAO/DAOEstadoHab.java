@@ -20,14 +20,14 @@ public class DAOEstadoHab {
         String sql="INSERT INTO \"habitacion_estados\" (\"estado\") VALUES (?)";
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, estado.getEstado());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClHabitacionEstados estado){
         String sql="DELETE FROM \"habitacion_estados\" WHERE \"id_habitacion_estado\" = "+estado.getIdHabitacionEstado()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClHabitacionEstados estado) throws SQLException{
@@ -35,8 +35,8 @@ public class DAOEstadoHab {
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, estado.getEstado());
         a.setInt(2, estado.getIdHabitacionEstado());        
-        OracleConection.getInstance().sqlEjecutarPreparacion();  
-        return true;
+         
+        return OracleConection.getInstance().sqlEjecutarPreparacion(); 
     }
     
     public static ClHabitacionEstados sqlLeer(String name){     

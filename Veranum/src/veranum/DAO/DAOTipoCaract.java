@@ -21,14 +21,14 @@ public class DAOTipoCaract {
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, caract.getNombre());
         a.setString(2, caract.getDescripcion());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+       
+        return  OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClTipoCaracteristicas caract){
         String sql="DELETE FROM \"tipo_caracteristicas\" WHERE \"id_tipo_caract\" = "+caract.getIdTipoCaract()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+       
+        return  OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClTipoCaracteristicas caract) throws SQLException{
@@ -37,8 +37,8 @@ public class DAOTipoCaract {
         a.setString(1, caract.getNombre());
         a.setString(2, caract.getDescripcion());
         a.setInt(3, caract.getIdTipoCaract());
-        OracleConection.getInstance().sqlEjecutarPreparacion();  
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();  
     }
     
     public static ClTipoCaracteristicas sqlLeer(int id){     

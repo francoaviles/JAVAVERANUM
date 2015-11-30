@@ -20,14 +20,14 @@ public class DAOServicios {
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, servicios.getNombre());
         a.setInt(2, servicios.getPrecio());
-        OracleConection.getInstance().sqlEjecutarPreparacion();
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
     public static boolean sqlDelete(ClServicios servicios){
         String sql="DELETE FROM \"servicios\" WHERE \"id_servicio\" = "+servicios.getIdServicio()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClServicios servicios) throws SQLException{
@@ -36,8 +36,8 @@ public class DAOServicios {
         a.setString(1, servicios.getNombre());
         a.setInt(2, servicios.getPrecio());
         a.setInt(3, servicios.getIdServicio());
-        OracleConection.getInstance().sqlEjecutarPreparacion();  
-        return true;
+        
+        return OracleConection.getInstance().sqlEjecutarPreparacion();  
     }
     
     public static ClServicios sqlLeer(String name){     
