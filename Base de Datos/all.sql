@@ -1370,7 +1370,7 @@ Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('6','3');
 Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('6','4');
 
 /
-CREATE  SEQUENCE roles_seq START WITH 4 INCREMENT BY 1;
+CREATE  SEQUENCE roles_seq START WITH 5 INCREMENT BY 1;
 /
 create or replace trigger trg_roles
     before insert on "roles"
