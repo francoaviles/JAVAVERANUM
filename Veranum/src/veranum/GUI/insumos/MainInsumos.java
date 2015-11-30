@@ -20,6 +20,7 @@ public class MainInsumos extends javax.swing.JInternalFrame {
         tabContenidoInsumos.addTab("Tipo Menú", new panelTipoMenu());
         tabContenidoInsumos.addTab("Menú", new panelMenu());        
         tabContenidoInsumos.addTab("Menú Insumos", new panelMenuInsumos());
+        tabContenidoInsumos.addTab("Proveedores", new panelProveedores());
     }
     
      

@@ -17,6 +17,7 @@ public class MainCliente extends javax.swing.JInternalFrame {
     public MainCliente() {
         initComponents();
         tabContenidoCliente.addTab("Cliente", new panelCliente());
+        tabContenidoCliente.addTab("Consulta", new panelConsultaPrecio());
     }
 
     /**

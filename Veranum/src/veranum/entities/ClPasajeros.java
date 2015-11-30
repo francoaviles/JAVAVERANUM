@@ -76,6 +76,25 @@ public class ClPasajeros {
         setDireccion(direccion);
         setFechaNacimiento(fechaNacimiento);
     }
+    //proveedores
+    public ClPasajeros(int idPasajero, String rut, String nombre,String telefono, String email, String direccion,int idRol) {
+        setIdPasajero(idPasajero);
+        setRut(rut);
+        setNombre(nombre);
+        setTelefono(telefono);
+        setEmail(email);
+        setDireccion(direccion);
+        setIdRol(idRol);
+    }
+    //proveedores insert
+    public ClPasajeros(String rut, String nombre,String telefono, String email, String direccion,int idRol) {
+        setRut(rut);
+        setNombre(nombre);
+        setTelefono(telefono);
+        setEmail(email);
+        setDireccion(direccion);
+        setIdRol(idRol);
+    }
     
     public ClPasajeros(String rut, String contrasena) {
         setRut(rut);
