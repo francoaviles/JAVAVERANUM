@@ -248,11 +248,15 @@ public class panelCaracteristicas extends javax.swing.JPanel {
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOCaracteristicas.sqlDelete(new ClCaracteristicas(this.id));
-            JOptionPane.showMessageDialog(this, "Eliminado");
-            helper.Formularios.limpiar(this);
-            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
-            this.leerTodos(true);
+            if(DAOCaracteristicas.sqlDelete(new ClCaracteristicas(this.id)))
+            {
+                JOptionPane.showMessageDialog(this, "Eliminado");
+                helper.Formularios.limpiar(this);
+                Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+                this.leerTodos(true);
+            } else { 
+                JOptionPane.showMessageDialog(this, "Está caracteristica está siendo utilizada por algunos hoteles y/o habitaciones. Elimine esta caracteristica de esos lugares y podrás eliminarla.");
+            }
         }
     }//GEN-LAST:event_btEliminarActionPerformed
 

@@ -27,9 +27,8 @@ public class DAOCaracteristicas {
     }
     
     public static boolean sqlDelete(ClCaracteristicas carac){
-        String sql="DELETE FROM \"caracteristicas\" WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";
-        OracleConection.getInstance().sqlEjecutar(sql);   
-        return true;
+        String sql="DELETE FROM \"caracteristicas\" WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";   
+        return OracleConection.getInstance().sqlEjecutar(sql);
     }
     
     public static boolean sqlUpdate(ClCaracteristicas carac) throws SQLException{
