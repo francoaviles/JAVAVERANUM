@@ -201,6 +201,7 @@ CREATE TABLE "historial_precios" (
   "id_historial_precio" NUMBER NOT NULL,
   "id_habitacion" Number NOT NULL,
   "precio" Number NOT NULL,
+  "nuevoprecio" Number NOT NULL,
   "fecha" Date
 );
 /
@@ -1669,6 +1670,16 @@ create or replace trigger trg_menu_insumos
       from dual;
   end;
 /
+CREATE OR REPLACE TRIGGER "historial_hab"
+  BEFORE  UPDATE ON "habitaciones"
+  FOR EACH ROW
+BEGIN
+    IF :NEW."precio" <> :OLD."precio" THEN
+        INSERT INTO "historial_precios" ("id_habitacion","precio", "nuevoprecio", "fecha")
+        VALUES (:NEW."id_habitacion", :OLD."precio", :NEW."precio", SYSDATE);
+    END IF;
 
+END;
+/
 
 
