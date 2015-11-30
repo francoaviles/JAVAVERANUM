@@ -141,7 +141,7 @@ public class Formularios {
     public static void validarRutLargo(java.awt.event.KeyEvent evt)
     {
         char c = evt.getKeyChar();
-        if (!((c >= '0') && (c <= '9') ||  (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE) || (c == 'k') )) {
+        if (!((c >= '0') && (c <= '9') ||  (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE) || (c == 'k')   || (c == 'K') )) {
             evt.consume();
         }
     }

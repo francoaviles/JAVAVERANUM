@@ -33,6 +33,7 @@ public class panelUsuarios extends javax.swing.JPanel {
     public panelUsuarios() {
         initComponents();
         this.cargarRol();
+        txtTelefono.setTransferHandler(null);
         grUsuario.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
         btDesactivarEditarUsuarios.setVisible(false);
