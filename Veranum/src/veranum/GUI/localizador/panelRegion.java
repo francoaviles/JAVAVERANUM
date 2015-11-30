@@ -8,9 +8,8 @@ package veranum.GUI.localizador;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAORegiones;
 import veranum.entities.ClRegion;
@@ -28,6 +27,7 @@ public class panelRegion extends javax.swing.JPanel {
      */
     public panelRegion() {
         initComponents();
+        grRegion.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grRegion.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditarRegion, btEliminar);
         btDesactivarEditarRegion.setVisible(false);
