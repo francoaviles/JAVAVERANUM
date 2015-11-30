@@ -170,6 +170,17 @@ public class MainVeranum extends javax.swing.JFrame {
                 ver.setExtendedState(ver.MAXIMIZED_BOTH);
                 ver.setVisible(true);
                 this.setVisible(false);
+                
+            } else if(rol.getNombre().equals("Recepcionista")){
+                RecepcionVeranum ver = new RecepcionVeranum(p);
+                ver.setExtendedState(ver.MAXIMIZED_BOTH);
+                ver.setVisible(true);
+                this.setVisible(false);
+            } else if(rol.getNombre().equals("Inspector")){
+                InspectorVeranum ver = new InspectorVeranum(p);
+                ver.setExtendedState(ver.MAXIMIZED_BOTH);
+                ver.setVisible(true);
+                this.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(this, "No tienes los permisos suficientes."); 
             return;

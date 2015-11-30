@@ -9,14 +9,7 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import veranum.GUI.cliente.MainCliente;
-import veranum.GUI.habitaciones.MainHabitaciones;
-import veranum.GUI.hotel.MainHotel;
-import veranum.GUI.insumos.MainInsumos;
-import veranum.GUI.localizador.MainLocalizador;
-import veranum.GUI.reportes.MainReportes;
 import veranum.GUI.reservas.MainReserva;
-import veranum.GUI.servicios.MainServicios;
-import veranum.GUI.usuarios.MainUsuarios;
 import veranum.entities.ClPasajeros;
 
 
@@ -24,20 +17,20 @@ import veranum.entities.ClPasajeros;
  *
  * @author Duoc
  */
-public class AdminVeranum extends javax.swing.JFrame {
+public class RecepcionVeranum extends javax.swing.JFrame {
     private ClPasajeros usuario;
     
     /**
      * Creates new form AdminVeranum
      * @param pasajero
      */
-    public AdminVeranum(ClPasajeros pasajero) {
+    public RecepcionVeranum(ClPasajeros pasajero) {
         initComponents();
         this.usuario = pasajero;
         lblUsuarioNombre.setText(usuario.getNombre());
     }
     
-     public AdminVeranum() {
+     public RecepcionVeranum() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
     }
@@ -53,18 +46,11 @@ public class AdminVeranum extends javax.swing.JFrame {
 
         panelMenu = new javax.swing.JPanel();
         imgLogo = new javax.swing.JLabel();
-        btnHoteles = new javax.swing.JButton();
-        btnServicios = new javax.swing.JButton();
-        btnUsuarios = new javax.swing.JButton();
-        btnReportes = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
-        btnInsumos = new javax.swing.JButton();
-        btnLocalizador = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         lblBienvenido = new javax.swing.JLabel();
         lblUsuarioNombre = new javax.swing.JLabel();
         btnReservas = new javax.swing.JButton();
-        btnHabitaciones = new javax.swing.JButton();
         btnCambiarUsuario = new javax.swing.JButton();
         panelContenido = new javax.swing.JPanel();
 
@@ -76,66 +62,12 @@ public class AdminVeranum extends javax.swing.JFrame {
 
         imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/logo.jpg"))); // NOI18N
 
-        btnHoteles.setBackground(new java.awt.Color(255, 255, 255));
-        btnHoteles.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        btnHoteles.setText("Hoteles");
-        btnHoteles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHotelesActionPerformed(evt);
-            }
-        });
-
-        btnServicios.setBackground(new java.awt.Color(255, 255, 255));
-        btnServicios.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        btnServicios.setText("Servicios");
-        btnServicios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnServiciosActionPerformed(evt);
-            }
-        });
-
-        btnUsuarios.setBackground(new java.awt.Color(255, 255, 255));
-        btnUsuarios.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        btnUsuarios.setText("Usuarios");
-        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuariosActionPerformed(evt);
-            }
-        });
-
-        btnReportes.setBackground(new java.awt.Color(255, 255, 255));
-        btnReportes.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        btnReportes.setText("Reportes");
-        btnReportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportesActionPerformed(evt);
-            }
-        });
-
         btnClientes.setBackground(new java.awt.Color(255, 255, 255));
         btnClientes.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
         btnClientes.setText("Clientes");
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClientesActionPerformed(evt);
-            }
-        });
-
-        btnInsumos.setBackground(new java.awt.Color(255, 255, 255));
-        btnInsumos.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        btnInsumos.setText("Insumos");
-        btnInsumos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsumosActionPerformed(evt);
-            }
-        });
-
-        btnLocalizador.setBackground(new java.awt.Color(255, 255, 255));
-        btnLocalizador.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        btnLocalizador.setText("Localizador");
-        btnLocalizador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLocalizadorActionPerformed(evt);
             }
         });
 
@@ -158,15 +90,6 @@ public class AdminVeranum extends javax.swing.JFrame {
             }
         });
 
-        btnHabitaciones.setBackground(new java.awt.Color(255, 255, 255));
-        btnHabitaciones.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        btnHabitaciones.setText("Habitaciones");
-        btnHabitaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHabitacionesActionPerformed(evt);
-            }
-        });
-
         btnCambiarUsuario.setBackground(new java.awt.Color(255, 255, 102));
         btnCambiarUsuario.setText("Cambiar Usuario");
         btnCambiarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -180,13 +103,7 @@ public class AdminVeranum extends javax.swing.JFrame {
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(imgLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnHoteles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnServicios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnLocalizador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCambiarUsuario)
@@ -200,7 +117,6 @@ public class AdminVeranum extends javax.swing.JFrame {
                 .addComponent(lblUsuarioNombre)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(btnReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnHabitaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,25 +126,11 @@ public class AdminVeranum extends javax.swing.JFrame {
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBienvenido)
                     .addComponent(lblUsuarioNombre))
-                .addGap(33, 33, 33)
-                .addComponent(btnHoteles)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnHabitaciones)
-                .addGap(8, 8, 8)
-                .addComponent(btnServicios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUsuarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnClientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnInsumos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLocalizador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReportes)
-                .addGap(18, 18, 18)
                 .addComponent(btnReservas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
                     .addComponent(btnCambiarUsuario))
@@ -260,77 +162,21 @@ public class AdminVeranum extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnHotelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHotelesActionPerformed
-        try {
-            new helper.IFrameHelper().openContenidoAdmin(new MainHotel(), panelContenido);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnHotelesActionPerformed
-
-    private void btnServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosActionPerformed
-        try {
-            new helper.IFrameHelper().openContenidoAdmin(new MainServicios(), panelContenido);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnServiciosActionPerformed
-
-    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
-        try {
-            new helper.IFrameHelper().openContenidoAdmin(new MainUsuarios(), panelContenido);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnUsuariosActionPerformed
-
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         try {
             new helper.IFrameHelper().openContenidoAdmin(new MainCliente(), panelContenido);
         } catch (PropertyVetoException ex) {
-            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RecepcionVeranum.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnClientesActionPerformed
-
-    private void btnInsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsumosActionPerformed
-        try {
-            new helper.IFrameHelper().openContenidoAdmin(new MainInsumos(), panelContenido);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnInsumosActionPerformed
-
-    private void btnLocalizadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalizadorActionPerformed
-        try {
-            new helper.IFrameHelper().openContenidoAdmin(new MainLocalizador(), panelContenido);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnLocalizadorActionPerformed
-
-    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        try {
-            new helper.IFrameHelper().openContenidoAdmin(new MainReportes(), panelContenido);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnReportesActionPerformed
 
     private void btnReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservasActionPerformed
        try {
             new helper.IFrameHelper().openContenidoAdmin(new MainReserva(), panelContenido);
         } catch (PropertyVetoException ex) {
-            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RecepcionVeranum.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnReservasActionPerformed
-
-    private void btnHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabitacionesActionPerformed
-        try {
-            new helper.IFrameHelper().openContenidoAdmin(new MainHabitaciones(), panelContenido);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnHabitacionesActionPerformed
 
     private void btnCambiarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarUsuarioActionPerformed
         MainVeranum ver = new MainVeranum();
@@ -355,20 +201,21 @@ public class AdminVeranum extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminVeranum.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecepcionVeranum.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminVeranum.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecepcionVeranum.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminVeranum.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecepcionVeranum.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminVeranum.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RecepcionVeranum.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminVeranum().setVisible(true);
+                new RecepcionVeranum().setVisible(true);
             }
         });
     }
@@ -376,15 +223,8 @@ public class AdminVeranum extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCambiarUsuario;
     private javax.swing.JButton btnClientes;
-    private javax.swing.JButton btnHabitaciones;
-    private javax.swing.JButton btnHoteles;
-    private javax.swing.JButton btnInsumos;
-    private javax.swing.JButton btnLocalizador;
-    private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnReservas;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnServicios;
-    private javax.swing.JButton btnUsuarios;
     private javax.swing.JLabel imgLogo;
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblUsuarioNombre;

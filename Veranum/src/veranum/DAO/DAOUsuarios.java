@@ -109,7 +109,7 @@ public class DAOUsuarios {
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClPasajeros> usuarios = new ArrayList<>();        
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"id_rol\" = 1 OR \"id_rol\" = 2")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"id_rol\" = 1 OR \"id_rol\" = 2 OR \"id_rol\" = 4")){
             return null;
         }
         while(OracleConection.getInstance().sqlFetch()){
