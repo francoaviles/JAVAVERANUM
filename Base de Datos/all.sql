@@ -1177,9 +1177,9 @@ Insert into "servicios" ("id_servicio","nombre","precio") values ('3','Spa','200
 Insert into "servicios" ("id_servicio","nombre","precio") values ('4','Cancha de Tenis','60000');
 
 Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('5','Sala de eventos', 'Centro de eventos');
-Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('6','Cama una plaza','4 o más');
-Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('7','Cama plaza y media','2 personas');
-Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('8','Cama dos plaza','2 personas');
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('6','Cama una plaza','cama para una persona');
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('7','Cama plaza y media','cama para una persona');
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('8','Cama dos plaza','cama para 2 personas');
 
 Insert into "tipo_menu" ("id_tipo_menu","nombre") values ('1','Desayuno');
 Insert into "tipo_menu" ("id_tipo_menu","nombre") values ('2','Almuerzo');
@@ -1213,45 +1213,58 @@ Insert into "insumos" ("id_insumo","nombre","descripcion") values ('1','Arroz','
 Insert into "insumos" ("id_insumo","nombre","descripcion") values ('2','spaghetti','carbohidrato');
 Insert into "insumos" ("id_insumo","nombre","descripcion") values ('3','Sal','asd');
 Insert into "insumos" ("id_insumo","nombre","descripcion") values ('4','Azucar','Endulzante');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('5','Stevia','asds');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('6','Cuchara','asd');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('7','Cuchillo','cortar');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('8','Tenedor','asdsd');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('9','Chuchara Té','para el té :v');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('10','Vaso vidrio','rrr');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('11','vaso plastico','vlfkdngvfj');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('12','Copa de vino','un manjar');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('13','Espumante','para usar la copa xdg');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('14','tomate','asd');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('15','espinaca','gg');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('16','acelga','ggg');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('17','cebolla','gg');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('18','cebollin','ggg');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('19','zanahoria','gwerw');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('20','Aceite','ggs');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('21','ajo','f');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('22','pimenton','gbfd');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('23','brocoli','gfd');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('24','lomo liso','gfd');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('25','lomo vetado','gfd');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('26','huachalomo','sdfdfw');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('27','reineta','gsdfj');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('28','jurel','sdffg');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('29','lechuga','legfdsg');
-Insert into "insumos" ("id_insumo","nombre","descripcion") values ('30','congrio','sdf');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('5','Stevia','Endulzante');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('6','Cuchara','material');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('7','Cuchillo','material');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('8','Tenedor','material');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('9','Chuchara Té','material');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('10','Vaso vidrio','material');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('11','vaso plastico','material');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('12','Copa de vino','material');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('13','Espumante','bebestibles');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('14','tomate','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('15','espinaca','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('16','acelga','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('17','cebolla','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('18','cebollin','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('19','zanahoria','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('20','Aceite','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('21','ajo','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('22','pimenton','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('23','brocoli','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('24','lomo liso','carne');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('25','lomo vetado','carne');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('26','huachalomo','carne');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('27','reineta','carne blancas');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('28','jurel','carne blancas');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('29','lechuga','verdura');
+Insert into "insumos" ("id_insumo","nombre","descripcion") values ('30','congrio','carne blancas');
 
 Insert into "medidas" ("id_medida","medida") values ('1','Kilogramos');
 Insert into "medidas" ("id_medida","medida") values ('2','Gramos');
 Insert into "medidas" ("id_medida","medida") values ('3','Litros');
 Insert into "medidas" ("id_medida","medida") values ('4','Centimetors Cubicos');
 Insert into "medidas" ("id_medida","medida") values ('5','Miligramos');
+Insert into "medidas" ("id_medida","medida") values ('6','Onzas');
+Insert into "medidas" ("id_medida","medida") values ('7','Libras');
+Insert into "medidas" ("id_medida","medida") values ('8','Cuartos');
+Insert into "medidas" ("id_medida","medida") values ('9','Tazas');
+Insert into "medidas" ("id_medida","medida") values ('10','Cucharadas');
+Insert into "medidas" ("id_medida","medida") values ('11','cucharaditas');
+Insert into "medidas" ("id_medida","medida") values ('12','Galón');
 
-
-
-Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('1','1','Desayuno Sano', 6990);
-Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('2','2','Almuerzo Uno', 8990);
-Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('3','3','Once Uno', 4590);
-Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('4','4','Cena uno', 3990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('1','1','Desayuno Uno', 6990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('2','1','Desayuno Dos', 7990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('3','1','Desayuno Tres', 8990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('4','2','Almuerzo Uno', 6990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('5','2','Almuerzo Dos', 7990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('6','2','Almuerzo Tres', 8990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('7','3','Once Uno', 4590);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('8','3','Once Dos', 7590);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('9','3','Once Tres', 9590);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('10','4','Cena uno', 3990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('11','4','Cena Dos', 7990);
+Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('12','4','Cena Tres', 9990);
 
 
 Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('4','5','1','I');
