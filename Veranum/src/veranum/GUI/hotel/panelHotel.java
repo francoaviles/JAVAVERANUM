@@ -8,8 +8,6 @@ package veranum.GUI.hotel;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -293,14 +291,12 @@ public class panelHotel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbRegionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbRegionItemStateChanged
-        // TODO add your handling code here:
         cbProvincia.removeAllItems();
         this.cargarProvincias();
         this.cargarComunas();
     }//GEN-LAST:event_cbRegionItemStateChanged
 
     private void cbProvinciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbProvinciaItemStateChanged
-        // TODO add your handling code here:
         cbComuna.removeAllItems();
         this.cargarComunas();
     }//GEN-LAST:event_cbProvinciaItemStateChanged

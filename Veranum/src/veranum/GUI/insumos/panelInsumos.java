@@ -287,7 +287,6 @@ public class panelInsumos extends javax.swing.JPanel {
 
     private void grInsumosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grInsumosMouseClicked
         int row_dos = Formularios.getTablaSeleccionada(evt, grInsumos, 2);
-
         if(row_dos >= 0){
             this.leerInsumos(Integer.parseInt(grInsumos.getValueAt(row_dos, 0).toString()));
             Formularios.ActiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);

@@ -469,64 +469,6 @@ public class panelCliente extends javax.swing.JPanel {
         Formularios.limpiar(this);
         this.leerTodos(true);
         }
-        /*
-        if(!paraGrabar){
-            if(txtRutUsuario.getText().equals("") 
-               || txtNombreUsuario.getText().equals("")
-               || txtConstrasenaUsuario.getText().equals("")
-               || txtApePaterno.getText().equals("")
-               || txtApeMaterno.getText().equals("")
-               || txtTelefono.getText().equals("")
-               || txtMailUsuario.getText().equals("")     
-               || txtDireccionUsuario.getText().equals("")
-               || txtFechaNacUsu.getText().equals("")
-               ){
-                JOptionPane.showMessageDialog(this, "Ingrese los Datos");
-            }else{
-                try {
-                    DAOCliente.sqlInsert(new ClPasajeros(txtRutUsuario.getText()
-                            , txtNombreUsuario.getText()
-                            , txtConstrasenaUsuario.getText()
-                            , txtApePaterno.getText()
-                            , txtApeMaterno.getText()
-                            , txtTelefono.getText()
-                            , txtMailUsuario.getText()
-                            , txtDireccionUsuario.getText()
-                            , Formularios.deStringAFecha(txtFechaNacUsu.getText())
-                            , id_rol)
-                    );
-                    JOptionPane.showMessageDialog(this, "Agregado");
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
-                }
-            
-            Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
-            helper.Formularios.limpiar(this);
-            this.leerTodos(true);
-        }
-        }else{
-            try {
-                DAOCliente.sqlUpdate(new ClPasajeros(  this.id
-                        , txtRutUsuario.getText()
-                        , txtNombreUsuario.getText()
-                        , txtConstrasenaUsuario.getText()
-                        , txtApePaterno.getText()
-                        , txtApeMaterno.getText()
-                        , txtTelefono.getText()
-                        , txtMailUsuario.getText()
-                        , txtDireccionUsuario.getText()
-                        , Formularios.deStringAFecha(txtFechaNacUsu.getText())
-                        , id_rol
-                ));
-                JOptionPane.showMessageDialog(this, "Modificado");
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
-            }
-        
-        Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
-        helper.Formularios.limpiar(this);
-        this.leerTodos(true);
-        }*/
     }//GEN-LAST:event_btGrabarUsuariosActionPerformed
 
     private void grClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grClienteMouseClicked

@@ -13,11 +13,9 @@ import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOHotelTipoMenu;
 import veranum.DAO.DAOHoteles;
 import veranum.DAO.DAOMenu;
-import veranum.DAO.DAOTipoMenu;
 import veranum.entities.ClHotelTipoMenu;
 import veranum.entities.ClHoteles;
 import veranum.entities.ClMenu;
-import veranum.entities.ClTipoMenu;
 
 /**
  *
