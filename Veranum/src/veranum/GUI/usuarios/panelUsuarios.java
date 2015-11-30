@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAORol;
 import veranum.DAO.DAOUsuarios;
@@ -35,6 +36,7 @@ public class panelUsuarios extends javax.swing.JPanel {
         this.cargarRol();
         txtTelefono.setTransferHandler(null);
         grUsuario.setEnabled(true);
+        grUsuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
         btDesactivarEditarUsuarios.setVisible(false);
         this.leerTodos(true);

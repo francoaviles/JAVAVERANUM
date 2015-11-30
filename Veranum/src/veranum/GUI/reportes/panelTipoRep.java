@@ -9,6 +9,7 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOTipoRep;
 import veranum.entities.ClTipoReportes;
@@ -29,6 +30,7 @@ public class panelTipoRep extends javax.swing.JPanel {
     public panelTipoRep() {
         initComponents();
         grDatos.setEnabled(true);
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);
         this.leerTodos(true);

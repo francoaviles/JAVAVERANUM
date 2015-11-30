@@ -9,6 +9,7 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAORol;
 import veranum.entities.ClRol;
@@ -29,6 +30,7 @@ public class panelRoles extends javax.swing.JPanel {
     public panelRoles() {
         initComponents();
         grRoles.setEnabled(true);
+        grRoles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
         btDesactivarEditarRoles.setVisible(false);
         this.leerTodos(true);

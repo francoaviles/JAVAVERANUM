@@ -9,6 +9,7 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOCaracteristicas;
 import veranum.DAO.DAOTipoCaract;
@@ -32,6 +33,7 @@ public class panelCaracteristicas extends javax.swing.JPanel {
         initComponents();
         this.cargarTipoCaract();
         grDatos.setEnabled(true);
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);
         this.leerTodos(true);

@@ -9,6 +9,7 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOServicios;
 import veranum.entities.ClServicios;
@@ -29,6 +30,7 @@ public class panelServicios extends javax.swing.JPanel {
     public panelServicios() {
         initComponents();
         grServicio.setEnabled(true);
+        grServicio.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Formularios.DesactiveBotonesEliminarEditar(btEditarServicio, btEliminar);
         btDesactivarEditarServicio.setVisible(false);
         this.leerTodos(true);
