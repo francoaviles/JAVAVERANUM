@@ -20,6 +20,7 @@ public class MainHabitaciones extends javax.swing.JInternalFrame {
         tabContenido.addTab("Tipo Habitación", new panelTipoHab());
         tabContenido.addTab("Estado Habitación", new panelEstadoHab());
         tabContenido.addTab("Características Habitación", new panelHabCaract());
+        tabContenido.addTab("Historial de precios", new panelHistorial());
     }
 
     /**
