@@ -31,9 +31,8 @@
                   <Component id="jScrollPane1" pref="444" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="btGrabar" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lbHotel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbTipoMenu" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -43,10 +42,11 @@
                           <Component id="cbMenu" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="cbHotel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btDesactivarEditar" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="btGrabar" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btDesactivarEditar" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -8,8 +8,6 @@ package veranum.GUI.localizador;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOComuna;
@@ -95,7 +93,7 @@ public class panelComunas extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "#", "Nombre", "Id Comuna"
+                "#", "Nombre", "Comuna"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -112,6 +110,9 @@ public class panelComunas extends javax.swing.JPanel {
             }
         });
         jScrollPane5.setViewportView(grComuna);
+        if (grComuna.getColumnModel().getColumnCount() > 0) {
+            grComuna.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         btBuscarTodosComuna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
         btBuscarTodosComuna.addActionListener(new java.awt.event.ActionListener() {
@@ -156,16 +157,13 @@ public class panelComunas extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btGrabarComuna, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbNombreComuna)
-                                    .addComponent(lbProvinciaComuna))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombreComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbNombreComuna)
+                            .addComponent(lbProvinciaComuna))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btDesactivarEditarComuna)
                         .addGap(9, 9, 9))
@@ -182,6 +180,7 @@ public class panelComunas extends javax.swing.JPanel {
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
                     .addComponent(jSeparator4))
                 .addContainerGap())
+            .addComponent(btGrabarComuna, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,9 +205,9 @@ public class panelComunas extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbProvinciaComuna)
                     .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btGrabarComuna)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -349,7 +348,8 @@ public class panelComunas extends javax.swing.JPanel {
             Object[] fila = new Object[7];
             fila[0] = xx.getIdComuna();
             fila[1] = xx.getNombre();
-            fila[2] = xx.getIdProvincia(); 
+            //fila[2] = xx.getIdProvincia(); 
+            fila[2] = ((ClProvincia)DAOProvincia.sqlLeer(xx.getIdProvincia())).getNombre();
             dt.addRow(fila);
         }
     }

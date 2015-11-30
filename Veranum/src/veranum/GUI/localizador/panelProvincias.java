@@ -8,8 +8,6 @@ package veranum.GUI.localizador;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOProvincia;
@@ -93,7 +91,7 @@ public class panelProvincias extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "#", "Nombre", "Id Región"
+                "#", "Nombre", "Región"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -110,6 +108,9 @@ public class panelProvincias extends javax.swing.JPanel {
             }
         });
         jScrollPane4.setViewportView(grProvincia);
+        if (grProvincia.getColumnModel().getColumnCount() > 0) {
+            grProvincia.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         btBuscarTodosProvincia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/refresh_16.png"))); // NOI18N
         btBuscarTodosProvincia.addActionListener(new java.awt.event.ActionListener() {
@@ -154,16 +155,13 @@ public class panelProvincias extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btGrabarProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbNombreProvincia)
-                                    .addComponent(lbRegionProvincia))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombreProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbNombreProvincia)
+                            .addComponent(lbRegionProvincia))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btDesactivarEditarProvincia)
                         .addGap(9, 9, 9))
@@ -180,6 +178,7 @@ public class panelProvincias extends javax.swing.JPanel {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
                     .addComponent(jSeparator3))
                 .addContainerGap())
+            .addComponent(btGrabarProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,9 +203,9 @@ public class panelProvincias extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbRegionProvincia)
                     .addComponent(cbRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btGrabarProvincia)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -349,7 +348,8 @@ public class panelProvincias extends javax.swing.JPanel {
             Object[] fila = new Object[7];
             fila[0] = xx.getIdProvincia();
             fila[1] = xx.getNombre();
-            fila[2] = xx.getIdRegion(); 
+            //fila[2] = xx.getIdRegion(); 
+            fila[2] = ((ClRegion)DAORegiones.sqlLeer(xx.getIdRegion())).getNombre();
             dt.addRow(fila);
         }
     }

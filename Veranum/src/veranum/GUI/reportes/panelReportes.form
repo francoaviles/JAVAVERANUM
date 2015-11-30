@@ -39,7 +39,6 @@
                                   <Component id="lbArchivo" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbTipo" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbComentario" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btGrabar" alignment="0" min="-2" pref="352" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
                           </Group>
@@ -60,6 +59,7 @@
                   </Group>
               </Group>
           </Group>
+          <Component id="btGrabar" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -98,9 +98,9 @@
                   <Component id="lbComentario" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btGrabar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -251,6 +251,7 @@ public class panelMenuInsumos extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCantidadKeyTyped
 
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
+        Formularios.soloNumeros(evt);
         if (!(txtBuscar.getText().length() < 15)) {
             Formularios.limpiarTxt(txtBuscar);
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
@@ -421,6 +422,7 @@ public class panelMenuInsumos extends javax.swing.JPanel {
             fila[1] = ((ClInsumos)DAOInsumos.sqlLeer(xx.getIdInsumo())).getNombre();
             fila[2] = ((ClMenu)DAOMenu.sqlLeer(xx.getIdMenu())).getNombre();
             fila[3] = ((ClMedidas)DAOMedidas.sqlLeer(xx.getIdMedida())).getMedida();
+            fila[4] = xx.getCantidad();
             dt.addRow(fila);
         }
     }

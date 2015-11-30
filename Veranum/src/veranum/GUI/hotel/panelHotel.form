@@ -60,12 +60,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lbComuna" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btGrabarHoteles" alignment="0" min="-2" pref="329" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
+          <Component id="btGrabarHoteles" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -121,8 +121,8 @@
                   <Component id="cbCadena" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btGrabarHoteles" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <Component id="btGrabarHoteles" min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

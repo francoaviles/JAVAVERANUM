@@ -9,8 +9,6 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOCliente;
@@ -283,7 +281,6 @@ public class panelCliente extends javax.swing.JPanel {
                                             .addComponent(txtApePaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(btGrabarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lbFechaNacimiento)
@@ -298,6 +295,7 @@ public class panelCliente extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jSeparator1)))
                 .addContainerGap())
+            .addComponent(btGrabarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,8 +354,8 @@ public class panelCliente extends javax.swing.JPanel {
                     .addComponent(lbRol)
                     .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
-                .addComponent(btGrabarUsuarios)
-                .addGap(251, 251, 251))
+                .addComponent(btGrabarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(241, 241, 241))
         );
 
         txtFechaNacUsu.setFormatterFactory(new javax.swing.JFormattedTextField.AbstractFormatterFactory(){
@@ -408,7 +406,68 @@ public class panelCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_btDesactivarEditarClienteActionPerformed
 
     private void btGrabarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarUsuariosActionPerformed
-        int id_rol = ((ClRol)cbRol.getSelectedItem()).getIdRol();
+        int id_rol = ((ClRol)cbRol.getSelectedItem()).getIdRol();       
+        if(!paraGrabar){ 
+                if(txtRutUsuario.getText().equals("") 
+                   || txtNombreUsuario.getText().equals("")
+                   || txtConstrasenaUsuario.getText().equals("")
+                   || txtApePaterno.getText().equals("")
+                   || txtApeMaterno.getText().equals("")
+                   || txtTelefono.getText().equals("")
+                   || txtMailUsuario.getText().equals("")     
+                   || txtDireccionUsuario.getText().equals("")
+                   || txtFechaNacUsu.getText().equals("")              
+                   ){
+                    JOptionPane.showMessageDialog(this, "Ingrese los Datos");
+                }else{
+                    try {
+                        if(DAOCliente.sqlLeer(txtRutUsuario.getText().toUpperCase()) == null){ 
+                            DAOCliente.sqlInsert(new ClPasajeros(txtRutUsuario.getText()
+                                , txtNombreUsuario.getText()
+                                , txtConstrasenaUsuario.getText()
+                                , txtApePaterno.getText()
+                                , txtApeMaterno.getText()
+                                , txtTelefono.getText()
+                                , txtMailUsuario.getText()
+                                , txtDireccionUsuario.getText()
+                                , Formularios.deStringAFecha(txtFechaNacUsu.getText())
+                                , id_rol)
+                        );
+                            JOptionPane.showMessageDialog(this, "Agregado");
+                            Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
+                            Formularios.limpiar(this);
+                            this.leerTodos(true);
+                        }else{
+                            JOptionPane.showMessageDialog(this, "Rut ya existe");
+                            Formularios.limpiarTxt(txtRutUsuario);
+                        }                        
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(this, "Error al insertar el dato.");
+                    }
+                }
+        }else{
+            try {
+                DAOCliente.sqlUpdate(new ClPasajeros(  this.id
+                        , txtRutUsuario.getText()
+                        , txtNombreUsuario.getText()
+                        , txtConstrasenaUsuario.getText()
+                        , txtApePaterno.getText()
+                        , txtApeMaterno.getText()
+                        , txtTelefono.getText()
+                        , txtMailUsuario.getText()
+                        , txtDireccionUsuario.getText()
+                        , Formularios.deStringAFecha(txtFechaNacUsu.getText())
+                        , id_rol
+                ));
+                JOptionPane.showMessageDialog(this, "Modificado");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
+            }  
+        Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
+        Formularios.limpiar(this);
+        this.leerTodos(true);
+        }
+        /*
         if(!paraGrabar){
             if(txtRutUsuario.getText().equals("") 
                || txtNombreUsuario.getText().equals("")
@@ -465,7 +524,7 @@ public class panelCliente extends javax.swing.JPanel {
         Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
         helper.Formularios.limpiar(this);
         this.leerTodos(true);
-        }
+        }*/
     }//GEN-LAST:event_btGrabarUsuariosActionPerformed
 
     private void grClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grClienteMouseClicked

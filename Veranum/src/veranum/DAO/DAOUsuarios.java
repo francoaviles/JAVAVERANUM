@@ -130,9 +130,9 @@ public class DAOUsuarios {
         return usuarios;
     } 
     
-    public static ArrayList sqlBuscarByNombre(String nombre){
+    public static ArrayList sqlBuscarByNombre(String rut){
         ArrayList<ClPasajeros> usuarios = new ArrayList<>();        
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" LIKE '%"+nombre+"%'")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"rut\" LIKE '%"+rut+"%'")){
             return null;
         }
         while(OracleConection.getInstance().sqlFetch()){
