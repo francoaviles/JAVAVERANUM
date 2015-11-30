@@ -41,7 +41,6 @@
             },
             "ctl00$ContentPlaceHolder1$txtFechaNac": {
                 required: true,
-                date: true,
                 minlength: 8,
                 maxlength: 20
 
