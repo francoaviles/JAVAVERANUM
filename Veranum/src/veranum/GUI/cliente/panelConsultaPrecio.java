@@ -8,6 +8,7 @@ package veranum.GUI.cliente;
 import helper.Formularios;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOCliente;
 import veranum.entities.ClPasajeros;
@@ -27,6 +28,7 @@ public class panelConsultaPrecio extends javax.swing.JPanel {
     public panelConsultaPrecio() {
         initComponents();
         grDatos.setEnabled(true);
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
     /**

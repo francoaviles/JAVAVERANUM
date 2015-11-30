@@ -8,9 +8,8 @@ package veranum.GUI.insumos;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOTipoMenu;
 import veranum.entities.ClTipoMenu;
@@ -30,6 +29,7 @@ public class panelTipoMenu extends javax.swing.JPanel {
      */
     public panelTipoMenu() {
         initComponents();
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);

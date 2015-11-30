@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOCadenas;
 import veranum.DAO.DAOComuna;
@@ -37,6 +38,8 @@ public class panelHotel extends javax.swing.JPanel {
      */
     public panelHotel() {
         initComponents();
+        grHotel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
         for (Object dato : DAORegiones.sqlLeerTodos()) {
             cbRegion.addItem(dato);
         }

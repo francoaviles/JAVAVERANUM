@@ -9,6 +9,7 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOProvincia;
 import veranum.DAO.DAORegiones;
@@ -28,6 +29,7 @@ public class panelProvincias extends javax.swing.JPanel {
      */
     public panelProvincias() {
         initComponents();
+        grProvincia.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.cargarRegiones();
         grProvincia.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditarProvincia, btEliminarProvincia);

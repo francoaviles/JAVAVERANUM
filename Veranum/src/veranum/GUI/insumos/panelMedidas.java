@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOMedidas;
 import veranum.entities.ClMedidas;
@@ -30,6 +31,7 @@ public class panelMedidas extends javax.swing.JPanel {
      */
     public panelMedidas() {
         initComponents();
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);

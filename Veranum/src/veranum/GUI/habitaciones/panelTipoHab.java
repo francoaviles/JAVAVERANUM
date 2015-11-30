@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOTipoHab;
 import veranum.entities.ClTipoHabitacion;
@@ -28,6 +29,8 @@ public class panelTipoHab extends javax.swing.JPanel {
      */
     public panelTipoHab() {
         initComponents();
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);

@@ -8,6 +8,7 @@ package veranum.GUI.hotel;
 import helper.Formularios;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOCaracteristicas;
 import veranum.DAO.DAOHotelCaract;
@@ -32,6 +33,7 @@ public class panelHotelCaract extends javax.swing.JPanel {
      */
     public panelHotelCaract() {
         initComponents();
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.cargarCaract();
         this.cargarHotel();
         grDatos.setEnabled(true);

@@ -9,6 +9,7 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOEstadoHab;
 import veranum.entities.ClHabitacionEstados;
@@ -28,6 +29,7 @@ public class panelEstadoHab extends javax.swing.JPanel {
      */
     public panelEstadoHab() {
         initComponents();
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);

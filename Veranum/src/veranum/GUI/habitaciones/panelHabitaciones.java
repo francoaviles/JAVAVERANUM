@@ -9,6 +9,7 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOEstadoHab;
 import veranum.DAO.DAOHabitaciones;
@@ -34,6 +35,8 @@ public class panelHabitaciones extends javax.swing.JPanel {
      */
     public panelHabitaciones() {
         initComponents();
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
         this.cargarHotel();
         this.cargarTipoHab();
         this.cargarEstadoHab();

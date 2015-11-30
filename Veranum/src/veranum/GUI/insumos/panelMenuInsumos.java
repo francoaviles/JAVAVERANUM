@@ -9,6 +9,7 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOInsumos;
 import veranum.DAO.DAOMedidas;
@@ -34,6 +35,7 @@ public class panelMenuInsumos extends javax.swing.JPanel {
      */
     public panelMenuInsumos() {
         initComponents();
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grDatos.setEnabled(true);
         this.cargarInsumos();
         this.cargarMedidas();

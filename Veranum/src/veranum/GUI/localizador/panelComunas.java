@@ -9,6 +9,7 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOComuna;
 import veranum.DAO.DAOProvincia;
@@ -30,6 +31,7 @@ public class panelComunas extends javax.swing.JPanel {
      */
     public panelComunas() {
         initComponents();
+        grComuna.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.cargarProvincias();
         grComuna.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditarComuna, btEliminarComuna);

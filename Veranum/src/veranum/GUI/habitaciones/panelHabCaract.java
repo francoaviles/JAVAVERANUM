@@ -8,6 +8,7 @@ package veranum.GUI.habitaciones;
 import helper.Formularios;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOCaracteristicas;
 import veranum.DAO.DAOHabCaract;
@@ -34,6 +35,7 @@ public class panelHabCaract extends javax.swing.JPanel {
         initComponents();
         this.cargarCaract();
         this.cargarHab();
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
         btDesactivarEditar.setVisible(false);
