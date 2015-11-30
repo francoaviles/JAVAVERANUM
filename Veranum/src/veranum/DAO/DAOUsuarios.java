@@ -136,7 +136,9 @@ public class DAOUsuarios {
             return null;
         }
         while(OracleConection.getInstance().sqlFetch()){
-            usuarios.add(new ClPasajeros(OracleConection.getInstance().getString("rut")
+            usuarios.add(new ClPasajeros(
+                                    OracleConection.getInstance().getInt("id_pasajero")
+                                    ,OracleConection.getInstance().getString("rut")
                                     , OracleConection.getInstance().getString("nombre")
                                     , OracleConection.getInstance().getString("contrasena")
                                     , OracleConection.getInstance().getString("apellido_pa")
