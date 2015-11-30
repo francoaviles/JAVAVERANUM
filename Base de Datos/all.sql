@@ -1657,5 +1657,17 @@ create or replace trigger trg_hotel_insumos
   end;
 /
 
+CREATE  SEQUENCE menu_insumos_seq;
+/
+create or replace trigger trg_menu_insumos
+    before insert on "menu_insumos"
+    for each row
+  begin
+    select menu_insumos_seq.nextval
+      into :NEW."id_menu_insumo"
+      from dual;
+  end;
+/
+
 
 
