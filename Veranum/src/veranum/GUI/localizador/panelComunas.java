@@ -242,6 +242,8 @@ public class panelComunas extends javax.swing.JPanel {
             Formularios.DesactiveBotonesEliminarEditar(btEditarComuna, btEliminarComuna);
             helper.Formularios.limpiar(this);
             this.leerTodosCom(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarComunaActionPerformed
 

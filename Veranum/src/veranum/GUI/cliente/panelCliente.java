@@ -465,9 +465,11 @@ public class panelCliente extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
             }  
-        Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
-        Formularios.limpiar(this);
-        this.leerTodos(true);
+            Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
+            Formularios.limpiar(this);
+            this.leerTodos(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarUsuariosActionPerformed
 

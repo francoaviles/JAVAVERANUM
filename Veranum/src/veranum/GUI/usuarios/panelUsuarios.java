@@ -371,7 +371,6 @@ public class panelUsuarios extends javax.swing.JPanel {
             Formularios.limpiarTxt(txtRutUsuario);
             return;
         }
-        
         if(!paraGrabar){ 
                 if(txtRutUsuario.getText().equals("") 
                    || txtNombreUsuario.getText().equals("")
@@ -428,9 +427,11 @@ public class panelUsuarios extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
             }  
-        Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
-        Formularios.limpiar(this);
-        this.leerTodos(true);
+            Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
+            Formularios.limpiar(this);
+            this.leerTodos(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarUsuariosActionPerformed
 

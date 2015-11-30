@@ -270,9 +270,11 @@ public class panelRegion extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
             }  
-        Formularios.DesactiveBotonesEliminarEditar(btEditarRegion, btEliminar);
-        helper.Formularios.limpiar(this);
-        this.leerTodosReg(true);
+            Formularios.DesactiveBotonesEliminarEditar(btEditarRegion, btEliminar);
+            helper.Formularios.limpiar(this);
+            this.leerTodosReg(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarRegionActionPerformed
 

@@ -240,6 +240,8 @@ public class panelProvincias extends javax.swing.JPanel {
             Formularios.DesactiveBotonesEliminarEditar(btEditarProvincia, btEliminarProvincia);
             helper.Formularios.limpiar(this);
             this.leerTodosPro(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarProvinciaActionPerformed
 

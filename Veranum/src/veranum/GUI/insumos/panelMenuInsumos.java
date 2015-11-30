@@ -333,6 +333,8 @@ public class panelMenuInsumos extends javax.swing.JPanel {
             Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
             helper.Formularios.limpiar(this);
             this.leerTodos(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarActionPerformed
 

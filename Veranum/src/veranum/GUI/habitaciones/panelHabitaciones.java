@@ -357,9 +357,11 @@ public class panelHabitaciones extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
             }
-        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
-        helper.Formularios.limpiar(this);
-        this.leerTodos(true);
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarActionPerformed
 

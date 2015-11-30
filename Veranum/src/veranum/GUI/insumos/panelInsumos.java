@@ -254,9 +254,11 @@ public class panelInsumos extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
             }  
-        Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
-        helper.Formularios.limpiar(this);
-        this.leerTodos(true);
+            Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarInsumosActionPerformed
 

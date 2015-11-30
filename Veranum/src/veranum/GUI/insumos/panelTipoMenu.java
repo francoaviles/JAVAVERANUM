@@ -275,10 +275,12 @@ public class panelTipoMenu extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
             } 
-        JOptionPane.showMessageDialog(this, "Modificado");
-        Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
-        helper.Formularios.limpiar(this);
-        this.leerTodos(true);
+            JOptionPane.showMessageDialog(this, "Modificado");
+            Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarActionPerformed
 

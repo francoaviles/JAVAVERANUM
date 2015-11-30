@@ -245,9 +245,11 @@ public class panelRoles extends javax.swing.JPanel {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Error al modificar el dato.");
             }        
-        Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
-        helper.Formularios.limpiar(this);
-        this.leerTodos(true);
+            Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
+            helper.Formularios.limpiar(this);
+            this.leerTodos(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarRolActionPerformed
 

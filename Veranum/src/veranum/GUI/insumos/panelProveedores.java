@@ -375,6 +375,8 @@ public class panelProveedores extends javax.swing.JPanel {
             Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
             Formularios.limpiar(this);
             this.leerTodos(true);
+            this.paraGrabar = false;
+            this.btnEditarMode();
         }
     }//GEN-LAST:event_btGrabarUsuariosActionPerformed
 
