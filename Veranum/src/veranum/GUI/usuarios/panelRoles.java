@@ -289,7 +289,7 @@ public class panelRoles extends javax.swing.JPanel {
         int id_rol = Formularios.getSelectedRow(grRoles);
         if(row_dos >= 0){
             
-            if(id_rol != 1 && id_rol != 2 && id_rol != 3 && id_rol != 4){
+            if(id_rol != 1 && id_rol != 2 && id_rol != 3 && id_rol != 4 && id_rol != 5){
                 this.leerRol(id_rol);
                 Formularios.ActiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
                 this.paraGrabar = true;
@@ -298,7 +298,7 @@ public class panelRoles extends javax.swing.JPanel {
                 Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
             }
         } else {
-            if(id_rol != 0 && id_rol != 1 && id_rol != 2 && id_rol != 3 && id_rol != 4){
+            if(id_rol != 0 && id_rol != 1 && id_rol != 2 && id_rol != 3 && id_rol != 4 && id_rol != 5){
                 Formularios.ActiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
             }else {
                 Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);

@@ -1,0 +1,32 @@
+- Seleccionar una sola línea en grillas: 
+---- grRegion.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+
+- Hotel -> Caracteristicas 
+--- Poner Tipo_caracteristica en vez de "tipo".
+--- Cambiar combobox
+
+- Agregar Insumos - Hotel
+
+
+- Agregar Menu - Insumos (ingredientes)
+
+- Crear proveedores
+
+- Consultar precio 
+--- Consultar reserva por rut y n° reserva (escritorio)
+--- Detalle reserva
+
+- API Agencias
+
+- Descuento Empresas
+
+- Arrendar sala de eventos. 
+
+- Reportes
+--- Generar reportes de reservas y dinero ganado por fecha, mes y año.
+------- Excel
+
+- Historico de precios habitaciones (trigger)
+
+- 

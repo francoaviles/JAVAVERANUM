@@ -1168,16 +1168,17 @@ INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (1, 'Admin', 'Sup
 INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (2, 'Recepcionista', 'Puede realizar reservas y modificarlas.');
 INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (3, 'Cliente', 'Pasajero del hotel');
 INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (4, 'Inspector', 'Inspecciones sanitarias y de habitacion');
+INSERT INTO "roles" ("id_rol", "nombre", "descripcion") VALUES (5, 'Proveedor', 'Proveedores de insumos');
 
 Insert into "servicios" ("id_servicio","nombre","precio") values ('1','Gimnasio','75000');
 Insert into "servicios" ("id_servicio","nombre","precio") values ('2','Piscina','35000');
 Insert into "servicios" ("id_servicio","nombre","precio") values ('3','Spa','20000');
 Insert into "servicios" ("id_servicio","nombre","precio") values ('4','Cancha de Tenis','60000');
 
-Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('5','Individual','para una persona');
-Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('6','Grupal','4 o más');
-Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('7','Duos','2 personas');
-Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('8','Parejas','2 personas');
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('5','Sala de eventos', 'Centro de eventos');
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('6','Cama una plaza','4 o más');
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('7','Cama plaza y media','2 personas');
+Insert into "tipo_caracteristicas" ("id_tipo_caract","nombre","descripcion") values ('8','Cama dos plaza','2 personas');
 
 Insert into "tipo_menu" ("id_tipo_menu","nombre") values ('1','Desayuno');
 Insert into "tipo_menu" ("id_tipo_menu","nombre") values ('2','Almuerzo');
@@ -1252,11 +1253,11 @@ Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('3','3'
 Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('4','4','Cena uno', 3990);
 
 
-Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('4','8','100','Cama matrimonio');
-Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('5','5','100','Silla');
-Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('3','5','100','Cama Individual');
-Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('6','6','100','Mesa');
-Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('7','5','50','Escritorios');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('4','5','1','I');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('5','6','1','R');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('3','6','1','R');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('6','7','1','R');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('7','8','1','R');
 
 
 Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('1','4');
@@ -1370,7 +1371,7 @@ Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('6','3');
 Insert into "hotel_tipo_menu" ("id_hotel","id_menu") values ('6','4');
 
 /
-CREATE  SEQUENCE roles_seq START WITH 5 INCREMENT BY 1;
+CREATE  SEQUENCE roles_seq START WITH 6 INCREMENT BY 1;
 /
 create or replace trigger trg_roles
     before insert on "roles"
