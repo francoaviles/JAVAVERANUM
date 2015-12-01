@@ -81,15 +81,9 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lbFechaNacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lbRol" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="lbFechaNacimiento" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="cbRol" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtFechaNacUsu" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="txtFechaNacUsu" min="-2" pref="133" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -170,14 +164,9 @@
                   <Component id="lbFechaNacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtFechaNacUsu" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbRol" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbRol" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btGrabarUsuarios" min="-2" pref="33" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="263" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -424,21 +413,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuscarTodosClienteActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbRol">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Rol:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cbRol">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>

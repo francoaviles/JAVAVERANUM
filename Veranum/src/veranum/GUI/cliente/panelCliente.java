@@ -33,7 +33,7 @@ public class panelCliente extends javax.swing.JPanel {
      */
     public panelCliente() {
         initComponents();
-        this.cargarRol();
+        //this.cargarRol();
         grCliente.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grCliente.setEnabled(true);
         grCliente.getTableHeader().setReorderingAllowed(false);
@@ -77,8 +77,6 @@ public class panelCliente extends javax.swing.JPanel {
         btBuscarCliente = new javax.swing.JButton();
         btDesactivarEditarCliente = new javax.swing.JButton();
         btBuscarTodosCliente = new javax.swing.JButton();
-        lbRol = new javax.swing.JLabel();
-        cbRol = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
         txtFechaNacUsu = new javax.swing.JFormattedTextField();
 
@@ -226,8 +224,6 @@ public class panelCliente extends javax.swing.JPanel {
             }
         });
 
-        lbRol.setText("Rol:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -285,13 +281,9 @@ public class panelCliente extends javax.swing.JPanel {
                                             .addComponent(txtApeMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbFechaNacimiento)
-                                            .addComponent(lbRol))
+                                        .addComponent(lbFechaNacimiento)
                                         .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtFechaNacUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtFechaNacUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(28, 28, 28))
                     .addGroup(layout.createSequentialGroup()
@@ -352,13 +344,9 @@ public class panelCliente extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbFechaNacimiento)
                     .addComponent(txtFechaNacUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbRol)
-                    .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addGap(18, 18, 18)
                 .addComponent(btGrabarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(241, 241, 241))
+                .addGap(263, 263, 263))
         );
 
         txtFechaNacUsu.setFormatterFactory(new javax.swing.JFormattedTextField.AbstractFormatterFactory(){
@@ -409,7 +397,6 @@ public class panelCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_btDesactivarEditarClienteActionPerformed
 
     private void btGrabarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarUsuariosActionPerformed
-        int id_rol = ((ClRol)cbRol.getSelectedItem()).getIdRol();       
         if(!paraGrabar){ 
                 if(txtRutUsuario.getText().equals("") 
                    || txtNombreUsuario.getText().equals("")
@@ -434,7 +421,7 @@ public class panelCliente extends javax.swing.JPanel {
                                 , txtMailUsuario.getText()
                                 , txtDireccionUsuario.getText()
                                 , Formularios.deStringAFecha(txtFechaNacUsu.getText())
-                                , id_rol)
+                                , 3)
                         );
                             JOptionPane.showMessageDialog(this, "Agregado");
                             Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
@@ -460,7 +447,7 @@ public class panelCliente extends javax.swing.JPanel {
                         , txtMailUsuario.getText()
                         , txtDireccionUsuario.getText()
                         , Formularios.deStringAFecha(txtFechaNacUsu.getText())
-                        , id_rol
+                        , 3
                 ));
                 JOptionPane.showMessageDialog(this, "Modificado");
             } catch (SQLException ex) {
@@ -552,11 +539,12 @@ public class panelCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarClienteKeyTyped
 
     // Method Custom
+    /*
     private void cargarRol(){
         for (Object rol : DAORol.sqlLeerTodos()) {
             cbRol.addItem(rol);
         }
-    }
+    }*/
     
     private void leerCliente(int id){
         this.id = id;
@@ -572,7 +560,7 @@ public class panelCliente extends javax.swing.JPanel {
         txtTelefono.setText(cli.getTelefono());
         txtFechaNacUsu.setValue(cli.getStringFechaNac());
         
-        ClRol item;
+        /*ClRol item;
         for (int i = 0; i < cbRol.getItemCount(); i++)
         {
             item = (ClRol)cbRol.getItemAt(i);
@@ -581,7 +569,7 @@ public class panelCliente extends javax.swing.JPanel {
                 cbRol.setSelectedIndex(i);
                 break;
             }
-        }
+        }*/
     }
     
     private void leerTodos(boolean todos){
@@ -629,7 +617,6 @@ public class panelCliente extends javax.swing.JPanel {
     private javax.swing.JButton btEditarCliente;
     private javax.swing.JButton btEliminarCliente;
     private javax.swing.JButton btGrabarUsuarios;
-    private javax.swing.JComboBox cbRol;
     private javax.swing.JTable grCliente;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
@@ -640,7 +627,6 @@ public class panelCliente extends javax.swing.JPanel {
     private javax.swing.JLabel lbFechaNacimiento;
     private javax.swing.JLabel lbMail;
     private javax.swing.JLabel lbNombreUsuario;
-    private javax.swing.JLabel lbRol;
     private javax.swing.JLabel lbRut;
     private javax.swing.JLabel lbTelefono;
     private javax.swing.JTextField txtApeMaterno;

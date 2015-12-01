@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -28,12 +28,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btBuscarTodosUsuario" min="-2" max="-2" attributes="0"/>
           </Group>
-          <Component id="jScrollPane3" alignment="0" pref="613" max="32767" attributes="0"/>
+          <Component id="jScrollPane3" alignment="0" pref="651" max="32767" attributes="0"/>
           <Component id="btGrabarUsuarios" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lbRut" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbNombreUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -43,11 +43,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtTelefono" min="-2" pref="134" max="-2" attributes="0"/>
-                                  <Component id="txtNombreUsuario" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <Component id="txtTelefono" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <Component id="txtNombreUsuario" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                                   <Component id="txtMailUsuario" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                                   <Component id="txtDireccionUsuario" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                                  <Component id="cbRol" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -63,11 +62,8 @@
                       <Component id="lbMail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lbDireccion" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbRol" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lbDireccion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -117,13 +113,8 @@
                   <Component id="txtDireccionUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbRol" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbRol" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Component id="btGrabarUsuarios" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="95" max="32767" attributes="0"/>
+              <EmptySpace pref="343" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -152,18 +143,6 @@
     <Component class="javax.swing.JLabel" name="lbDireccion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Direccion:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbRol">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Rol:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cbRol">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRutUsuario">
@@ -263,45 +242,6 @@
                 <Column editable="false" title="Direcci&#xf3;n" type="java.lang.Object"/>
                 <Column editable="false" title="Rol" type="java.lang.Object"/>
               </Table>
-            </Property>
-            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-              <TableColumnModel selectionModel="0">
-                <Column maxWidth="50" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-              </TableColumnModel>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>

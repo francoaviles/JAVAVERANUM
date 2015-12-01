@@ -20,18 +20,16 @@ import veranum.entities.ClRol;
  *
  * @author Zacarias
  */
-public class panelProveedores extends javax.swing.JPanel {
-    
+public class panelProvee extends javax.swing.JPanel {
+
     private boolean paraGrabar = false;
     private DefaultTableModel dt = new DefaultTableModel();
     private int id = 0;
-    
     /**
-     * Creates new form panelProveedores
+     * Creates new form panelProvee
      */
-    public panelProveedores() {
+    public panelProvee() {
         initComponents();
-        this.cargarRol();
         grUsuario.setEnabled(true);
         grUsuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grUsuario.getTableHeader().setReorderingAllowed(false);
@@ -54,8 +52,6 @@ public class panelProveedores extends javax.swing.JPanel {
         lbTelefono = new javax.swing.JLabel();
         lbMail = new javax.swing.JLabel();
         lbDireccion = new javax.swing.JLabel();
-        lbRol = new javax.swing.JLabel();
-        cbRol = new javax.swing.JComboBox();
         txtRutUsuario = new javax.swing.JTextField();
         txtNombreUsuario = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
@@ -81,8 +77,6 @@ public class panelProveedores extends javax.swing.JPanel {
         lbMail.setText("E-mail:");
 
         lbDireccion.setText("Direccion:");
-
-        lbRol.setText("Rol:");
 
         txtRutUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -180,9 +174,6 @@ public class panelProveedores extends javax.swing.JPanel {
             }
         });
         jScrollPane3.setViewportView(grUsuario);
-        if (grUsuario.getColumnModel().getColumnCount() > 0) {
-            grUsuario.getColumnModel().getColumn(0).setMaxWidth(50);
-        }
 
         btDesactivarEditarUsuarios.setBackground(new java.awt.Color(255, 0, 0));
         btDesactivarEditarUsuarios.setText("Salir Modo Editar");
@@ -207,7 +198,7 @@ public class panelProveedores extends javax.swing.JPanel {
                 .addComponent(btBuscarUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btBuscarTodosUsuario))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
             .addComponent(btGrabarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -224,8 +215,7 @@ public class panelProveedores extends javax.swing.JPanel {
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMailUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDireccionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtDireccionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtRutUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,9 +226,7 @@ public class panelProveedores extends javax.swing.JPanel {
                         .addComponent(lbMail)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbDireccion)
-                            .addComponent(lbRol))
+                        .addComponent(lbDireccion)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -277,12 +265,8 @@ public class panelProveedores extends javax.swing.JPanel {
                     .addComponent(lbDireccion)
                     .addComponent(txtDireccionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbRol)
-                    .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btGrabarUsuarios)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(343, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -322,9 +306,8 @@ public class panelProveedores extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
         }
     }//GEN-LAST:event_txtDireccionUsuarioKeyTyped
-    
+
     private void btGrabarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarUsuariosActionPerformed
-        int id_rol = ((ClRol)cbRol.getSelectedItem()).getIdRol();
         if(!Formularios.validarRut(txtRutUsuario.getText())){
             JOptionPane.showMessageDialog(this, "Rut Incorrecto.");
             Formularios.limpiarTxt(txtRutUsuario);
@@ -342,12 +325,12 @@ public class panelProveedores extends javax.swing.JPanel {
                 try {
                     if(DAOProveedores.sqlLeer(txtRutUsuario.getText().toUpperCase()) == null){
                         DAOProveedores.sqlInsert(new ClPasajeros(txtRutUsuario.getText()
-                                                                , txtNombreUsuario.getText()
-                                                                , txtTelefono.getText()
-                                                                , txtMailUsuario.getText()
-                                                                , txtDireccionUsuario.getText()
-                                                                , id_rol)
-                                                 );
+                            , txtNombreUsuario.getText()
+                            , txtTelefono.getText()
+                            , txtMailUsuario.getText()
+                            , txtDireccionUsuario.getText()
+                            , 5)
+                    );
                     JOptionPane.showMessageDialog(this, "Agregado");
                     Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
                     Formularios.limpiar(this);
@@ -368,7 +351,7 @@ public class panelProveedores extends javax.swing.JPanel {
                     , txtTelefono.getText()
                     , txtMailUsuario.getText()
                     , txtDireccionUsuario.getText()
-                    , id_rol
+                    , 5
                 ));
                 JOptionPane.showMessageDialog(this, "Modificado");
             } catch (SQLException ex) {
@@ -437,12 +420,6 @@ public class panelProveedores extends javax.swing.JPanel {
         this.btnEditarMode();
     }//GEN-LAST:event_btDesactivarEditarUsuariosActionPerformed
 
-    // Method Custom
-    private void cargarRol(){
-        for (Object rol : DAORol.sqlLeerTodos()) {
-            cbRol.addItem(rol);
-        }
-    }
     
     private void leerUsuarios(int id){
         this.id = id;
@@ -454,16 +431,6 @@ public class panelProveedores extends javax.swing.JPanel {
         txtDireccionUsuario.setText(usu.getDireccion());
         txtTelefono.setText(usu.getTelefono());
         
-        ClRol item;
-        for (int i = 0; i < cbRol.getItemCount(); i++)
-        {
-            item = (ClRol)cbRol.getItemAt(i);
-            if (item.getIdRol()== usu.getIdRol())
-            {
-                cbRol.setSelectedIndex(i);
-                break;
-            }
-        }
     }
     
     private void leerTodos(boolean todos){
@@ -501,7 +468,6 @@ public class panelProveedores extends javax.swing.JPanel {
         }
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscarTodosUsuario;
     private javax.swing.JButton btBuscarUsuario;
@@ -509,14 +475,12 @@ public class panelProveedores extends javax.swing.JPanel {
     private javax.swing.JButton btEditarUsuario;
     private javax.swing.JButton btEliminarUsuario;
     private javax.swing.JButton btGrabarUsuarios;
-    private javax.swing.JComboBox cbRol;
     private javax.swing.JTable grUsuario;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbDireccion;
     private javax.swing.JLabel lbMail;
     private javax.swing.JLabel lbNombreUsuario;
-    private javax.swing.JLabel lbRol;
     private javax.swing.JLabel lbRut;
     private javax.swing.JLabel lbTelefono;
     private javax.swing.JTextField txtBuscarUsuario;
