@@ -15,7 +15,7 @@
 --- [OK] Consultar reserva por rut y n° reserva (escritorio)
 --- Detalle reserva
 
-- API Agencias
+- [OK]API Agencias
 
 - Descuento Empresas
 
