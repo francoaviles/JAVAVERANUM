@@ -30,7 +30,8 @@ public class DAOEmpresa {
     
     public static boolean sqlDelete(ClEmpresa empresa) throws SQLException{
         String sql="DELETE FROM \"empresas\" WHERE \"id_empresa\" = "+empresa.getIdEmpresa()+"";
-          Log.create("DELETE",new Gson().toJson(empresa));
+        Log.create("DELETE",new Gson().toJson(empresa));
+        
         return OracleConection.getInstance().sqlEjecutar(sql); 
     
     }
@@ -38,6 +39,7 @@ public class DAOEmpresa {
     public static boolean sqlUpdate(ClEmpresa empresa) throws SQLException{
         String sql="UPDATE \"empresas\" SET \"nombre\" = ?, \"descuento\" = ? WHERE \"id_empresa\" = ?";
         Log.create("UPDATE",new Gson().toJson(empresa));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, empresa.getNombre());
         a.setInt(2, empresa.getDescuento());

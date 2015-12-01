@@ -19,6 +19,7 @@ public class DAOInsumos {
     public static boolean sqlInsert(ClInsumos insumo) throws SQLException{
         String sql="INSERT INTO \"insumos\" (\"nombre\", \"descripcion\") VALUES (?,?)";
         Log.create("INSERT",new Gson().toJson(insumo));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, insumo.getNombre());
         a.setString(2, insumo.getDescripcion());
@@ -28,13 +29,15 @@ public class DAOInsumos {
     
     public static boolean sqlDelete(ClInsumos insumo) throws SQLException{
         String sql="DELETE FROM \"insumos\" WHERE \"id_insumo\" = "+insumo.getIdInsumo()+"";
-        Log.create("DELETE",new Gson().toJson(insumo));   
+        Log.create("DELETE",new Gson().toJson(insumo)); 
+        
         return OracleConection.getInstance().sqlEjecutar(sql);
     }
     
     public static boolean sqlUpdate(ClInsumos insumo) throws SQLException{
         String sql="UPDATE \"insumos\" SET \"nombre\" = ?, \"descripcion\" = ?  WHERE \"id_insumo\" = ?";
         Log.create("UPDATE",new Gson().toJson(insumo)); 
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, insumo.getNombre());
         a.setString(2, insumo.getDescripcion());

@@ -20,6 +20,7 @@ public class DAOHoteles {
     public static boolean sqlInsert(ClHoteles hotel) throws SQLException{
         String sql="INSERT INTO \"hoteles\" (\"id_cadena\", \"id_region\", \"id_provincia\", \"id_comuna\", \"nombre\", \"direccion\") VALUES(?,?,?,?,?,?)";
         Log.create("INSERT",new Gson().toJson(hotel));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, hotel.getIdCadena());
         a.setInt(2, hotel.getIdRegion());
@@ -33,12 +34,14 @@ public class DAOHoteles {
     public static boolean sqlDelete(ClHoteles hotel) throws SQLException{
         String sql="DELETE FROM \"hoteles\" WHERE \"id_hotel\" = "+hotel.getIdHotel()+"";
         Log.create("DELETE",new Gson().toJson(hotel));
+        
         return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClHoteles hotel) throws SQLException{
         String sql="UPDATE \"hoteles\" SET \"id_cadena\" = ?, \"id_region\" = ?, \"id_provincia\" = ?, \"id_comuna\" = ?, \"nombre\" = ?, \"direccion\" = ? WHERE \"id_hotel\" = ?";
         Log.create("UPDATE",new Gson().toJson(hotel));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, hotel.getIdCadena());
         a.setInt(2, hotel.getIdRegion());

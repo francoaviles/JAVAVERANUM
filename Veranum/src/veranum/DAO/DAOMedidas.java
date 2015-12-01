@@ -20,6 +20,7 @@ public class DAOMedidas {
     public static boolean sqlInsert(ClMedidas medida) throws SQLException{
         String sql="INSERT INTO \"medidas\" (\"medida\") VALUES (?)";
         Log.create("INSERT",new Gson().toJson(medida));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, medida.getMedida());
         
@@ -28,13 +29,15 @@ public class DAOMedidas {
     
     public static boolean sqlDelete(ClMedidas medida) throws SQLException{
         String sql="DELETE FROM \"medidas\" WHERE \"id_medida\" = "+medida.getIdMedida()+"";
-        Log.create("DELETE",new Gson().toJson(medida)); 
+        Log.create("DELETE",new Gson().toJson(medida));
+        
         return OracleConection.getInstance().sqlEjecutar(sql);  
     }
     
     public static boolean sqlUpdate(ClMedidas medida) throws SQLException{
         String sql="UPDATE \"medidas\" SET \"medida\" = ? WHERE \"id_medida\" = ?";
         Log.create("UPDATE",new Gson().toJson(medida)); 
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, medida.getMedida());
         a.setInt(2, medida.getIdMedida());

@@ -19,6 +19,7 @@ public class DAOMenu {
     public static boolean sqlInsert(ClMenu menu) throws SQLException{
         String sql="INSERT INTO \"menu\" (\"id_tipo_menu\", \"nombre\", \"precio\" ) VALUES (?,?,?)";
         Log.create("INSERT",new Gson().toJson(menu));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, menu.getTipoMenu());
         a.setString(2, menu.getNombre());
@@ -30,12 +31,14 @@ public class DAOMenu {
     public static boolean sqlDelete(ClMenu menu) throws SQLException{
         String sql="DELETE FROM \"menu\" WHERE \"id_menu\" = "+menu.getIdMenu()+"";
         Log.create("DELETE",new Gson().toJson(menu));  
+        
         return OracleConection.getInstance().sqlEjecutar(sql); 
     }
     
     public static boolean sqlUpdate(ClMenu menu) throws SQLException{
         String sql="UPDATE \"menu\" SET \"nombre\" = ?, \"id_tipo_menu\" = ?, \"precio\" = ? WHERE \"id_menu\" = ?";
-        Log.create("UPDATE",new Gson().toJson(menu));  
+        Log.create("UPDATE",new Gson().toJson(menu)); 
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, menu.getTipoMenu());
         a.setString(2, menu.getNombre());

@@ -20,6 +20,7 @@ public class DAOHotelInsumos {
     public static boolean sqlInsert(ClHotelInsumos hotelInsumos) throws SQLException{
         String sql="INSERT INTO \"hotel_insumos\" (\"id_insumo\", \"id_hotel\", \"id_medida\", \"stock\" ) VALUES (?,?,?,?)";
         Log.create("INSERT",new Gson().toJson(hotelInsumos));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, hotelInsumos.getIdInsumo());
         a.setInt(2, hotelInsumos.getIdHotel());
@@ -32,6 +33,7 @@ public class DAOHotelInsumos {
     public static boolean sqlDelete(ClHotelInsumos hotelInsumos) throws SQLException{
         String sql="DELETE FROM \"hotel_insumos\" WHERE \"id_insumo_hotel\" = "+hotelInsumos.getIdInsumoHotel()+"";
         Log.create("DELETE",new Gson().toJson(hotelInsumos)); 
+        
         return OracleConection.getInstance().sqlEjecutar(sql);  
     
     }
@@ -39,6 +41,7 @@ public class DAOHotelInsumos {
     public static boolean sqlUpdate(ClHotelInsumos hotelInsumos) throws SQLException{
         String sql="UPDATE \"hotel_insumos\" SET \"id_insumo\" = ?, \"id_hotel\" = ?, \"id_medida\" = ?, \"stock\" = ? WHERE \"id_insumo_hotel\" = ?";
         Log.create("UPDATE",new Gson().toJson(hotelInsumos)); 
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, hotelInsumos.getIdInsumo());
         a.setInt(2, hotelInsumos.getIdHotel());

@@ -19,6 +19,7 @@ public class DAOReportes {
     public static boolean sqlInsert(ClReportes reportes) throws SQLException{
         String sql="INSERT INTO \"reportes\" (\"id_tipo_reporte\", \"fecha_creacion\", \"archivo\", \"comentario\" ) VALUES (?,?,?,?)";
         Log.create("INSERT",new Gson().toJson(reportes));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, reportes.getIdTipoReporte());
         a.setDate(2, (new java.sql.Date(reportes.getFechaCreacion().getTime())));
@@ -30,13 +31,15 @@ public class DAOReportes {
     
     public static boolean sqlDelete(ClReportes reportes) throws SQLException{
         String sql="DELETE FROM \"reportes\" WHERE \"id_reporte\" = "+reportes.getIdReporte()+"";
-         Log.create("DELETE",new Gson().toJson(reportes));
+        Log.create("DELETE",new Gson().toJson(reportes));
+         
         return OracleConection.getInstance().sqlEjecutar(sql);  
     }
     
     public static boolean sqlUpdate(ClReportes reportes) throws SQLException{
         String sql="UPDATE \"reportes\" SET \"id_tipo_reporte\" = ?, \"fecha_creacion\" = ?, \"archivo\" = ?, \"comentario\" = ? WHERE \"id_reporte\" = ?";
         Log.create("UPDATE",new Gson().toJson(reportes));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, reportes.getIdTipoReporte());
         a.setDate(2, (new java.sql.Date(reportes.getFechaCreacion().getTime())));
