@@ -248,7 +248,8 @@ ALTER TABLE "habitacion_inspecciones" ADD CONSTRAINT "habitacion_inspeccionesPri
 -- empresas
 CREATE TABLE "empresas" (
   "id_empresa" NUMBER NOT NULL,
-  "nombre" Varchar2(100) NOT NULL
+  "nombre" Varchar2(100) NOT NULL,
+  "descuento" int NOT NULL
 );
 /
 -- Keys

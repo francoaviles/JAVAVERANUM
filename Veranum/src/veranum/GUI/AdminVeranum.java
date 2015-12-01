@@ -9,6 +9,7 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import veranum.GUI.cliente.MainCliente;
+import veranum.GUI.empresas.MainEmpresas;
 import veranum.GUI.habitaciones.MainHabitaciones;
 import veranum.GUI.hotel.MainHotel;
 import veranum.GUI.insumos.MainInsumos;
@@ -68,6 +69,7 @@ public class AdminVeranum extends javax.swing.JFrame {
         btnHabitaciones = new javax.swing.JButton();
         btnCambiarUsuario = new javax.swing.JButton();
         btnReservasA = new javax.swing.JButton();
+        btnEmpresas = new javax.swing.JButton();
         panelContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,6 +188,15 @@ public class AdminVeranum extends javax.swing.JFrame {
             }
         });
 
+        btnEmpresas.setBackground(new java.awt.Color(255, 255, 255));
+        btnEmpresas.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
+        btnEmpresas.setText("Empresas");
+        btnEmpresas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpresasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
@@ -213,6 +224,7 @@ public class AdminVeranum extends javax.swing.JFrame {
             .addComponent(btnReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHabitaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnReservasA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnEmpresas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,9 +252,11 @@ public class AdminVeranum extends javax.swing.JFrame {
                 .addComponent(btnReportes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReservasA)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEmpresas)
+                .addGap(18, 18, 18)
                 .addComponent(btnReservas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
                     .addComponent(btnCambiarUsuario))
@@ -360,6 +374,14 @@ public class AdminVeranum extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnReservasAActionPerformed
 
+    private void btnEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpresasActionPerformed
+        try {
+            new helper.IFrameHelper().openContenidoAdmin(new MainEmpresas(), panelContenido);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEmpresasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -398,6 +420,7 @@ public class AdminVeranum extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCambiarUsuario;
     private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnEmpresas;
     private javax.swing.JButton btnHabitaciones;
     private javax.swing.JButton btnHoteles;
     private javax.swing.JButton btnInsumos;

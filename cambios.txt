@@ -9,7 +9,7 @@
 
 - Agregar Menu - Insumos (ingredientes)
 
-- Crear proveedores
+- [OK]Crear proveedores
 
 - Consultar precio 
 --- [OK] Consultar reserva por rut y n° reserva (escritorio)
