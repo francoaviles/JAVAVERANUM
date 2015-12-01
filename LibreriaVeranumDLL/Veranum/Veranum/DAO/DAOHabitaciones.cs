@@ -57,8 +57,9 @@ namespace Veranum.DAO
                             (SELECT ""id_habitacion"" FROM ""habitaciones_reservas""
                               WHERE ""habitaciones_reservas"".""id_reserva"" IN 
                                   (SELECT ""id_reserva"" FROM ""reservas"" 
-                                  WHERE  ""reservas"".""fecha_ingreso"" BETWEEN TO_DATE(:fecha1, 'DD/MM/YYYY') AND TO_DATE(:fecha2, 'DD/MM/YYYY')
-                                  OR ""reservas"".""fecha_salida"" BETWEEN TO_DATE(:fecha1, 'DD/MM/YYYY') AND TO_DATE(:fecha2, 'DD/MM/YYYY')
+                                  WHERE  (""reservas"".""fecha_ingreso"" BETWEEN TO_DATE(:fecha1, 'DD/MM/YYYY') AND TO_DATE(:fecha2, 'DD/MM/YYYY')
+                                  OR ""reservas"".""fecha_salida"" BETWEEN TO_DATE(:fecha1, 'DD/MM/YYYY') AND TO_DATE(:fecha2, 'DD/MM/YYYY'))
+                                  AND ""reservas"".""id_reserva_estado"" <> 3
                                   )
                             )
                         AND  ""hoteles"".""id_hotel"" = :idhotel

@@ -22,6 +22,7 @@
                     <th>Servicios</th>
                     <th>Total</th>
                     <th>Estado</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -58,6 +59,11 @@
                     </td>
                     <td>$<%=reservas.Rows[i]["precio_total"].ToString()%></td>
                     <td><%=reservas.Rows[i]["nombre"].ToString()%></td>
+                    <td>
+                        <% if (reservas.Rows[i]["id_reserva_estado"].ToString() == "1") { %>
+                            <a href="cancelar_reserva.aspx?id=<%=reservas.Rows[i]["id_reserva"].ToString()%>" style="padding: 5px; background-color: #d20705; color: #fff">Cancelar</a>
+                        <% } %>
+                    </td>
                 </tr>
             <% } %>
             </tbody>

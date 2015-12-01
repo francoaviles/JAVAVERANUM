@@ -69,6 +69,20 @@ namespace Veranum.DAO
             return id_reserva;
         }
 
+        public static int cancelarByUser(int id, ClPasajero p) {
+            string sql_r = @"UPDATE ""reservas"" 
+                                SET ""id_reserva_estado"" = 3
+                                WHERE ""id_reserva"" = :id
+                                AND ""id_pasajero"" = :idp
+                             ";
+
+            DB.Instance.Conectar(Constantes.CONEXION_DUOC);
+            DB.Instance.EjecutarQuery(sql_r);
+            DB.Instance.setParameter("id", id);
+            DB.Instance.setParameter("idp", p.IdPasajero);
+            return DB.Instance.Procesar();
+        }
+
         public static DataTable getReservaByUser(ClPasajero p) 
         {
             string sql_r = @"SELECT * 
