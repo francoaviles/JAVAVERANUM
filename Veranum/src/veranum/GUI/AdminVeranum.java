@@ -26,7 +26,7 @@ import veranum.entities.ClPasajeros;
  * @author Duoc
  */
 public class AdminVeranum extends javax.swing.JFrame {
-    public static ClPasajeros usuario;
+    public ClPasajeros usuario;
     
     /**
      * Creates new form AdminVeranum
@@ -34,7 +34,7 @@ public class AdminVeranum extends javax.swing.JFrame {
      */
     public AdminVeranum(ClPasajeros pasajero) {
         initComponents();
-        AdminVeranum.usuario = pasajero;
+        this.usuario = pasajero;
         lblUsuarioNombre.setText(usuario.getNombre());
     }
     

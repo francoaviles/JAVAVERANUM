@@ -16,7 +16,6 @@ import veranum.utilidades.OracleConection;
 public class DAOHabCaract {
     public static boolean sqlInsert(ClHabitacionCaract habCaract){
         String sql="INSERT INTO \"habitaciones_caracteristicas\" (\"id_habitacion\", \"id_caracteristica\") VALUES ('"+habCaract.getIdHabitacion()+"','"+habCaract.getIdCaract()+"')";
-        
         return OracleConection.getInstance().sqlEjecutar(sql);
     }
     

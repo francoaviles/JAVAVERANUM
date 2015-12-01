@@ -17,7 +17,7 @@ import veranum.entities.ClRol;
  * @author Duoc
  */
 public class MainVeranum extends javax.swing.JFrame {
-
+    public static ClPasajeros p;
     /**
      * Creates new form MainVeranum
      */
@@ -158,7 +158,7 @@ public class MainVeranum extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Rut Incorrecto."); 
             return;
         }
-        ClPasajeros p = new ClPasajeros(txtRut.getText(), txtContrasena.getText());
+        p = new ClPasajeros(txtRut.getText(), txtContrasena.getText());
         if(u.LoginIn(p) == null){
            JOptionPane.showMessageDialog(this, "Combinación Usuario/Contraseña incorrecto."); 
            return;  
