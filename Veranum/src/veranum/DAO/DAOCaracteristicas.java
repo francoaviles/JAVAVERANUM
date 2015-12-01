@@ -73,6 +73,33 @@ public class DAOCaracteristicas {
         return carac;
     }    
     
+    public static ArrayList sqlLeerTodosByTipo(String tipo){
+        ArrayList<ClCaracteristicas> carac = new ArrayList<>();      
+        String sql = "";
+        if("hotel".equals(tipo))
+            sql = "SELECT * \n" +
+                "FROM \"caracteristicas\"\n" +
+                "LEFT JOIN \"tipo_caracteristicas\" ON  \"tipo_caracteristicas\".\"id_tipo_caract\" = \"caracteristicas\".\"id_tipo_caract\"\n" +
+                "WHERE \"caracteristicas\".\"tipo\" = 'Hotel'";
+        else 
+            sql = "";
+        
+        if(!OracleConection.getInstance().sqlSelect(sql)){
+            return null;
+        }
+        while(OracleConection.getInstance().sqlFetch()){
+            carac.add(new ClCaracteristicas(OracleConection.getInstance().getInt("id_caracteristica")
+                                    , OracleConection.getInstance().getInt("id_tipo_caract")
+                                    , OracleConection.getInstance().getInt("cantidad")
+                                    , OracleConection.getInstance().getString("tipo")
+                                    , OracleConection.getInstance().getString("nombre")
+                                    , OracleConection.getInstance().getString("descripcion")
+                                ));
+            
+        }     
+        return carac;
+    } 
+    
     public static ArrayList sqlBuscarByNombre(String tipo){
         ArrayList<ClCaracteristicas> carac = new ArrayList<>();        
         if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"caracteristicas\" WHERE \"tipo\" LIKE '%"+tipo+"%'")){
