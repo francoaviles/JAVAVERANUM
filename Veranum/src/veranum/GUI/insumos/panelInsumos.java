@@ -8,6 +8,8 @@ package veranum.GUI.insumos;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -268,7 +270,11 @@ public class panelInsumos extends javax.swing.JPanel {
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOInsumos.sqlDelete(new ClInsumos(this.id));
+            try {
+                DAOInsumos.sqlDelete(new ClInsumos(this.id));
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "No se ha podido eliminar.");
+            }
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);

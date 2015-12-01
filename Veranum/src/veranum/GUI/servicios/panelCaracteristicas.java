@@ -8,6 +8,8 @@ package veranum.GUI.servicios;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -240,14 +242,18 @@ public class panelCaracteristicas extends javax.swing.JPanel {
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            if(DAOCaracteristicas.sqlDelete(new ClCaracteristicas(this.id)))
-            {
-                JOptionPane.showMessageDialog(this, "Eliminado");
-                helper.Formularios.limpiar(this);
-                Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
-                this.leerTodos(true);
-            } else { 
-                JOptionPane.showMessageDialog(this, "Está caracteristica está siendo utilizada por algunos hoteles y/o habitaciones. Elimine esta caracteristica de esos lugares y podrás eliminarla.");
+            try {
+                if(DAOCaracteristicas.sqlDelete(new ClCaracteristicas(this.id)))
+                {
+                    JOptionPane.showMessageDialog(this, "Eliminado");
+                    helper.Formularios.limpiar(this);
+                    Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
+                    this.leerTodos(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Está caracteristica está siendo utilizada por algunos hoteles y/o habitaciones. Elimine esta caracteristica de esos lugares y podrás eliminarla.");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "No se ha podido eliminar.");
             }
         }
     }//GEN-LAST:event_btEliminarActionPerformed

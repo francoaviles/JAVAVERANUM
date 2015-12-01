@@ -8,6 +8,8 @@ package veranum.GUI.localizador;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -277,14 +279,18 @@ public class panelProvincias extends javax.swing.JPanel {
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            if(DAOProvincia.sqlDelete(new ClProvincia(this.id))) {
-                JOptionPane.showMessageDialog(this, "Eliminado");
-                helper.Formularios.limpiar(this);
-                Formularios.DesactiveBotonesEliminarEditar(btEditarProvincia, btEliminarProvincia);
-
-                this.leerTodosPro(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "No se ha podido eliminar");
+            try {
+                if(DAOProvincia.sqlDelete(new ClProvincia(this.id))) {
+                    JOptionPane.showMessageDialog(this, "Eliminado");
+                    helper.Formularios.limpiar(this);
+                    Formularios.DesactiveBotonesEliminarEditar(btEditarProvincia, btEliminarProvincia);
+                    
+                    this.leerTodosPro(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se ha podido eliminar");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "No se ha podido eliminar.");
             }
         }
     }//GEN-LAST:event_btEliminarProvinciaActionPerformed
