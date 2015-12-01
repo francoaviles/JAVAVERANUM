@@ -36,6 +36,7 @@ public class panelCliente extends javax.swing.JPanel {
         this.cargarRol();
         grCliente.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grCliente.setEnabled(true);
+        grCliente.getTableHeader().setReorderingAllowed(false);
         Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);
         btDesactivarEditarCliente.setVisible(false);
         this.leerTodos(true);

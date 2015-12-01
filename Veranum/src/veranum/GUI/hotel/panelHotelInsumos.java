@@ -36,6 +36,7 @@ public class panelHotelInsumos extends javax.swing.JPanel {
     public panelHotelInsumos() {
         initComponents();
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grDatos.getTableHeader().setReorderingAllowed(false);
         this.cargarHotel();
         this.cargarInsumo();
         this.cargarMedidas();

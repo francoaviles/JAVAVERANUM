@@ -31,6 +31,7 @@ public class panelInsumos extends javax.swing.JPanel {
         initComponents();
         grInsumos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grInsumos.setEnabled(true);
+        grInsumos.getTableHeader().setReorderingAllowed(false);
         Formularios.DesactiveBotonesEliminarEditar(btEditarInsumos, btEliminarInsumos);
         btDesactivarEditarInsumos.setVisible(false);
         this.leerTodos(true);

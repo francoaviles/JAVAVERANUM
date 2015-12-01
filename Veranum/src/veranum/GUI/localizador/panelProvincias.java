@@ -30,6 +30,7 @@ public class panelProvincias extends javax.swing.JPanel {
     public panelProvincias() {
         initComponents();
         grProvincia.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grProvincia.getTableHeader().setReorderingAllowed(false);
         this.cargarRegiones();
         grProvincia.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditarProvincia, btEliminarProvincia);

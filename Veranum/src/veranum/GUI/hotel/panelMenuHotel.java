@@ -34,6 +34,7 @@ public class panelMenuHotel extends javax.swing.JPanel {
     public panelMenuHotel() {
         initComponents();
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grDatos.getTableHeader().setReorderingAllowed(false);
         this.cargarHotel();
         this.cargarMenu();
         grDatos.setEnabled(true);

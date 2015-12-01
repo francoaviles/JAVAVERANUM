@@ -34,6 +34,7 @@ public class panelHotelCaract extends javax.swing.JPanel {
     public panelHotelCaract() {
         initComponents();
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grDatos.getTableHeader().setReorderingAllowed(false);
         this.cargarCaract();
         this.cargarHotel();
         grDatos.setEnabled(true);

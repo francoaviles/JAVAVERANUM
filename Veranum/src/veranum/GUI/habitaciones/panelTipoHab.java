@@ -28,7 +28,7 @@ public class panelTipoHab extends javax.swing.JPanel {
     public panelTipoHab() {
         initComponents();
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+        grDatos.getTableHeader().setReorderingAllowed(false);
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);

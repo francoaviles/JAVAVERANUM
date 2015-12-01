@@ -33,6 +33,7 @@ public class panelMenu extends javax.swing.JPanel {
         initComponents();
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.cargarTipoMenu();
+        grDatos.getTableHeader().setReorderingAllowed(false);
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);

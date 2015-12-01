@@ -31,6 +31,7 @@ public class panelServicios extends javax.swing.JPanel {
         initComponents();
         grServicio.setEnabled(true);
         grServicio.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grServicio.getTableHeader().setReorderingAllowed(false);
         Formularios.DesactiveBotonesEliminarEditar(btEditarServicio, btEliminar);
         btDesactivarEditarServicio.setVisible(false);
         this.leerTodos(true);

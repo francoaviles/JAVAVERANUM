@@ -34,6 +34,7 @@ public class panelReportes extends javax.swing.JPanel {
         this.cargarTipoRep();
         grDatos.setEnabled(true);
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grDatos.getTableHeader().setReorderingAllowed(false);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);
         this.leerTodos(true);

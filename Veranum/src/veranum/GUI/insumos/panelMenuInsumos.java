@@ -37,6 +37,7 @@ public class panelMenuInsumos extends javax.swing.JPanel {
         initComponents();
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grDatos.setEnabled(true);
+        grDatos.getTableHeader().setReorderingAllowed(false);
         this.cargarInsumos();
         this.cargarMedidas();
         this.cargarMenu();

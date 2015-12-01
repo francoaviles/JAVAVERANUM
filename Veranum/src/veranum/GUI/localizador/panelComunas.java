@@ -33,6 +33,7 @@ public class panelComunas extends javax.swing.JPanel {
         initComponents();
         grComuna.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.cargarProvincias();
+        grComuna.getTableHeader().setReorderingAllowed(false);
         grComuna.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEditarComuna, btEliminarComuna);
         btDesactivarEditarComuna.setVisible(false);

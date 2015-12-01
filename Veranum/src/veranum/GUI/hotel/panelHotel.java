@@ -37,7 +37,7 @@ public class panelHotel extends javax.swing.JPanel {
     public panelHotel() {
         initComponents();
         grHotel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+        grHotel.getTableHeader().setReorderingAllowed(false);
         for (Object dato : DAORegiones.sqlLeerTodos()) {
             cbRegion.addItem(dato);
         }

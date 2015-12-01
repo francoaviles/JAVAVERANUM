@@ -34,6 +34,7 @@ public class panelCaracteristicas extends javax.swing.JPanel {
         this.cargarTipoCaract();
         grDatos.setEnabled(true);
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grDatos.getTableHeader().setReorderingAllowed(false);
         Formularios.DesactiveBotonesEliminarEditar(btEditar, btEliminar);
         btDesactivarEditar.setVisible(false);
         this.leerTodos(true);

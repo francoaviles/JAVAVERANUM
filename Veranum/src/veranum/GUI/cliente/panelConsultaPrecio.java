@@ -29,6 +29,7 @@ public class panelConsultaPrecio extends javax.swing.JPanel {
         initComponents();
         grDatos.setEnabled(true);
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grDatos.getTableHeader().setReorderingAllowed(false);
     }
 
     /**

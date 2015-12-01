@@ -37,6 +37,7 @@ public class panelUsuarios extends javax.swing.JPanel {
         txtTelefono.setTransferHandler(null);
         grUsuario.setEnabled(true);
         grUsuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grUsuario.getTableHeader().setReorderingAllowed(false);
         Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
         btDesactivarEditarUsuarios.setVisible(false);
         this.leerTodos(true);

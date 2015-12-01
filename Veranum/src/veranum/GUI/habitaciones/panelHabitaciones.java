@@ -36,7 +36,7 @@ public class panelHabitaciones extends javax.swing.JPanel {
     public panelHabitaciones() {
         initComponents();
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+        grDatos.getTableHeader().setReorderingAllowed(false);
         this.cargarHotel();
         this.cargarTipoHab();
         this.cargarEstadoHab();

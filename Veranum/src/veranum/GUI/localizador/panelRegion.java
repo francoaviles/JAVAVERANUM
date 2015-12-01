@@ -29,6 +29,7 @@ public class panelRegion extends javax.swing.JPanel {
         initComponents();
         grRegion.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grRegion.setEnabled(true);
+        grRegion.getTableHeader().setReorderingAllowed(false);
         Formularios.DesactiveBotonesEliminarEditar(btEditarRegion, btEliminar);
         btDesactivarEditarRegion.setVisible(false);
         this.leerTodosReg(true);

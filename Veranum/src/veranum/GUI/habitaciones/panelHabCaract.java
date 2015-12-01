@@ -37,6 +37,7 @@ public class panelHabCaract extends javax.swing.JPanel {
         this.cargarHab();
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grDatos.setEnabled(true);
+        grDatos.getTableHeader().setReorderingAllowed(false);
         Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
         btDesactivarEditar.setVisible(false);
         this.leerTodos(true);

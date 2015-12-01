@@ -31,6 +31,7 @@ public class panelRoles extends javax.swing.JPanel {
         initComponents();
         grRoles.setEnabled(true);
         grRoles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grRoles.getTableHeader().setReorderingAllowed(false);
         Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);
         btDesactivarEditarRoles.setVisible(false);
         this.leerTodos(true);

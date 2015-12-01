@@ -32,7 +32,9 @@ public class panelProveedores extends javax.swing.JPanel {
     public panelProveedores() {
         initComponents();
         this.cargarRol();
+        grUsuario.setEnabled(true);
         grUsuario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grUsuario.getTableHeader().setReorderingAllowed(false);
         Formularios.DesactiveBotonesEliminarEditar(btEditarUsuario, btEliminarUsuario);
         btDesactivarEditarUsuarios.setVisible(false);
         this.leerTodos(true);
