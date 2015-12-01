@@ -42,15 +42,21 @@ public class DAOHabCaract {
     
     public static ClHabitacionCaract sqlLeer(int id_habitacion, int id_caract){     
         ClHabitacionCaract habCaract = new ClHabitacionCaract();
-        if(!OracleConection.getInstance().sqlSelect("SELECT " +
-                                                    "\"habitaciones\".\"id_habitacion\"," +
-                                                    "\"habitaciones\".\"ubicacion\" as \"habitacion_ubicacion\"," +
-                                                    "\"tipo_caracteristicas\".\"nombre\" as \"tipo_nombre\"," +
-                                                    "\"habitaciones_caracteristicas\".\"id_caracteristica\"" +
-                                                    "FROM \"caracteristicas\"" +
-                                                    "LEFT JOIN \"habitaciones_caracteristicas\" ON  \"habitaciones_caracteristicas\".\"id_caracteristica\" = \"caracteristicas\".\"id_caracteristica\"" +
-                                                    "LEFT JOIN \"tipo_caracteristicas\" ON  \"tipo_caracteristicas\".\"id_tipo_caract\" = "+id_caract+"" +
-                                                    "LEFT JOIN \"habitaciones\" ON  \"hoteles_caracteristicas\".\"id_habitacion\" = "+id_habitacion+"")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT \n" +
+"\"habitaciones\".\"id_habitacion\",\n" +
+"\"caracteristicas\".\"id_caracteristica\",\n" +
+"\"hoteles\".\"nombre\" as \"hotel_nombre\",\n" +
+"\"habitaciones\".\"ubicacion\",\n" +
+"\"habitaciones\".\"cant_personas\",\n" +
+"\"tipo_caracteristicas\".\"nombre\" as \"tipo_nombre\"\n" +
+"FROM \"caracteristicas\"\n" +
+"LEFT JOIN \"habitaciones_caracteristicas\" ON  \"habitaciones_caracteristicas\".\"id_caracteristica\" = \"caracteristicas\".\"id_caracteristica\"\n" +
+"LEFT JOIN \"tipo_caracteristicas\" ON  \"tipo_caracteristicas\".\"id_tipo_caract\" = \"caracteristicas\".\"id_tipo_caract\"\n" +
+"LEFT JOIN \"habitaciones\" ON  \"habitaciones_caracteristicas\".\"id_habitacion\" = \"habitaciones\".\"id_habitacion\"\n" +
+"LEFT JOIN \"hoteles\" ON  \"hoteles\".\"id_hotel\" = \"habitaciones\".\"id_hotel\"\n" +
+" WHERE \"caracteristicas\".\"tipo\" = 'Habitación'"
+                + "AND \"habitaciones\".\"id_habitacion\" = "+id_habitacion+""
+                + "AND  \"habitaciones_caracteristicas\".\"id_caracteristica\" =  "+id_caract+" ")){
             return null;
         }        
         if(!OracleConection.getInstance().sqlFetch()){
@@ -67,16 +73,19 @@ public class DAOHabCaract {
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClHabitacionCaract> habCaract = new ArrayList<>();
-        if(!OracleConection.getInstance().sqlSelect("SELECT " +
-                                                    "\"hoteles\".\"id_hotel\"," +
-                                                    "\"hoteles\".\"nombre\" as \"hotel_nombre\"," +
-                                                    "\"tipo_caracteristicas\".\"nombre\" as \"tipo_nombre\"," +
-                                                    "\"habitaciones_caracteristicas\".\"id_caracteristica\"" +
-                                                    "FROM \"caracteristicas\"" +
-                                                    "LEFT JOIN \"habitaciones_caracteristicas\" ON  \"habitaciones_caracteristicas\".\"id_caracteristica\" = \"caracteristicas\".\"id_caracteristica\"" +
-                                                    "LEFT JOIN \"tipo_caracteristicas\" ON  \"tipo_caracteristicas\".\"id_tipo_caract\" = \"caracteristicas\".\"id_tipo_caract\"" +
-                                                    "LEFT JOIN \"hoteles\" ON  \"habitaciones_caracteristicas\".\"id_habitacion\" =  \"hoteles\".\"id_hotel\"" +
-                                                    "WHERE \"caracteristicas\".\"tipo\" = 'Habitación' ")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT \n" +
+"\"habitaciones\".\"id_habitacion\",\n" +
+"\"caracteristicas\".\"id_caracteristica\",\n" +
+"\"hoteles\".\"nombre\" as \"hotel_nombre\",\n" +
+"\"habitaciones\".\"ubicacion\",\n" +
+"\"habitaciones\".\"cant_personas\",\n" +
+"\"tipo_caracteristicas\".\"nombre\" as \"tipo_nombre\"\n" +
+"FROM \"caracteristicas\"\n" +
+"LEFT JOIN \"habitaciones_caracteristicas\" ON  \"habitaciones_caracteristicas\".\"id_caracteristica\" = \"caracteristicas\".\"id_caracteristica\"\n" +
+"LEFT JOIN \"tipo_caracteristicas\" ON  \"tipo_caracteristicas\".\"id_tipo_caract\" = \"caracteristicas\".\"id_tipo_caract\"\n" +
+"LEFT JOIN \"habitaciones\" ON  \"habitaciones_caracteristicas\".\"id_habitacion\" = \"habitaciones\".\"id_habitacion\"\n" +
+"LEFT JOIN \"hoteles\" ON  \"hoteles\".\"id_hotel\" = \"habitaciones\".\"id_hotel\"\n" +
+" WHERE \"caracteristicas\".\"tipo\" = 'Habitación'")){
             return null;
         }
         while(OracleConection.getInstance().sqlFetch()){
@@ -84,7 +93,7 @@ public class DAOHabCaract {
                                     , OracleConection.getInstance().getInt("id_caracteristica")
                                     , OracleConection.getInstance().getString("hotel_nombre")
                                     , OracleConection.getInstance().getInt("ubicacion")
-                                    , OracleConection.getInstance().getInt("cantPersonas")
+                                    , OracleConection.getInstance().getInt("cant_personas")
                                     , OracleConection.getInstance().getString("tipo_nombre")
                                 ));
             

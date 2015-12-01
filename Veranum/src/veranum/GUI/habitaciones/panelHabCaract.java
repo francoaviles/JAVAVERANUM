@@ -101,7 +101,7 @@ public class panelHabCaract extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Hotel", "Id Habitación", "Habitación", "Característica", "Ubicación", "Cant Personas"
+                "Hotel", "Id Habitación", "Id Característica", "Característica", "Ubicación", "Cant Personas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -199,7 +199,8 @@ public class panelHabCaract extends javax.swing.JPanel {
 
     private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
         this.leer(Formularios.getSelectedRow2(grDatos, 1),
-                Formularios.getSelectedRow2(grDatos, 3));
+                Formularios.getSelectedRow2(grDatos, 2));
+        System.out.println(id_hab+"."+id_caract);
         if(this.id_hab == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
@@ -262,7 +263,7 @@ public class panelHabCaract extends javax.swing.JPanel {
         int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
         if(row_dos >= 0){
             this.leer(Formularios.getSelectedRow2(grDatos, 1),
-                Formularios.getSelectedRow2(grDatos, 3));
+                Formularios.getSelectedRow2(grDatos, 2));
             Formularios.ActiveBotonesEliminarEditar(btEliminar, btEliminar);
             this.paraGrabar = true;
             this.btnEditarMode();

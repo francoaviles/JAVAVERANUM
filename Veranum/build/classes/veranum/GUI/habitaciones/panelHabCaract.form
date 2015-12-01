@@ -131,7 +131,7 @@
               <Table columnCount="6" rowCount="4">
                 <Column editable="false" title="Hotel" type="java.lang.Object"/>
                 <Column editable="false" title="Id Habitaci&#xf3;n" type="java.lang.Object"/>
-                <Column editable="false" title="Habitaci&#xf3;n" type="java.lang.Object"/>
+                <Column editable="false" title="Id Caracter&#xed;stica" type="java.lang.Object"/>
                 <Column editable="false" title="Caracter&#xed;stica" type="java.lang.Object"/>
                 <Column editable="false" title="Ubicaci&#xf3;n" type="java.lang.Object"/>
                 <Column editable="false" title="Cant Personas" type="java.lang.Object"/>
