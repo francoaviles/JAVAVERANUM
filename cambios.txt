@@ -28,3 +28,4 @@
 ------- Excel
 
 - [OK] Historico de precios habitaciones (trigger) 
+--- [OK] Reporte
