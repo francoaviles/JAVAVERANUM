@@ -48,14 +48,15 @@ public class DAOHotelCaract {
     
     public static ClHotelCaract sqlLeer(int id_hotel, int id_caracteristica){     
         ClHotelCaract hotelCaract = new ClHotelCaract();
-        if(!OracleConection.getInstance().sqlSelect("SELECT \"caracteristicas\".\"id_caracteristicas\"," +
-                                                    "\"tipo_caracteristicas\".\"id_tipo_caract\"," +
-                                                    "\"hoteles\".\"nombre\"" +
-                                                    " FROM \"tipo_caracteristicas\"" +
-                                                    " INNER JOIN \"caracteristicas\" ON \"caracteristicas\".\"id_caracteristicas\" = \"tipo_caracteristicas\".\"id_caracteristicas\"" +
-                                                    " INNER JOIN \"hoteles\" ON  \"hoteles\".\"id_hotel\" = \"caracteristicas\".\"id_hotel\"" +
-                                                    " WHERE \"tipo_caracteristicas\".\"id_tipo_caract\" = "+id_caracteristica+"" +
-                                                    " AND \"tipo_caracteristicas\".\"id_caracteristicas\" = "+id_hotel+"")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT " +
+                                                    "\"hoteles\".\"id_hotel\"," +
+                                                    "\"hoteles\".\"nombre\"," +
+                                                    "\"tipo_caracteristicas\".\"nombre\"," +
+                                                    "\"hoteles_caracteristicas\".\"id_caracteristica\"" +
+                                                    "FROM \"caracteristicas\"" +
+                                                    "LEFT JOIN \"hoteles_caracteristicas\" ON  \"hoteles_caracteristicas\".\"id_caracteristica\" = \"caracteristicas\".\"id_caracteristica\"" +
+                                                    "LEFT JOIN \"tipo_caracteristicas\" ON  \"tipo_caracteristicas\".\"id_tipo_caract\" = "+id_caracteristica+"" +
+                                                    "LEFT JOIN \"hoteles\" ON  \"hoteles_caracteristicas\".\"id_hotel\" = "+id_hotel+"")){
             return null;
         }     
         if(!OracleConection.getInstance().sqlFetch()){
@@ -68,9 +69,17 @@ public class DAOHotelCaract {
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClHotelCaract> hotelCaract = new ArrayList<>();
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"hoteles_caracteristicas\"")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT " +
+                                                    "\"hoteles\".\"id_hotel\"," +
+                                                    "\"hoteles\".\"nombre\"," +
+                                                    "\"tipo_caracteristicas\".\"nombre\"," +
+                                                    "\"hoteles_caracteristicas\".\"id_caracteristica\"" +
+                                                    "FROM \"caracteristicas\"" +
+                                                    "LEFT JOIN \"hoteles_caracteristicas\" ON  \"hoteles_caracteristicas\".\"id_caracteristica\" = \"caracteristicas\".\"id_caracteristica\"" +
+                                                    "LEFT JOIN \"tipo_caracteristicas\" ON  \"tipo_caracteristicas\".\"id_tipo_caract\" = \"caracteristicas\".\"id_tipo_caract\"" +
+                                                    "LEFT JOIN \"hoteles\" ON  \"hoteles_caracteristicas\".\"id_hotel\" =  \"hoteles\".\"id_hotel\"")){
             return null;
-        }
+        } 
         while(OracleConection.getInstance().sqlFetch()){
             hotelCaract.add(new ClHotelCaract(OracleConection.getInstance().getInt("id_hotel")
                                     , OracleConection.getInstance().getInt("id_caracteristica")
