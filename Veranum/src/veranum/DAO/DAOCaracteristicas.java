@@ -82,7 +82,10 @@ public class DAOCaracteristicas {
                 "LEFT JOIN \"tipo_caracteristicas\" ON  \"tipo_caracteristicas\".\"id_tipo_caract\" = \"caracteristicas\".\"id_tipo_caract\"\n" +
                 "WHERE \"caracteristicas\".\"tipo\" = 'Hotel'";
         else 
-            sql = "";
+            sql = "SELECT * \n" +
+                "FROM \"caracteristicas\"\n" +
+                "LEFT JOIN \"tipo_caracteristicas\" ON  \"tipo_caracteristicas\".\"id_tipo_caract\" = \"caracteristicas\".\"id_tipo_caract\"\n" +
+                "WHERE \"caracteristicas\".\"tipo\" = 'Habitación'";
         
         if(!OracleConection.getInstance().sqlSelect(sql)){
             return null;
