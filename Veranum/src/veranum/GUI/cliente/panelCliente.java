@@ -9,6 +9,8 @@ import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -369,7 +371,11 @@ public class panelCliente extends javax.swing.JPanel {
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOCliente.sqlDelete(new ClPasajeros(this.id));
+            try {
+                DAOCliente.sqlDelete(new ClPasajeros(this.id));
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "No se ha podido eliminar.");
+            }
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditarCliente, btEliminarCliente);

@@ -8,6 +8,8 @@ package veranum.GUI.hotel;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -381,7 +383,11 @@ public class panelHotel extends javax.swing.JPanel {
         if(this.id_hotel == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAOHoteles.sqlDelete(new ClHoteles(this.id_hotel));
+            try {
+                DAOHoteles.sqlDelete(new ClHoteles(this.id_hotel));
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "No se ha podido eliminar.");
+            }
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditarHotel, btEliminarHotel);
