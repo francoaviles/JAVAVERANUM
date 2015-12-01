@@ -27,4 +27,4 @@
 --- Reporte sala de eventos
 ------- Excel
 
-- Historico de precios habitaciones (trigger)
+- [OK] Historico de precios habitaciones (trigger) 
