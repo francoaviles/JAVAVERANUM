@@ -5,10 +5,10 @@
  */
 package veranum.DAO;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import veranum.entities.ClConsultarReserva;
 import veranum.entities.ClHabitaciones;
 import veranum.entities.ClReservar;
 import veranum.entities.ClServicios;
@@ -96,6 +96,52 @@ public class DAOReservar {
         }     
         return habitacion;
 
+    }
+    
+    public static boolean sqlUpdateEstadoReserva(int idreserva, int idestado) throws SQLException{
+        String sql="UPDATE \"reservas\" SET \"id_reserva_estado\" = ? WHERE \"id_reserva\" = ?";
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setInt(1, idestado);
+        a.setInt(2, idreserva);        
+        return OracleConection.getInstance().sqlEjecutarPreparacion(); 
+    }
+    public static  ArrayList<ClConsultarReserva> sqlConsultar(String rut, int id) throws SQLException{
+        ArrayList<ClConsultarReserva> reserva = new ArrayList<>();  
+        
+        String sql = "SELECT \n" +
+                    "  \"pasajeros\".\"rut\",\n" +
+                    "  \"reservas\".\"id_reserva\",\n" +
+                    "  \"reservas\".\"fecha_ingreso\",\n" +
+                    "  \"reservas\".\"fecha_salida\",\n" +
+                    "  \"reservas\".\"precio_total\",\n" +
+                    "  \"estado_reservas\".\"nombre\" AS \"estado\",\n" +
+                    "  (SELECT COUNT(*) FROM \"servicios_reservas\" WHERE  \"servicios_reservas\".\"id_reserva\" = \"reservas\".\"id_reserva\") AS \"total_servicios\",\n" +
+                    "  (SELECT COUNT(*) FROM \"habitaciones_reservas\" WHERE  \"habitaciones_reservas\".\"id_reserva\" = \"reservas\".\"id_reserva\") AS \"total_habs\"\n" +
+                    "FROM \"reservas\"\n" +
+                    "LEFT JOIN \"pasajeros\" ON  \"reservas\".\"id_pasajero\" = \"pasajeros\".\"id_pasajero\"\n" +
+                    "LEFT JOIN \"estado_reservas\" ON  \"reservas\".\"id_reserva_estado\" = \"estado_reservas\".\"id_reserva_estado\"\n" +
+                    "WHERE \"pasajeros\".\"rut\" = ?\n" +
+                    "OR \"reservas\".\"id_reserva\" = ?";
+        
+        PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
+        a.setString(1, rut);
+        a.setInt(2, id);
+        OracleConection.getInstance().sqlEjecutarPreparacion();
+        
+        while(OracleConection.getInstance().sqlFetch()){
+            reserva.add(new ClConsultarReserva(
+                    OracleConection.getInstance().getString("rut"), 
+                    OracleConection.getInstance().getInt("id_reserva"), 
+                    OracleConection.getInstance().getDate("fecha_ingreso"), 
+                    OracleConection.getInstance().getDate("fecha_salida"), 
+                    OracleConection.getInstance().getInt("precio_total"), 
+                    OracleConection.getInstance().getString("estado"), 
+                    OracleConection.getInstance().getInt("total_servicios"), 
+                    OracleConection.getInstance().getInt("total_habs")
+                                ));
+            
+        } 
+        return reserva;
     }
     
     public static int sqlLastID(){

@@ -5,17 +5,32 @@
  */
 package veranum.GUI.reservasA;
 
+import helper.Formularios;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import veranum.DAO.DAOEstadoReserva;
+import veranum.DAO.DAOReservar;
+import veranum.entities.ClConsultarReserva;
+import veranum.entities.ClEstadoReserva;
+
 /**
  *
  * @author carlosdlg
  */
 public class panelConsulta extends javax.swing.JPanel {
-
+    private DefaultTableModel dt = new DefaultTableModel();
+    private int idreserva;
     /**
      * Creates new form panelConsulta
      */
     public panelConsulta() {
         initComponents();
+        this.cargarEstados();
+        this.panelChangeEstado.setVisible(false);
     }
 
     /**
@@ -27,19 +42,221 @@ public class panelConsulta extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtRut = new javax.swing.JTextField();
+        lblRut = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        grDatos = new javax.swing.JTable();
+        lblReservas = new javax.swing.JLabel();
+        lblo = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        panelChangeEstado = new javax.swing.JPanel();
+        lblCambiar = new javax.swing.JLabel();
+        cbEstadoReserva = new javax.swing.JComboBox();
+        btnCambiar = new javax.swing.JButton();
+
+        lblRut.setText("Rut:");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        grDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "Rut", "Fecha Ingreso", "Fecha Salida", "Total", "Habitaciones", "Servicios", "Estado reserva"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        grDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                grDatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(grDatos);
+
+        lblReservas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblReservas.setText("Reservas:");
+
+        lblo.setText("o ID:");
+
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIDKeyPressed(evt);
+            }
+        });
+
+        panelChangeEstado.setBackground(new java.awt.Color(204, 204, 204));
+
+        lblCambiar.setText("Cambiar Estado Reserva: ");
+
+        btnCambiar.setText("Cambiar");
+        btnCambiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelChangeEstadoLayout = new javax.swing.GroupLayout(panelChangeEstado);
+        panelChangeEstado.setLayout(panelChangeEstadoLayout);
+        panelChangeEstadoLayout.setHorizontalGroup(
+            panelChangeEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChangeEstadoLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(lblCambiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbEstadoReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCambiar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelChangeEstadoLayout.setVerticalGroup(
+            panelChangeEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChangeEstadoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelChangeEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCambiar)
+                    .addComponent(cbEstadoReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCambiar))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(lblRut)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblReservas)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(panelChangeEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRut)
+                    .addComponent(btnBuscar)
+                    .addComponent(lblo)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblReservas)
+                .addGap(7, 7, 7)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelChangeEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(133, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        try {
+            this.buscar();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(this, "No se ha podido encontrar ninguna reserva");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyPressed
+        Formularios.soloNumeros(evt);
+    }//GEN-LAST:event_txtIDKeyPressed
+
+    private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
+        try {
+            DAOReservar.sqlUpdateEstadoReserva(idreserva, ((ClEstadoReserva)cbEstadoReserva.getSelectedItem()).getIdReserva());
+            JOptionPane.showMessageDialog(this, "Modificado con éxito.");
+            this.buscar();
+            this.panelChangeEstado.setVisible(false);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "No se ha podido cambiar.");
+        }
+    }//GEN-LAST:event_btnCambiarActionPerformed
+
+    private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
+        int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
+
+        if(row_dos >= 0){
+            idreserva = Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString());
+            this.panelChangeEstado.setVisible(true);
+        }
+    }//GEN-LAST:event_grDatosMouseClicked
+
+   private void buscar() throws SQLException{
+        ArrayList ser;
+        int id = 0;
+        if(!"".equals(txtID.getText())){
+            id = Integer.parseInt(txtID.getText());
+        }
+        ser = DAOReservar.sqlConsultar(txtRut.getText().toUpperCase(), id);
+        
+        dt =  (DefaultTableModel) grDatos.getModel();        
+        for (int i = dt.getRowCount() -1; i >= 0; i--){  
+            dt.removeRow(i);
+        }        
+        for(int x=0; x < ser.size(); x++){
+            ClConsultarReserva xx = (ClConsultarReserva)ser.get(x);
+            Object[] fila = new Object[8];
+            fila[0] = xx.getId_reserva();
+            fila[1] = xx.getRut();
+            fila[2] = xx.getFechaIngreso();
+            fila[3] = xx.getFechaSalida();
+            fila[4] = xx.getPrecioTotal();
+            fila[5] = xx.getCantHabs();
+            fila[6] = xx.getCantServicios();
+            fila[7] = xx.getEstado();
+            dt.addRow(fila);
+        }
+   }
+   
+   private void cargarEstados(){
+        for (Object dato : DAOEstadoReserva.sqlLeerTodos()) {
+            cbEstadoReserva.addItem(dato);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCambiar;
+    private javax.swing.JComboBox cbEstadoReserva;
+    private javax.swing.JTable grDatos;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCambiar;
+    private javax.swing.JLabel lblReservas;
+    private javax.swing.JLabel lblRut;
+    private javax.swing.JLabel lblo;
+    private javax.swing.JPanel panelChangeEstado;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtRut;
     // End of variables declaration//GEN-END:variables
 }
