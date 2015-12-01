@@ -12,7 +12,7 @@
 - Crear proveedores
 
 - Consultar precio 
---- Consultar reserva por rut y n° reserva (escritorio)
+--- [OK] Consultar reserva por rut y n° reserva (escritorio)
 --- Detalle reserva
 
 - API Agencias

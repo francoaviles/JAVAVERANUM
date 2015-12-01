@@ -13,6 +13,8 @@ public class ClCaracteristicas {
     private int idTipoCaract;
     private int cantidad;
     private String tipo;
+    private String nombre;
+    private String descripcion;
     
     public ClCaracteristicas(int idCaracteristica) {
         setIdCaracteristica(idCaracteristica);
@@ -32,6 +34,34 @@ public class ClCaracteristicas {
     public ClCaracteristicas() {
     }
 
+    public ClCaracteristicas(int idCaracteristica, int idTipoCaract, int cantidad, String tipo, String nombre, String descripcion) {
+        setIdCaracteristica(idCaracteristica);
+        setIdTipoCaract(idTipoCaract);
+        setCantidad(cantidad);
+        setTipo(tipo);
+        setNombre(nombre);
+        setDescripcion(descripcion);
+    }
+    
+    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    
     public int getIdCaracteristica() {
         return idCaracteristica;
     }
@@ -66,6 +96,6 @@ public class ClCaracteristicas {
     
     @Override
     public String toString(){
-        return getTipo();
+        return getDescripcion();
     }
 }

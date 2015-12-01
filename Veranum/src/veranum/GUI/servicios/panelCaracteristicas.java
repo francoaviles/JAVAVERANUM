@@ -157,7 +157,7 @@ public class panelCaracteristicas extends javax.swing.JPanel {
 
         jLabel1.setText("Tipo Característica:");
 
-        cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Independiente", "Reservada" }));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Habitación", "Hotel" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -230,9 +230,8 @@ public class panelCaracteristicas extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbTipo)
                             .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
                 .addComponent(btGrabar)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
