@@ -5,6 +5,9 @@
  */
 package veranum.GUI.servicios;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 
 /**
  *
@@ -20,6 +23,24 @@ public class MainServicios extends javax.swing.JInternalFrame {
         tabContServicios.addTab("Servicios", new panelServicios());
         tabContServicios.addTab("Tipo Características", new panelTipoCaract());
         tabContServicios.addTab("Características", new panelCaracteristicas());
+        tabContServicios.addChangeListener(new ChangeListener() { 
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                switch (tabContServicios.getSelectedIndex()) {
+                    case 0:
+                        tabContServicios.setComponentAt(0, new panelServicios());
+                        break;
+                    case 1:
+                        tabContServicios.setComponentAt(1, new panelTipoCaract());
+                        break;
+                    case 2:
+                        tabContServicios.setComponentAt(2, new panelCaracteristicas());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
     /**
      * This method is called from within the constructor to initialize the form.

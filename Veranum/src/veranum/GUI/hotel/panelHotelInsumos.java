@@ -432,7 +432,7 @@ public class panelHotelInsumos extends javax.swing.JPanel {
             ClHotelInsumos xx = (ClHotelInsumos)dato.get(x);
             Object[] fila = new Object[7];
             fila[0] = ((ClHotelInsumos)DAOHotelInsumos.sqlLeer(xx.getIdInsumoHotel())).getIdInsumoHotel();
-            fila[1] = ((ClInsumos)DAOInsumos.sqlLeer(xx.getIdInsumoHotel())).getNombre();
+            fila[1] = ((ClInsumos)DAOInsumos.sqlLeer(xx.getIdInsumo())).getNombre();
             fila[2] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getIdHotel())).getNombre();
             fila[3] = ((ClMedidas)DAOMedidas.sqlLeer(xx.getIdMedida())).getMedida();
             fila[4] = xx.getStock();

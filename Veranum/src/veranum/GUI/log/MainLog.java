@@ -6,6 +6,7 @@
 package veranum.GUI.log;
 
 import java.util.ArrayList;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.Log;
 import veranum.entities.ClLog;
@@ -37,6 +38,8 @@ public class MainLog extends javax.swing.JInternalFrame {
             fila[5] = xx.getRol();
             dt.addRow(fila);
         }
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grDatos.getTableHeader().setReorderingAllowed(false);
     }
 
     /**

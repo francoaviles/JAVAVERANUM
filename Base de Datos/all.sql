@@ -1558,7 +1558,7 @@ create or replace trigger trg_insumos
       from dual;
   end;
 /
-CREATE  SEQUENCE medidas_seq START WITH 7 INCREMENT BY 1;
+CREATE  SEQUENCE medidas_seq START WITH 13 INCREMENT BY 1;
 /
 create or replace trigger trg_medidas
     before insert on "medidas"
@@ -1569,7 +1569,7 @@ create or replace trigger trg_medidas
       from dual;
   end;
 /
-CREATE  SEQUENCE menu_seq START WITH 5 INCREMENT BY 1;
+CREATE  SEQUENCE menu_seq START WITH 13 INCREMENT BY 1;
 /
 create or replace trigger trg_menu
     before insert on "menu"

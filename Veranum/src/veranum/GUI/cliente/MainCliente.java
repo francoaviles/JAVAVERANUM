@@ -5,6 +5,9 @@
  */
 package veranum.GUI.cliente;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 /**
  *
  * @author Duoc
@@ -17,6 +20,16 @@ public class MainCliente extends javax.swing.JInternalFrame {
     public MainCliente() {
         initComponents();
         tabContenidoCliente.addTab("Cliente", new panelCliente());
+        tabContenidoCliente.addChangeListener(new ChangeListener() { 
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                switch (tabContenidoCliente.getSelectedIndex()) {
+                    case 0:
+                        tabContenidoCliente.setComponentAt(0, new panelCliente());
+                        break;
+                }
+            }
+        });
     }
 
     /**

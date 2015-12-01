@@ -4,6 +4,9 @@
  */
 package veranum.GUI.localizador;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 
 /**
  *
@@ -19,6 +22,24 @@ public class MainLocalizador extends javax.swing.JInternalFrame {
         tabContLocalizador.addTab("Regiones", new panelRegion());
         tabContLocalizador.addTab("Provincias", new panelProvincias());
         tabContLocalizador.addTab("Comunas", new panelComunas());
+        tabContLocalizador.addChangeListener(new ChangeListener() { 
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                switch (tabContLocalizador.getSelectedIndex()) {
+                    case 0:
+                        tabContLocalizador.setComponentAt(0, new panelRegion());
+                        break;
+                    case 1:
+                        tabContLocalizador.setComponentAt(1, new panelProvincias());
+                        break;
+                    case 2:
+                        tabContLocalizador.setComponentAt(2, new panelComunas());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     /**

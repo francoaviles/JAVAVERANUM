@@ -6,6 +6,8 @@
 package veranum.GUI.hotel;
 
 import java.awt.event.WindowAdapter;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -23,7 +25,30 @@ public class MainHotel extends javax.swing.JInternalFrame {
         tabContenido.addTab("Hotel Menú", new panelMenuHotel());
         tabContenido.addTab("Insumos Hotel", new panelHotelInsumos());
         
-        
+        tabContenido.addChangeListener(new ChangeListener() { 
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                switch (tabContenido.getSelectedIndex()) {
+                    case 0:
+                        tabContenido.setComponentAt(0, new panelHotel());
+                        break;
+                    case 1:
+                        tabContenido.setComponentAt(1, new panelHotelServicio());
+                        break;
+                    case 2:
+                        tabContenido.setComponentAt(2, new panelHotelCaract());
+                        break;
+                    case 3:
+                        tabContenido.setComponentAt(3, new panelMenuHotel());
+                        break;
+                    case 4:
+                        tabContenido.setComponentAt(4, new panelHotelInsumos());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
 

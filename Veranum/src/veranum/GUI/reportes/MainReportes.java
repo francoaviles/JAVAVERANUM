@@ -4,6 +4,9 @@
  */
 package veranum.GUI.reportes;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 /**
  *
  * @author Zacarias
@@ -18,6 +21,24 @@ public class MainReportes extends javax.swing.JInternalFrame {
         tabContenidoReportes.addTab("Reportes", new panelReportes());
         tabContenidoReportes.addTab("Inspecciones Sanitarias", new panelInspecciones());
         tabContenidoReportes.addTab("Tipo Reportes", new panelTipoRep());
+        tabContenidoReportes.addChangeListener(new ChangeListener() { 
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                switch (tabContenidoReportes.getSelectedIndex()) {
+                    case 0:
+                        tabContenidoReportes.setComponentAt(0, new panelReportes());
+                        break;
+                    case 1:
+                        tabContenidoReportes.setComponentAt(1, new panelInspecciones());
+                        break;
+                    case 2:
+                        tabContenidoReportes.setComponentAt(2, new panelTipoRep());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     /**

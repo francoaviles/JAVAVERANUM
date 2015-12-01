@@ -6,6 +6,8 @@
 package veranum.GUI.usuarios;
 
 import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -23,6 +25,21 @@ public class MainUsuarios extends javax.swing.JInternalFrame {
         
         tabContenidoUsuarios.addTab("Usuario", usuarios);
         tabContenidoUsuarios.addTab("Roles", roles);
+        tabContenidoUsuarios.addChangeListener(new ChangeListener() { 
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                switch (tabContenidoUsuarios.getSelectedIndex()) {
+                    case 0:
+                        tabContenidoUsuarios.setComponentAt(0, new panelUsuarios());
+                        break;
+                    case 1:
+                        tabContenidoUsuarios.setComponentAt(1, new panelRoles());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     /**
