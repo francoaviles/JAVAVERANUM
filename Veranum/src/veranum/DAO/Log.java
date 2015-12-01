@@ -25,7 +25,10 @@ public class Log {
             a.setInt(1, MainVeranum.p.getIdPasajero());
             a.setDate(2, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
             a.setString(3, tipo);
+            if(query.length() > 250)
+                query = query.substring(0, 249);
             a.setString(4, query);
+            //a.setString(4, query.substring(0, 250));
             return OracleConection.getInstance().sqlEjecutarPreparacion();
         }
         return false;
