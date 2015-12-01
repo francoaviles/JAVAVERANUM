@@ -70,7 +70,7 @@ public class InsumosTest {
    }
    
    @Test
-   public void Test03BorrarInsumos() {
+   public void Test03BorrarInsumos() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Insumos");
        System.out.println("------------------------------------");

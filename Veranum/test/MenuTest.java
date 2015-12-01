@@ -70,7 +70,7 @@ public class MenuTest {
    }
    
    @Test
-   public void Test03BorrarMenu() {
+   public void Test03BorrarMenu() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Menu");
        System.out.println("------------------------------------");

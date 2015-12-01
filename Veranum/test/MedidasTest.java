@@ -66,7 +66,7 @@ public class MedidasTest {
    }
    
    @Test
-   public void Test03BorrarMedidas() {
+   public void Test03BorrarMedidas() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Medidas");
        System.out.println("------------------------------------");

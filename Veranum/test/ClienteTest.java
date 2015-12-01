@@ -74,7 +74,7 @@ public class ClienteTest {
    }
    
    @Test
-   public void Test03BorrarCliente() {
+   public void Test03BorrarCliente() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Cliente");
        System.out.println("------------------------------------");

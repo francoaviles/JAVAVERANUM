@@ -69,7 +69,7 @@ public class HotelesTest {
    }
    
    @Test
-   public void Test03BorrarHotel() {
+   public void Test03BorrarHotel() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Hotel");
        System.out.println("------------------------------------");

@@ -67,7 +67,7 @@ public class ComunaTest {
    }
    
    @Test
-   public void Test03BorrarComuna() {
+   public void Test03BorrarComuna() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Comuna");
        System.out.println("------------------------------------");

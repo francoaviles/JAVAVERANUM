@@ -71,7 +71,7 @@ public class EstadoHab {
    }
    
    @Test
-   public void Test03BorrarEstHab() {
+   public void Test03BorrarEstHab() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Estado Habitaciones");
        System.out.println("------------------------------------");

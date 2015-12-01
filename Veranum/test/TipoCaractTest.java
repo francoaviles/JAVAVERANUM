@@ -70,7 +70,7 @@ public class TipoCaractTest {
    }
    
    @Test
-   public void Test03BorrarTipoCaract() {
+   public void Test03BorrarTipoCaract() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Tipo Características");
        System.out.println("------------------------------------");

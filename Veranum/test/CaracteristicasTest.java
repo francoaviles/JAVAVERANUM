@@ -70,7 +70,7 @@ public class CaracteristicasTest {
    }
    
    @Test
-   public void Test03BorrarCaracteristicas() {
+   public void Test03BorrarCaracteristicas() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Características");
        System.out.println("------------------------------------");

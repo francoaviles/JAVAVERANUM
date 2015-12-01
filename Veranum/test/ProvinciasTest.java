@@ -70,7 +70,7 @@ public class ProvinciasTest {
    }
    
    @Test
-   public void Test03BorrarProvincias() {
+   public void Test03BorrarProvincias() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Provincias");
        System.out.println("------------------------------------");

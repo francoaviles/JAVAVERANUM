@@ -71,7 +71,7 @@ public class RolesTest {
    }
    
    @Test
-   public void Test03BorrarRoles() {
+   public void Test03BorrarRoles() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Roles");
        System.out.println("------------------------------------");

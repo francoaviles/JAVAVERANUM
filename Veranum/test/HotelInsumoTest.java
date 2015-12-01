@@ -71,7 +71,7 @@ public class HotelInsumoTest {
    }
    
    @Test
-   public void Test03BorrarHotelInsumo() {
+   public void Test03BorrarHotelInsumo() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Hotel Insumos");
        System.out.println("------------------------------------");

@@ -67,7 +67,7 @@ public class HabitacionesTest {
    }
    
    @Test
-   public void Test03BorrarHab() {
+   public void Test03BorrarHab() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Habitaciones");
        System.out.println("------------------------------------");

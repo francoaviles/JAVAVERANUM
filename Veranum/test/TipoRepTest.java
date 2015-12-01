@@ -67,7 +67,7 @@ public class TipoRepTest {
    }
    
    @Test
-   public void Test03BorrarTipoRep() {
+   public void Test03BorrarTipoRep() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Tipo reportes");
        System.out.println("------------------------------------");

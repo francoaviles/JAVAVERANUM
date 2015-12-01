@@ -67,7 +67,7 @@ public class TipoMenuTest {
    }
    
    @Test
-   public void Test03BorrarTipoMenu() {
+   public void Test03BorrarTipoMenu() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Tipo menú");
        System.out.println("------------------------------------");

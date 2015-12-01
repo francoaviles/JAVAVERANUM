@@ -70,7 +70,7 @@ public class RegionTest {
    }
    
    @Test
-   public void Test03BorrarRegion() {
+   public void Test03BorrarRegion() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Región");
        System.out.println("------------------------------------");

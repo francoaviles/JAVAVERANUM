@@ -71,7 +71,7 @@ public class ServiciosTest {
    }
    
    @Test
-   public void Test03BorrarServicios() {
+   public void Test03BorrarServicios() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Servicios");
        System.out.println("------------------------------------");

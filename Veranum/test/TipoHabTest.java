@@ -70,7 +70,7 @@ public class TipoHabTest {
    }
    
    @Test
-   public void Test03BorrarTipoHab() {
+   public void Test03BorrarTipoHab() throws SQLException {
        System.out.println("------------------------------------");
        System.out.println("Eliminación de Tipo Habitación");
        System.out.println("------------------------------------");
