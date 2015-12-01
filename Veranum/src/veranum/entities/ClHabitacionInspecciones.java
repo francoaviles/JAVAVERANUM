@@ -17,6 +17,7 @@ public class ClHabitacionInspecciones {
     private Date fechaInicio;
     private String comentario;
     private String nombreInspector;
+    private String nombreHotel;
 
     public ClHabitacionInspecciones(int idHabitacionInspeccion) {
         setIdHabitacionInspeccion(idHabitacionInspeccion);
@@ -30,6 +31,14 @@ public class ClHabitacionInspecciones {
         setNombreInspector(nombreInspector);
     }
     
+    public ClHabitacionInspecciones(int idHabitacionInspeccion, int idHabitacion, Date fechaInicio, String comentario, String nombreInspector, String hotel) {
+        setIdHabitacionInspeccion(idHabitacionInspeccion);
+        setIdHabitacion(idHabitacion);
+        setFechaInicio(fechaInicio);
+        setComentario(comentario);
+        setNombreHotel(hotel);
+    }
+    
     public ClHabitacionInspecciones(int idHabitacion, Date fechaInicio, String comentario, String nombreInspector) {
         setIdHabitacion(idHabitacion);
         setFechaInicio(fechaInicio);
@@ -38,7 +47,18 @@ public class ClHabitacionInspecciones {
     }
     public ClHabitacionInspecciones() {
     }
+    
+    
 
+    public String getNombreHotel() {
+        return nombreHotel;
+    }
+
+    public void setNombreHotel(String nombreHotel) {
+        this.nombreHotel = nombreHotel;
+    }
+
+    
     public int getIdHabitacionInspeccion() {
         return idHabitacionInspeccion;
     }

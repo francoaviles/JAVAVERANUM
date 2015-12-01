@@ -65,7 +65,9 @@ public class DAOInspecciones {
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClHabitacionInspecciones> inspecciones = new ArrayList<>();        
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"habitacion_inspecciones\"")){
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"habitacion_inspecciones\"\n" +
+                                    "LEFT JOIN \"habitaciones\" ON  \"habitaciones\".\"id_habitacion\" = \"habitacion_inspecciones\".\"id_habitacion\"\n" +
+                                    "LEFT JOIN \"hoteles\" ON  \"hoteles\".\"id_hotel\" = \"habitaciones\".\"id_hotel\"")){
             return null;
         }
         while(OracleConection.getInstance().sqlFetch()){
@@ -74,6 +76,7 @@ public class DAOInspecciones {
                                     , OracleConection.getInstance().getDate("fecha_inicio")
                                     , OracleConection.getInstance().getString("comentario")
                                     , OracleConection.getInstance().getString("nombre_inspector")
+                                    , OracleConection.getInstance().getString("nombre")
                                 ));
         }     
         return inspecciones;

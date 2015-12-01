@@ -457,7 +457,7 @@ public class panelInspecciones extends javax.swing.JPanel {
             ClHabitacionInspecciones xx = (ClHabitacionInspecciones)dato.get(x);
             Object[] fila = new Object[7];
             fila[0] = xx.getIdHabitacionInspeccion();
-            fila[1] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getIdHabitacion())).getNombre();
+            fila[1] = xx.getNombreHotel();
             fila[2] = ((ClHabitaciones)DAOHabitaciones.sqlLeer(xx.getIdHabitacion()));
             fila[3] = xx.getStringFecha();
             fila[4] = xx.getComentario();
