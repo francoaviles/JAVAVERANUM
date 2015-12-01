@@ -1,8 +1,8 @@
 
 
 - Hotel -> Caracteristicas 
---- Poner Tipo_caracteristica en vez de "tipo".
---- Cambiar combobox
+--- [OK]Poner Tipo_caracteristica en vez de "tipo".
+--- [OK]Cambiar combobox
 
 - Agregar Insumos - Hotel
 
