@@ -200,7 +200,7 @@ public class AdminVeranum extends javax.swing.JFrame {
 
         btnEmpresas.setBackground(new java.awt.Color(255, 255, 255));
         btnEmpresas.setFont(new java.awt.Font("Lucida Console", 0, 12)); // NOI18N
-        btnEmpresas.setText("EMPRESAS");
+        btnEmpresas.setText("Empresas");
         btnEmpresas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmpresasActionPerformed(evt);
@@ -264,11 +264,11 @@ public class AdminVeranum extends javax.swing.JFrame {
                 .addComponent(btnReportes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReservasA)
-                .addGap(10, 10, 10)
-                .addComponent(btnReservas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEmpresas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnReservas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(btnLog)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

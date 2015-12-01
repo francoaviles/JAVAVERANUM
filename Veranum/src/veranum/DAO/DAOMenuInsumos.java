@@ -5,6 +5,7 @@
  */
 package veranum.DAO;
 
+import com.google.gson.Gson;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import veranum.utilidades.OracleConection;
 public class DAOMenuInsumos {
     public static boolean sqlInsert(ClMenuInsumos menuInsumos) throws SQLException{
         String sql="INSERT INTO \"menu_insumos\" (\"id_insumo\", \"id_menu\", \"id_medida\", \"cantidad\" ) VALUES (?,?,?,?)";
+        Log.create("INSERT",new Gson().toJson(menuInsumos));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, menuInsumos.getIdInsumo());
         a.setInt(2, menuInsumos.getIdMenu());
@@ -27,15 +29,16 @@ public class DAOMenuInsumos {
         return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
 
-    public static boolean sqlDelete(ClMenuInsumos menuInsumos){
+    public static boolean sqlDelete(ClMenuInsumos menuInsumos) throws SQLException{
         String sql="DELETE FROM \"menu_insumos\" WHERE \"id_menu_insumo\" = "+menuInsumos.getIdMenuInsumo()+"";
-        
+        Log.create("DELETE",new Gson().toJson(menuInsumos));
         return OracleConection.getInstance().sqlEjecutar(sql);   
     
     }
     
     public static boolean sqlUpdate(ClMenuInsumos menuInsumos) throws SQLException{
         String sql="UPDATE \"menu_insumos\" SET \"id_insumo\" = ?, \"id_menu\" = ?, \"id_medida\" = ?, \"cantidad\" = ? WHERE \"id_menu_insumo\" = ?";
+        Log.create("UPDATE",new Gson().toJson(menuInsumos));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, menuInsumos.getIdInsumo());
         a.setInt(2, menuInsumos.getIdMenu());

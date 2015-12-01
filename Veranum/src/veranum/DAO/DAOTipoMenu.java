@@ -5,6 +5,7 @@
  */
 package veranum.DAO;
 
+import com.google.gson.Gson;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,19 +19,21 @@ import veranum.utilidades.OracleConection;
 public class DAOTipoMenu {
     public static boolean sqlInsert(ClTipoMenu menu) throws SQLException{
         String sql="INSERT INTO \"tipo_menu\" (\"nombre\") VALUES (?)";
+        Log.create("INSERT",new Gson().toJson(menu));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, menu.getNombre());
         return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
-    public static boolean sqlDelete(ClTipoMenu menu){
+    public static boolean sqlDelete(ClTipoMenu menu) throws SQLException{
         String sql="DELETE FROM \"tipo_menu\" WHERE \"id_tipo_menu\" = "+menu.getIdTipoMenu()+"";
-        
+        Log.create("DELETE",new Gson().toJson(menu));
         return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClTipoMenu menu) throws SQLException{
         String sql="UPDATE \"tipo_menu\" SET \"nombre\" = ? WHERE \"id_tipo_menu\" = ?";
+        Log.create("UPDATE",new Gson().toJson(menu));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, menu.getNombre());
         a.setInt(2, menu.getIdTipoMenu());

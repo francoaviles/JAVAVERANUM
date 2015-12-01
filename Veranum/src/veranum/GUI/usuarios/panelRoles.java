@@ -8,6 +8,8 @@ package veranum.GUI.usuarios;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -261,7 +263,11 @@ public class panelRoles extends javax.swing.JPanel {
         if(this.id == 0){
             JOptionPane.showMessageDialog(this, "NO existe para eliminar");
         }else{
-            DAORol.sqlDelete(new ClRol(this.id));
+            try {
+                DAORol.sqlDelete(new ClRol(this.id));
+            } catch (SQLException ex) {
+                Logger.getLogger(panelRoles.class.getName()).log(Level.SEVERE, null, ex);
+            }
             JOptionPane.showMessageDialog(this, "Eliminado");
             helper.Formularios.limpiar(this);
             Formularios.DesactiveBotonesEliminarEditar(btEditarRoles, btEliminarRoles);

@@ -4,6 +4,7 @@
  */
 package veranum.DAO;
 
+import com.google.gson.Gson;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import veranum.utilidades.OracleConection;
 public class DAOProvincia {
     public static boolean sqlInsert(ClProvincia provincia) throws SQLException{
         String sql="INSERT INTO \"provincias\" (\"provincia_nombre\", \"id_region\") VALUES (?,?)";
+        Log.create("INSERT",new Gson().toJson(provincia));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, provincia.getNombre());
         a.setInt(2, provincia.getIdRegion());
@@ -24,14 +26,15 @@ public class DAOProvincia {
         return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
-    public static boolean sqlDelete(ClProvincia provincia){
+    public static boolean sqlDelete(ClProvincia provincia) throws SQLException{
         String sql="DELETE FROM \"provincias\" WHERE \"id_provincia\" = "+provincia.getIdProvincia()+"";
-           
+           Log.create("DELETE",new Gson().toJson(provincia));
         return OracleConection.getInstance().sqlEjecutar(sql);
     }
     
     public static boolean sqlUpdate(ClProvincia provincia) throws SQLException{
         String sql="UPDATE \"provincias\" SET \"provincia_nombre\" = ?, \"id_region\" = ? WHERE \"id_provincia\" = ?";
+        Log.create("UPDATE",new Gson().toJson(provincia));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, provincia.getNombre());
         a.setInt(2, provincia.getIdRegion());

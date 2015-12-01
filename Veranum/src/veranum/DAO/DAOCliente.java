@@ -5,6 +5,7 @@
  */
 package veranum.DAO;
 
+import com.google.gson.Gson;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ import veranum.utilidades.OracleConection;
 public class DAOCliente {
     public static boolean sqlInsert(ClPasajeros clientes) throws SQLException{
         String sql="INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"contrasena\", \"apellido_pa\", \"apellido_ma\", \"telefono\", \"email\", \"direccion\", \"fecha_nac\", \"id_rol\" ) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        Log.create("INSERT",new Gson().toJson(clientes));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, clientes.getRut());
         a.setString(2, clientes.getNombre());
@@ -33,14 +36,16 @@ public class DAOCliente {
         return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
-    public static boolean sqlDelete(ClPasajeros clientes){
+    public static boolean sqlDelete(ClPasajeros clientes) throws SQLException{
         String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = "+clientes.getIdPasajero()+"";
+        Log.create("DELETE",new Gson().toJson(clientes));
         
         return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClPasajeros clientes) throws SQLException{
         String sql="UPDATE \"pasajeros\" SET \"rut\" = ?, \"nombre\" = ?, \"contrasena\" = ?, \"apellido_pa\" = ?, \"apellido_ma\" = ?, \"telefono\" = ?, \"email\" = ?, \"direccion\" = ?, \"fecha_nac\" = ?, \"id_rol\" = ?  WHERE \"id_pasajero\" = ?";
+        Log.create("UPDATE",new Gson().toJson(clientes));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, clientes.getRut());
         a.setString(2, clientes.getNombre());

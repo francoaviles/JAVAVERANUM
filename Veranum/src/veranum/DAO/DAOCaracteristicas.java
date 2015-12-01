@@ -5,6 +5,7 @@
  */
 package veranum.DAO;
 
+import com.google.gson.Gson;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ import veranum.utilidades.OracleConection;
 public class DAOCaracteristicas {
     public static boolean sqlInsert(ClCaracteristicas carac) throws SQLException{
         String sql="INSERT INTO \"caracteristicas\" (\"id_tipo_caract\", \"cantidad\", \"tipo\") VALUES (?,?,?)";
+        Log.create("INSERT",new Gson().toJson(carac));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, carac.getIdTipoCaract());
         a.setInt(2, carac.getCantidad());
@@ -26,13 +29,17 @@ public class DAOCaracteristicas {
         return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
-    public static boolean sqlDelete(ClCaracteristicas carac){
+    public static boolean sqlDelete(ClCaracteristicas carac) throws SQLException{
         String sql="DELETE FROM \"caracteristicas\" WHERE \"id_caracteristica\" = "+carac.getIdCaracteristica()+"";   
+        Log.create("DELETE",new Gson().toJson(carac));
+        
         return OracleConection.getInstance().sqlEjecutar(sql);
     }
     
     public static boolean sqlUpdate(ClCaracteristicas carac) throws SQLException{
         String sql="UPDATE \"caracteristicas\" SET \"id_tipo_caract\" = ?, \"cantidad\" = ?, \"tipo\" = ? WHERE \"id_caracteristica\" = ?";
+        Log.create("UPDATE",new Gson().toJson(carac));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, carac.getIdTipoCaract());
         a.setInt(2, carac.getCantidad());

@@ -5,6 +5,7 @@
  */
 package veranum.DAO;
 
+import com.google.gson.Gson;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,20 +19,22 @@ import veranum.utilidades.OracleConection;
 public class DAOEstadoHab {
     public static boolean sqlInsert(ClHabitacionEstados estado) throws SQLException{
         String sql="INSERT INTO \"habitacion_estados\" (\"estado\") VALUES (?)";
+        Log.create("INSERT",new Gson().toJson(estado));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, estado.getEstado());
         
         return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
-    public static boolean sqlDelete(ClHabitacionEstados estado){
+    public static boolean sqlDelete(ClHabitacionEstados estado) throws SQLException{
         String sql="DELETE FROM \"habitacion_estados\" WHERE \"id_habitacion_estado\" = "+estado.getIdHabitacionEstado()+"";
-        
+        Log.create("DELETE",new Gson().toJson(estado));
         return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClHabitacionEstados estado) throws SQLException{
         String sql="UPDATE \"habitacion_estados\" SET \"estado\" = ? WHERE \"id_habitacion_estado\" = ?";
+        Log.create("DELETE",new Gson().toJson(estado));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, estado.getEstado());
         a.setInt(2, estado.getIdHabitacionEstado());        

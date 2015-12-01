@@ -4,6 +4,7 @@
  */
 package veranum.DAO;
 
+import com.google.gson.Gson;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ import veranum.utilidades.OracleConection;
 public class DAOHabitaciones {
     public static boolean sqlInsert(ClHabitaciones habitacion) throws SQLException{
         String sql="INSERT INTO \"habitaciones\" (\"id_hotel\", \"id_habitacion_tipo\", \"id_habitacion_estado\", \"ubicacion\", \"cant_personas\", \"precio\") VALUES (?,?,?,?,?,?)";
+        Log.create("INSERT",new Gson().toJson(habitacion));
+        
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, habitacion.getIdHotel());
         a.setInt(2, habitacion.getIdHabitacionTipo());
@@ -28,14 +31,16 @@ public class DAOHabitaciones {
         return OracleConection.getInstance().sqlEjecutarPreparacion();
     }
     
-    public static boolean sqlDelete(ClHabitaciones habitacion){
+    public static boolean sqlDelete(ClHabitaciones habitacion)  throws SQLException{
         String sql="DELETE FROM \"habitaciones\" WHERE \"id_habitacion\" = "+habitacion.getIdHabitacion()+"";
+        Log.create("DELETE",new Gson().toJson(habitacion));
         OracleConection.getInstance().sqlEjecutar(sql);   
         return OracleConection.getInstance().sqlEjecutar(sql);   
     }
     
     public static boolean sqlUpdate(ClHabitaciones habitacion) throws SQLException{
         String sql="UPDATE \"habitaciones\" SET \"id_hotel\" = ?, \"id_habitacion_tipo\" = ?, \"id_habitacion_estado\" = ?, \"ubicacion\" = ?, \"cant_personas\" = ?, \"precio\" = ? WHERE \"id_habitacion\" = ?";
+        Log.create("UPDATE",new Gson().toJson(habitacion));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setInt(1, habitacion.getIdHotel());
         a.setInt(2, habitacion.getIdHabitacionTipo());

@@ -5,6 +5,7 @@
  */
 package veranum.DAO;
 
+import com.google.gson.Gson;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class DAOProveedores {
      
     public static boolean sqlInsert(ClPasajeros proveedores) throws SQLException{
         String sql="INSERT INTO \"pasajeros\" (\"rut\", \"nombre\", \"telefono\", \"email\", \"direccion\",\"id_rol\" ) VALUES (?,?,?,?,?,?)";
+        Log.create("INSERT",new Gson().toJson(proveedores));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, proveedores.getRut());
         a.setString(2, proveedores.getNombre());
@@ -34,14 +36,15 @@ public class DAOProveedores {
         return OracleConection.getInstance().sqlLastID("pasajeros_seq");
     }
     
-    public static boolean sqlDelete(ClPasajeros proveedores){
+    public static boolean sqlDelete(ClPasajeros proveedores) throws SQLException{
         String sql="DELETE FROM \"pasajeros\" WHERE \"id_pasajero\" = "+proveedores.getIdPasajero()+"";
-          
+        Log.create("DELETE",new Gson().toJson(proveedores));
         return OracleConection.getInstance().sqlEjecutar(sql); 
     }
     
     public static boolean sqlUpdate(ClPasajeros proveedores) throws SQLException{
         String sql="UPDATE \"pasajeros\" SET \"rut\" = ?, \"nombre\" = ?, \"telefono\" = ?, \"email\" = ?, \"direccion\" = ?, \"id_rol\" = ? WHERE \"id_pasajero\" = ?";
+        Log.create("UPDATE",new Gson().toJson(proveedores));
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, proveedores.getRut());
         a.setString(2, proveedores.getNombre());
