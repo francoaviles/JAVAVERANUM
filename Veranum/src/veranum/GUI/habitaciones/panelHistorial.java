@@ -5,8 +5,20 @@
  */
 package veranum.GUI.habitaciones;
 
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+ 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import veranum.DAO.DAOHistorialPrecios;
 import veranum.DAO.DAOHoteles;
 import veranum.entities.ClHistorialPrecios;
@@ -18,6 +30,7 @@ import veranum.entities.ClHoteles;
  */
 public class panelHistorial extends javax.swing.JPanel {
     private DefaultTableModel dt = new DefaultTableModel();
+    JFileChooser fc;
     /**
      * Creates new form panelHistorial
      */
@@ -25,6 +38,8 @@ public class panelHistorial extends javax.swing.JPanel {
         initComponents();
         this.leerTodos(false);
         this.cargarHotel();
+        fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
     }
 
     /**
@@ -38,7 +53,7 @@ public class panelHistorial extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         grDatos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnReporte = new javax.swing.JButton();
         cbHotel = new javax.swing.JComboBox();
         lblHoteles = new javax.swing.JLabel();
         btnFiltro = new javax.swing.JButton();
@@ -61,7 +76,12 @@ public class panelHistorial extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(grDatos);
 
-        jButton1.setText("jButton1");
+        btnReporte.setText("Generar Reporte");
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
+            }
+        });
 
         lblHoteles.setText("Hotel:");
 
@@ -87,7 +107,7 @@ public class panelHistorial extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFiltro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnReporte)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -95,7 +115,7 @@ public class panelHistorial extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnReporte)
                     .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblHoteles)
                     .addComponent(btnFiltro))
@@ -109,6 +129,66 @@ public class panelHistorial extends javax.swing.JPanel {
         this.leerTodos(true);
     }//GEN-LAST:event_btnFiltroActionPerformed
 
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        ArrayList<ClHistorialPrecios> datos = DAOHistorialPrecios.sqlLeerTodos();
+        fc.showOpenDialog(this);
+        String path = fc.getSelectedFile().getAbsolutePath();
+        try {
+            writeExcel(datos, path + "\\reporteHabitacionesHistorial.xls");
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error desconocido. Intente de nuevo");
+        }
+    }//GEN-LAST:event_btnReporteActionPerformed
+
+    public void writeExcel(ArrayList<ClHistorialPrecios> datos, String excelFilePath) throws IOException {
+        Workbook workbook = new HSSFWorkbook();
+        Sheet sheet = workbook.createSheet();
+
+        int rowCount = 0;
+
+        Row row = sheet.createRow(++rowCount);
+        writeReporteHead(row);
+        
+        for (ClHistorialPrecios aBook : datos) {
+            row = sheet.createRow(++rowCount);
+            writeReporte(aBook, row);
+        }
+
+        try (FileOutputStream outputStream = new FileOutputStream(excelFilePath)) {
+            workbook.write(outputStream);
+            JOptionPane.showMessageDialog(this, "Generado con éxito");
+        }
+    }
+    private void writeReporteHead(Row row) {
+        Cell cell = row.createCell(1);
+        cell.setCellValue("Hotel");
+
+        cell = row.createCell(2);
+        cell.setCellValue("Habitación");
+
+        cell = row.createCell(3);
+        cell.setCellValue("Precio");
+        
+        cell = row.createCell(4);
+        cell.setCellValue("Nuevo Precio");
+        
+    }
+    
+    private void writeReporte(ClHistorialPrecios historial, Row row) {
+        Cell cell = row.createCell(1);
+        cell.setCellValue(historial.getHotel());
+
+        cell = row.createCell(2);
+        cell.setCellValue(historial.getUbicacion());
+
+        cell = row.createCell(3);
+        cell.setCellValue(historial.getPrecio());
+        
+        cell = row.createCell(4);
+        cell.setCellValue(historial.getNuevo_precio());
+    }
+    
      private void leerTodos(boolean filtro){
         ArrayList dato;
         if(!filtro)
@@ -141,9 +221,9 @@ public class panelHistorial extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFiltro;
+    private javax.swing.JButton btnReporte;
     private javax.swing.JComboBox cbHotel;
     private javax.swing.JTable grDatos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHoteles;
     // End of variables declaration//GEN-END:variables
