@@ -26,7 +26,7 @@
                 <br />
                 <%=hoteles.Rows[i]["provincia_nombre"].ToString()%>, <%=hoteles.Rows[i]["comuna_nombre"].ToString()%>, Chile
             </p>
-			<a href="#" class="btncaja">¡Reservar!</a>
+			<a href="reservar.aspx?hotel=<%=hoteles.Rows[i]["id_hotel"].ToString() %>" class="btncaja">¡Reservar!</a>
 		</div>
 	</div>
     <% } %>
