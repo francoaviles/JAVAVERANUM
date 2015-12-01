@@ -1,6 +1,6 @@
 
 
-- Hotel -> Caracteristicas 
+- [OK]Hotel -> Caracteristicas 
 --- [OK]Poner Tipo_caracteristica en vez de "tipo".
 --- [OK]Cambiar combobox
 
@@ -26,6 +26,8 @@
 ------- Excel
 --- Reporte sala de eventos
 ------- Excel
+
+- [OK]Log Auditoria
 
 - [OK] Historico de precios habitaciones (trigger) 
 --- [OK] Reporte
