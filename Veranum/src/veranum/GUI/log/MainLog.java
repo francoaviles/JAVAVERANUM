@@ -68,6 +68,13 @@ public class MainLog extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(grDatos);
+        if (grDatos.getColumnModel().getColumnCount() > 0) {
+            grDatos.getColumnModel().getColumn(0).setMaxWidth(50);
+            grDatos.getColumnModel().getColumn(1).setMaxWidth(100);
+            grDatos.getColumnModel().getColumn(2).setMaxWidth(300);
+            grDatos.getColumnModel().getColumn(3).setMaxWidth(100);
+            grDatos.getColumnModel().getColumn(5).setMaxWidth(100);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
