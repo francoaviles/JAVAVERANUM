@@ -8,8 +8,6 @@ package veranum.GUI.reportes;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -36,6 +34,7 @@ public class panelInspecciones extends javax.swing.JPanel {
     public panelInspecciones() {
         initComponents();
         this.cargarHab();
+        this.cargarHotel();
         grDatos.setEnabled(true);
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grDatos.getTableHeader().setReorderingAllowed(false);
@@ -72,6 +71,8 @@ public class panelInspecciones extends javax.swing.JPanel {
         cbHabInspeccion = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
         txtFechaInspeccion = new javax.swing.JFormattedTextField();
+        lblHotel = new javax.swing.JLabel();
+        cbHotel = new javax.swing.JComboBox();
 
         lbFechaInsp.setText("Fecha Inspección:");
 
@@ -171,6 +172,14 @@ public class panelInspecciones extends javax.swing.JPanel {
             }
         });
 
+        lblHotel.setText("Hotel: ");
+
+        cbHotel.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbHotelItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -178,42 +187,54 @@ public class panelInspecciones extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btBuscarTodos))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbFechaInsp)
-                                    .addComponent(lbComentarioInspeccion)
-                                    .addComponent(lbNombreInspector))
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtComentario)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                                    .addComponent(txtFechaInspeccion))))
-                        .addContainerGap(16, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbIdHabInspeccion)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbHabInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btDesactivarEditar)
-                        .addGap(49, 49, 49))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator1)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btBuscar)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(btBuscarTodos))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGap(10, 10, 10)
+                                            .addComponent(lblHotel)
+                                            .addGap(93, 93, 93)
+                                            .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btDesactivarEditar)
+                                            .addGap(33, 33, 33)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lbFechaInsp)
+                                                    .addComponent(lbComentarioInspeccion)
+                                                    .addComponent(lbNombreInspector))
+                                                .addGap(35, 35, 35))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(lbIdHabInspeccion)
+                                                .addGap(18, 18, 18)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cbHabInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txtComentario)
+                                                .addComponent(txtNombre)
+                                                .addComponent(txtFechaInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 152, Short.MAX_VALUE)))
                         .addContainerGap())
-                    .addComponent(jScrollPane2)))
-            .addComponent(btGrabar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btGrabar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(335, 335, 335))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,11 +251,16 @@ public class panelInspecciones extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btDesactivarEditar)
+                    .addComponent(lblHotel)
+                    .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbIdHabInspeccion)
-                    .addComponent(btDesactivarEditar)
                     .addComponent(cbHabInspeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -251,7 +277,7 @@ public class panelInspecciones extends javax.swing.JPanel {
                         .addComponent(txtComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(btGrabar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         txtFechaInspeccion.setFormatterFactory(new javax.swing.JFormattedTextField.AbstractFormatterFactory(){
@@ -385,6 +411,10 @@ public class panelInspecciones extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarKeyTyped
 
+    private void cbHotelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbHotelItemStateChanged
+        this.cargarHabs();
+    }//GEN-LAST:event_cbHotelItemStateChanged
+
     // Method Custom    
     private void cargarHab(){
         for (Object dato : DAOHabitaciones.sqlLeerTodos()) {
@@ -444,6 +474,22 @@ public class panelInspecciones extends javax.swing.JPanel {
             btDesactivarEditar.setVisible(true);
         }
     }
+    
+    private void cargarHotel(){
+        for (Object dato : DAOHoteles.sqlLeerTodos()) {
+            cbHotel.addItem(dato);
+        }
+    }
+    
+    private void cargarHabs(){
+        if(cbHotel.getSelectedItem() != null) {
+            int id_hotel = ((ClHoteles)cbHotel.getSelectedItem()).getIdHotel();
+            cbHabInspeccion.removeAllItems();
+            for (Object dato : DAOHabitaciones.sqlBuscarByHotel(id_hotel)) {
+                cbHabInspeccion.addItem(dato);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
@@ -453,6 +499,7 @@ public class panelInspecciones extends javax.swing.JPanel {
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btGrabar;
     private javax.swing.JComboBox cbHabInspeccion;
+    private javax.swing.JComboBox cbHotel;
     private javax.swing.JTable grDatos;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
@@ -460,6 +507,7 @@ public class panelInspecciones extends javax.swing.JPanel {
     private javax.swing.JLabel lbFechaInsp;
     private javax.swing.JLabel lbIdHabInspeccion;
     private javax.swing.JLabel lbNombreInspector;
+    private javax.swing.JLabel lblHotel;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtComentario;
     private javax.swing.JFormattedTextField txtFechaInspeccion;

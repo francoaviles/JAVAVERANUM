@@ -109,4 +109,24 @@ public class DAOHabitaciones {
         return habitaciones;
     }
     
+    
+    public static ArrayList sqlBuscarByHotel(int idhotel){
+        ArrayList<ClHabitaciones> habitaciones = new ArrayList<>();        
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"habitaciones\" WHERE \"id_hotel\" = "+idhotel+"")){
+            return null;
+        }
+        while(OracleConection.getInstance().sqlFetch()){
+            habitaciones.add(new ClHabitaciones(OracleConection.getInstance().getInt("id_habitacion")
+                                    , OracleConection.getInstance().getInt("id_hotel")
+                                    , OracleConection.getInstance().getInt("id_habitacion_tipo")
+                                    , OracleConection.getInstance().getInt("id_habitacion_estado")
+                                    , OracleConection.getInstance().getString("ubicacion")
+                                    , OracleConection.getInstance().getInt("cant_personas")
+                                    , OracleConection.getInstance().getInt("precio")
+                                ));
+            
+        }     
+        return habitaciones;
+    }
+    
 }
