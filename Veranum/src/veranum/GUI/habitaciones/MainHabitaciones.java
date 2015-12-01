@@ -5,6 +5,9 @@
  */
 package veranum.GUI.habitaciones;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 /**
  *
  * @author Zacarias
@@ -21,6 +24,31 @@ public class MainHabitaciones extends javax.swing.JInternalFrame {
         tabContenido.addTab("Estado Habitación", new panelEstadoHab());
         tabContenido.addTab("Características Habitación", new panelHabCaract());
         tabContenido.addTab("Historial de precios", new panelHistorial());
+        
+        tabContenido.addChangeListener(new ChangeListener() { 
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                switch (tabContenido.getSelectedIndex()) {
+                    case 0:
+                        tabContenido.setComponentAt(0, new panelHabitaciones());
+                        break;
+                    case 1:
+                        tabContenido.setComponentAt(1, new panelTipoHab());
+                        break;
+                    case 2:
+                        tabContenido.setComponentAt(2, new panelEstadoHab());
+                        break;
+                    case 3:
+                        tabContenido.setComponentAt(3, new panelHabCaract());
+                        break;
+                    case 4:
+                        tabContenido.setComponentAt(4, new panelHistorial());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     /**
