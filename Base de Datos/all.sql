@@ -483,12 +483,29 @@ CREATE TABLE "reportes" (
 ALTER TABLE "reportes" ADD CONSTRAINT "reportesPrimary" PRIMARY KEY ("id_reporte");
 /
 -- -----------------------------------------------
+-- reportes
+CREATE TABLE "log" (
+  "id_log" NUMBER NOT NULL,
+  "id_pasajero" Number NOT NULL,
+  "fecha_creacion" Date NOT NULL,
+  "consulta" Varchar2(255) NOT NULL
+);
+/
+-- Keys
+ALTER TABLE "log" ADD CONSTRAINT "logPrimary" PRIMARY KEY ("id_log");
+/
+-- -----------------------------------------------
+
 -- --------------------------------------------------------------------------------------
 -- FOREIGN KEYS
 -- --------------------------------------------------------------------------------------
 
 
-
+ALTER TABLE "log" 
+  ADD CONSTRAINT "log_pasajero_FK" 
+  FOREIGN KEY ("id_pasajero") 
+    REFERENCES "pasajeros" ("id_pasajero");
+/
 ALTER TABLE "hoteles" 
   ADD CONSTRAINT "hoteles_cadenas_FK" 
   FOREIGN KEY ("id_cadena") 
@@ -1694,5 +1711,15 @@ BEGIN
 
 END;
 /
-
+CREATE  SEQUENCE log_seq;
+/
+create or replace trigger trg_log
+    before insert on "log"
+    for each row
+  begin
+    select log_seq.nextval
+      into :NEW."id_log"
+      from dual;
+  end;
+/
 

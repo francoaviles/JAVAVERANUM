@@ -84,7 +84,7 @@ public class DAOHabCaract {
 "LEFT JOIN \"habitaciones_caracteristicas\" ON  \"habitaciones_caracteristicas\".\"id_caracteristica\" = \"caracteristicas\".\"id_caracteristica\"\n" +
 "LEFT JOIN \"tipo_caracteristicas\" ON  \"tipo_caracteristicas\".\"id_tipo_caract\" = \"caracteristicas\".\"id_tipo_caract\"\n" +
 "LEFT JOIN \"habitaciones\" ON  \"habitaciones_caracteristicas\".\"id_habitacion\" = \"habitaciones\".\"id_habitacion\"\n" +
-"LEFT JOIN \"hoteles\" ON  \"hoteles\".\"id_hotel\" = \"habitaciones\".\"id_hotel\"\n" +
+"INNER JOIN \"hoteles\" ON  \"hoteles\".\"id_hotel\" = \"habitaciones\".\"id_hotel\"\n" +
 " WHERE \"caracteristicas\".\"tipo\" = 'Habitación'")){
             return null;
         }

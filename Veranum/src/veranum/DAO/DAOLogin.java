@@ -24,6 +24,7 @@ public class DAOLogin {
             return p;
         }        
         
+        usuario.setIdPasajero(OracleConection.getInstance().getInt("id_pasajero"));
         usuario.setApellido_ma(OracleConection.getInstance().getString("apellido_ma"));
         usuario.setNombre(OracleConection.getInstance().getString("nombre"));
         usuario.setIdRol(OracleConection.getInstance().getInt("id_rol"));
