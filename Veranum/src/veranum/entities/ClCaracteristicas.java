@@ -96,6 +96,6 @@ public class ClCaracteristicas {
     
     @Override
     public String toString(){
-        return getDescripcion();
+        return getNombre();
     }
 }
