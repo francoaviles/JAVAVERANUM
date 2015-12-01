@@ -173,3 +173,18 @@ label
 {
     color: red;
 }
+
+.imglogo 
+{
+   margin-top: -40px;    
+}
+
+
+
+@media only screen and (max-width: 480px) 
+{
+    .imglogo 
+    {
+        margin-top: 10px;
+    }
+}
