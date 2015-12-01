@@ -93,7 +93,7 @@ public class DAOProveedores {
     
     public static ArrayList sqlLeerTodos(){
         ArrayList<ClPasajeros> proveedores = new ArrayList<>();        
-        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"id_rol\" = 4")){ //proveedores
+        if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"pasajeros\" WHERE \"id_rol\" = 5")){ //proveedores
             return null;
         }
         while(OracleConection.getInstance().sqlFetch()){
