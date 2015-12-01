@@ -33,11 +33,31 @@ public class DAOHotelCaract {
         return true;
     }*/
     
-    public static ClHotelCaract sqlLeer(int id_hotel, int id_caracteristica){     
+    /*public static ClHotelCaract sqlLeer(int id_hotel, int id_caracteristica){     
         ClHotelCaract hotelCaract = new ClHotelCaract();
         if(!OracleConection.getInstance().sqlSelect("SELECT * FROM \"hoteles_caracteristicas\" WHERE \"id_hotel\" ='"+id_hotel+"' AND \"id_caracteristica\" ='"+id_caracteristica+"'")){
             return null;
         }        
+        if(!OracleConection.getInstance().sqlFetch()){
+            return null;
+        }
+        hotelCaract.setId_hotel(OracleConection.getInstance().getInt("id_hotel"));
+        hotelCaract.setId_caract(OracleConection.getInstance().getInt("id_caracteristica"));
+        return hotelCaract;
+    }*/
+    
+    public static ClHotelCaract sqlLeer(int id_hotel, int id_caracteristica){     
+        ClHotelCaract hotelCaract = new ClHotelCaract();
+        if(!OracleConection.getInstance().sqlSelect("SELECT \"caracteristicas\".\"id_caracteristicas\"," +
+                                                    "\"tipo_caracteristicas\".\"id_tipo_caract\"," +
+                                                    "\"hoteles\".\"nombre\"" +
+                                                    " FROM \"tipo_caracteristicas\"" +
+                                                    " INNER JOIN \"caracteristicas\" ON \"caracteristicas\".\"id_caracteristicas\" = \"tipo_caracteristicas\".\"id_caracteristicas\"" +
+                                                    " INNER JOIN \"hoteles\" ON  \"hoteles\".\"id_hotel\" = \"caracteristicas\".\"id_hotel\"" +
+                                                    " WHERE \"tipo_caracteristicas\".\"id_tipo_caract\" = "+id_caracteristica+"" +
+                                                    " AND \"tipo_caracteristicas\".\"id_caracteristicas\" = "+id_hotel+"")){
+            return null;
+        }     
         if(!OracleConection.getInstance().sqlFetch()){
             return null;
         }
