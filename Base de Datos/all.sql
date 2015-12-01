@@ -1267,11 +1267,11 @@ Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('11','4
 Insert into "menu" ("id_menu","id_tipo_menu","nombre", "precio") values ('12','4','Cena Tres', 9990);
 
 
-Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('4','5','1','I');
-Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('5','6','1','R');
-Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('3','6','1','R');
-Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('6','7','1','R');
-Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('7','8','1','R');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('4','5','1','Independiente');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('5','6','1','Reservada');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('3','6','1','Reservada');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('6','7','1','Reservada');
+Insert into "caracteristicas" ("id_caracteristica","id_tipo_caract","cantidad","tipo") values ('7','8','1','Reservada');
 
 
 Insert into "hoteles_caracteristicas" ("id_hotel","id_caracteristica") values ('1','4');

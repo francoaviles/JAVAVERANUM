@@ -61,11 +61,11 @@ public class panelCaracteristicas extends javax.swing.JPanel {
         lbCantidad = new javax.swing.JLabel();
         lbTipo = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
-        txtTipo = new javax.swing.JTextField();
         btGrabar = new javax.swing.JButton();
         btDesactivarEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         cbTipoCaract = new javax.swing.JComboBox();
+        cbTipo = new javax.swing.JComboBox();
 
         btEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/veranum/imagenes/delete96.png"))); // NOI18N
         btEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -132,17 +132,11 @@ public class panelCaracteristicas extends javax.swing.JPanel {
 
         lbCantidad.setText("Cantidad:");
 
-        lbTipo.setText("Nombre:");
+        lbTipo.setText("Tipo:");
 
         txtCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCantidadKeyTyped(evt);
-            }
-        });
-
-        txtTipo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTipoKeyTyped(evt);
             }
         });
 
@@ -163,6 +157,8 @@ public class panelCaracteristicas extends javax.swing.JPanel {
 
         jLabel1.setText("Tipo Característica:");
 
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Independiente", "Reservada" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,7 +168,7 @@ public class panelCaracteristicas extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
                             .addComponent(jSeparator1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,15 +188,11 @@ public class panelCaracteristicas extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbCantidad)
                                     .addComponent(lbTipo))
+                                .addGap(70, 70, 70)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(70, 70, 70)
-                                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cbTipoCaract, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(cbTipoCaract, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btDesactivarEditar)
@@ -237,10 +229,10 @@ public class panelCaracteristicas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbTipo)
-                            .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addComponent(btGrabar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -287,13 +279,13 @@ public class panelCaracteristicas extends javax.swing.JPanel {
     private void btGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGrabarActionPerformed
         int id_tipo_caract = ((ClTipoCaracteristicas)cbTipoCaract.getSelectedItem()).getIdTipoCaract();
         if(!paraGrabar){
-            if(txtCantidad.getText().equals("") || txtTipo.getText().equals("") ){
+            if(txtCantidad.getText().equals("") ){ //|| txtTipo.getText().equals("") 
                 JOptionPane.showMessageDialog(this, "Ingrese los Datos");
             }else{
                 try {
                     DAOCaracteristicas.sqlInsert(new ClCaracteristicas( id_tipo_caract
                             , Integer.parseInt(txtCantidad.getText())
-                            , txtTipo.getText()
+                            , cbTipo.getSelectedItem().toString()  //, txtTipo.getText()
                     ));
                     JOptionPane.showMessageDialog(this, "Agregado");
                 } catch (SQLException ex) {
@@ -308,7 +300,7 @@ public class panelCaracteristicas extends javax.swing.JPanel {
                 DAOCaracteristicas.sqlUpdate(new ClCaracteristicas( this.id
                         , id_tipo_caract
                         , Integer.parseInt(txtCantidad.getText())
-                        , txtTipo.getText()
+                        , cbTipo.getSelectedItem().toString()  //, txtTipo.getText()
                 ));
                 JOptionPane.showMessageDialog(this, "Modificado");
             } catch (SQLException ex) {
@@ -342,13 +334,6 @@ public class panelCaracteristicas extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtCantidadKeyTyped
 
-    private void txtTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTipoKeyTyped
-        if (!(txtCantidad.getText().length() < 15)) {
-            Formularios.limpiarTxt(txtCantidad);
-            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
-        }
-    }//GEN-LAST:event_txtTipoKeyTyped
-
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
         if (!(txtBuscar.getText().length() < 15)) {
             Formularios.limpiarTxt(txtBuscar);
@@ -367,8 +352,9 @@ public class panelCaracteristicas extends javax.swing.JPanel {
         this.id = id;
         ClCaracteristicas dato = DAOCaracteristicas.sqlLeer(id);
         txtCantidad.setText(String.valueOf(dato.getCantidad()));
-        txtTipo.setText(dato.getTipo());
-        
+        //txtTipo.setText(dato.getTipo());
+        cbTipo.setSelectedItem(dato.getTipo());
+                
         ClTipoCaracteristicas item;
         for (int i = 0; i < cbTipoCaract.getItemCount(); i++)
         {
@@ -419,6 +405,7 @@ public class panelCaracteristicas extends javax.swing.JPanel {
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btEliminar;
     private javax.swing.JButton btGrabar;
+    private javax.swing.JComboBox cbTipo;
     private javax.swing.JComboBox cbTipoCaract;
     private javax.swing.JTable grDatos;
     private javax.swing.JLabel jLabel1;
@@ -428,6 +415,5 @@ public class panelCaracteristicas extends javax.swing.JPanel {
     private javax.swing.JLabel lbTipo;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }

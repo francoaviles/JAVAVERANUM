@@ -13,9 +13,11 @@ import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOCaracteristicas;
 import veranum.DAO.DAOHotelCaract;
 import veranum.DAO.DAOHoteles;
+import veranum.DAO.DAOTipoCaract;
 import veranum.entities.ClCaracteristicas;
 import veranum.entities.ClHotelCaract;
 import veranum.entities.ClHoteles;
+import veranum.entities.ClTipoCaracteristicas;
 
 /**
  *
@@ -35,7 +37,7 @@ public class panelHotelCaract extends javax.swing.JPanel {
         initComponents();
         grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         grDatos.getTableHeader().setReorderingAllowed(false);
-        this.cargarCaract();
+        this.cargarTipoCaract();
         this.cargarHotel();
         grDatos.setEnabled(true);
         Formularios.DesactiveBotonesEliminarEditar(btEliminar, btEliminar);
@@ -282,8 +284,8 @@ public class panelHotelCaract extends javax.swing.JPanel {
         }
     }
     
-    private void cargarCaract(){
-        for (Object dato : DAOCaracteristicas.sqlLeerTodos()) {
+    private void cargarTipoCaract(){
+        for (Object dato : DAOTipoCaract.sqlLeerTodos()) {
             cbCaract.addItem(dato);
         }
     }
@@ -304,7 +306,18 @@ public class panelHotelCaract extends javax.swing.JPanel {
             }
         }
         
-        ClCaracteristicas item2;
+        /*ClTipoCaracteristicas item2;
+        for (int i = 0; i < cbTipoCaract.getItemCount(); i++)
+        {
+            item2 = (ClTipoCaracteristicas)cbTipoCaract.getItemAt(i);
+            if (item2.getIdTipoCaract()== dato.getId_caract())
+            {
+                cbTipoCaract.setSelectedIndex(i);
+                break;
+            }
+        }*/
+               
+        /*ClCaracteristicas item2;
         for (int i = 0; i < cbCaract.getItemCount(); i++)
         {
             item2 = (ClCaracteristicas)cbCaract.getItemAt(i);
@@ -313,7 +326,7 @@ public class panelHotelCaract extends javax.swing.JPanel {
                 cbCaract.setSelectedIndex(i);
                 break;
             }
-        }
+        }*/
     }
     
     private void leerTodos(boolean todos){
@@ -333,7 +346,7 @@ public class panelHotelCaract extends javax.swing.JPanel {
             Object[] fila = new Object[6];
             fila[0] = xx.getId_hotel();
             fila[1] = ((ClHoteles)DAOHoteles.sqlLeer(xx.getId_hotel())).getNombre();
-            fila[2] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getId_caract())).getTipo();
+            //fila[2] = ((ClCaracteristicas)DAOCaracteristicas.sqlLeer(xx.getId_caract())).getIdTipoCaract());
             //fila[3] = xx.getId_caract();
             dt.addRow(fila);
         }
