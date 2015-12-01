@@ -8,9 +8,8 @@ package veranum.GUI.reservasA;
 import helper.Formularios;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import veranum.DAO.DAOEstadoReserva;
 import veranum.DAO.DAOReservar;
@@ -31,6 +30,9 @@ public class panelConsulta extends javax.swing.JPanel {
         initComponents();
         this.cargarEstados();
         this.panelChangeEstado.setVisible(false);
+        grDatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        grDatos.getTableHeader().setReorderingAllowed(false);
+        grDatos.setEnabled(true);
     }
 
     /**
@@ -54,6 +56,17 @@ public class panelConsulta extends javax.swing.JPanel {
         lblCambiar = new javax.swing.JLabel();
         cbEstadoReserva = new javax.swing.JComboBox();
         btnCambiar = new javax.swing.JButton();
+
+        txtRut.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtRutFocusLost(evt);
+            }
+        });
+        txtRut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRutKeyTyped(evt);
+            }
+        });
 
         lblRut.setText("Rut:");
 
@@ -93,8 +106,8 @@ public class panelConsulta extends javax.swing.JPanel {
         lblo.setText("o ID:");
 
         txtID.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtIDKeyPressed(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDKeyTyped(evt);
             }
         });
 
@@ -181,16 +194,24 @@ public class panelConsulta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        try {
+        if(txtRut.getText().equals("") && txtID.getText().equals("") ){
+            JOptionPane.showMessageDialog(this, "Ingrese datos para buscar");
+        }else{
+            try {
+                this.buscar();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "No se ha podido encontrar ninguna reserva");
+            }
+            JOptionPane.showMessageDialog(this, "No se ha podido encontrar ninguna reserva");
+            Formularios.limpiar(this);
+        }
+               
+        /*try {
             this.buscar();
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(this, "No se ha podido encontrar ninguna reserva");
-        }
+        }*/
     }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void txtIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyPressed
-        Formularios.soloNumeros(evt);
-    }//GEN-LAST:event_txtIDKeyPressed
 
     private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
         try {
@@ -205,12 +226,35 @@ public class panelConsulta extends javax.swing.JPanel {
 
     private void grDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grDatosMouseClicked
         int row_dos = Formularios.getTablaSeleccionada(evt, grDatos, 2);
-
         if(row_dos >= 0){
             idreserva = Integer.parseInt(grDatos.getValueAt(row_dos, 0).toString());
             this.panelChangeEstado.setVisible(true);
         }
     }//GEN-LAST:event_grDatosMouseClicked
+
+    private void txtRutKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyTyped
+        Formularios.validarRutLargo(evt);
+        if (!(txtRut.getText().length() < 9)) {
+            Formularios.limpiarTxt(txtRut);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtRutKeyTyped
+
+    private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
+        Formularios.soloNumeros(evt);
+        if (!(txtID.getText().length() < 15)) {
+            Formularios.limpiarTxt(txtID);
+            JOptionPane.showMessageDialog(this, "Máximo de caracteres alcanzado");
+        }
+    }//GEN-LAST:event_txtIDKeyTyped
+
+    private void txtRutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutFocusLost
+        if(!Formularios.validarRut(txtRut.getText())){
+            JOptionPane.showMessageDialog(this, "Rut Incorrecto."); 
+            Formularios.limpiarTxt(txtRut);
+            return;
+        }
+    }//GEN-LAST:event_txtRutFocusLost
 
    private void buscar() throws SQLException{
         ArrayList ser;
