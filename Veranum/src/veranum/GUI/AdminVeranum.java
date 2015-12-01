@@ -13,6 +13,7 @@ import veranum.GUI.habitaciones.MainHabitaciones;
 import veranum.GUI.hotel.MainHotel;
 import veranum.GUI.insumos.MainInsumos;
 import veranum.GUI.localizador.MainLocalizador;
+import veranum.GUI.log.MainLog;
 import veranum.GUI.reportes.MainReportes;
 import veranum.GUI.reservas.MainReserva;
 import veranum.GUI.reservasA.MainReservasA;
@@ -68,6 +69,7 @@ public class AdminVeranum extends javax.swing.JFrame {
         btnHabitaciones = new javax.swing.JButton();
         btnCambiarUsuario = new javax.swing.JButton();
         btnReservasA = new javax.swing.JButton();
+        btnLog = new javax.swing.JButton();
         panelContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,6 +188,14 @@ public class AdminVeranum extends javax.swing.JFrame {
             }
         });
 
+        btnLog.setBackground(new java.awt.Color(204, 204, 255));
+        btnLog.setText("Log");
+        btnLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
@@ -198,12 +208,6 @@ public class AdminVeranum extends javax.swing.JFrame {
             .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnInsumos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnLocalizador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCambiarUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir)
-                .addContainerGap())
             .addGroup(panelMenuLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(lblBienvenido)
@@ -213,6 +217,14 @@ public class AdminVeranum extends javax.swing.JFrame {
             .addComponent(btnReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHabitaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnReservasA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCambiarUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +254,9 @@ public class AdminVeranum extends javax.swing.JFrame {
                 .addComponent(btnReservasA)
                 .addGap(10, 10, 10)
                 .addComponent(btnReservas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addComponent(btnLog)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
                     .addComponent(btnCambiarUsuario))
@@ -360,6 +374,14 @@ public class AdminVeranum extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnReservasAActionPerformed
 
+    private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
+        try {
+            new helper.IFrameHelper().openContenidoAdmin(new MainLog(), panelContenido);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(AdminVeranum.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnLogActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -402,6 +424,7 @@ public class AdminVeranum extends javax.swing.JFrame {
     private javax.swing.JButton btnHoteles;
     private javax.swing.JButton btnInsumos;
     private javax.swing.JButton btnLocalizador;
+    private javax.swing.JButton btnLog;
     private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnReservas;
     private javax.swing.JButton btnReservasA;

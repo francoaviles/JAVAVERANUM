@@ -488,6 +488,7 @@ CREATE TABLE "log" (
   "id_log" NUMBER NOT NULL,
   "id_pasajero" Number NOT NULL,
   "fecha_creacion" Date NOT NULL,
+  "tipo" Varchar2(255) NOT NULL,
   "consulta" Varchar2(255) NOT NULL
 );
 /

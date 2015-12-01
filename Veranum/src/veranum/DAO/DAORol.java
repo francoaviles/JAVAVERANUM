@@ -19,7 +19,7 @@ import veranum.utilidades.OracleConection;
 public class DAORol {
     public static boolean sqlInsert(ClRol rol) throws SQLException{
         String sql="INSERT INTO \"roles\" (\"nombre\", \"descripcion\") VALUES (?,?)";
-        Log.create(new Gson().toJson(rol));
+        Log.create("INSERT",new Gson().toJson(rol));
         
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, rol.getNombre());
@@ -29,14 +29,14 @@ public class DAORol {
     
     public static boolean sqlDelete(ClRol rol) throws SQLException{
         String sql="DELETE FROM \"roles\" WHERE \"id_rol\" = "+rol.getIdRol()+"";
-        Log.create(new Gson().toJson(rol));
+        Log.create("DELETE",new Gson().toJson(rol));
         
         return OracleConection.getInstance().sqlEjecutar(sql); 
     }
     
     public static boolean sqlUpdate(ClRol rol) throws SQLException{
         String sql="UPDATE \"roles\" SET \"nombre\" = ?, \"descripcion\" = ? WHERE \"id_rol\" = ?";
-        Log.create(new Gson().toJson(rol));
+        Log.create("UPDATE",new Gson().toJson(rol));
         
         PreparedStatement a = OracleConection.getInstance().sqlPreparar(sql);
         a.setString(1, rol.getNombre());
